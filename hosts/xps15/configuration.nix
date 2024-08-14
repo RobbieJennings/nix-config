@@ -2,22 +2,16 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-unstable, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./disk-configuration.nix
-    ];
-
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
 
   # Enable networking.
-  networking.hostName = "robbie-laptop"; # Define your hostname.
+  networking.hostName = "xps15"; # Define your hostname.
   networking.networkmanager.enable = true;  # Enable networking.
 
   # Set your time zone.

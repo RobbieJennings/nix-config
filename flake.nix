@@ -50,33 +50,14 @@
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }: {
     nixosConfigurations = {
-      robbie-laptop = nixpkgs.lib.nixosSystem rec {
+      xps15 = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
-
-        specialArgs = {
-          pkgs-unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        };
-
         modules = [
-          ./configuration.nix
-          inputs.nixos-hardware.nixosModules.dell-xps-15-7590
           inputs.disko.nixosModules.disko
           inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.robbie = import ./home.nix;
-
-              home-manager.extraSpecialArgs = {
-                pkgs-unstable = import nixpkgs-unstable {
-                  inherit system;
-                  config.allowUnfree = true;
-                };
-              };
-            }
+          inputs.nixos-hardware.nixosModules.dell-xps-15-7590
+          ./hosts/xps15
+          ./users/robbie
         ];
       };
     };
