@@ -40,9 +40,15 @@
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak";
     };
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }: {
     nixosConfigurations = {
       robbie-laptop = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
@@ -58,7 +64,7 @@
           ./configuration.nix
           inputs.nixos-hardware.nixosModules.dell-xps-15-7590
           inputs.disko.nixosModules.disko
-          home-manager.nixosModules.home-manager
+          inputs.home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
