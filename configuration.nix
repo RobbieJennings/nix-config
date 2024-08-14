@@ -15,10 +15,8 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-  # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
+  # Enable networking.
   networking.hostName = "robbie-laptop"; # Define your hostname.
   networking.networkmanager.enable = true;  # Enable networking.
 
@@ -31,7 +29,7 @@
   # Enable KDE Plasma 6 Desktop Environment
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;  
+  services.desktopManager.plasma6.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -45,10 +43,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.robbie = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkManager" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
+    extraGroups = [ "wheel" "networkManager" ];
     initialPassword = "password";
   };
 
@@ -93,4 +88,3 @@
   system.stateVersion = "24.05"; # Did you read the comment?
 
 }
-
