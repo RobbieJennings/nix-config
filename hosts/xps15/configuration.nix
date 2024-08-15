@@ -42,10 +42,10 @@
   };
 
   # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [
-    git # Flakes clones its dependencies through the git command, so git must be installed first.
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
+  environment.systemPackages = [
+    pkgs.git # Flakes clones its dependencies through the git command, so git must be installed first.
+    pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    pkgs.wget
   ];
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
@@ -53,9 +53,6 @@
 
   # Enable firefox
   programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

@@ -48,18 +48,38 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, ... }: {
-    nixosConfigurations = {
-      xps15 = nixpkgs.lib.nixosSystem rec {
-        system = "x86_64-linux";
-        modules = [
-          inputs.disko.nixosModules.disko
-          inputs.home-manager.nixosModules.home-manager
-          inputs.nixos-hardware.nixosModules.dell-xps-15-7590
-          ./hosts/xps15
-          ./users/robbie
-        ];
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
+    let
+      system = "x86_64-linux";
+      lib = nixpkgs.lib;
+      pkgs = import nixpkgs {inherit system; config.allowUnfree = true; };
+      pkgs-unstable = import nixpkgs-unstable {inherit system; config.allowUnfree = true; };
+    in {
+
+      nixosConfigurations = {
+        xps15 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            inputs.disko.nixosModules.disko
+            inputs.nixos-hardware.nixosModules.dell-xps-15-7590
+            ./hosts/xps15
+          ];
+          specialArgs = {
+            inherit pkgs-unstable;
+          };
+        };
+      };
+
+      homeConfigurations = {
+        robbie = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./users/robbie
+          ];
+          extraSpecialArgs = {
+            inherit pkgs-unstable;
+          };
+        };
       };
     };
-  };
 }

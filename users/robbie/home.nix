@@ -6,9 +6,10 @@
   home.username = "robbie";
   home.homeDirectory = "/home/robbie";
 
-  home.packages = with pkgs; [
-    kdePackages.kate
-  ];
+  programs.kdePackages.kate = {
+    enable = true;
+    package = pkgs-unstable.kdePackages.kate;
+  };
 
   programs.git = {
     enable = true;
