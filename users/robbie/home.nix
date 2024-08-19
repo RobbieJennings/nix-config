@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
+{ config, lib, pkgs, homeManagerModules, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -6,16 +6,16 @@
   home.username = "robbie";
   home.homeDirectory = "/home/robbie";
 
-  programs.kdePackages.kate = {
-    enable = true;
-    package = pkgs-unstable.kdePackages.kate;
-  };
-
   programs.git = {
     enable = true;
     userName = "RobbieJennings";
     userEmail = "robbie.jennings97@gmail.com";
   };
+
+  home.packages = [
+    pkgs.neofetch
+    pkgs.unstable.neovim
+  ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

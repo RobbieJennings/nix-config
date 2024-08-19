@@ -48,38 +48,37 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
-    let
-      system = "x86_64-linux";
-      lib = nixpkgs.lib;
-      pkgs = import nixpkgs {inherit system; config.allowUnfree = true; };
-      pkgs-unstable = import nixpkgs-unstable {inherit system; config.allowUnfree = true; };
-    in {
-
-      nixosConfigurations = {
-        xps15 = lib.nixosSystem {
-          inherit system;
-          modules = [
-            inputs.disko.nixosModules.disko
-            inputs.nixos-hardware.nixosModules.dell-xps-15-7590
-            ./hosts/xps15
-          ];
-          specialArgs = {
-            inherit pkgs-unstable;
-          };
-        };
-      };
-
-      homeConfigurations = {
-        robbie = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./users/robbie
-          ];
-          extraSpecialArgs = {
-            inherit pkgs-unstable;
-          };
-        };
+  outputs = inputs@{ self, nixpkgs, ... }: let
+    system = "x86_64-linux";
+    specialArgs = { inherit nixosModules; };
+    overlays = import ./overlays { inherit inputs; };
+    nixosModules = import ./modules/nixos;
+    homeManagerModules = import ./modules/home-manager;
+    defaults = {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.extraSpecialArgs = { inherit homeManagerModules; };
+      nixpkgs.config.allowUnfree = true;
+      nixpkgs.overlays = [
+        overlays.additions
+        overlays.modifications
+        overlays.unstable-packages
+      ];
+    };
+  in {
+    nixosConfigurations = {
+      xps15 = nixpkgs.lib.nixosSystem {
+        inherit system;
+        inherit specialArgs;
+        modules = [
+          defaults
+          inputs.home-manager.nixosModules.home-manager
+          inputs.disko.nixosModules.disko
+          inputs.nixos-hardware.nixosModules.dell-xps-15-7590
+          ./hosts/xps15
+          ./users/robbie
+        ];
       };
     };
+  };
 }
