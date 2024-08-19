@@ -48,31 +48,32 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: let
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     system = "x86_64-linux";
     specialArgs = { inherit nixosModules; };
     overlays = import ./overlays { inherit inputs; };
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
-    defaults = {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = { inherit homeManagerModules; };
-      nixpkgs.config.allowUnfree = true;
-      nixpkgs.overlays = [
-        overlays.additions
-        overlays.modifications
-        overlays.unstable-packages
-      ];
-    };
+    defaults = [
+      home-manager.nixosModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = { inherit homeManagerModules; };
+        nixpkgs.config.allowUnfree = true;
+        nixpkgs.overlays = [
+          overlays.additions
+          overlays.modifications
+          overlays.unstable-packages
+        ];
+      }
+    ];
   in {
     nixosConfigurations = {
       xps15 = nixpkgs.lib.nixosSystem {
         inherit system;
         inherit specialArgs;
-        modules = [
-          defaults
-          inputs.home-manager.nixosModules.home-manager
+        modules = defaults ++ [
           inputs.disko.nixosModules.disko
           inputs.nixos-hardware.nixosModules.dell-xps-15-7590
           ./hosts/xps15
