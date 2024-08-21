@@ -1,8 +1,10 @@
-{ config, lib, pkgs, homeManagerModules, ... }:
+{ config, lib, pkgs, inputs, outputs, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
+  imports = [
+    outputs.homeManagerModules
+  ];
+
   home.username = "robbie";
   home.homeDirectory = "/home/robbie";
 

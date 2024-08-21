@@ -1,6 +1,19 @@
-# Add your reusable NixOS modules to this directory, on their own file (https://nixos.wiki/wiki/Module).
-# These should be stuff you would like to share with others, not your personal configurations.
+{ config, lib, pkgs, inputs, outputs, ... }:
+
 {
-  # List your module files here
-  # my-module = import ./my-module.nix;
+  imports = [
+    ./bootloader.nix
+    ./desktop-environment.nix
+    ./networking.nix
+    ./localization.nix
+    ./audio.nix
+  ];
+
+  config = {
+    bootloader.enable = lib.mkDefault true;
+    desktop-environment.enable = lib.mkDefault true;
+    networking.enable = lib.mkDefault true;
+    localization.enable = lib.mkDefault true;
+    audio.enable = lib.mkDefault true;
+  };
 }

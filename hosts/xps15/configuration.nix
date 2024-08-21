@@ -1,47 +1,19 @@
-{ config, lib, pkgs, nixosModules, ... }:
+{ config, lib, pkgs, inputs, outputs, ... }:
 
 {
-  # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.efiInstallAsRemovable = true;
-
-  # Enable networking.
-  networking.hostName = "xps15"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Enable networking.
-
-  # Set your time zone.
-  time.timeZone = "Europe/Dublin";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_IE.UTF-8";
-
-  # Enable KDE Plasma 6 Desktop Environment
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound.
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
-
-  # List packages installed in system profile.
-  environment.systemPackages = [
-    pkgs.git # Flakes clones its dependencies through the git command, so git must be installed first.
-    pkgs.vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    pkgs.unstable.wget
+  imports = [
+    outputs.nixosModules
+    inputs.disko.nixosModules.disko
+    inputs.nixos-hardware.nixosModules.dell-xps-15-7590
   ];
 
-  # Enable the Flakes feature and the accompanying new nix command-line tool
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  networking.hostName = "xps15";
 
-  # Enable firefox
-  programs.firefox.enable = true;
+  environment.systemPackages = [
+    pkgs.git
+    pkgs.vim
+    pkgs.unstable.wget
+  ];
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

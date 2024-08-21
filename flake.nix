@@ -35,6 +35,8 @@
 
     stylix = {
       url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     nix-flatpak = {
@@ -49,33 +51,33 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
+    inherit (self) outputs;
     system = "x86_64-linux";
-    specialArgs = { inherit nixosModules; };
-    overlays = import ./overlays { inherit inputs; };
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
+    specialArgs = { inherit inputs outputs; };
     defaults = [
       home-manager.nixosModules.home-manager
       {
+        nix.settings.experimental-features = [ "nix-command" "flakes" ];
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit homeManagerModules; };
+        home-manager.extraSpecialArgs = { inherit inputs outputs; };
         nixpkgs.config.allowUnfree = true;
         nixpkgs.overlays = [
-          overlays.additions
-          overlays.modifications
-          overlays.unstable-packages
+          outputs.overlays.additions
+          outputs.overlays.modifications
+          outputs.overlays.unstable-packages
         ];
       }
     ];
   in {
+    overlays = import ./overlays { inherit inputs outputs; };
+    nixosModules = import ./modules/nixos;
+    homeManagerModules = import ./modules/home-manager;
     nixosConfigurations = {
       xps15 = nixpkgs.lib.nixosSystem {
         inherit system;
         inherit specialArgs;
         modules = defaults ++ [
-          inputs.disko.nixosModules.disko
-          inputs.nixos-hardware.nixosModules.dell-xps-15-7590
           ./hosts/xps15
           ./users/robbie
         ];
