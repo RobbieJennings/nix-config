@@ -17,6 +17,7 @@
   home.packages = [
     pkgs.neofetch
     pkgs.unstable.neovim
+    pkgs.kdePackages.discover
   ];
 
   # This value determines the Home Manager release that your
