@@ -1,8 +1,8 @@
-{ config, lib, pkgs, inputs, outputs, ... }:
+{ config, lib, pkgs, inputs, nixosModules, ... }:
 
 {
   imports = [
-    outputs.nixosModules
+    nixosModules
     inputs.disko.nixosModules.disko
     inputs.nixos-hardware.nixosModules.dell-xps-15-7590
   ];

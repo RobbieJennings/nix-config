@@ -1,8 +1,8 @@
-{ config, lib, pkgs, inputs, outputs, ... }:
+{ config, lib, pkgs, inputs, homeManagerModules, ... }:
 
 {
   imports = [
-    outputs.homeManagerModules
+    homeManagerModules
   ];
 
   home.username = "robbie";

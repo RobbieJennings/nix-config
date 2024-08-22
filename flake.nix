@@ -50,38 +50,20 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
-    inherit (self) outputs;
-    system = "x86_64-linux";
-    specialArgs = { inherit inputs outputs; };
-    defaults = [
-      home-manager.nixosModules.home-manager
-      {
-        nix.settings.experimental-features = [ "nix-command" "flakes" ];
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit inputs outputs; };
-        nixpkgs.config.allowUnfree = true;
-        nixpkgs.overlays = [
-          outputs.overlays.additions
-          outputs.overlays.modifications
-          outputs.overlays.unstable-packages
-        ];
-      }
-    ];
-  in {
-    overlays = import ./overlays { inherit inputs outputs; };
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
+  outputs = inputs @ { ... }:
+  let
+    utils = import ./utils { inherit inputs; };
+  in with utils;
+  {
     nixosConfigurations = {
-      xps15 = nixpkgs.lib.nixosSystem {
-        inherit system;
-        inherit specialArgs;
-        modules = defaults ++ [
+
+      # =============== PERSONAL LAPTOP =============== #
+      xps15 = mkSystem "x86_64-linux"
+        [
           ./hosts/xps15
           ./users/robbie
         ];
-      };
+
     };
   };
 }
