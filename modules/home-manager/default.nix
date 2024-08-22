@@ -2,10 +2,13 @@
 
 {
   imports = [
+    inputs.nix-flatpak.homeManagerModules.nix-flatpak
     ./browsers.nix
   ];
 
   config = {
-    browsers.enable = lib.mkDefault true;
+    firefox.enable = lib.mkDefault true;
+    chrome.enable = lib.mkDefault true;
+    brave.enable = lib.mkDefault true;
   };
 }

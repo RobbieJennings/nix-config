@@ -2,12 +2,27 @@
 
 {
   options = {
-    browsers.enable = lib.mkEnableOption "enables chrome, brave and firefox web browsers";
+    firefox.enable = lib.mkEnableOption "enables firefox browser";
+    chrome.enable = lib.mkEnableOption "enables chrome browser";
+    brave.enable = lib.mkEnableOption "enables brave web browser";
   };
 
-  config = lib.mkIf config.browsers.enable {
-    programs.firefox.enable = lib.mkDefault true;
-    programs.google-chrome.enable = lib.mkDefault true;
-    programs.brave.enable = lib.mkDefault true;
-  };
+  config = lib.mkMerge [
+    (
+      lib.mkIf config.firefox.enable {
+        services.flatpak.packages = [ { appId = "org.mozilla.firefox"; origin = "flathub"; } ];
+      }
+    )
+    (
+      lib.mkIf config.chrome.enable {
+        services.flatpak.packages = [ { appId = "com.google.Chrome"; origin = "flathub"; } ];
+      }
+    )
+    (
+      lib.mkIf config.brave.enable {
+        services.flatpak.packages = [ { appId = "com.brave.Browser"; origin = "flathub"; } ];
+      }
+    )
+  ];
 }
+
