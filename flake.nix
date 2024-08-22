@@ -33,14 +33,14 @@
       url = "github:nix-community/impermanence";
     };
 
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak";
+    };
+
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
-    };
-
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak";
     };
 
     plasma-manager = {
