@@ -8,17 +8,14 @@
   home.username = "robbie";
   home.homeDirectory = "/home/robbie";
 
+  utilities.discover.enable = true;
+  web.brave.enable = true;
+
   programs.git = {
     enable = true;
     userName = "RobbieJennings";
     userEmail = "robbie.jennings97@gmail.com";
   };
-
-  home.packages = [
-    pkgs.neofetch
-    pkgs.unstable.neovim
-    pkgs.kdePackages.discover
-  ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
