@@ -8,8 +8,9 @@
   home.username = "robbie";
   home.homeDirectory = "/home/robbie";
 
-  utilities.discover.enable = true;
-  web.brave.enable = true;
+  utilities.enable = true;
+  web.enable = true;
+  gaming.enable = true;
 
   programs.git = {
     enable = true;
