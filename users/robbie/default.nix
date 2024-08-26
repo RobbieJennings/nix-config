@@ -3,7 +3,7 @@
 {
   users.users.robbie = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkManager" ];
+    extraGroups = [ "wheel" "networkManager" "libvirtd" ];
     initialPassword = "password";
   };
 

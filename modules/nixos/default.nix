@@ -3,6 +3,7 @@
 {
   imports = [
     ./core
+    ./virtualisation
     ./media-server
   ];
 }
