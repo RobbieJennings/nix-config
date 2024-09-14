@@ -6,8 +6,28 @@
   };
 
   config = lib.mkIf config.desktop-environment.enable {
-    services.displayManager.sddm.enable = lib.mkDefault true;
-    services.displayManager.sddm.wayland.enable = lib.mkDefault true;
+    # Enable SDDM lgoin manager
+    services.displayManager = {
+      autoLogin = {
+        enable = lib.mkDefault true;
+        user = lib.mkDefault "robbie";
+      };
+      sddm = {
+        enable = lib.mkDefault true;
+        theme = lib.mkDefault "breeze";
+        wayland.enable = lib.mkDefault true;
+      };
+    };
+
+    # Add wallpaper to SDDM theme
+    environment.systemPackages = [
+      (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+        [General]
+        background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Mountain/contents/images_dark/5120x2880.png
+      '')
+    ];
+
+    # Enable KDE Plasma desktop environment
     services.desktopManager.plasma6.enable = lib.mkDefault true;
   };
 }

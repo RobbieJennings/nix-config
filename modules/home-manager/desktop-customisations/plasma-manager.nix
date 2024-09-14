@@ -8,6 +8,11 @@
   config = lib.mkIf config.desktop-customisations.plasma-manager.enable {
     programs.plasma = {
       enable = true;
+      kwin = {
+        effects = {
+          translucency.enable = true;
+        };
+      };
       panels = [
         {
           location = "bottom";
@@ -31,8 +36,65 @@
               };
             }
             "org.kde.plasma.marginsseparator"
+            "org.kde.plasma.systemmonitor.cpucore"
             {
-            systemTray.items = {
+              systemMonitor = {
+                title = "CPU TEMP";
+                displayStyle = "org.kde.ksysguard.piechart";
+                sensors = [{
+                  name = "cpu/all/averageTemperature";
+                  color = "180 190 254";
+                  label = "CPU TEMP";
+                }];
+                totalSensors = ["cpu/all/averageTemperature"];
+              };
+            }
+            {
+              systemMonitor = {
+                title = "MEMORY USAGE";
+                displayStyle = "org.kde.ksysguard.horizontalbars";
+                sensors = [
+                  {
+                    name = "memory/physical/usedPercent";
+                    color = "180 190 254";
+                    label = "RAM USAGE";
+                  }
+                  {
+                    name = "memory/swap/usedPercent";
+                    color = "180 190 254";
+                    label = "SWAP USAGE";
+                  }
+                ];
+                totalSensors = [
+                  "memory/physical/userPercent"
+                  "memory/swap/usedPercent"
+                ];
+              };
+            }
+            {
+              systemMonitor = {
+                title = "NETWORK USAGE";
+                displayStyle = "org.kde.ksysguard.horizontalbars";
+                sensors = [
+                  {
+                    name = "network/all/download";
+                    color = "180 190 254";
+                    label = "DOWNLOAD";
+                  }
+                  {
+                    name = "network/all/upload";
+                    color = "180 190 254";
+                    label = "UPLOAD";
+                  }
+                ];
+                totalSensors = [
+                  "network/all/download"
+                  "network/all/upload"
+                ];
+              };
+            }
+            {
+              systemTray.items = {
                 shown = [
                   "org.kde.plasma.brightness"
                   "org.kde.plasma.networkmanagement"
