@@ -30,7 +30,7 @@
                   extraArgs = [ "-f" ];
                   subvolumes = {
                     "/root" = {
-                      mountpoint = "/root";
+                      mountpoint = "/";
                       mountOptions = ["subvol=root" "noatime"];
                     };
 
