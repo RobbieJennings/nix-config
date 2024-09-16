@@ -47,7 +47,7 @@
                     "/media" = {
                       mountpoint = "/media";
                       mountOptions = ["subvol=media" "noadtime"];
-                    }
+                    };
 
                     "/swap" = {
                       mountpoint = "/.swapvol";
