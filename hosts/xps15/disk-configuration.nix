@@ -30,24 +30,24 @@
                   extraArgs = [ "-f" ];
                   subvolumes = {
                     "/root" = {
-                      mountpoint = "/";
-                      mountOptions = ["noatime"];
-                    };
-
-                    "/home" = {
-                      mountpoint = "/home";
-                      mountOptions = ["noatime"];
+                      mountpoint = "/root";
+                      mountOptions = ["subvol=root" "noatime"];
                     };
 
                     "/persist" = {
                       mountpoint = "/persist";
-                      mountOptions = ["subvol=persist" "compress=zstd" "noatime"];
+                      mountOptions = ["subvol=persist" "noatime"];
                     };
 
                     "/nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["subvol=nix" "compress=zstd" "noatime"];
+                      mountOptions = ["subvol=nix" "noatime"];
                     };
+
+                    "/media" = {
+                      mountpoint = "/media";
+                      mountOptions = ["subvol=media" "noadtime"];
+                    }
 
                     "/swap" = {
                       mountpoint = "/.swapvol";
