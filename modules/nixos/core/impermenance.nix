@@ -28,7 +28,8 @@
 
         if [[ -e /mnt/root ]]; then
           mkdir -p /mnt/previous_root
-          mv /mnt/root "/mnt/previous_root"
+          timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
+          mv /mnt/root "/mnt/previous_root/$timestamp"
         fi
 
         btrfs subvolume create /mnt/root
