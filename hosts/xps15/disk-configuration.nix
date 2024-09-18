@@ -34,6 +34,11 @@
                       mountOptions = ["subvol=root" "noatime"];
                     };
 
+                    "/home" = {
+                      mountpoint = "/home";
+                      mountOptions = ["subvol=root" "noatime"];
+                    };
+
                     "/persist" = {
                       mountpoint = "/persist";
                       mountOptions = ["subvol=persist" "noatime"];
@@ -45,6 +50,11 @@
                     };
 
                     "/media" = {
+                      mountpoint = "/media";
+                      mountOptions = ["subvol=media" "noatime"];
+                    };
+
+                    "/games" = {
                       mountpoint = "/media";
                       mountOptions = ["subvol=media" "noatime"];
                     };
