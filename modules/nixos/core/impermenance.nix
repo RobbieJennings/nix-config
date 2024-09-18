@@ -14,12 +14,6 @@
         mkdir /mnt
         mount /dev/mapper/crypted /mnt
 
-        if [[ -e /mnt/root ]]; then
-          mkdir -p /mnt/previous_roots
-          timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
-          mv /mnt/root "/mnt/previous_roots/$timestamp"
-        fi
-
         delete_subvolume_recursively() {
           IFS=$'\n'
           for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
@@ -28,9 +22,15 @@
           btrfs subvolume delete "$1"
         }
 
-        for i in $(find /mnt/previous_roots/ -maxdepth 1 -mtime +30); do
+        for i in $(find /mnt/previous_roots/* -maxdepth 0); do
           delete_subvolume_recursively "$i"
         done
+
+        if [[ -e /mnt/root ]]; then
+          mkdir -p /mnt/previous_roots
+          timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
+          mv /mnt/root "/mnt/previous_roots/$timestamp"
+        fi
 
         btrfs subvolume create /mnt/root
         umount /mnt
