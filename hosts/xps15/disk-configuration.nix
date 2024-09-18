@@ -31,32 +31,31 @@
                   subvolumes = {
                     "/root" = {
                       mountpoint = "/";
-                      mountOptions = ["subvol=root" "noatime"];
                     };
 
                     "/home" = {
                       mountpoint = "/home";
-                      mountOptions = ["subvol=home" "noatime"];
+                      mountOptions = ["subvol=home"];
                     };
 
                     "/persist" = {
                       mountpoint = "/persist";
-                      mountOptions = ["subvol=persist" "noatime"];
+                      mountOptions = ["subvol=persist"];
                     };
 
                     "/nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["subvol=nix" "noatime"];
+                      mountOptions = ["subvol=nix"];
                     };
 
                     "/media" = {
                       mountpoint = "/media";
-                      mountOptions = ["subvol=media" "noatime"];
+                      mountOptions = ["subvol=media"];
                     };
 
                     "/games" = {
                       mountpoint = "/games";
-                      mountOptions = ["subvol=games" "noatime"];
+                      mountOptions = ["subvol=games"];
                     };
 
                     "/swap" = {
