@@ -13,11 +13,6 @@
       script = ''
         mkdir /mnt
         mount /dev/mapper/crypted /mnt
-        if [[ -e /mnt/root ]]; then
-          mkdir -p /mnt/old_roots
-          timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
-          mv /mnt/root "/mnt/old_roots/$timestamp"
-        fi
 
         delete_subvolume_recursively() {
           IFS=$'\n'
@@ -30,6 +25,12 @@
         for i in $(find /mnt/old_roots/ -maxdepth 1 -mtime +30); do
           delete_subvolume_recursively "$i"
         done
+
+        if [[ -e /mnt/root ]]; then
+          mkdir -p /mnt/old_roots
+          timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
+          mv /mnt/root "/mnt/old_roots/$timestamp"
+        fi
 
         btrfs subvolume create /mnt/root
         umount /mnt
