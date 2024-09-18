@@ -22,14 +22,14 @@
           btrfs subvolume delete "$1"
         }
 
-        for i in $(find /mnt/previous_root/ -maxdepth 0); do
+        for i in $(find /mnt/old_roots/ -maxdepth 0); do
           delete_subvolume_recursively "$i"
         done
 
         if [[ -e /mnt/root ]]; then
-          mkdir -p /mnt/previous_root
+          mkdir -p /mnt/old_roots
           timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
-          mv /mnt/root "/mnt/previous_root/$timestamp"
+          mv /mnt/root "/mnt/old_roots/$timestamp"
         fi
 
         btrfs subvolume create /mnt/root
