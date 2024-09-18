@@ -36,7 +36,7 @@
 
                     "/home" = {
                       mountpoint = "/home";
-                      mountOptions = ["subvol=root" "noatime"];
+                      mountOptions = ["subvol=home" "noatime"];
                     };
 
                     "/persist" = {
