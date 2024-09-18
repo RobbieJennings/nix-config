@@ -55,8 +55,8 @@
                     };
 
                     "/games" = {
-                      mountpoint = "/media";
-                      mountOptions = ["subvol=media" "noatime"];
+                      mountpoint = "/games";
+                      mountOptions = ["subvol=games" "noatime"];
                     };
 
                     "/swap" = {
