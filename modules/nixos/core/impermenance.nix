@@ -15,7 +15,7 @@
         mount /dev/mapper/crypted /mnt
         if [[ -e /mnt/root ]]; then
           mkdir -p /mnt/old_roots
-          timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
+          timestamp=$(date --date="@$(stat -c %Y /mnt/root)" "+%Y-%m-%-d_%H:%M:%S")
           mv /mnt/root "/mnt/old_roots/$timestamp"
         fi
 
