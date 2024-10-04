@@ -33,11 +33,6 @@
                       mountpoint = "/";
                     };
 
-                    "/home" = {
-                      mountpoint = "/home";
-                      mountOptions = ["subvol=home"];
-                    };
-
                     "/persist" = {
                       mountpoint = "/persist";
                       mountOptions = ["subvol=persist"];
@@ -51,11 +46,6 @@
                     "/media" = {
                       mountpoint = "/media";
                       mountOptions = ["subvol=media"];
-                    };
-
-                    "/games" = {
-                      mountpoint = "/games";
-                      mountOptions = ["subvol=games"];
                     };
 
                     "/swap" = {
