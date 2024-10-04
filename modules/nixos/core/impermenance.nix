@@ -6,10 +6,13 @@
   };
 
   config = lib.mkIf config.impermenance.enable {
-    boot.initrd.systemd.services.nuke-root = {
-      requires = ["dev-mapper-crypted.device"];
-      after = ["dev-mapper-crypted.device"];
+    boot.initrd.systemd.services.services.rollback = {
+      description = "Rollback BTRFS root subvolume to a pristine state";
       wantedBy = ["initrd.target"];
+      after = ["systemd-cryptsetup@crypted.service"];
+      before = ["sysroot.mount"];
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
       script = ''
         mkdir /mnt
         mount /dev/mapper/crypted /mnt
@@ -21,15 +24,8 @@
           btrfs subvolume delete "$1"
         }
 
-        if [[ -e /mnt/previous ]]; then
-          for i in $(find /mnt/previous/* -maxdepth 0); do
-            delete_subvolume_recursively "$i"
-          done
-        fi
-
         if [[ -e /mnt/root ]]; then
-          mkdir -p /mnt/previous
-          mv /mnt/root /mnt/previous/root
+          delete_subvolume_recursively "/mnt/root"
         fi
 
         btrfs subvolume create /mnt/root
