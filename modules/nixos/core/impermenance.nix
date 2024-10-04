@@ -6,7 +6,7 @@
   };
 
   config = lib.mkIf config.impermenance.enable {
-    boot.initrd.systemd.services.services.rollback = {
+    boot.initrd.systemd.services.rollback = {
       description = "Rollback BTRFS root subvolume to a pristine state";
       wantedBy = ["initrd.target"];
       after = ["systemd-cryptsetup@crypted.service"];
