@@ -10,10 +10,11 @@
   environment.persistence."/persist" = {
     users.robbie = {
       directories = [
+        "Desktop"
+        "Documents"
         "Downloads"
         "Music"
         "Pictures"
-        "Documents"
         "Videos"
         "nix-config"
         { directory = ".gnupg"; mode = "0700"; }
@@ -22,9 +23,9 @@
         { directory = ".local/share/keyrings"; mode = "0700"; }
         ".local/share/direnv"
         ".local/share/flatpak"
-        ".config"
-        ".var/app/com.brave.Browser"
         ".local/share/kate"
+        ".config"
+        ".var"
       ];
     };
   };
