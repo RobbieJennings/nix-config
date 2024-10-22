@@ -2,10 +2,10 @@
 
 {
   options = {
-    impermenance.enable = lib.mkEnableOption "enables impermenance";
+    impermanence.enable = lib.mkEnableOption "enables impermanence";
   };
 
-  config = lib.mkIf config.impermenance.enable {
+  config = lib.mkIf config.impermanence.enable {
     boot.initrd.systemd.services.rollback = {
       description = "Rollback BTRFS root subvolume to a pristine state";
       wantedBy = ["initrd.target"];

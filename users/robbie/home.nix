@@ -3,7 +3,6 @@
 {
   imports = [
     homeManagerModules
-    inputs.impermanence.nixosModules.home-manager.impermanence
   ];
 
   home.username = "robbie";
@@ -18,25 +17,6 @@
     enable = true;
     userName = "RobbieJennings";
     userEmail = "robbie.jennings97@gmail.com";
-  };
-
-  home.persistence."/persist/home/robbie" = {
-    directories = [
-      "Downloads"
-      "Music"
-      "Pictures"
-      "Documents"
-      "Videos"
-      "nix-config"
-      ".gnupg"
-      ".ssh"
-      ".nixops"
-      ".local/share/keyrings"
-      ".local/share/direnv"
-      ".local/share/flatpak"
-      ".config"
-    ];
-    allowOther = false;
   };
 
   # This value determines the Home Manager release that your
