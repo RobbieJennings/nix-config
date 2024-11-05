@@ -43,6 +43,7 @@
         "/var/lib/systemd/coredump"
         "/etc/NetworkManager/system-connections"
         "/etc/nixos"
+        "/etc/ssh"
       ];
     };
   };

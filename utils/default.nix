@@ -14,6 +14,7 @@ let
         overlays.modifications
         overlays.unstable-packages
       ];
+      users.mutableUsers = false;
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = { inherit inputs homeManagerModules; };

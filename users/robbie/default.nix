@@ -4,7 +4,7 @@
   users.users.robbie = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkManager" "libvirtd" ];
-    initialPassword = "password";
+    hashedPasswordFile = config.sops.secrets.password.path;
   };
 
   environment.persistence."/persist" = {

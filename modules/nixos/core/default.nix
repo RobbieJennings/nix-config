@@ -8,6 +8,7 @@
     ./networking.nix
     ./localization.nix
     ./audio.nix
+    ./secrets.nix
   ];
 
   config = {
@@ -17,5 +18,6 @@
     networking.enable = lib.mkDefault true;
     localization.enable = lib.mkDefault true;
     audio.enable = lib.mkDefault true;
+    secrets.enable = lib.mkDefault true;
   };
 }

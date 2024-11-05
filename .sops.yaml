@@ -1,0 +1,7 @@
+keys:
+  - &xps15 age10pw578jsp8lrhvxyv4cuarrmlav6eerq0wfxnstrmq6rmw03454ql5dsy5
+creation_rules:
+  - path_regex: secrets/secrets.yaml$
+    key_groups:
+    - age:
+      - *xps15
