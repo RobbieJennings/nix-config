@@ -26,7 +26,6 @@
         ".local/share/kate"
         ".config"
         ".var"
-        ".ssh"
       ];
     };
   };
