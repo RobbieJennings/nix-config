@@ -7,7 +7,7 @@
 
   config = lib.mkIf config.utilities.remoteDesktop.enable {
     home.packages = [
-      pkgs.unstable.kdePackages.krdp
+      pkgs.kdePackages.krdp
     ];
   };
 }
