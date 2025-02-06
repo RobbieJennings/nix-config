@@ -60,8 +60,8 @@
       # =============== PERSONAL LAPTOP =============== #
       xps15 = mkSystem "x86_64-linux"
         [
-          ./hosts/xps15
-          ./users/robbie
+          (mkHost ./hosts/xps15 "xps15")
+          (mkUser ./users/robbie "robbie")
         ];
 
     };

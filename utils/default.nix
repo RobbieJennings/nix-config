@@ -14,11 +14,11 @@ let
         overlays.modifications
         overlays.unstable-packages
       ];
+      services.flatpak.enable = true;
       users.mutableUsers = false;
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.extraSpecialArgs = { inherit inputs homeManagerModules; };
-      services.flatpak.enable = true;
     }
   ];
 in
@@ -29,4 +29,13 @@ in
       specialArgs = { inherit inputs nixosModules; };
       modules = defaults ++ modules;
     };
+
+  mkHost = hostpath: hostname:
+    hostpath;
+
+  mkUser = userpath: username:
+    let
+      user = import userpath;
+    in with user;
+      mkUser username;
 }
