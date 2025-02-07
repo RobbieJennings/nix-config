@@ -56,14 +56,13 @@
   in with utils;
   {
     nixosConfigurations = {
-
-      # =============== PERSONAL LAPTOP =============== #
       xps15 = mkSystem "x86_64-linux"
         [
+          (mkPlatform ./platforms/desktop)
           (mkHost ./hosts/xps15 "xps15")
-          (mkUser ./users/robbie "robbie")
+          (mkUser ./users/desktop-admin "robbie")
+          (mkUser ./users/desktop-admin "clare")
         ];
-
     };
   };
 }

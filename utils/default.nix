@@ -30,12 +30,21 @@ in
       modules = defaults ++ modules;
     };
 
-  mkHost = hostpath: hostname:
-    hostpath;
-
-  mkUser = userpath: username:
+  mkPlatform = platformPath:
     let
-      user = import userpath;
+      platform = import platformPath;
+    in with platform;
+      mkPlatform;
+
+  mkHost = hostPath: hostname:
+    let
+      host = import hostPath;
+    in with host;
+      mkHost hostname;
+
+  mkUser = userPath: username:
+    let
+      user = import userPath;
     in with user;
       mkUser username;
 }

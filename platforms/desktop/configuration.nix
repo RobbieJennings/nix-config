@@ -3,11 +3,7 @@
 {
   imports = [
     nixosModules
-    inputs.disko.nixosModules.disko
-    inputs.nixos-hardware.nixosModules.dell-xps-15-7590
   ];
-
-  networking.hostName = "xps15";
 
   environment.systemPackages = [
     pkgs.git

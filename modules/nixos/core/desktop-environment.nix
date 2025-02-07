@@ -8,10 +8,6 @@
   config = lib.mkIf config.desktop-environment.enable {
     # Enable SDDM lgoin manager
     services.displayManager = {
-      autoLogin = {
-        enable = lib.mkDefault true;
-        user = lib.mkDefault "robbie";
-      };
       sddm = {
         enable = lib.mkDefault true;
         theme = lib.mkDefault "breeze";
