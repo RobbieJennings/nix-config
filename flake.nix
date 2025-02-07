@@ -61,7 +61,14 @@
           (mkPlatform ./platforms/desktop)
           (mkHost ./hosts/xps15 "xps15")
           (mkUser ./users/desktop-admin "robbie")
-          (mkUser ./users/desktop-admin "clare")
+          (mkUser ./users/desktop-user "clare")
+        ];
+
+      vmServer = mkSystem "x86_64-linux"
+        [
+          (mkPlatform ./platforms/server)
+          (mkHost ./hosts/vm "vm_server")
+          (mkUser ./users/server-admin "robbie")
         ];
     };
   };

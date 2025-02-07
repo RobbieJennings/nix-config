@@ -1,0 +1,7 @@
+{
+  mkPlatform = { ... }: {
+    imports = [
+      ./configuration.nix
+    ];
+  };
+}

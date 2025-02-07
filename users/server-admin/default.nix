@@ -8,7 +8,7 @@ in with home;
         home-manager.users.${username} = mkHome username;
         users.users.${username} = {
           isNormalUser = true;
-          extraGroups = [ "wheel" "networkManager" "libvirtd" ];
+          extraGroups = [ "wheel" "networkManager" ];
           initialPassword = lib.mkDefault "password";
         };
       })
@@ -37,8 +37,6 @@ in with home;
               { directory = ".nixops"; mode = "0700"; }
               { directory = ".local/share/keyrings"; mode = "0700"; }
               ".local/share/direnv"
-              ".local/share/flatpak"
-              ".local/share/kate"
               ".config"
               ".var"
             ];
