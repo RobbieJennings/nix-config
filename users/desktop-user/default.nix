@@ -13,14 +13,6 @@ in with home;
         };
       })
 
-      (lib.mkIf config.secrets.enable {
-        sops.secrets."password_${username}".neededForUsers = true;
-        users.users.${username} = {
-          initialPassword = null;
-          hashedPasswordFile = config.sops.secrets."password_${username}".path;
-        };
-      })
-
       (lib.mkIf config.impermanence.enable {
         environment.persistence."/persist" = {
           users.${username} = {
@@ -31,7 +23,6 @@ in with home;
               "Music"
               "Pictures"
               "Videos"
-              "nix-config"
               { directory = ".gnupg"; mode = "0700"; }
               { directory = ".ssh"; mode = "0700"; }
               { directory = ".nixops"; mode = "0700"; }
@@ -43,6 +34,14 @@ in with home;
               ".var"
             ];
           };
+        };
+      })
+
+      (lib.mkIf config.secrets.enable {
+        sops.secrets."users/${username}/password".neededForUsers = true;
+        users.users.${username} = {
+          initialPassword = null;
+          hashedPasswordFile = config.sops.secrets."users/${username}/password".path;
         };
       })
     ]);

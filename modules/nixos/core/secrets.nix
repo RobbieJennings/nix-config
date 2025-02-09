@@ -7,6 +7,6 @@
 
   config = lib.mkIf config.secrets.enable {
     sops.defaultSopsFile = lib.mkDefault ../../../secrets.yaml;
-    sops.age.sshKeyPaths = lib.mkDefault [ "/persist/etc/ssh/id_ed25519" ];
+    sops.age.sshKeyPaths = lib.mkDefault [ "/persist/root/.ssh/id_ed25519" ];
   };
 }

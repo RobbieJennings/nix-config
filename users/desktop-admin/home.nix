@@ -7,14 +7,15 @@
     home.username = username;
     home.homeDirectory = "/home/${username}";
 
+    sops.defaultSopsFile = ../../secrets.yaml;
+    sops.age.sshKeyPaths = [ "/home/${username}/.ssh/id_ed25519" ];
+
     utilities.enable = true;
     web.enable = true;
     gaming.enable = true;
     desktop-customisations.enable = true;
 
-    programs.git = {
-      enable = true;
-    };
+    programs.git.enable = true;
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
