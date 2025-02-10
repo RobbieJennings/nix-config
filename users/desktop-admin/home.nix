@@ -2,13 +2,11 @@
   mkHome = username: { config, lib, pkgs, inputs, homeManagerModules, ... }: {
     imports = [
       homeManagerModules
+      ./secrets.nix
     ];
 
     home.username = username;
     home.homeDirectory = "/home/${username}";
-
-    sops.defaultSopsFile = ../../secrets.yaml;
-    sops.age.sshKeyPaths = [ "/home/${username}/.ssh/id_ed25519" ];
 
     utilities.enable = true;
     web.enable = true;

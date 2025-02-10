@@ -1,48 +1,34 @@
 let
   home = import ./home.nix;
-in with home;
+  password = import ./password.nix;
+  persist = import ./persist.nix;
+in
 {
   mkUser = username: { config, lib, ... }: {
     config = (lib.mkMerge [
+      # Create User
       ({
-        home-manager.users.${username} = mkHome username;
         users.users.${username} = {
           isNormalUser = true;
-          extraGroups = [ "networkManager" "libvirtd" ];
+          extraGroups = [ "wheel" "networkManager" "libvirtd" ];
           initialPassword = lib.mkDefault "password";
         };
       })
 
-      (lib.mkIf config.impermanence.enable {
-        environment.persistence."/persist" = {
-          users.${username} = {
-            directories = [
-              "Desktop"
-              "Documents"
-              "Downloads"
-              "Music"
-              "Pictures"
-              "Videos"
-              { directory = ".gnupg"; mode = "0700"; }
-              { directory = ".ssh"; mode = "0700"; }
-              { directory = ".nixops"; mode = "0700"; }
-              { directory = ".local/share/keyrings"; mode = "0700"; }
-              ".local/share/direnv"
-              ".local/share/flatpak"
-              ".local/share/kate"
-              ".config"
-              ".var"
-            ];
-          };
-        };
+      # Add home-manager configuration
+      ({
+        home-manager.users.${username} = home.mkHome username;
       })
 
+      # Add password from secrets
       (lib.mkIf config.secrets.enable {
-        sops.secrets."users/${username}/password".neededForUsers = true;
-        users.users.${username} = {
-          initialPassword = null;
-          hashedPasswordFile = config.sops.secrets."users/${username}/password".path;
-        };
+        sops.secrets = password.mkSecret username;
+        users.users = password.mkUser config username;
+      })
+
+      # Add persistent files
+      (lib.mkIf config.impermanence.enable {
+         environment.persistence."/persist" = persist.mkPersist username;
       })
     ]);
   };
