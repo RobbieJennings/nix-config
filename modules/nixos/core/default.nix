@@ -9,7 +9,7 @@
     ./audio.nix
     ./virtualisation.nix
     ./impermanence.nix
-    ./secrets.nix
+    ./secrets-management.nix
   ];
 
   config = {
