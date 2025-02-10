@@ -2,10 +2,10 @@
 
 {
   options = {
-    localization.enable = lib.mkEnableOption "enables localization settings for Dublin";
+    localisation.enable = lib.mkEnableOption "enables localisation settings for Dublin";
   };
 
-  config = lib.mkIf config.localization.enable {
+  config = lib.mkIf config.localisation.enable {
     time.timeZone = lib.mkDefault "Europe/Dublin";
     i18n.defaultLocale = lib.mkDefault "en_IE.UTF-8";
   };

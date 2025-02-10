@@ -4,7 +4,7 @@
   imports = [
     ./bootloader.nix
     ./networking.nix
-    ./localization.nix
+    ./localisation.nix
     ./desktop-environment.nix
     ./audio.nix
     ./virtualisation.nix
@@ -15,7 +15,7 @@
   config = {
     bootloader.enable = lib.mkDefault true;
     networking.enable = lib.mkDefault true;
-    localization.enable = lib.mkDefault true;
+    localisation.enable = lib.mkDefault true;
     desktop-environment.enable = lib.mkDefault true;
     audio.enable = lib.mkDefault true;
     virtualisation.enable = lib.mkDefault true;
