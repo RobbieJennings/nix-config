@@ -14,7 +14,6 @@ let
         overlays.modifications
         overlays.unstable-packages
       ];
-      services.flatpak.enable = true;
       users.mutableUsers = false;
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
