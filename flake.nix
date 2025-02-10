@@ -58,6 +58,7 @@
     nixosConfigurations = {
       xps15 = mkSystem "x86_64-linux"
         [
+          { secrets.enable = true; }
           (mkPlatform ./platforms/desktop)
           (mkHost ./hosts/xps15 "xps15")
           (mkUser ./users/desktop-admin "robbie")
@@ -66,6 +67,7 @@
 
       vmServer = mkSystem "x86_64-linux"
         [
+          { secrets.enable = true; }
           (mkPlatform ./platforms/server)
           (mkHost ./hosts/vm "vm_server")
           (mkUser ./users/server-admin "robbie")
