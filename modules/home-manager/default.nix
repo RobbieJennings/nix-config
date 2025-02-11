@@ -10,5 +10,6 @@
     ./web
     ./gaming
     ./desktop-customisations
+    ./secrets
   ];
 }

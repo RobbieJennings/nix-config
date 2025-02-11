@@ -1,5 +1,5 @@
 {
-  mkHome = username: { config, lib, pkgs, inputs, homeManagerModules, ... }: {
+  mkHome = username: enableSecrets: { config, lib, pkgs, inputs, homeManagerModules, ... }: {
     imports = [
       homeManagerModules
       ./secrets.nix
@@ -8,6 +8,7 @@
     home.username = username;
     home.homeDirectory = "/home/${username}";
 
+    secrets.enable = enableSecrets;
     utilities.enable = true;
     web.enable = true;
     gaming.enable = true;

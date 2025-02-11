@@ -17,7 +17,7 @@ in
 
       # Add home-manager configuration
       ({
-        home-manager.users.${username} = home.mkHome username;
+        home-manager.users.${username} = home.mkHome username config.secrets.enable;
       })
 
       # Add password from secrets

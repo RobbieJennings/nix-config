@@ -67,7 +67,6 @@
 
       vmServer = mkSystem "x86_64-linux"
         [
-          { secrets.enable = true; }
           (mkPlatform ./platforms/server)
           (mkHost ./hosts/vm "vm_server")
           (mkUser ./users/server-admin "robbie")

@@ -2,8 +2,11 @@ keys:
   - &xps15 age1df376a66px79jxymgxkzp9jvr4prgttkhfdy78wzuljc5ptrhspsqcnk5l
   - &robbie age1s4h7hhuvtzrlaz7ugqkz6s9gwseumv77na9kczwkpew4mjy5fy9s4vc6rv
 creation_rules:
-  - path_regex: secrets.yaml$
+  - path_regex: xps15.yaml$
     key_groups:
     - age:
       - *xps15
+  - path_regex: robbie.yaml$
+    key_groups:
+    - age:
       - *robbie
