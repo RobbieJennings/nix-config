@@ -1,5 +1,5 @@
 {
-  mkHome = username: { config, lib, pkgs, inputs, homeManagerModules, ... }: {
+  mkHome = username: enableSecrets: { config, lib, pkgs, inputs, homeManagerModules, ... }: {
     imports = [
       homeManagerModules
     ];
@@ -7,6 +7,7 @@
     home.username = username;
     home.homeDirectory = "/home/${username}";
 
+    secrets.enable = enableSecrets;
     programs.git.enable = true;
 
     # This value determines the Home Manager release that your
