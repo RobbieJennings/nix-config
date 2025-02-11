@@ -6,8 +6,6 @@
   };
 
   config = lib.mkIf config.utilities.camera.enable {
-    services.flatpak.packages = [
-      { appId = "org.kde.kamoso"; origin = "flathub"; }
-    ];
+    services.flatpak.packages = [ { appId = "org.kde.kamoso"; origin = "flathub"; } ];
   };
 }

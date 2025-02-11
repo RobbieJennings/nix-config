@@ -6,8 +6,6 @@
   };
 
   config = lib.mkIf config.utilities.remoteDesktop.enable {
-    home.packages = [
-      pkgs.kdePackages.krdp
-    ];
+    home.packages = [ pkgs.kdePackages.krdp ];
   };
 }
