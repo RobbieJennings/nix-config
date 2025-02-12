@@ -14,7 +14,7 @@
         { directory = ".local/share/keyrings"; mode = "0700"; }
         ".local/share/direnv"
         ".local/share/flatpak"
-        ".local/share/kate"
+        ".local/share/Steam"
         ".config"
         ".var"
       ];

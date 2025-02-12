@@ -11,8 +11,9 @@
     pkgs.wget
   ];
 
-  bootloader.pretty = true;
   services.flatpak.enable = true;
+  bootloader.pretty = true;
+  steam.enable = true;
   jellyfin.enable = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,

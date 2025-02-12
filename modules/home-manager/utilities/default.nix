@@ -6,7 +6,10 @@
     ./calculator.nix
     ./camera.nix
     ./screenshot.nix
+    ./vlc.nix
     ./remote-desktop.nix
+    ./office.nix
+    ./spotify.nix
   ];
 
   options = {
@@ -16,8 +19,11 @@
   config = lib.mkIf config.utilities.enable {
     utilities.discover.enable = lib.mkDefault true;
     utilities.screenshot.enable = lib.mkDefault true;
+    utilities.vlc.enable = lib.mkDefault true;
     utilities.camera.enable = lib.mkDefault true;
     utilities.calculator.enable = lib.mkDefault true;
     utilities.remoteDesktop.enable = lib.mkDefault true;
+    utilities.office.enable = lib.mkDefault true;
+    utilities.spotify.enable = lib.mkDefault true;
   };
 }

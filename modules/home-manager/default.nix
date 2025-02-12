@@ -9,6 +9,7 @@
     ./utilities
     ./web
     ./gaming
+    ./photography
     ./desktop-customisations
     ./secrets
   ];

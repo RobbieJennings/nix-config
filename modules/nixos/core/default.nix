@@ -10,6 +10,7 @@
     ./virtualisation.nix
     ./impermanence.nix
     ./secrets.nix
+    ./steam.nix
   ];
 
   config = {

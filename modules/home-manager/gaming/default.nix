@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./steam.nix
     ./heroic.nix
     ./lutris.nix
+    ./prism.nix
   ];
 
   options = {
@@ -12,8 +12,8 @@
   };
 
   config = lib.mkIf config.web.enable {
-    gaming.steam.enable = lib.mkDefault true;
     gaming.heroic.enable = lib.mkDefault true;
     gaming.lutris.enable = lib.mkDefault true;
+    gaming.prism.enable = lib.mkDefault true;
   };
 }
