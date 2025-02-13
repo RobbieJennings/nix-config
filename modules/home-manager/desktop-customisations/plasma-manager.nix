@@ -31,8 +31,8 @@
                   "applications:org.kde.konsole.desktop"
                   "applications:org.kde.dolphin.desktop"
                   "applications:org.kde.kate.desktop"
-                  "applications:com.brave.Browser.desktop"
-                ];
+                ]
+                ++ (if config.web.brave.enable then ["applications:com.brave.Browser.desktop"] else []);
               };
             }
             "org.kde.plasma.marginsseparator"
