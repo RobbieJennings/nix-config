@@ -8,13 +8,13 @@
   config = lib.mkIf config.desktop-customisations.plasma-manager.enable {
     programs.plasma = {
       enable = true;
-      input.keyboard.layouts = [ { layout = "ie"; } ];
+      input.keyboard.layouts = lib.mkDefault [ { layout = "ie"; } ];
       kwin = {
         effects = {
-          translucency.enable = true;
+          translucency.enable = lib.mkDefault true;
         };
       };
-      panels = [
+      panels = lib.mkDefault [
         {
           location = "bottom";
           floating = true;

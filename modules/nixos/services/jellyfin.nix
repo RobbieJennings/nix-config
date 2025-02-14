@@ -6,6 +6,6 @@
   };
 
   config = lib.mkIf config.jellyfin.enable {
-    services.jellyfin.enable = true;
+    services.jellyfin.enable = lib.mkDefault true;
   };
 }
