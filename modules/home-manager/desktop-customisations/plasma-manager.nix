@@ -8,6 +8,7 @@
   config = lib.mkIf config.desktop-customisations.plasma-manager.enable {
     programs.plasma = {
       enable = true;
+      input.keyboard.layouts = [ { layout = "ie"; } ];
       kwin = {
         effects = {
           translucency.enable = true;
@@ -99,10 +100,9 @@
                   "org.kde.plasma.brightness"
                   "org.kde.plasma.networkmanagement"
                   "org.kde.plasma.volume"
-                ];
-                hidden = [
                   "org.kde.plasma.battery"
                 ];
+                hidden = [];
               };
             }
             {
