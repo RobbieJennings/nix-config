@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk2, xorg, libgudev, makeDesktopItem }:
+{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, xorg, libgudev, makeDesktopItem }:
 let
   pname = "vuescan";
   version = "9.8";
@@ -25,7 +25,7 @@ in stdenv.mkDerivation rec {
 
   dontStrip = true; # Stripping breaks the program
   nativeBuildInputs = [ gnutar autoPatchelfHook ];
-  buildInputs = [ glibc gtk2 xorg.libSM libgudev ];
+  buildInputs = [ glibc gtk3 xorg.libSM libgudev ];
 
   unpackPhase = ''
     tar xfz $src
