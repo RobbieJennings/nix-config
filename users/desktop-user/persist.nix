@@ -15,6 +15,7 @@
         ".local/share/direnv"
         ".local/share/flatpak"
         ".local/share/Steam"
+        ".local/share/PrismLauncher"
         ".config"
         ".var"
       ];

@@ -8,6 +8,7 @@ let
     inputs.home-manager.nixosModules.home-manager
     {
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
+      nix.settings.auto-optimise-store = true;
       nixpkgs.config.allowUnfree = true;
       nixpkgs.overlays = [
         overlays.additions
