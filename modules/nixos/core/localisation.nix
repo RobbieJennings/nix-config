@@ -8,6 +8,6 @@
   config = lib.mkIf config.localisation.enable {
     time.timeZone = lib.mkDefault "Europe/Dublin";
     i18n.defaultLocale = lib.mkDefault "en_IE.UTF-8";
-    console.keyMap = "ie";
+    console.keyMap = lib.mkDefault "ie";
   };
 }

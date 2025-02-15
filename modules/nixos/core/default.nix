@@ -3,7 +3,7 @@
 {
   imports = [
     ./garbage-collection.nix
-    ./auto-update.nix
+    ./auto-upgrade.nix
     ./zsh.nix
     ./bootloader.nix
     ./networking.nix
@@ -18,7 +18,7 @@
 
   config = {
     garbage-collection.enable = lib.mkDefault true;
-    auto-update.enable = lib.mkDefault true;
+    auto-upgrade.enable = lib.mkDefault true;
     zsh.enable = true;
     bootloader.enable = lib.mkDefault true;
     networking.enable = lib.mkDefault true;

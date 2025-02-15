@@ -2,7 +2,6 @@
 
 {
   imports = [
-    inputs.nixarr.nixosModules.default
     ./media-server.nix
   ];
 }

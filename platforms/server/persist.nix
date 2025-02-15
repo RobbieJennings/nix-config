@@ -12,7 +12,6 @@
         "/var/lib/libvirt/images"
         "/etc/nixos"
         "/root/.ssh"
-        "/root/.config/sops"
       ];
     };
   };

@@ -13,7 +13,6 @@
         "/etc/NetworkManager/system-connections"
         "/etc/nixos"
         "/root/.ssh"
-        "/root/.config/sops"
       ];
     };
   };

@@ -7,11 +7,11 @@
     home.username = username;
     home.homeDirectory = "/home/${username}";
 
+    plasma-manager.enable = true;
     utilities.enable = true;
     web.enable = true;
     gaming.enable = true;
     photography.enable = true;
-    plasma-manager.enable = true;
 
     programs.git.enable = true;
 

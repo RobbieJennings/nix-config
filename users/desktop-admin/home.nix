@@ -9,11 +9,11 @@
     home.homeDirectory = "/home/${username}";
 
     secrets.enable = enableSecrets;
+    plasma-manager.enable = true;
     utilities.enable = true;
     web.enable = true;
     gaming.enable = true;
     photography.enable = true;
-    plasma-manager.enable = true;
 
     programs.git.enable = true;
 

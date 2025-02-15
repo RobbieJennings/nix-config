@@ -7,7 +7,7 @@
 
   config = lib.mkIf config.steam.enable {
     programs.steam = {
-      enable = lib.mkDefault true;
+      enable = true;
       remotePlay.openFirewall = lib.mkDefault true;
       dedicatedServer.openFirewall = lib.mkDefault true;
       localNetworkGameTransfers.openFirewall = lib.mkDefault true;

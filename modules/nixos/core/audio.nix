@@ -7,7 +7,7 @@
 
   config = lib.mkIf config.audio.enable {
     services.pipewire = {
-      enable = lib.mkDefault true;
+      enable = true;
       pulse.enable = lib.mkDefault true;
     };
   };

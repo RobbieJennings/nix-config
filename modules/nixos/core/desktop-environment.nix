@@ -9,7 +9,7 @@
     # Enable SDDM lgoin manager
     services.displayManager = {
       sddm = {
-        enable = lib.mkDefault true;
+        enable = true;
         theme = lib.mkDefault "breeze";
         wayland.enable = lib.mkDefault true;
       };
@@ -24,6 +24,6 @@
     ];
 
     # Enable KDE Plasma desktop environment
-    services.desktopManager.plasma6.enable = lib.mkDefault true;
+    services.desktopManager.plasma6.enable = true;
   };
 }
