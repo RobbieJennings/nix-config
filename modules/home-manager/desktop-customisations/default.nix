@@ -3,7 +3,6 @@
 {
   imports = [
     ./plasma-manager.nix
-    ./stylix.nix
   ];
 
   options = {
@@ -12,6 +11,5 @@
 
   config = lib.mkIf config.desktop-customisations.enable {
     desktop-customisations.plasma-manager.enable = lib.mkDefault true;
-    desktop-customisations.stylix.enable = lib.mkDefault true;
   };
 }

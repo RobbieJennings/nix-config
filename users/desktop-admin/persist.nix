@@ -20,6 +20,13 @@
         ".config"
         ".var"
       ];
+      files = [
+        ".bashrc"
+        ".histfile"
+        ".zshrc"
+        ".p10k.zsh"
+        ".zsh_history"
+      ];
     };
   };
 }

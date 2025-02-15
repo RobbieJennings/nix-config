@@ -11,7 +11,7 @@
     web.enable = true;
     gaming.enable = true;
     photography.enable = true;
-    desktop-customisations.enable = true;
+    plasma-manager.enable = true;
 
     programs.git.enable = true;
 

@@ -10,6 +10,7 @@
     ./remote-desktop.nix
     ./office.nix
     ./spotify.nix
+    ./calibre.nix
   ];
 
   options = {
@@ -25,5 +26,6 @@
     utilities.remoteDesktop.enable = lib.mkDefault true;
     utilities.office.enable = lib.mkDefault true;
     utilities.spotify.enable = lib.mkDefault true;
+    utilities.calibre.enable = lib.mkDefault true;
   };
 }
