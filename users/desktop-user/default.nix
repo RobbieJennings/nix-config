@@ -10,7 +10,7 @@ in
       ({
         users.users.${username} = {
           isNormalUser = true;
-          extraGroups = [ "wheel" "networkManager" "libvirtd" ];
+          extraGroups = [ "networkManager" "libvirtd" ];
           initialPassword = lib.mkDefault "password";
         };
       })
