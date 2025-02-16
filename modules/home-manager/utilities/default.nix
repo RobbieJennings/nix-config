@@ -11,6 +11,7 @@
     ./office.nix
     ./spotify.nix
     ./calibre.nix
+    ./kde-connect.nix
   ];
 
   options = {
@@ -27,5 +28,6 @@
     utilities.office.enable = lib.mkDefault true;
     utilities.spotify.enable = lib.mkDefault true;
     utilities.calibre.enable = lib.mkDefault true;
+    utilities.kde-connect.enable = lib.mkDefault true;
   };
 }
