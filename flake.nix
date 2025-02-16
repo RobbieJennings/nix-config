@@ -34,7 +34,7 @@
     };
 
     nix-flatpak = {
-      url = "github:gmodena/nix-flatpak";
+      url = "github:gmodena/nix-flatpak/?ref=latest";
     };
 
     plasma-manager = {
