@@ -21,7 +21,6 @@
         ".bashrc"
         ".zshrc"
         ".p10k.zsh"
-        ".histfile"
       ];
     };
   };
