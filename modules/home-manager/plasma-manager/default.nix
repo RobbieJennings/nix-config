@@ -47,6 +47,8 @@
                   label = "CPU TEMP";
                 }];
                 totalSensors = ["cpu/all/averageTemperature"];
+                range.from = 0;
+                range.to = 100;
               };
             }
             {
