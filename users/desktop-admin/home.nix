@@ -15,7 +15,11 @@
     gaming.enable = true;
     photography.enable = true;
 
-    programs.git.enable = true;
+    programs.git = {
+     enable = true;
+     userEmail = "robbie.jennings97@gmail.com";
+     userName = "robbiejennings";
+    };
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
