@@ -7,5 +7,6 @@
 
   config = lib.mkIf config.utilities.kde-connect.enable {
     services.kdeconnect.enable = true;
+    services.kdeconnect.package = pkgs.kdePackages.kdeconnect-kde;
   };
 }

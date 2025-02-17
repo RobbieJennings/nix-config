@@ -98,10 +98,11 @@
             {
               systemTray.items = {
                 shown = [
-                  "org.kde.plasma.brightness"
                   "org.kde.plasma.networkmanagement"
                   "org.kde.plasma.volume"
                   "org.kde.plasma.battery"
+                  "org.kde.plasma.brightness"
+                  "org.kde.plasma.bluetooth"
                 ];
                 hidden = [];
               };
