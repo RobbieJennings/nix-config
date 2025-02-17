@@ -3,7 +3,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/vda";
+        device = "nvme0n1";
         content = {
           type = "gpt";
           partitions = {
@@ -50,7 +50,7 @@
 
                     "/swap" = {
                       mountpoint = "/.swapvol";
-                      swap.swapfile.size = "8192M";
+                      swap.swapfile.size = "16384M";
                     };
                   };
                 };
