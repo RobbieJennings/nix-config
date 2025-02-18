@@ -51,9 +51,11 @@
 
   outputs = inputs @ { ... }:
   let
+    system = "x86_64-linux";
     utils = import ./utils { inherit inputs; };
   in with utils;
   {
+    packages.${system}.generateOptionsDoc = mkOptionsDoc system;
     nixosConfigurations = {
       xps15 = mkSystem "x86_64-linux"
         [

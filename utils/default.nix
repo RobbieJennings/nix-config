@@ -47,4 +47,6 @@ in
       user = import userPath;
     in with user;
       mkUser username;
+
+  mkOptionsDoc = system: inputs.nixpkgs.legacyPackages.${system}.callPackage ./options-doc.nix {};
 }
