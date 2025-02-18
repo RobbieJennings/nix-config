@@ -55,7 +55,7 @@
     utils = import ./utils { inherit inputs; };
   in with utils;
   {
-    formatter.${system} = inputsnixpkgs.legacyPackages.${system}.nixfmt;
+    formatter.${system} = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
     packages.${system}.generateOptionsDoc = mkOptionsDoc system;
     nixosConfigurations = {
       xps15 = mkSystem system
