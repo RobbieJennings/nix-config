@@ -6,6 +6,9 @@
   };
 
   config = lib.mkIf config.utilities.office.enable {
-    services.flatpak.packages = [ { appId = "org.libreoffice.LibreOffice"; origin = "flathub"; } ];
+    services.flatpak.packages = [{
+      appId = "org.libreoffice.LibreOffice";
+      origin = "flathub";
+    }];
   };
 }

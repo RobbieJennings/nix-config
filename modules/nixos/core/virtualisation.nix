@@ -2,7 +2,8 @@
 
 {
   options = {
-    virtualisation.enable = lib.mkEnableOption "enables virtualisation using libvirt & qemu";
+    virtualisation.enable =
+      lib.mkEnableOption "enables virtualisation using libvirt & qemu";
   };
 
   config = lib.mkIf config.virtualisation.enable {

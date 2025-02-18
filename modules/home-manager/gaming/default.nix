@@ -1,11 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [
-    ./heroic.nix
-    ./lutris.nix
-    ./prism.nix
-  ];
+  imports = [ ./heroic.nix ./lutris.nix ./prism.nix ];
 
   options = {
     gaming.enable = lib.mkEnableOption "enables all gaming clients";

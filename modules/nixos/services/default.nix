@@ -1,7 +1,5 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [
-    ./media-server.nix
-  ];
+  imports = [ ./media-server.nix ];
 }

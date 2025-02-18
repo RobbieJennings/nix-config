@@ -2,7 +2,8 @@
 
 {
   options = {
-    localisation.enable = lib.mkEnableOption "enables localisation settings for Dublin";
+    localisation.enable =
+      lib.mkEnableOption "enables localisation settings for Dublin";
   };
 
   config = lib.mkIf config.localisation.enable {

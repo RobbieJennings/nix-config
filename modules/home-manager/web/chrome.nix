@@ -6,6 +6,9 @@
   };
 
   config = lib.mkIf config.web.chrome.enable {
-    services.flatpak.packages = [ { appId = "com.google.Chrome"; origin = "flathub"; } ];
+    services.flatpak.packages = [{
+      appId = "com.google.Chrome";
+      origin = "flathub";
+    }];
   };
 }

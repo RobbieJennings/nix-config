@@ -29,23 +29,21 @@
                   type = "btrfs";
                   extraArgs = [ "-f" ];
                   subvolumes = {
-                    "/root" = {
-                      mountpoint = "/";
-                    };
+                    "/root" = { mountpoint = "/"; };
 
                     "/persist" = {
                       mountpoint = "/persist";
-                      mountOptions = ["subvol=persist"];
+                      mountOptions = [ "subvol=persist" ];
                     };
 
                     "/nix" = {
                       mountpoint = "/nix";
-                      mountOptions = ["subvol=nix"];
+                      mountOptions = [ "subvol=nix" ];
                     };
 
                     "/media" = {
                       mountpoint = "/media";
-                      mountOptions = ["subvol=media"];
+                      mountOptions = [ "subvol=media" ];
                     };
 
                     "/swap" = {

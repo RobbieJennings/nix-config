@@ -2,10 +2,14 @@
 
 {
   options = {
-    utilities.spotify.enable = lib.mkEnableOption "enables spotify music player";
+    utilities.spotify.enable =
+      lib.mkEnableOption "enables spotify music player";
   };
 
   config = lib.mkIf config.utilities.spotify.enable {
-    services.flatpak.packages = [ { appId = "com.spotify.Client"; origin = "flathub"; } ];
+    services.flatpak.packages = [{
+      appId = "com.spotify.Client";
+      origin = "flathub";
+    }];
   };
 }

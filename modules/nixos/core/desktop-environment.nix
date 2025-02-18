@@ -2,7 +2,8 @@
 
 {
   options = {
-    desktop-environment.enable = lib.mkEnableOption "enables plasma desktop environment";
+    desktop-environment.enable =
+      lib.mkEnableOption "enables plasma desktop environment";
   };
 
   config = lib.mkIf config.desktop-environment.enable {

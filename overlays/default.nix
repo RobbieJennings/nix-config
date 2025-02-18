@@ -10,7 +10,8 @@
     };
   };
 
-  modifications = final: prev: {
+  modifications = final: prev:
+    {
 
-  };
+    };
 }

@@ -2,7 +2,8 @@
 
 {
   options = {
-    networking.enable = lib.mkEnableOption "enables networking using networkmanager, CUPS and SANE";
+    networking.enable = lib.mkEnableOption
+      "enables networking using networkmanager, CUPS and SANE";
   };
 
   config = lib.mkIf config.networking.enable {

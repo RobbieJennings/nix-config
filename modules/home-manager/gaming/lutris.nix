@@ -6,6 +6,9 @@
   };
 
   config = lib.mkIf config.gaming.lutris.enable {
-    services.flatpak.packages = [ { appId = "net.lutris.Lutris"; origin = "flathub"; } ];
+    services.flatpak.packages = [{
+      appId = "net.lutris.Lutris";
+      origin = "flathub";
+    }];
   };
 }

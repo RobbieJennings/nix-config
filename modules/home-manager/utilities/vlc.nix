@@ -6,6 +6,9 @@
   };
 
   config = lib.mkIf config.utilities.vlc.enable {
-    services.flatpak.packages = [ { appId = "org.videolan.VLC"; origin = "flathub"; } ];
+    services.flatpak.packages = [{
+      appId = "org.videolan.VLC";
+      origin = "flathub";
+    }];
   };
 }

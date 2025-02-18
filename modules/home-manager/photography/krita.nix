@@ -6,6 +6,9 @@
   };
 
   config = lib.mkIf config.photography.krita.enable {
-    services.flatpak.packages = [ { appId = "org.kde.krita"; origin = "flathub"; } ];
+    services.flatpak.packages = [{
+      appId = "org.kde.krita";
+      origin = "flathub";
+    }];
   };
 }

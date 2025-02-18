@@ -1,4 +1,5 @@
-{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, xorg, libgudev, makeDesktopItem }:
+{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, xorg, libgudev
+, makeDesktopItem, }:
 let
   pname = "vuescan";
   version = "9.8";
@@ -19,8 +20,8 @@ in stdenv.mkDerivation rec {
   name = "${pname}-${version}";
 
   src = fetchurl {
-   url = "https://www.hamrick.com/files/vuex6498.tgz";
-   sha256 = "9a89142ca0d09c337190e0d821806bd8d76be0e99ffb1c65cbc1c173d897cd78";
+    url = "https://www.hamrick.com/files/vuex6498.tgz";
+    sha256 = "9a89142ca0d09c337190e0d821806bd8d76be0e99ffb1c65cbc1c173d897cd78";
   };
 
   dontStrip = true; # Stripping breaks the program

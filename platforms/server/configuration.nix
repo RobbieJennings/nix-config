@@ -1,15 +1,9 @@
 { config, lib, pkgs, inputs, nixosModules, ... }:
 
 {
-  imports = [
-    nixosModules
-  ];
+  imports = [ nixosModules ];
 
-  environment.systemPackages = [
-    pkgs.git
-    pkgs.vim
-    pkgs.wget
-  ];
+  environment.systemPackages = [ pkgs.git pkgs.vim pkgs.wget ];
 
   audio.enable = false;
   desktop-environment.enable = false;

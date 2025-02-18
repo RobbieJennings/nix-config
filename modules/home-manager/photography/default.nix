@@ -1,15 +1,11 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [
-    ./vuescan.nix
-    ./darktable.nix
-    ./krita.nix
-    ./gimp.nix
-  ];
+  imports = [ ./vuescan.nix ./darktable.nix ./krita.nix ./gimp.nix ];
 
   options = {
-    photography.enable = lib.mkEnableOption "enables all photography applications";
+    photography.enable =
+      lib.mkEnableOption "enables all photography applications";
   };
 
   config = lib.mkIf config.utilities.enable {

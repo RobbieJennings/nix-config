@@ -1,7 +1,5 @@
 {
-  mkSecret = username: {
-    "passwords/${username}".neededForUsers = true;
-  };
+  mkSecret = username: { "passwords/${username}".neededForUsers = true; };
 
   mkUser = config: username: {
     ${username} = {

@@ -1,3 +1,1 @@
-pkgs: {
-  vuescan = pkgs.callPackage ./vuescan.nix { };
-}
+pkgs: { vuescan = pkgs.callPackage ./vuescan.nix { }; }

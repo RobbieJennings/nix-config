@@ -21,8 +21,7 @@ let
       home-manager.extraSpecialArgs = { inherit inputs homeManagerModules; };
     }
   ];
-in
-{
+in {
   mkSystem = system: modules:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
@@ -31,22 +30,17 @@ in
     };
 
   mkPlatform = platformPath:
-    let
-      platform = import platformPath;
-    in with platform;
-      mkPlatform;
+    let platform = import platformPath;
+    in with platform; mkPlatform;
 
   mkHost = hostPath: hostname:
-    let
-      host = import hostPath;
-    in with host;
-      mkHost hostname;
+    let host = import hostPath;
+    in with host; mkHost hostname;
 
   mkUser = userPath: username:
-    let
-      user = import userPath;
-    in with user;
-      mkUser username;
+    let user = import userPath;
+    in with user; mkUser username;
 
-  mkOptionsDoc = system: inputs.nixpkgs.legacyPackages.${system}.callPackage ./options-doc.nix {};
+  mkOptionsDoc = system:
+    inputs.nixpkgs.legacyPackages.${system}.callPackage ./options-doc.nix { };
 }

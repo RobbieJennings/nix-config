@@ -6,6 +6,9 @@
   };
 
   config = lib.mkIf config.photography.gimp.enable {
-    services.flatpak.packages = [ { appId = "org.gimp.GIMP"; origin = "flathub"; } ];
+    services.flatpak.packages = [{
+      appId = "org.gimp.GIMP";
+      origin = "flathub";
+    }];
   };
 }
