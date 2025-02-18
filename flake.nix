@@ -55,9 +55,10 @@
     utils = import ./utils { inherit inputs; };
   in with utils;
   {
+    formatter.${system} = inputsnixpkgs.legacyPackages.${system}.nixfmt;
     packages.${system}.generateOptionsDoc = mkOptionsDoc system;
     nixosConfigurations = {
-      xps15 = mkSystem "x86_64-linux"
+      xps15 = mkSystem system
         [
           { secrets.enable = true; }
           (mkPlatform ./platforms/desktop)
@@ -66,7 +67,7 @@
           (mkUser ./users/desktop-user "clare")
         ];
 
-      vmDesktop = mkSystem "x86_64-linux"
+      vmDesktop = mkSystem system
         [
           (mkPlatform ./platforms/desktop)
           (mkHost ./hosts/xps15 "vm_desktop")
@@ -74,7 +75,7 @@
           (mkUser ./users/desktop-user "clare")
         ];
 
-      vmServer = mkSystem "x86_64-linux"
+      vmServer = mkSystem system
         [
           (mkPlatform ./platforms/server)
           (mkHost ./hosts/vm "vm_server")
