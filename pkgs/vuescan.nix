@@ -1,11 +1,11 @@
-{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, xorg, libgudev
-, makeDesktopItem, }:
+{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem,
+}:
 let
   pname = "vuescan";
   version = "9.8";
   desktopItem = makeDesktopItem {
-    name = "VueScan2";
-    desktopName = "VueScan2";
+    name = "VueScanix";
+    desktopName = "VueScanix";
     genericName = "Scanning Program";
     comment = "Scanning Program";
     icon = "vuescan";
@@ -26,7 +26,7 @@ in stdenv.mkDerivation rec {
 
   dontStrip = true; # Stripping breaks the program
   nativeBuildInputs = [ gnutar autoPatchelfHook ];
-  buildInputs = [ glibc gtk3 xorg.libSM libgudev ];
+  buildInputs = [ glibc gtk3 ];
 
   unpackPhase = ''
     tar xfz $src

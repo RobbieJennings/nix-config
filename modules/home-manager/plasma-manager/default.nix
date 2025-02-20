@@ -36,21 +36,8 @@
             };
           }
           "org.kde.plasma.marginsseparator"
+          "org.kde.plasma.systemmonitor.net"
           "org.kde.plasma.systemmonitor.cpucore"
-          {
-            systemMonitor = {
-              title = "CPU TEMP";
-              displayStyle = "org.kde.ksysguard.piechart";
-              sensors = [{
-                name = "cpu/all/averageTemperature";
-                color = "180 190 254";
-                label = "CPU TEMP";
-              }];
-              totalSensors = [ "cpu/all/averageTemperature" ];
-              range.from = 0;
-              range.to = 100;
-            };
-          }
           {
             systemMonitor = {
               title = "MEMORY USAGE";
@@ -73,21 +60,16 @@
           }
           {
             systemMonitor = {
-              title = "NETWORK USAGE";
-              displayStyle = "org.kde.ksysguard.horizontalbars";
-              sensors = [
-                {
-                  name = "network/all/download";
-                  color = "180 190 254";
-                  label = "DOWNLOAD";
-                }
-                {
-                  name = "network/all/upload";
-                  color = "180 190 254";
-                  label = "UPLOAD";
-                }
-              ];
-              totalSensors = [ "network/all/download" "network/all/upload" ];
+              title = "CPU TEMP";
+              displayStyle = "org.kde.ksysguard.piechart";
+              sensors = [{
+                name = "cpu/all/averageTemperature";
+                color = "180 190 254";
+                label = "CPU TEMP";
+              }];
+              totalSensors = [ "cpu/all/averageTemperature" ];
+              range.from = 0;
+              range.to = 100;
             };
           }
           {
@@ -100,6 +82,7 @@
                 "org.kde.plasma.bluetooth"
               ];
               hidden = [ ];
+              configs = { battery.showPercentage = true; };
             };
           }
           {

@@ -9,7 +9,7 @@
         "/var/lib/nixos"
         "/var/lib/systemd/coredump"
         "/etc/NetworkManager/system-connections"
-        "/var/lib/libvirt/images"
+        "/var/lib/libvirt"
         "/etc/nixos"
         "/root/.ssh"
       ];

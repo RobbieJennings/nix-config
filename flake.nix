@@ -42,9 +42,10 @@
   outputs = inputs@{ ... }:
     let
       system = "x86_64-linux";
+      pkgs = import inputs.nixpkgs { inherit system; };
       utils = import ./utils { inherit inputs; };
     in with utils; {
-      formatter.${system} = inputs.nixpkgs.legacyPackages.${system}.nixfmt;
+      formatter.${system} = pkgs.nixfmt;
       packages.${system}.generateOptionsDoc = mkOptionsDoc system;
       nixosConfigurations = {
         xps15 = mkSystem system [

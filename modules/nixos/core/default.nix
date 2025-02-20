@@ -7,8 +7,10 @@
     ./zsh.nix
     ./bootloader.nix
     ./networking.nix
+    ./bluetooth.nix
     ./localisation.nix
     ./desktop-environment.nix
+    ./kde-connect.nix
     ./audio.nix
     ./virtualisation.nix
     ./impermanence.nix
@@ -22,6 +24,7 @@
     zsh.enable = true;
     bootloader.enable = lib.mkDefault true;
     networking.enable = lib.mkDefault true;
+    bluetooth.enable = lib.mkDefault true;
     localisation.enable = lib.mkDefault true;
     desktop-environment.enable = lib.mkDefault true;
     audio.enable = lib.mkDefault true;

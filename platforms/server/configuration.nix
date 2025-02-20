@@ -5,6 +5,7 @@
 
   environment.systemPackages = [ pkgs.git pkgs.vim pkgs.wget ];
 
+  bluetooth.enable = false;
   audio.enable = false;
   desktop-environment.enable = false;
   media-server.enable = true;

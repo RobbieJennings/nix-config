@@ -9,15 +9,5 @@
       ];
 
       networking.hostName = hostname;
-      hardware.bluetooth.enable = true; # enables support for Bluetooth
-      hardware.bluetooth.powerOnBoot =
-        true; # powers up the default Bluetooth controller on boot
-      networking.firewall = rec {
-        allowedTCPPortRanges = [{
-          from = 1714;
-          to = 1764;
-        }];
-        allowedUDPPortRanges = allowedTCPPortRanges;
-      }; # allows KDE Connect traffic
     };
 }

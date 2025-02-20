@@ -8,6 +8,7 @@
         "Music"
         "Pictures"
         "Videos"
+        "Games"
         {
           directory = ".gnupg";
           mode = "0700";

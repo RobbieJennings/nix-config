@@ -7,6 +7,7 @@
 
   services.flatpak.enable = true;
   bootloader.pretty = true;
+  kde-connect.enable = true;
   steam.enable = true;
   media-server.enable = true;
 

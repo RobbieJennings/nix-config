@@ -8,6 +8,7 @@
         "Music"
         "Pictures"
         "Videos"
+        "Games"
         "nix-config"
         {
           directory = ".gnupg";
