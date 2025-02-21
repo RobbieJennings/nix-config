@@ -12,7 +12,6 @@
       sddm = {
         enable = true;
         theme = lib.mkDefault "breeze";
-        wayland.enable = lib.mkDefault true;
       };
     };
 
