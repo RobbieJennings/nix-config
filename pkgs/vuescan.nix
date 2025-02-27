@@ -1,5 +1,5 @@
-{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem,
-}:
+{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem, makeWrapper, epkowa }:
+
 let
   pname = "vuescan";
   version = "9.8";
@@ -21,18 +21,19 @@ in stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://www.hamrick.com/files/vuex6498.tgz";
-    sha256 = "9a89142ca0d09c337190e0d821806bd8d76be0e99ffb1c65cbc1c173d897cd78";
+    sha256 = "11ecf13a943f904d226f227f55602ca3e9adba9e63d3bc77677879e82d1baaa8";
   };
 
   dontStrip = true; # Stripping breaks the program
-  nativeBuildInputs = [ gnutar autoPatchelfHook ];
-  buildInputs = [ glibc gtk3 ];
+  nativeBuildInputs = [ gnutar autoPatchelfHook makeWrapper ];
+  buildInputs = [ glibc gtk3 epkowa ];
 
   unpackPhase = ''
     tar xfz $src
   '';
 
   installPhase = ''
+    runHook preInstall
     install -m755 -D VueScan/vuescan $out/bin/vuescan
 
     mkdir -p $out/share/icons/hicolor/scalable/apps/
@@ -43,5 +44,19 @@ in stdenv.mkDerivation rec {
 
     mkdir -p $out/share/applications/
     ln -s ${desktopItem}/share/applications/* $out/share/applications
+    runHook postInstall
   '';
+
+  postFixup = ''
+    wrapProgram $out/bin/vuescan --prefix PATH : ${epkowa}/lib/sane
+  '';
+
+  meta = with lib; {
+    homepage = "https://www.hamrick.com/about-vuescan.html";
+    description = "Scanning software for film scanners";
+    license = licenses.unfree;
+    platforms = [
+      "x86_64-linux"
+    ];
+  };
 }

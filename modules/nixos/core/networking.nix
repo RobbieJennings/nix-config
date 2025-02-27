@@ -12,6 +12,6 @@
     hardware.sane.enable = lib.mkDefault true;
     hardware.sane.extraBackends = [ pkgs.epkowa ];
     services.udev.packages = [ pkgs.epkowa pkgs.vuescan ];
-    environment.systemPackages = [ pkgs.simple-scan pkgs.vuescan ];
+    environment.systemPackages = [ pkgs.epkowa pkgs.simple-scan pkgs.vuescan ];
   };
 }
