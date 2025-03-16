@@ -2,6 +2,7 @@
   mkPersist = username: {
     users.${username} = {
       directories = [
+        "Books"
         "Desktop"
         "Documents"
         "Downloads"

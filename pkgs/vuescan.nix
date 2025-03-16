@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem, makeWrapper, sane-backends, epkowa, epson-v550-plugin }:
+{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem }:
 
 let
   pname = "vuescan";
@@ -24,16 +24,15 @@ in stdenv.mkDerivation rec {
     sha256 = "b770828d280d5600c63b6c214484f32abac3edf9e361b7d563391797f24b4457";
   };
 
-  dontStrip = true; # Stripping breaks the program
-  nativeBuildInputs = [ gnutar autoPatchelfHook makeWrapper ];
-  buildInputs = [ glibc gtk3 sane-backends epkowa epson-v550-plugin ];
+  dontStrip = true;
+  nativeBuildInputs = [ gnutar autoPatchelfHook ];
+  buildInputs = [ glibc gtk3 ];
 
   unpackPhase = ''
     tar xfz $src
   '';
 
   installPhase = ''
-    runHook preInstall
     install -m755 -D VueScan/vuescan $out/bin/vuescan
     mkdir -p $out/share/icons/hicolor/scalable/apps/
     mkdir -p $out/lib/udev/rules.d/
@@ -41,11 +40,6 @@ in stdenv.mkDerivation rec {
     cp VueScan/vuescan.svg $out/share/icons/hicolor/scalable/apps/vuescan.svg
     cp VueScan/vuescan.rul $out/lib/udev/rules.d/60-vuescan.rules
     ln -s ${desktopItem}/share/applications/* $out/share/applications
-    runHook postInstall
-  '';
-
-  postFixup = ''
-    wrapProgram $out/bin/vuescan --prefix PATH : ${epkowa}/lib/sane
   '';
 
   meta = with lib; {
