@@ -1,4 +1,5 @@
-{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem }:
+{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem
+}:
 
 let
   pname = "vuescan";
@@ -46,8 +47,6 @@ in stdenv.mkDerivation rec {
     homepage = "https://www.hamrick.com/about-vuescan.html";
     description = "Scanning software for film scanners";
     license = licenses.unfree;
-    platforms = [
-      "x86_64-linux"
-    ];
+    platforms = [ "x86_64-linux" ];
   };
 }
