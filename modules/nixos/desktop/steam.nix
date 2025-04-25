@@ -2,10 +2,10 @@
 
 {
   options = {
-    steam.enable = lib.mkEnableOption "enables steam gaming client";
+    desktop.steam.enable = lib.mkEnableOption "enables steam gaming client";
   };
 
-  config = lib.mkIf config.steam.enable {
+  config = lib.mkIf config.desktop.steam.enable {
     programs.steam = {
       enable = true;
       remotePlay.openFirewall = lib.mkDefault true;

@@ -5,5 +5,6 @@
     inputs.impermanence.nixosModules.impermanence
     inputs.sops-nix.nixosModules.sops
     ./core
+    ./desktop
   ];
 }

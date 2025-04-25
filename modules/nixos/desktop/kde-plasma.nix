@@ -2,11 +2,11 @@
 
 {
   options = {
-    desktop-environment.enable =
-      lib.mkEnableOption "enables plasma desktop environment";
+    desktop.kde-plasma.enable =
+      lib.mkEnableOption "enables kde plasma desktop environment";
   };
 
-  config = lib.mkIf config.desktop-environment.enable {
+  config = lib.mkIf config.desktop.kde-plasma.enable {
     # Enable SDDM lgoin manager
     services.displayManager = {
       sddm = {
