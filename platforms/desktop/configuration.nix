@@ -6,6 +6,7 @@
   environment.systemPackages = [ pkgs.git pkgs.vim pkgs.wget ];
 
   desktop.enable = true;
+  server.enable = true;
   bootloader.pretty = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,

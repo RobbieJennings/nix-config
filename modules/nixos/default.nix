@@ -6,5 +6,6 @@
     inputs.sops-nix.nixosModules.sops
     ./core
     ./desktop
+    ./server
   ];
 }
