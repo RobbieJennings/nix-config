@@ -4,6 +4,7 @@
   imports = [
     ./kubernetes.nix
     ./hello-world.nix
+    ./longhorn.nix
   ];
 
   options = {
@@ -14,5 +15,6 @@
   config = lib.mkIf config.server.enable {
     server.kubernetes.enable = lib.mkDefault true;
     server.hello-world.enable = lib.mkDefault true;
+    server.longhorn.enable = lib.mkDefault true;
   };
 }
