@@ -8,6 +8,7 @@
     ./kde-connect.nix
     ./steam.nix
     ./virtualisation.nix
+    ./cosmic-desktop.nix
   ];
 
   options = {
@@ -19,9 +20,10 @@
     services.flatpak.enable = lib.mkDefault true;
     desktop.audio.enable = lib.mkDefault true;
     desktop.bluetooth.enable = lib.mkDefault true;
-    desktop.kde-plasma.enable = lib.mkDefault true;
+    desktop.kde-plasma.enable = lib.mkDefault false;
     desktop.kde-connect.enable = lib.mkDefault true;
     desktop.steam.enable = lib.mkDefault true;
     desktop.virtualisation.enable = lib.mkDefault true;
+    desktop.cosmic-desktop.enable = lib.mkDefault true;
   };
 }

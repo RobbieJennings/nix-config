@@ -7,10 +7,10 @@
   };
 
   config = lib.mkIf config.photography.vuescan.enable {
-    # home.packages = [ pkgs.vuescan ];
-    services.flatpak.packages = [{
-      appId = "com.hamrick.VueScan";
-      origin = "flathub";
-    }];
+    home.packages = [ pkgs.vuescan ];
+    # services.flatpak.packages = [{
+    #   appId = "com.hamrick.VueScan";
+    #   origin = "flathub";
+    # }];
   };
 }

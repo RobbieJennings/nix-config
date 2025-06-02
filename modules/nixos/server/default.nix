@@ -5,6 +5,7 @@
     ./kubernetes.nix
     ./hello-world.nix
     ./longhorn.nix
+    ./jellyfin.nix
   ];
 
   options = {
@@ -16,5 +17,6 @@
     server.kubernetes.enable = lib.mkDefault true;
     server.hello-world.enable = lib.mkDefault true;
     server.longhorn.enable = lib.mkDefault true;
+    server.jellyfin.enable = lib.mkDefault true;
   };
 }

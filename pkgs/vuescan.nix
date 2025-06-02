@@ -1,12 +1,11 @@
-{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem
-}:
+{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem, epson-v550-plugin }:
 
 let
   pname = "vuescan";
   version = "9.8";
   desktopItem = makeDesktopItem {
-    name = "VueScanix";
-    desktopName = "VueScanix";
+    name = "VueScan";
+    desktopName = "VueScan";
     genericName = "Scanning Program";
     comment = "Scanning Program";
     icon = "vuescan";
@@ -22,12 +21,12 @@ in stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://www.hamrick.com/files/vuex6498.tgz";
-    sha256 = "62e931cd8d42d1548c40051ff2f5e37d065ff143f3f978f47052b7ab59d7787a";
+    sha256 = "sha256-XaiF+M5Ckw+oUEjB5knjalr2FhPS3X7UxAIQS2AKjLg=";
   };
 
   dontStrip = true;
   nativeBuildInputs = [ gnutar autoPatchelfHook ];
-  buildInputs = [ glibc gtk3 ];
+  buildInputs = [ glibc gtk3 epson-v550-plugin ];
 
   unpackPhase = ''
     tar xfz $src

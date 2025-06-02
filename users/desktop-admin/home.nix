@@ -7,6 +7,7 @@
       home.homeDirectory = "/home/${username}";
 
       secrets.enable = enableSecrets;
+      cosmic-manager.enable = true;
       plasma-manager.enable = true;
       utilities.enable = true;
       web.enable = true;
@@ -18,6 +19,8 @@
         userEmail = "robbie.jennings97@gmail.com";
         userName = "robbiejennings";
       };
+
+      programs.vscode.enable = true;
 
       # This value determines the Home Manager release that your
       # configuration is compatible with. This helps avoid breakage
