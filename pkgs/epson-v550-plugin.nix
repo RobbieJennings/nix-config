@@ -19,17 +19,16 @@ in stdenv.mkDerivation rec {
   installPhase = ''
     cd plugins
     ${rpm}/bin/rpm2cpio iscan-plugin-perfection-v550-*.x86_64.rpm | ${cpio}/bin/cpio -idmv
-    mkdir $out
-    cp -r usr/share $out
-    cp -r usr/lib64 $out/lib
-    mv $out/share/iscan $out/share/esci
-    mv $out/lib/iscan $out/lib/esci
+    mkdir -p $out/share
+    mkdir -p $out/lib
+    cp -r usr/share/* $out/share
+    cp -r usr/lib64/* $out/lib
   '';
 
-  passthru = {
-    registrationCommand = ''
-      $registry --add interpreter usb 0x04b8 0x013b "$plugin/lib/esci/libiscan-plugin-perfection-v550 $plugin/share/esci/esfweb.bin"
-    '';
-    hw = "Perfection V550 Photo";
+  meta = with lib; {
+    homepage = "http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX";
+    description = "plugin files for epson perfection v550 scanner";
+    license = licenses.epson;
+    platforms = platforms.linux;
   };
 }

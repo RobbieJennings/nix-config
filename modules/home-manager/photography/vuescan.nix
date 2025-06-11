@@ -6,11 +6,20 @@
       lib.mkEnableOption "enables vuescan scanning app";
   };
 
-  config = lib.mkIf config.photography.vuescan.enable {
-    home.packages = [ pkgs.vuescan ];
-    # services.flatpak.packages = [{
-    #   appId = "com.hamrick.VueScan";
-    #   origin = "flathub";
-    # }];
-  };
+  config = lib.mkMerge [
+    (lib.mkIf config.photography.vuescan.enable {
+      home.packages = [ pkgs.vuescan ];
+    })
+    (lib.mkIf (config.photography.vuescan.enable && config.secrets.enable) {
+      sops.templates.".vuescanrc".content = ''
+        UserID=${config.sops.placeholder."vuescan/user_id"}
+        SerialNumber=${config.sops.placeholder."vuescan/serial_number"}
+        CustomerNumber=${config.sops.placeholder."vuescan/customer_number"}
+        EmailAddress=${config.sops.placeholder."vuescan/email_address"}
+      '';
+      home.activation."vuescanrc" = ''
+        ln -s ${config.sops.templates.".vuescanrc".path} ~/.vuescanrc
+      '';
+    })
+  ];
 }

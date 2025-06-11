@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem, epson-v550-plugin }:
+{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, rpm, cpio, glibc, gtk3, makeDesktopItem }:
 
 let
   pname = "vuescan";
@@ -21,24 +21,21 @@ in stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://www.hamrick.com/files/vuex6498.tgz";
-    sha256 = "sha256-XaiF+M5Ckw+oUEjB5knjalr2FhPS3X7UxAIQS2AKjLg=";
+    sha256 = "sha256-hudA0NqZZcZJAtO4HjzOfQqSBehc2ebnuh3fWvxdjn4=";
   };
 
-  dontStrip = true;
-  nativeBuildInputs = [ gnutar autoPatchelfHook ];
-  buildInputs = [ glibc gtk3 epson-v550-plugin ];
+  nativeBuildInputs = [ autoPatchelfHook gnutar rpm ];
+  buildInputs = [ glibc gtk3 ];
 
-  unpackPhase = ''
-    tar xfz $src
-  '';
+  dontStrip = true;
 
   installPhase = ''
-    install -m755 -D VueScan/vuescan $out/bin/vuescan
+    install -m755 -D vuescan $out/bin/vuescan
     mkdir -p $out/share/icons/hicolor/scalable/apps/
     mkdir -p $out/lib/udev/rules.d/
     mkdir -p $out/share/applications/
-    cp VueScan/vuescan.svg $out/share/icons/hicolor/scalable/apps/vuescan.svg
-    cp VueScan/vuescan.rul $out/lib/udev/rules.d/60-vuescan.rules
+    cp vuescan.svg $out/share/icons/hicolor/scalable/apps/vuescan.svg
+    cp vuescan.rul $out/lib/udev/rules.d/60-vuescan.rules
     ln -s ${desktopItem}/share/applications/* $out/share/applications
   '';
 

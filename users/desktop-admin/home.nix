@@ -20,7 +20,12 @@
         userName = "robbiejennings";
       };
 
-      programs.vscode.enable = true;
+      programs.vscode = {
+        enable = true;
+        profiles.default.extensions = with pkgs.vscode-extensions; [
+          bbenoist.nix
+        ];
+      };
 
       # This value determines the Home Manager release that your
       # configuration is compatible with. This helps avoid breakage
