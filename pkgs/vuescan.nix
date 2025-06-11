@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, rpm, cpio, glibc, gtk3, makeDesktopItem }:
+{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem }:
 
 let
   pname = "vuescan";
@@ -24,7 +24,7 @@ in stdenv.mkDerivation rec {
     sha256 = "sha256-hudA0NqZZcZJAtO4HjzOfQqSBehc2ebnuh3fWvxdjn4=";
   };
 
-  nativeBuildInputs = [ autoPatchelfHook gnutar rpm ];
+  nativeBuildInputs = [ autoPatchelfHook gnutar ];
   buildInputs = [ glibc gtk3 ];
 
   dontStrip = true;

@@ -18,7 +18,7 @@
         EmailAddress=${config.sops.placeholder."vuescan/email_address"}
       '';
       home.activation."vuescanrc" = ''
-        ln -s ${config.sops.templates.".vuescanrc".path} ~/.vuescanrc
+        ln -sf ${config.sops.templates.".vuescanrc".path} ~/.vuescanrc
       '';
     })
   ];
