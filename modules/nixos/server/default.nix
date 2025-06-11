@@ -1,16 +1,11 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [
-    ./kubernetes.nix
-    ./hello-world.nix
-    ./longhorn.nix
-    ./jellyfin.nix
-  ];
+  imports =
+    [ ./kubernetes.nix ./hello-world.nix ./longhorn.nix ./jellyfin.nix ];
 
   options = {
-    server.enable =
-      lib.mkEnableOption "enables default server modules";
+    server.enable = lib.mkEnableOption "enables default server modules";
   };
 
   config = lib.mkIf config.server.enable {

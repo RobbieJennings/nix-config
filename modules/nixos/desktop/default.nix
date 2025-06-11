@@ -12,8 +12,7 @@
   ];
 
   options = {
-    desktop.enable =
-      lib.mkEnableOption "enables default desktop modules";
+    desktop.enable = lib.mkEnableOption "enables default desktop modules";
   };
 
   config = lib.mkIf config.desktop.enable {

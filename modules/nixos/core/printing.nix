@@ -2,8 +2,7 @@
 
 {
   options = {
-    printing.enable = lib.mkEnableOption
-      "enables printing using CUPS";
+    printing.enable = lib.mkEnableOption "enables printing using CUPS";
   };
 
   config = lib.mkIf config.networking.enable {

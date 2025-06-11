@@ -29,20 +29,16 @@
             };
             spec = {
               ingressClassName = "traefik";
-              rules = [
-                {
-                  http.paths = [
-                    {
-                      path = "/longhorn";
-                      pathType = "Exact";
-                      backend.service = {
-                        name = "longhorn";
-                        port.number = 80;
-                      };
-                    }
-                  ];
-                }
-              ];
+              rules = [{
+                http.paths = [{
+                  path = "/longhorn";
+                  pathType = "Exact";
+                  backend.service = {
+                    name = "longhorn";
+                    port.number = 80;
+                  };
+                }];
+              }];
             };
           }
           {

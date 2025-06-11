@@ -27,20 +27,16 @@
             };
             spec = {
               ingressClassName = "traefik";
-              rules = [
-                {
-                  http.paths = [
-                    {
-                      path = "/jellyfin";
-                      pathType = "Exact";
-                      backend.service = {
-                        name = "jellyfin";
-                        port.number = 8096;
-                      };
-                    }
-                  ];
-                }
-              ];
+              rules = [{
+                http.paths = [{
+                  path = "/jellyfin";
+                  pathType = "Exact";
+                  backend.service = {
+                    name = "jellyfin";
+                    port.number = 8096;
+                  };
+                }];
+              }];
             };
           }
           {

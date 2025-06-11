@@ -1,4 +1,5 @@
-{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem }:
+{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem
+}:
 
 let
   pname = "vuescan";

@@ -6,6 +6,7 @@
       lib.mkEnableOption "enables kde connect phone pairing app";
   };
 
-  config =
-    lib.mkIf config.desktop.kde-connect.enable { programs.kdeconnect.enable = true; };
+  config = lib.mkIf config.desktop.kde-connect.enable {
+    programs.kdeconnect.enable = true;
+  };
 }

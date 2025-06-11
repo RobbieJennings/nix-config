@@ -22,9 +22,8 @@
 
       programs.vscode = {
         enable = true;
-        profiles.default.extensions = with pkgs.vscode-extensions; [
-          bbenoist.nix
-        ];
+        profiles.default.extensions = with pkgs.vscode-extensions;
+          [ bbenoist.nix ];
       };
 
       # This value determines the Home Manager release that your
