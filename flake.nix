@@ -52,7 +52,10 @@
       utils = import ./utils { inherit inputs; };
     in with utils; {
       formatter.${system} = pkgs.nixfmt;
-      packages.${system}.generateOptionsDoc = mkOptionsDoc system;
+      packages.${system} = {
+        generateNixosOptionsDoc = mkNixosOptionsDoc system;
+        generateHomeManagerOptionsDoc = mkHomeManagerOptionsDoc system;
+      };
       nixosConfigurations = {
         xps15 = mkSystem system [
           { secrets.enable = true; }

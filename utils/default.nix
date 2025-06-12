@@ -41,6 +41,9 @@ in {
     let user = import userPath;
     in with user; mkUser username;
 
-  mkOptionsDoc = system:
-    inputs.nixpkgs.legacyPackages.${system}.callPackage ./options-doc.nix { };
+  mkNixosOptionsDoc = system:
+    inputs.nixpkgs.legacyPackages.${system}.callPackage ./nixos-options-doc.nix { };
+
+  mkHomeManagerOptionsDoc = system:
+    inputs.nixpkgs.legacyPackages.${system}.callPackage ./home-manager-options-doc.nix { };
 }
