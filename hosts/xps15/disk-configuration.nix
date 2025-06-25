@@ -29,7 +29,9 @@
                   type = "btrfs";
                   extraArgs = [ "-f" ];
                   subvolumes = {
-                    "/root" = { mountpoint = "/"; };
+                    "/root" = {
+                      mountpoint = "/";
+                    };
 
                     "/persist" = {
                       mountpoint = "/persist";

@@ -1,9 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   options = {
-    server.jellyfin.enable =
-      lib.mkEnableOption "deploys jellyfin helm chart on k3s";
+    server.jellyfin.enable = lib.mkEnableOption "deploys jellyfin helm chart on k3s";
   };
 
   config = lib.mkIf config.server.jellyfin.enable {
@@ -27,16 +32,20 @@
             };
             spec = {
               ingressClassName = "traefik";
-              rules = [{
-                http.paths = [{
-                  path = "/jellyfin";
-                  pathType = "Exact";
-                  backend.service = {
-                    name = "jellyfin";
-                    port.number = 8096;
-                  };
-                }];
-              }];
+              rules = [
+                {
+                  http.paths = [
+                    {
+                      path = "/jellyfin";
+                      pathType = "Exact";
+                      backend.service = {
+                        name = "jellyfin";
+                        port.number = 8096;
+                      };
+                    }
+                  ];
+                }
+              ];
             };
           }
           {

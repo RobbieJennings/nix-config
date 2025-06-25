@@ -1,9 +1,20 @@
-{ config, lib, pkgs, inputs, nixosModules, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  nixosModules,
+  ...
+}:
 
 {
   imports = [ nixosModules ];
 
-  environment.systemPackages = [ pkgs.git pkgs.vim pkgs.wget ];
+  environment.systemPackages = [
+    pkgs.git
+    pkgs.vim
+    pkgs.wget
+  ];
   server.enable = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,

@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   options = {
@@ -6,9 +12,11 @@
   };
 
   config = lib.mkIf config.gaming.prism.enable {
-    services.flatpak.packages = [{
-      appId = "org.prismlauncher.PrismLauncher";
-      origin = "flathub";
-    }];
+    services.flatpak.packages = [
+      {
+        appId = "org.prismlauncher.PrismLauncher";
+        origin = "flathub";
+      }
+    ];
   };
 }

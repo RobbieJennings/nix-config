@@ -1,9 +1,17 @@
-{ lib, stdenv, fetchurl, autoPatchelfHook, rpm, cpio }:
+{
+  lib,
+  stdenv,
+  fetchurl,
+  autoPatchelfHook,
+  rpm,
+  cpio,
+}:
 
 let
   pname = "epson-v550-plugin";
   version = "2.30.4";
-in stdenv.mkDerivation rec {
+in
+stdenv.mkDerivation rec {
   name = "${pname}-${version}";
 
   src = fetchurl {
@@ -14,7 +22,10 @@ in stdenv.mkDerivation rec {
     sha256 = "f8b3abf21354fc5b9bc87753cef950b6c0f07bf322a94aaff2c163bafcf50cd9";
   };
 
-  nativeBuildInputs = [ autoPatchelfHook rpm ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+    rpm
+  ];
 
   installPhase = ''
     cd plugins

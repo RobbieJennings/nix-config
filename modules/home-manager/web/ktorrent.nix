@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   options = {
@@ -6,9 +12,11 @@
   };
 
   config = lib.mkIf config.web.ktorrent.enable {
-    services.flatpak.packages = [{
-      appId = "org.kde.ktorrent";
-      origin = "flathub";
-    }];
+    services.flatpak.packages = [
+      {
+        appId = "org.kde.ktorrent";
+        origin = "flathub";
+      }
+    ];
   };
 }

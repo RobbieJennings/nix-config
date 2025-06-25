@@ -1,5 +1,14 @@
-{ lib, stdenv, fetchurl, autoPatchelfHook, gnutar, wrapGAppsHook, glibc, gtk3
-, makeDesktopItem }:
+{
+  lib,
+  stdenv,
+  fetchurl,
+  autoPatchelfHook,
+  gnutar,
+  wrapGAppsHook,
+  glibc,
+  gtk3,
+  makeDesktopItem,
+}:
 
 let
   pname = "vuescan";
@@ -13,11 +22,18 @@ let
     terminal = false;
     type = "Application";
     startupNotify = true;
-    categories = [ "Graphics" "Utility" ];
-    keywords = [ "scan" "scanner" ];
+    categories = [
+      "Graphics"
+      "Utility"
+    ];
+    keywords = [
+      "scan"
+      "scanner"
+    ];
     exec = "vuescan";
   };
-in stdenv.mkDerivation rec {
+in
+stdenv.mkDerivation rec {
   name = "${pname}-${version}";
 
   src = fetchurl {
@@ -25,8 +41,15 @@ in stdenv.mkDerivation rec {
     sha256 = "sha256-JA2HzMIPT8x0uNPQWv7pHNnY5cYdL7ppmc2YyQW9lm8=";
   };
 
-  nativeBuildInputs = [ autoPatchelfHook gnutar wrapGAppsHook ];
-  buildInputs = [ glibc gtk3 ];
+  nativeBuildInputs = [
+    autoPatchelfHook
+    gnutar
+    wrapGAppsHook
+  ];
+  buildInputs = [
+    glibc
+    gtk3
+  ];
 
   dontStrip = true;
 

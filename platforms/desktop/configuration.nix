@@ -1,9 +1,20 @@
-{ config, lib, pkgs, inputs, nixosModules, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  nixosModules,
+  ...
+}:
 
 {
   imports = [ nixosModules ];
 
-  environment.systemPackages = [ pkgs.git pkgs.vim pkgs.wget ];
+  environment.systemPackages = [
+    pkgs.git
+    pkgs.vim
+    pkgs.wget
+  ];
 
   desktop.enable = true;
   server.enable = true;

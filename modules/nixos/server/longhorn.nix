@@ -1,9 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   options = {
-    server.longhorn.enable =
-      lib.mkEnableOption "deploys longhorn helm chart on k3s";
+    server.longhorn.enable = lib.mkEnableOption "deploys longhorn helm chart on k3s";
   };
 
   config = lib.mkIf config.server.longhorn.enable {
@@ -29,16 +34,20 @@
             };
             spec = {
               ingressClassName = "traefik";
-              rules = [{
-                http.paths = [{
-                  path = "/longhorn";
-                  pathType = "Exact";
-                  backend.service = {
-                    name = "longhorn";
-                    port.number = 80;
-                  };
-                }];
-              }];
+              rules = [
+                {
+                  http.paths = [
+                    {
+                      path = "/longhorn";
+                      pathType = "Exact";
+                      backend.service = {
+                        name = "longhorn";
+                        port.number = 80;
+                      };
+                    }
+                  ];
+                }
+              ];
             };
           }
           {

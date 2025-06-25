@@ -1,18 +1,23 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   image = pkgs.dockerTools.pullImage {
     imageName = "nginx";
-    imageDigest =
-      "sha256:4ff102c5d78d254a6f0da062b3cf39eaf07f01eec0927fd21e219d0af8bc0591";
+    imageDigest = "sha256:4ff102c5d78d254a6f0da062b3cf39eaf07f01eec0927fd21e219d0af8bc0591";
     sha256 = "sha256-Fh9hWQWgY4g+Cu/0iER4cXAMvCc0JNiDwGCPa+V/FvA=";
     finalImageTag = "1.27.4-alpine";
     arch = "amd64";
   };
-in {
+in
+{
   options = {
-    server.hello-world.enable =
-      lib.mkEnableOption "deploys hello world helm chart on k3s";
+    server.hello-world.enable = lib.mkEnableOption "deploys hello world helm chart on k3s";
   };
 
   config = lib.mkIf config.server.hello-world.enable {
@@ -44,16 +49,20 @@ in {
             };
             spec = {
               ingressClassName = "traefik";
-              rules = [{
-                http.paths = [{
-                  path = "/hello";
-                  pathType = "Exact";
-                  backend.service = {
-                    name = "hello-world";
-                    port.number = 80;
-                  };
-                }];
-              }];
+              rules = [
+                {
+                  http.paths = [
+                    {
+                      path = "/hello";
+                      pathType = "Exact";
+                      backend.service = {
+                        name = "hello-world";
+                        port.number = 80;
+                      };
+                    }
+                  ];
+                }
+              ];
             };
           }
           {

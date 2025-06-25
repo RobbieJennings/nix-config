@@ -1,7 +1,19 @@
 {
-  mkHome = username: enableSecrets:
-    { config, lib, pkgs, inputs, homeManagerModules, ... }: {
-      imports = [ homeManagerModules ./secrets.nix ];
+  mkHome =
+    username: enableSecrets:
+    {
+      config,
+      lib,
+      pkgs,
+      inputs,
+      homeManagerModules,
+      ...
+    }:
+    {
+      imports = [
+        homeManagerModules
+        ./secrets.nix
+      ];
 
       home.username = username;
       home.homeDirectory = "/home/${username}";
@@ -22,8 +34,7 @@
 
       programs.vscode = {
         enable = true;
-        profiles.default.extensions = with pkgs.vscode-extensions;
-          [ bbenoist.nix ];
+        profiles.default.extensions = with pkgs.vscode-extensions; [ bbenoist.nix ];
       };
 
       # This value determines the Home Manager release that your

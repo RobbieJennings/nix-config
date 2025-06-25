@@ -1,9 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   options = {
-    desktop.cosmic-desktop.enable =
-      lib.mkEnableOption "enables cosmic desktop environment";
+    desktop.cosmic-desktop.enable = lib.mkEnableOption "enables cosmic desktop environment";
   };
 
   config = lib.mkIf config.desktop.cosmic-desktop.enable {

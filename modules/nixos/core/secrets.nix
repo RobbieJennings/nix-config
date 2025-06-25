@@ -1,9 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   options = {
-    secrets.enable =
-      lib.mkEnableOption "enables importing secrets using sops-nix";
+    secrets.enable = lib.mkEnableOption "enables importing secrets using sops-nix";
   };
 
   config = lib.mkIf config.secrets.enable {

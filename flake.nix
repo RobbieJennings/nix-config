@@ -2,16 +2,22 @@
   description = "Robbie's NixOS flake";
 
   inputs = {
-    nixpkgs = { url = "github:NixOS/nixpkgs/nixos-25.05"; };
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-25.05";
+    };
 
-    nixpkgs-unstable = { url = "github:nixos/nixpkgs/nixos-unstable"; };
+    nixpkgs-unstable = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+    };
 
     disko = {
       url = "github:nix-community/disko";
@@ -23,9 +29,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence = { url = "github:nix-community/impermanence"; };
+    impermanence = {
+      url = "github:nix-community/impermanence";
+    };
 
-    nix-flatpak = { url = "github:gmodena/nix-flatpak/?ref=latest"; };
+    nix-flatpak = {
+      url = "github:gmodena/nix-flatpak/?ref=latest";
+    };
 
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
@@ -45,13 +55,16 @@
     };
   };
 
-  outputs = inputs@{ ... }:
+  outputs =
+    inputs@{ ... }:
     let
       system = "x86_64-linux";
       pkgs = import inputs.nixpkgs { inherit system; };
       utils = import ./utils { inherit inputs; };
-    in with utils; {
-      formatter.${system} = pkgs.nixfmt;
+    in
+    with utils;
+    {
+      formatter.${system} = pkgs.nixfmt-rfc-style;
       packages.${system} = {
         generateNixosOptionsDoc = mkNixosOptionsDoc system;
         generateHomeManagerOptionsDoc = mkHomeManagerOptionsDoc system;

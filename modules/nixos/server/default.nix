@@ -1,8 +1,18 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ ./kubernetes.nix ./hello-world.nix ./longhorn.nix ./jellyfin.nix ];
+  imports = [
+    ./kubernetes.nix
+    ./hello-world.nix
+    ./longhorn.nix
+    ./jellyfin.nix
+  ];
 
   options = {
     server.enable = lib.mkEnableOption "enables default server modules";

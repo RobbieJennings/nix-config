@@ -1,6 +1,8 @@
 {
-  mkHost = hostname:
-    { inputs, ... }: {
+  mkHost =
+    hostname:
+    { inputs, ... }:
+    {
       imports = [
         inputs.disko.nixosModules.disko
         ./hardware-configuration.nix

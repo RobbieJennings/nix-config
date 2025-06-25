@@ -7,7 +7,10 @@ let
   defaults = [
     inputs.home-manager.nixosModules.home-manager
     {
-      nix.settings.experimental-features = [ "nix-command" "flakes" ];
+      nix.settings.experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       nix.settings.auto-optimise-store = true;
       nixpkgs.config.allowUnfree = true;
       nixpkgs.overlays = [
@@ -21,31 +24,43 @@ let
       home-manager.extraSpecialArgs = { inherit inputs homeManagerModules; };
     }
   ];
-in {
-  mkSystem = system: modules:
+in
+{
+  mkSystem =
+    system: modules:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs nixosModules; };
       modules = defaults ++ modules;
     };
 
-  mkPlatform = platformPath:
-    let platform = import platformPath;
-    in with platform; mkPlatform;
+  mkPlatform =
+    platformPath:
+    let
+      platform = import platformPath;
+    in
+    with platform;
+    mkPlatform;
 
-  mkHost = hostPath: hostname:
-    let host = import hostPath;
-    in with host; mkHost hostname;
+  mkHost =
+    hostPath: hostname:
+    let
+      host = import hostPath;
+    in
+    with host;
+    mkHost hostname;
 
-  mkUser = userPath: username:
-    let user = import userPath;
-    in with user; mkUser username;
+  mkUser =
+    userPath: username:
+    let
+      user = import userPath;
+    in
+    with user;
+    mkUser username;
 
-  mkNixosOptionsDoc = system:
-    inputs.nixpkgs.legacyPackages.${system}.callPackage ./nixos-options-doc.nix
-    { };
+  mkNixosOptionsDoc =
+    system: inputs.nixpkgs.legacyPackages.${system}.callPackage ./nixos-options-doc.nix { };
 
-  mkHomeManagerOptionsDoc = system:
-    inputs.nixpkgs.legacyPackages.${system}.callPackage
-    ./home-manager-options-doc.nix { };
+  mkHomeManagerOptionsDoc =
+    system: inputs.nixpkgs.legacyPackages.${system}.callPackage ./home-manager-options-doc.nix { };
 }

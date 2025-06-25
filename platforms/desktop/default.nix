@@ -1,5 +1,11 @@
 {
-  mkPlatform = { ... }: {
-    imports = [ ./configuration.nix ./persist.nix ./secrets.nix ];
-  };
+  mkPlatform =
+    { ... }:
+    {
+      imports = [
+        ./configuration.nix
+        ./persist.nix
+        ./secrets.nix
+      ];
+    };
 }

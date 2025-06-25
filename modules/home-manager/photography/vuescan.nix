@@ -1,9 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   options = {
-    photography.vuescan.enable =
-      lib.mkEnableOption "enables vuescan scanning app";
+    photography.vuescan.enable = lib.mkEnableOption "enables vuescan scanning app";
   };
 
   config = lib.mkMerge [

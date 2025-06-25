@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   options = {
@@ -6,9 +12,11 @@
   };
 
   config = lib.mkIf config.gaming.heroic.enable {
-    services.flatpak.packages = [{
-      appId = "com.heroicgameslauncher.hgl";
-      origin = "flathub";
-    }];
+    services.flatpak.packages = [
+      {
+        appId = "com.heroicgameslauncher.hgl";
+        origin = "flathub";
+      }
+    ];
   };
 }

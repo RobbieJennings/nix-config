@@ -1,9 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   options = {
-    desktop.scanning.enable = lib.mkEnableOption
-      "enables scanning using SANE and installs necessary drivers for Epson Perfection V550 Scanner";
+    desktop.scanning.enable = lib.mkEnableOption "enables scanning using SANE and installs necessary drivers for Epson Perfection V550 Scanner";
   };
 
   config = lib.mkIf config.desktop.scanning.enable {

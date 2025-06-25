@@ -29,7 +29,11 @@
         ".config"
         ".var"
       ];
-      files = [ ".bashrc" ".zshrc" ".p10k.zsh" ];
+      files = [
+        ".bashrc"
+        ".zshrc"
+        ".p10k.zsh"
+      ];
     };
   };
 }

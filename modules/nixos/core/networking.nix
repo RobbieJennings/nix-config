@@ -1,9 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   options = {
-    networking.enable =
-      lib.mkEnableOption "enables networking using networkmanager";
+    networking.enable = lib.mkEnableOption "enables networking using networkmanager";
   };
 
   config = lib.mkIf config.networking.enable {

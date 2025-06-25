@@ -1,10 +1,23 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ ./firefox.nix ./chrome.nix ./brave.nix ./thunderbird.nix ./ktorrent.nix ];
+  imports = [
+    ./firefox.nix
+    ./chrome.nix
+    ./brave.nix
+    ./thunderbird.nix
+    ./ktorrent.nix
+  ];
 
-  options = { web.enable = lib.mkEnableOption "enables all web utilities"; };
+  options = {
+    web.enable = lib.mkEnableOption "enables all web utilities";
+  };
 
   config = lib.mkIf config.web.enable {
     web.firefox.enable = lib.mkDefault true;

@@ -1,6 +1,15 @@
 {
-  mkHome = username:
-    { config, lib, pkgs, inputs, homeManagerModules, ... }: {
+  mkHome =
+    username:
+    {
+      config,
+      lib,
+      pkgs,
+      inputs,
+      homeManagerModules,
+      ...
+    }:
+    {
       imports = [ homeManagerModules ];
 
       home.username = username;

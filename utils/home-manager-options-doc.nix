@@ -1,4 +1,9 @@
-{ lib, runCommand, nixosOptionsDoc, ... }:
+{
+  lib,
+  runCommand,
+  nixosOptionsDoc,
+  ...
+}:
 
 let
   eval = lib.evalModules {
@@ -14,6 +19,7 @@ let
     ];
   };
   optionsDoc = nixosOptionsDoc { inherit (eval) options; };
-in runCommand "OPTIONS.md" { } ''
+in
+runCommand "OPTIONS.md" { } ''
   cat ${optionsDoc.optionsCommonMark} >> $out
 ''
