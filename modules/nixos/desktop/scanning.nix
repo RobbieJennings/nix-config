@@ -2,11 +2,11 @@
 
 {
   options = {
-    scanning.enable = lib.mkEnableOption
+    desktop.scanning.enable = lib.mkEnableOption
       "enables scanning using SANE and installs necessary drivers for Epson Perfection V550 Scanner";
   };
 
-  config = lib.mkIf config.scanning.enable {
+  config = lib.mkIf config.desktop.scanning.enable {
     hardware.sane.enable = lib.mkDefault true;
     hardware.sane.extraBackends = [ pkgs.epkowa ];
     services.udev.packages = [ pkgs.vuescan ];

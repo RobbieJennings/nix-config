@@ -1,5 +1,5 @@
-{ lib, stdenv, fetchurl, gnutar, autoPatchelfHook, glibc, gtk3, makeDesktopItem
-}:
+{ lib, stdenv, fetchurl, autoPatchelfHook, gnutar, wrapGAppsHook, glibc, gtk3
+, makeDesktopItem }:
 
 let
   pname = "vuescan";
@@ -22,10 +22,10 @@ in stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://www.hamrick.com/files/vuex6498.tgz";
-    sha256 = "sha256-hudA0NqZZcZJAtO4HjzOfQqSBehc2ebnuh3fWvxdjn4=";
+    sha256 = "sha256-JA2HzMIPT8x0uNPQWv7pHNnY5cYdL7ppmc2YyQW9lm8=";
   };
 
-  nativeBuildInputs = [ autoPatchelfHook gnutar ];
+  nativeBuildInputs = [ autoPatchelfHook gnutar wrapGAppsHook ];
   buildInputs = [ glibc gtk3 ];
 
   dontStrip = true;

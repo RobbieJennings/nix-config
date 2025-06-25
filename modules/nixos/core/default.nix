@@ -7,8 +7,6 @@
     ./zsh.nix
     ./bootloader.nix
     ./networking.nix
-    ./printing.nix
-    ./scanning.nix
     ./localisation.nix
     ./impermanence.nix
     ./secrets.nix
@@ -20,8 +18,6 @@
     zsh.enable = lib.mkDefault true;
     bootloader.enable = lib.mkDefault true;
     networking.enable = lib.mkDefault true;
-    printing.enable = lib.mkDefault true;
-    scanning.enable = lib.mkDefault true;
     localisation.enable = lib.mkDefault true;
     impermanence.enable = lib.mkDefault true;
   };
