@@ -71,6 +71,7 @@
           src = ./.;
           hooks = {
             nixfmt-rfc-style.enable = true;
+            flake-checker.enable = true;
           };
         };
       };
