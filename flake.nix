@@ -49,14 +49,14 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    nixarr = {
-      url = "github:rasmus-kirk/nixarr";
+    pre-commit-hooks = {
+      url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
-    inputs@{ ... }:
+    inputs@{ self, ... }:
     let
       system = "x86_64-linux";
       pkgs = import inputs.nixpkgs { inherit system; };
@@ -64,23 +64,34 @@
     in
     with utils;
     {
-      formatter.${system} = pkgs.nixfmt-rfc-style;
+      formatter.${system} = pkgs.nixfmt-tree;
+
+      checks.${system} = {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixfmt-rfc-style.enable = true;
+          };
+        };
+      };
+
+      devShells.${system} = {
+        default = pkgs.mkShell {
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+        };
+      };
+
       packages.${system} = {
         generateNixosOptionsDoc = mkNixosOptionsDoc system;
         generateHomeManagerOptionsDoc = mkHomeManagerOptionsDoc system;
       };
+
       nixosConfigurations = {
         xps15 = mkSystem system [
           { secrets.enable = true; }
           (mkPlatform ./platforms/desktop)
           (mkHost ./hosts/xps15 "xps15")
-          (mkUser ./users/desktop-admin "robbie")
-          (mkUser ./users/desktop-user "clare")
-        ];
-
-        vmDesktop = mkSystem system [
-          (mkPlatform ./platforms/desktop)
-          (mkHost ./hosts/xps15 "vm_desktop")
           (mkUser ./users/desktop-admin "robbie")
           (mkUser ./users/desktop-user "clare")
         ];
