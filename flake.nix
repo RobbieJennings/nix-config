@@ -84,8 +84,8 @@
       };
 
       packages.${system} = {
-        generateNixosOptionsDoc = mkNixosOptionsDoc system;
-        generateHomeManagerOptionsDoc = mkHomeManagerOptionsDoc system;
+        nixosOptionsDoc = pkgs.callPackage ./utils/nixos-options-doc.nix { };
+        homeManagerOptionsDoc = pkgs.callPackage ./utils/home-manager-options-doc.nix { };
       };
 
       nixosConfigurations = {
@@ -94,7 +94,6 @@
           (mkPlatform ./platforms/desktop)
           (mkHost ./hosts/xps15 "xps15")
           (mkUser ./users/desktop-admin "robbie")
-          (mkUser ./users/desktop-user "clare")
         ];
 
         vmServer = mkSystem system [

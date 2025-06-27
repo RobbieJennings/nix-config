@@ -14,7 +14,8 @@ let
       ../modules/nixos/server
     ];
   };
-  optionsDoc = nixosOptionsDoc { inherit (eval) options; };
+  cleanEval = lib.filterAttrsRecursive (n: v: n != "_module") eval;
+  optionsDoc = nixosOptionsDoc { inherit (cleanEval) options; };
 in
 runCommand "OPTIONS.md" { } ''
   cat ${optionsDoc.optionsCommonMark} >> $out
