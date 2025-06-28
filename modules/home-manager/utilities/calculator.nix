@@ -8,7 +8,7 @@
 
 {
   options = {
-    utilities.calculator.enable = lib.mkEnableOption "enables kalc calculator";
+    utilities.calculator.enable = lib.mkEnableOption "kalc calculator";
   };
 
   config = lib.mkIf config.utilities.calculator.enable {

@@ -8,7 +8,7 @@
 
 {
   options = {
-    desktop.printing.enable = lib.mkEnableOption "enables printing using CUPS";
+    desktop.printing.enable = lib.mkEnableOption "printing using CUPS";
   };
 
   config = lib.mkIf config.desktop.printing.enable {

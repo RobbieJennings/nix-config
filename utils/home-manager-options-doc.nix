@@ -8,7 +8,7 @@
 let
   eval = lib.evalModules {
     modules = [
-      ({ _module.check = false; })
+      { _module.check = false; }
       ../modules/home-manager/cosmic-manager
       ../modules/home-manager/gaming
       ../modules/home-manager/photography

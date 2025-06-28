@@ -8,7 +8,7 @@
 
 {
   options = {
-    desktop.bluetooth.enable = lib.mkEnableOption "enables bluetooth";
+    desktop.bluetooth.enable = lib.mkEnableOption "bluetooth";
   };
 
   config = lib.mkIf config.desktop.bluetooth.enable {

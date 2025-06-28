@@ -72,6 +72,8 @@
           hooks = {
             nixfmt-rfc-style.enable = true;
             flake-checker.enable = true;
+            statix.enable = true;
+            nil.enable = true;
           };
         };
       };

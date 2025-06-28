@@ -8,7 +8,7 @@
 
 {
   options = {
-    utilities.camera.enable = lib.mkEnableOption "enables komoso camera";
+    utilities.camera.enable = lib.mkEnableOption "komoso camera";
   };
 
   config = lib.mkIf config.utilities.camera.enable {

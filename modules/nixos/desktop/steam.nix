@@ -8,7 +8,7 @@
 
 {
   options = {
-    desktop.steam.enable = lib.mkEnableOption "enables steam gaming client";
+    desktop.steam.enable = lib.mkEnableOption "steam gaming client";
   };
 
   config = lib.mkIf config.desktop.steam.enable {

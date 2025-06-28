@@ -8,7 +8,7 @@
 
 {
   options = {
-    utilities.vlc.enable = lib.mkEnableOption "enables VLC media player";
+    utilities.vlc.enable = lib.mkEnableOption "VLC media player";
   };
 
   config = lib.mkIf config.utilities.vlc.enable {

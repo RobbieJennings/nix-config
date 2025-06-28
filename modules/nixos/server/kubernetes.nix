@@ -8,7 +8,7 @@
 
 {
   options = {
-    server.kubernetes.enable = lib.mkEnableOption "enables k3s";
+    server.kubernetes.enable = lib.mkEnableOption "k3s";
   };
 
   config = lib.mkMerge [

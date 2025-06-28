@@ -8,7 +8,7 @@
 
 {
   options = {
-    gaming.prism.enable = lib.mkEnableOption "enables prism minecraft launcher";
+    gaming.prism.enable = lib.mkEnableOption "prism minecraft launcher";
   };
 
   config = lib.mkIf config.gaming.prism.enable {

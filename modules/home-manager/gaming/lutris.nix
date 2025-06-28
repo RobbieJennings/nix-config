@@ -8,7 +8,7 @@
 
 {
   options = {
-    gaming.lutris.enable = lib.mkEnableOption "enables lutris games launcher";
+    gaming.lutris.enable = lib.mkEnableOption "lutris games launcher";
   };
 
   config = lib.mkIf config.gaming.lutris.enable {

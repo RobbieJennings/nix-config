@@ -8,7 +8,7 @@
 
 {
   options = {
-    zsh.enable = lib.mkEnableOption "enables zsh";
+    zsh.enable = lib.mkEnableOption "zsh";
   };
 
   config = lib.mkIf config.zsh.enable {

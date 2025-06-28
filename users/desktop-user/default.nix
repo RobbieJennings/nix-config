@@ -8,34 +8,30 @@ in
     username:
     { config, lib, ... }:
     {
-      config = (
-        lib.mkMerge [
-          # Create User
-          ({
-            users.users.${username} = {
-              isNormalUser = true;
-              extraGroups = [
-                "networkManager"
-                "libvirtd"
-              ];
-              initialPassword = lib.mkDefault "password";
-            };
-          })
+      config = lib.mkMerge [
+        {
+          users.users.${username} = {
+            isNormalUser = true;
+            extraGroups = [
+              "networkManager"
+              "libvirtd"
+            ];
+            initialPassword = lib.mkDefault "password";
+          };
+        }
 
-          # Add home-manager configuration
-          ({ home-manager.users.${username} = home.mkHome username; })
+        {
+          home-manager.users.${username} = home.mkHome username;
+        }
 
-          # Add password from secrets
-          (lib.mkIf config.secrets.enable {
-            sops.secrets = password.mkSecret username;
-            users.users = password.mkUser config username;
-          })
+        (lib.mkIf config.secrets.enable {
+          sops.secrets = password.mkSecret username;
+          users.users = password.mkUser config username;
+        })
 
-          # Add persistent files
-          (lib.mkIf config.impermanence.enable {
-            environment.persistence."/persist" = persist.mkPersist username;
-          })
-        ]
-      );
+        (lib.mkIf config.impermanence.enable {
+          environment.persistence."/persist" = persist.mkPersist username;
+        })
+      ];
     };
 }

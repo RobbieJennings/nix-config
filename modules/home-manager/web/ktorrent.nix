@@ -8,7 +8,7 @@
 
 {
   options = {
-    web.ktorrent.enable = lib.mkEnableOption "enables ktorrent client";
+    web.ktorrent.enable = lib.mkEnableOption "ktorrent client";
   };
 
   config = lib.mkIf config.web.ktorrent.enable {

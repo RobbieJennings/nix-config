@@ -8,7 +8,7 @@
 
 {
   options = {
-    photography.darktable.enable = lib.mkEnableOption "enables darktable editing app";
+    photography.darktable.enable = lib.mkEnableOption "darktable editing app";
   };
 
   config = lib.mkIf config.photography.darktable.enable {

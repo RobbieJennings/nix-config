@@ -8,7 +8,7 @@
 
 {
   options = {
-    web.chrome.enable = lib.mkEnableOption "enables chrome web browser";
+    web.chrome.enable = lib.mkEnableOption "chrome web browser";
   };
 
   config = lib.mkIf config.web.chrome.enable {

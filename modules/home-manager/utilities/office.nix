@@ -8,7 +8,7 @@
 
 {
   options = {
-    utilities.office.enable = lib.mkEnableOption "enables libreoffice suite";
+    utilities.office.enable = lib.mkEnableOption "libreoffice suite";
   };
 
   config = lib.mkIf config.utilities.office.enable {

@@ -12,11 +12,13 @@
     {
       imports = [ homeManagerModules ];
 
-      home.username = username;
-      home.homeDirectory = "/home/${username}";
+      home = {
+        inherit username;
+        homeDirectory = "/home/${username}";
+      };
 
       secrets.enable = enableSecrets;
-      programs.git.enable = true;
+      programs.git.enable = lib.mkDefault true;
 
       # This value determines the Home Manager release that your
       # configuration is compatible with. This helps avoid breakage

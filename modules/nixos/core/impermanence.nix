@@ -8,7 +8,7 @@
 
 {
   options = {
-    impermanence.enable = lib.mkEnableOption "enables impermanence";
+    impermanence.enable = lib.mkEnableOption "impermanence";
   };
 
   config = lib.mkIf config.impermanence.enable {

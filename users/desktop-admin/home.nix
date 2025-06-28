@@ -15,27 +15,30 @@
         ./secrets.nix
       ];
 
-      home.username = username;
-      home.homeDirectory = "/home/${username}";
+      home = {
+        inherit username;
+        homeDirectory = "/home/${username}";
+      };
+
+      programs = {
+        git = {
+          enable = lib.mkDefault true;
+          userEmail = "robbie.jennings97@gmail.com";
+          userName = "robbiejennings";
+        };
+        vscode = {
+          enable = lib.mkDefault true;
+          profiles.default.extensions = with pkgs.vscode-extensions; [ bbenoist.nix ];
+        };
+      };
 
       secrets.enable = enableSecrets;
-      cosmic-manager.enable = true;
-      plasma-manager.enable = true;
-      utilities.enable = true;
-      web.enable = true;
-      gaming.enable = true;
-      photography.enable = true;
-
-      programs.git = {
-        enable = true;
-        userEmail = "robbie.jennings97@gmail.com";
-        userName = "robbiejennings";
-      };
-
-      programs.vscode = {
-        enable = true;
-        profiles.default.extensions = with pkgs.vscode-extensions; [ bbenoist.nix ];
-      };
+      cosmic-manager.enable = lib.mkDefault true;
+      plasma-manager.enable = lib.mkDefault true;
+      utilities.enable = lib.mkDefault true;
+      web.enable = lib.mkDefault true;
+      gaming.enable = lib.mkDefault true;
+      photography.enable = lib.mkDefault true;
 
       # This value determines the Home Manager release that your
       # configuration is compatible with. This helps avoid breakage

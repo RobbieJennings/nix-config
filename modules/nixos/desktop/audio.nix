@@ -8,7 +8,7 @@
 
 {
   options = {
-    desktop.audio.enable = lib.mkEnableOption "enables audio using pipewire";
+    desktop.audio.enable = lib.mkEnableOption "audio using pipewire";
   };
 
   config = lib.mkIf config.desktop.audio.enable {

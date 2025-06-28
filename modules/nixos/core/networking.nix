@@ -8,7 +8,7 @@
 
 {
   options = {
-    networking.enable = lib.mkEnableOption "enables networking using networkmanager";
+    networking.enable = lib.mkEnableOption "networking using networkmanager";
   };
 
   config = lib.mkIf config.networking.enable {

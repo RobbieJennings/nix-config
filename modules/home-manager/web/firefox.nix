@@ -8,7 +8,7 @@
 
 {
   options = {
-    web.firefox.enable = lib.mkEnableOption "enables firefox web browser";
+    web.firefox.enable = lib.mkEnableOption "firefox web browser";
   };
 
   config = lib.mkIf config.web.firefox.enable {

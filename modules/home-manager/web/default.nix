@@ -16,14 +16,16 @@
   ];
 
   options = {
-    web.enable = lib.mkEnableOption "enables all web utilities";
+    web.enable = lib.mkEnableOption "all web utilities";
   };
 
   config = lib.mkIf config.web.enable {
-    web.firefox.enable = lib.mkDefault true;
-    web.chrome.enable = lib.mkDefault true;
-    web.brave.enable = lib.mkDefault true;
-    web.thunderbird.enable = lib.mkDefault true;
-    web.ktorrent.enable = lib.mkDefault true;
+    web = {
+      firefox.enable = lib.mkDefault true;
+      chrome.enable = lib.mkDefault true;
+      brave.enable = lib.mkDefault true;
+      thunderbird.enable = lib.mkDefault true;
+      ktorrent.enable = lib.mkDefault true;
+    };
   };
 }

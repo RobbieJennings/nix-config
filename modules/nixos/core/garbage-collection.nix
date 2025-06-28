@@ -8,7 +8,7 @@
 
 {
   options = {
-    garbage-collection.enable = lib.mkEnableOption "enables automatic garbage collection of nix store";
+    garbage-collection.enable = lib.mkEnableOption "automatic garbage collection of nix store";
   };
 
   config = lib.mkIf config.garbage-collection.enable {

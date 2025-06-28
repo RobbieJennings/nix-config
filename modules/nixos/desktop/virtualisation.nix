@@ -8,7 +8,7 @@
 
 {
   options = {
-    desktop.virtualisation.enable = lib.mkEnableOption "enables virtualisation using libvirt & qemu";
+    desktop.virtualisation.enable = lib.mkEnableOption "virtualisation using libvirt & qemu";
   };
 
   config = lib.mkIf config.desktop.virtualisation.enable {

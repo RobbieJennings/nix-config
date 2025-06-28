@@ -8,7 +8,7 @@
 
 {
   options = {
-    photography.vuescan.enable = lib.mkEnableOption "enables vuescan scanning app";
+    photography.vuescan.enable = lib.mkEnableOption "vuescan scanning app";
   };
 
   config = lib.mkMerge [

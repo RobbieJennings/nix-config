@@ -1,8 +1,6 @@
 ## cosmic-manager\.enable
 
-
-
-Whether to enable enables cosmic-manager customisations\.
+Whether to enable cosmic-manager customisations\.
 
 
 
@@ -20,7 +18,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/cosmic-manager](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/cosmic-manager)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/cosmic-manager](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/cosmic-manager)
 
 
 
@@ -28,7 +26,7 @@ boolean
 
 
 
-Whether to enable enables all gaming clients\.
+Whether to enable all gaming clients\.
 
 
 
@@ -46,7 +44,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/gaming](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/gaming)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming)
 
 
 
@@ -54,7 +52,7 @@ boolean
 
 
 
-Whether to enable enables heroic games launcher\.
+Whether to enable heroic games launcher\.
 
 
 
@@ -72,7 +70,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/gaming/heroic\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/gaming/heroic.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/heroic\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/heroic.nix)
 
 
 
@@ -80,7 +78,7 @@ boolean
 
 
 
-Whether to enable enables lutris games launcher\.
+Whether to enable lutris games launcher\.
 
 
 
@@ -98,7 +96,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/gaming/lutris\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/gaming/lutris.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/lutris\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/lutris.nix)
 
 
 
@@ -106,7 +104,7 @@ boolean
 
 
 
-Whether to enable enables prism minecraft launcher\.
+Whether to enable prism minecraft launcher\.
 
 
 
@@ -124,7 +122,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/gaming/prism\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/gaming/prism.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/prism\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/prism.nix)
 
 
 
@@ -132,7 +130,7 @@ boolean
 
 
 
-Whether to enable enables all photography applications\.
+Whether to enable all photography applications\.
 
 
 
@@ -150,7 +148,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/photography](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/photography)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography)
 
 
 
@@ -158,7 +156,7 @@ boolean
 
 
 
-Whether to enable enables darktable editing app\.
+Whether to enable darktable editing app\.
 
 
 
@@ -176,7 +174,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/photography/darktable\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/photography/darktable.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/darktable\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/darktable.nix)
 
 
 
@@ -184,7 +182,7 @@ boolean
 
 
 
-Whether to enable enables gimp editing app\.
+Whether to enable gimp editing app\.
 
 
 
@@ -202,7 +200,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/photography/gimp\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/photography/gimp.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/gimp\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/gimp.nix)
 
 
 
@@ -210,7 +208,7 @@ boolean
 
 
 
-Whether to enable enables krita editing app\.
+Whether to enable krita editing app\.
 
 
 
@@ -228,7 +226,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/photography/krita\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/photography/krita.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/krita\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/krita.nix)
 
 
 
@@ -236,7 +234,7 @@ boolean
 
 
 
-Whether to enable enables vuescan scanning app\.
+Whether to enable vuescan scanning app\.
 
 
 
@@ -254,7 +252,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/photography/vuescan\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/photography/vuescan.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/vuescan\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/vuescan.nix)
 
 
 
@@ -262,7 +260,7 @@ boolean
 
 
 
-Whether to enable enables plasma-manager customisations\.
+Whether to enable plasma-manager customisations\.
 
 
 
@@ -280,7 +278,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/plasma-manager](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/plasma-manager)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/plasma-manager](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/plasma-manager)
 
 
 
@@ -288,7 +286,7 @@ boolean
 
 
 
-Whether to enable enables importing secrets using sops-nix\.
+Whether to enable importing secrets using sops-nix\.
 
 
 
@@ -306,7 +304,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/secrets](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/secrets)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/secrets](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/secrets)
 
 
 
@@ -314,7 +312,7 @@ boolean
 
 
 
-Whether to enable enables all utility applications\.
+Whether to enable all utility applications\.
 
 
 
@@ -332,7 +330,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities)
 
 
 
@@ -340,7 +338,7 @@ boolean
 
 
 
-Whether to enable enables kalc calculator\.
+Whether to enable kalc calculator\.
 
 
 
@@ -358,7 +356,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/calculator\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/calculator.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/calculator\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/calculator.nix)
 
 
 
@@ -366,7 +364,7 @@ boolean
 
 
 
-Whether to enable enables calibre ebook manager\.
+Whether to enable calibre ebook manager\.
 
 
 
@@ -384,7 +382,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/calibre\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/calibre.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/calibre\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/calibre.nix)
 
 
 
@@ -392,7 +390,7 @@ boolean
 
 
 
-Whether to enable enables komoso camera\.
+Whether to enable komoso camera\.
 
 
 
@@ -410,7 +408,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/camera\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/camera.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/camera\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/camera.nix)
 
 
 
@@ -418,7 +416,7 @@ boolean
 
 
 
-Whether to enable enables discover app store\.
+Whether to enable discover app store\.
 
 
 
@@ -436,7 +434,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/discover\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/discover.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/discover\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/discover.nix)
 
 
 
@@ -444,7 +442,7 @@ boolean
 
 
 
-Whether to enable enables libreoffice suite\.
+Whether to enable libreoffice suite\.
 
 
 
@@ -462,7 +460,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/office\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/office.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/office\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/office.nix)
 
 
 
@@ -470,7 +468,7 @@ boolean
 
 
 
-Whether to enable enables krdp remote desktop client\.
+Whether to enable krdp remote desktop client\.
 
 
 
@@ -488,7 +486,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/remote-desktop\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/remote-desktop.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/remote-desktop\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/remote-desktop.nix)
 
 
 
@@ -496,7 +494,7 @@ boolean
 
 
 
-Whether to enable enables spectacle screenshot tool\.
+Whether to enable spectacle screenshot tool\.
 
 
 
@@ -514,7 +512,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/screenshot\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/screenshot.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/screenshot\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/screenshot.nix)
 
 
 
@@ -522,7 +520,7 @@ boolean
 
 
 
-Whether to enable enables spotify music player\.
+Whether to enable spotify music player\.
 
 
 
@@ -540,7 +538,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/spotify\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/spotify.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/spotify\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/spotify.nix)
 
 
 
@@ -548,7 +546,7 @@ boolean
 
 
 
-Whether to enable enables VLC media player\.
+Whether to enable VLC media player\.
 
 
 
@@ -566,7 +564,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/vlc\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/utilities/vlc.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/vlc\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/vlc.nix)
 
 
 
@@ -574,7 +572,7 @@ boolean
 
 
 
-Whether to enable enables all web utilities\.
+Whether to enable all web utilities\.
 
 
 
@@ -592,7 +590,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web)
 
 
 
@@ -600,7 +598,7 @@ boolean
 
 
 
-Whether to enable enables brave web browser\.
+Whether to enable brave web browser\.
 
 
 
@@ -618,7 +616,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web/brave\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web/brave.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/brave\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/brave.nix)
 
 
 
@@ -626,7 +624,7 @@ boolean
 
 
 
-Whether to enable enables chrome web browser\.
+Whether to enable chrome web browser\.
 
 
 
@@ -644,7 +642,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web/chrome\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web/chrome.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/chrome\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/chrome.nix)
 
 
 
@@ -652,7 +650,7 @@ boolean
 
 
 
-Whether to enable enables firefox web browser\.
+Whether to enable firefox web browser\.
 
 
 
@@ -670,7 +668,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web/firefox\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web/firefox.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/firefox\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/firefox.nix)
 
 
 
@@ -678,7 +676,7 @@ boolean
 
 
 
-Whether to enable enables ktorrent client\.
+Whether to enable ktorrent client\.
 
 
 
@@ -696,7 +694,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web/ktorrent\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web/ktorrent.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/ktorrent\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/ktorrent.nix)
 
 
 
@@ -704,7 +702,7 @@ boolean
 
 
 
-Whether to enable enables thunderbird email client\.
+Whether to enable thunderbird email client\.
 
 
 
@@ -722,6 +720,6 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web/thunderbird\.nix](file:///nix/store/k4lgacxa77wdk8466h4x4mrlj7izz3zq-source/modules/home-manager/web/thunderbird.nix)
+ - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/thunderbird\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/thunderbird.nix)
 
 

@@ -8,7 +8,7 @@
 
 {
   options = {
-    auto-upgrade.enable = lib.mkEnableOption "enables automatic update of nix flake from github";
+    auto-upgrade.enable = lib.mkEnableOption "automatic update of nix flake from github";
   };
 
   config = lib.mkIf config.auto-upgrade.enable {

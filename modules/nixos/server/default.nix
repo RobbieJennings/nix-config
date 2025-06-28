@@ -15,13 +15,15 @@
   ];
 
   options = {
-    server.enable = lib.mkEnableOption "enables default server modules";
+    server.enable = lib.mkEnableOption "default server modules";
   };
 
   config = lib.mkIf config.server.enable {
-    server.kubernetes.enable = lib.mkDefault true;
-    server.hello-world.enable = lib.mkDefault true;
-    server.longhorn.enable = lib.mkDefault true;
-    server.jellyfin.enable = lib.mkDefault true;
+    server = {
+      kubernetes.enable = lib.mkDefault true;
+      hello-world.enable = lib.mkDefault true;
+      longhorn.enable = lib.mkDefault true;
+      jellyfin.enable = lib.mkDefault true;
+    };
   };
 }

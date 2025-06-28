@@ -20,18 +20,20 @@
   ];
 
   options = {
-    utilities.enable = lib.mkEnableOption "enables all utility applications";
+    utilities.enable = lib.mkEnableOption "all utility applications";
   };
 
   config = lib.mkIf config.utilities.enable {
-    utilities.discover.enable = lib.mkDefault true;
-    utilities.screenshot.enable = lib.mkDefault true;
-    utilities.vlc.enable = lib.mkDefault true;
-    utilities.camera.enable = lib.mkDefault true;
-    utilities.calculator.enable = lib.mkDefault true;
-    utilities.remoteDesktop.enable = lib.mkDefault true;
-    utilities.office.enable = lib.mkDefault true;
-    utilities.spotify.enable = lib.mkDefault true;
-    utilities.calibre.enable = lib.mkDefault true;
+    utilities = {
+      discover.enable = lib.mkDefault true;
+      screenshot.enable = lib.mkDefault true;
+      vlc.enable = lib.mkDefault true;
+      camera.enable = lib.mkDefault true;
+      calculator.enable = lib.mkDefault true;
+      remoteDesktop.enable = lib.mkDefault true;
+      office.enable = lib.mkDefault true;
+      spotify.enable = lib.mkDefault true;
+      calibre.enable = lib.mkDefault true;
+    };
   };
 }

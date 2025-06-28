@@ -20,19 +20,21 @@
   ];
 
   options = {
-    desktop.enable = lib.mkEnableOption "enables default desktop modules";
+    desktop.enable = lib.mkEnableOption "default desktop modules";
   };
 
   config = lib.mkIf config.desktop.enable {
     services.flatpak.enable = lib.mkDefault true;
-    desktop.audio.enable = lib.mkDefault true;
-    desktop.bluetooth.enable = lib.mkDefault true;
-    desktop.printing.enable = lib.mkDefault true;
-    desktop.scanning.enable = lib.mkDefault true;
-    desktop.kde-plasma.enable = lib.mkDefault false;
-    desktop.kde-connect.enable = lib.mkDefault true;
-    desktop.steam.enable = lib.mkDefault true;
-    desktop.virtualisation.enable = lib.mkDefault true;
-    desktop.cosmic-desktop.enable = lib.mkDefault true;
+    desktop = {
+      audio.enable = lib.mkDefault true;
+      bluetooth.enable = lib.mkDefault true;
+      printing.enable = lib.mkDefault true;
+      scanning.enable = lib.mkDefault true;
+      kde-plasma.enable = lib.mkDefault false;
+      kde-connect.enable = lib.mkDefault true;
+      steam.enable = lib.mkDefault true;
+      virtualisation.enable = lib.mkDefault true;
+      cosmic-desktop.enable = lib.mkDefault true;
+    };
   };
 }

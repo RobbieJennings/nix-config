@@ -12,16 +12,20 @@
     {
       imports = [ homeManagerModules ];
 
-      home.username = username;
-      home.homeDirectory = "/home/${username}";
+      home = {
+        inherit username;
+        homeDirectory = "/home/${username}";
+      };
 
-      plasma-manager.enable = true;
-      utilities.enable = true;
-      web.enable = true;
-      gaming.enable = true;
-      photography.enable = true;
+      programs = {
+        git.enable = lib.mkDefault true;
+      };
 
-      programs.git.enable = true;
+      plasma-manager.enable = lib.mkDefault true;
+      utilities.enable = lib.mkDefault true;
+      web.enable = lib.mkDefault true;
+      gaming.enable = lib.mkDefault true;
+      photography.enable = lib.mkDefault true;
 
       # This value determines the Home Manager release that your
       # configuration is compatible with. This helps avoid breakage

@@ -8,7 +8,7 @@
 
 {
   options = {
-    plasma-manager.enable = lib.mkEnableOption "enables plasma-manager customisations";
+    plasma-manager.enable = lib.mkEnableOption "plasma-manager customisations";
   };
 
   config = lib.mkIf config.plasma-manager.enable {

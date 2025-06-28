@@ -8,7 +8,7 @@
 
 {
   options = {
-    web.brave.enable = lib.mkEnableOption "enables brave web browser";
+    web.brave.enable = lib.mkEnableOption "brave web browser";
   };
 
   config = lib.mkIf config.web.brave.enable {

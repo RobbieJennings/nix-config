@@ -8,7 +8,7 @@
 
 {
   options = {
-    gaming.heroic.enable = lib.mkEnableOption "enables heroic games launcher";
+    gaming.heroic.enable = lib.mkEnableOption "heroic games launcher";
   };
 
   config = lib.mkIf config.gaming.heroic.enable {

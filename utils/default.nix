@@ -7,21 +7,27 @@ let
   defaults = [
     inputs.home-manager.nixosModules.home-manager
     {
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      nix.settings.auto-optimise-store = true;
-      nixpkgs.config.allowUnfree = true;
-      nixpkgs.overlays = [
-        overlays.additions
-        overlays.modifications
-        overlays.unstable-packages
-      ];
+      nix.settings = {
+        auto-optimise-store = true;
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
+      };
+      nixpkgs = {
+        config.allowUnfree = true;
+        overlays = [
+          overlays.additions
+          overlays.modifications
+          overlays.unstable-packages
+        ];
+      };
       users.mutableUsers = false;
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = { inherit inputs homeManagerModules; };
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        extraSpecialArgs = { inherit inputs homeManagerModules; };
+      };
     }
   ];
 in

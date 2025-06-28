@@ -8,7 +8,7 @@
 
 {
   options = {
-    photography.gimp.enable = lib.mkEnableOption "enables gimp editing app";
+    photography.gimp.enable = lib.mkEnableOption "gimp editing app";
   };
 
   config = lib.mkIf config.photography.gimp.enable {

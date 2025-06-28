@@ -8,7 +8,7 @@
 
 {
   options = {
-    utilities.calibre.enable = lib.mkEnableOption "enables calibre ebook manager";
+    utilities.calibre.enable = lib.mkEnableOption "calibre ebook manager";
   };
 
   config = lib.mkIf config.utilities.calibre.enable {

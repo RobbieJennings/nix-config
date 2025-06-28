@@ -1,8 +1,6 @@
 ## auto-upgrade\.enable
 
-
-
-Whether to enable enables automatic update of nix flake from github\.
+Whether to enable automatic update of nix flake from github\.
 
 
 
@@ -20,7 +18,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/auto-upgrade\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/auto-upgrade.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/auto-upgrade\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/auto-upgrade.nix)
 
 
 
@@ -28,7 +26,7 @@ boolean
 
 
 
-Whether to enable enables grub bootloader\.
+Whether to enable grub bootloader\.
 
 
 
@@ -46,7 +44,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/bootloader\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/bootloader.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/bootloader\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/bootloader.nix)
 
 
 
@@ -54,7 +52,7 @@ boolean
 
 
 
-Whether to enable enables silent boot with breeze theme\.
+Whether to enable silent boot with breeze theme\.
 
 
 
@@ -72,7 +70,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/bootloader\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/bootloader.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/bootloader\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/bootloader.nix)
 
 
 
@@ -80,7 +78,7 @@ boolean
 
 
 
-Whether to enable enables default desktop modules\.
+Whether to enable default desktop modules\.
 
 
 
@@ -98,7 +96,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop)
 
 
 
@@ -106,7 +104,7 @@ boolean
 
 
 
-Whether to enable enables audio using pipewire\.
+Whether to enable audio using pipewire\.
 
 
 
@@ -124,7 +122,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/audio\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/audio.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/audio\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/audio.nix)
 
 
 
@@ -132,7 +130,7 @@ boolean
 
 
 
-Whether to enable enables bluetooth\.
+Whether to enable bluetooth\.
 
 
 
@@ -150,7 +148,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/bluetooth\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/bluetooth.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/bluetooth\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/bluetooth.nix)
 
 
 
@@ -158,7 +156,7 @@ boolean
 
 
 
-Whether to enable enables cosmic desktop environment\.
+Whether to enable cosmic desktop environment\.
 
 
 
@@ -176,7 +174,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/cosmic-desktop\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/cosmic-desktop.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/cosmic-desktop\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/cosmic-desktop.nix)
 
 
 
@@ -184,7 +182,7 @@ boolean
 
 
 
-Whether to enable enables kde connect phone pairing app\.
+Whether to enable kde connect phone pairing app\.
 
 
 
@@ -202,7 +200,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/kde-connect\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/kde-connect.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/kde-connect\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/kde-connect.nix)
 
 
 
@@ -210,7 +208,7 @@ boolean
 
 
 
-Whether to enable enables kde plasma desktop environment\.
+Whether to enable kde plasma desktop environment\.
 
 
 
@@ -228,7 +226,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/kde-plasma\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/kde-plasma.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/kde-plasma\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/kde-plasma.nix)
 
 
 
@@ -236,7 +234,7 @@ boolean
 
 
 
-Whether to enable enables printing using CUPS\.
+Whether to enable printing using CUPS\.
 
 
 
@@ -254,7 +252,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/printing\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/printing.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/printing\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/printing.nix)
 
 
 
@@ -262,7 +260,7 @@ boolean
 
 
 
-Whether to enable enables scanning using SANE and installs necessary drivers for Epson Perfection V550 Scanner\.
+Whether to enable scanning using SANE and installs necessary drivers for Epson Perfection V550 Scanner\.
 
 
 
@@ -280,7 +278,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/scanning\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/scanning.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/scanning\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/scanning.nix)
 
 
 
@@ -288,7 +286,7 @@ boolean
 
 
 
-Whether to enable enables steam gaming client\.
+Whether to enable steam gaming client\.
 
 
 
@@ -306,7 +304,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/steam\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/steam.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/steam\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/steam.nix)
 
 
 
@@ -314,7 +312,7 @@ boolean
 
 
 
-Whether to enable enables virtualisation using libvirt \& qemu\.
+Whether to enable virtualisation using libvirt \& qemu\.
 
 
 
@@ -332,7 +330,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/virtualisation\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/desktop/virtualisation.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/virtualisation\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/virtualisation.nix)
 
 
 
@@ -340,7 +338,7 @@ boolean
 
 
 
-Whether to enable enables automatic garbage collection of nix store\.
+Whether to enable automatic garbage collection of nix store\.
 
 
 
@@ -358,7 +356,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/garbage-collection\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/garbage-collection.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/garbage-collection\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/garbage-collection.nix)
 
 
 
@@ -366,7 +364,7 @@ boolean
 
 
 
-Whether to enable enables impermanence\.
+Whether to enable impermanence\.
 
 
 
@@ -384,7 +382,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/impermanence\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/impermanence.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/impermanence\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/impermanence.nix)
 
 
 
@@ -392,7 +390,7 @@ boolean
 
 
 
-Whether to enable enables localisation settings for Dublin\.
+Whether to enable localisation settings for Dublin\.
 
 
 
@@ -410,7 +408,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/localisation\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/localisation.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/localisation\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/localisation.nix)
 
 
 
@@ -418,7 +416,7 @@ boolean
 
 
 
-Whether to enable enables networking using networkmanager\.
+Whether to enable networking using networkmanager\.
 
 
 
@@ -436,7 +434,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/networking\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/networking.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/networking\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/networking.nix)
 
 
 
@@ -444,7 +442,7 @@ boolean
 
 
 
-Whether to enable enables importing secrets using sops-nix\.
+Whether to enable importing secrets using sops-nix\.
 
 
 
@@ -462,7 +460,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/secrets\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/secrets.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/secrets\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/secrets.nix)
 
 
 
@@ -470,7 +468,7 @@ boolean
 
 
 
-Whether to enable enables default server modules\.
+Whether to enable default server modules\.
 
 
 
@@ -488,7 +486,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/server](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/server)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server)
 
 
 
@@ -514,7 +512,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/server/hello-world\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/server/hello-world.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/hello-world\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/hello-world.nix)
 
 
 
@@ -540,7 +538,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/server/jellyfin\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/server/jellyfin.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/jellyfin\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/jellyfin.nix)
 
 
 
@@ -548,7 +546,7 @@ boolean
 
 
 
-Whether to enable enables k3s\.
+Whether to enable k3s\.
 
 
 
@@ -566,7 +564,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/server/kubernetes\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/server/kubernetes.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/kubernetes\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/kubernetes.nix)
 
 
 
@@ -592,7 +590,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/server/longhorn\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/server/longhorn.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/longhorn\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/longhorn.nix)
 
 
 
@@ -600,7 +598,7 @@ boolean
 
 
 
-Whether to enable enables zsh\.
+Whether to enable zsh\.
 
 
 
@@ -618,6 +616,6 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/zsh\.nix](file:///nix/store/2kxf2grwhdw06v077s04y2ssbhdd767a-source/modules/nixos/core/zsh.nix)
+ - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/zsh\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/zsh.nix)
 
 

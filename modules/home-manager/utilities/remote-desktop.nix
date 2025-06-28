@@ -8,7 +8,7 @@
 
 {
   options = {
-    utilities.remoteDesktop.enable = lib.mkEnableOption "enables krdp remote desktop client";
+    utilities.remoteDesktop.enable = lib.mkEnableOption "krdp remote desktop client";
   };
 
   config = lib.mkIf config.utilities.remoteDesktop.enable {

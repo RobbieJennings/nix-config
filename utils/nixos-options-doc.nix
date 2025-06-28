@@ -8,7 +8,7 @@
 let
   eval = lib.evalModules {
     modules = [
-      ({ _module.check = false; })
+      { _module.check = false; }
       ../modules/nixos/core
       ../modules/nixos/desktop
       ../modules/nixos/server

@@ -8,7 +8,7 @@
 
 {
   options = {
-    photography.krita.enable = lib.mkEnableOption "enables krita editing app";
+    photography.krita.enable = lib.mkEnableOption "krita editing app";
   };
 
   config = lib.mkIf config.photography.krita.enable {

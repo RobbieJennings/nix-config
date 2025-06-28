@@ -8,7 +8,7 @@
 
 {
   options = {
-    desktop.cosmic-desktop.enable = lib.mkEnableOption "enables cosmic desktop environment";
+    desktop.cosmic-desktop.enable = lib.mkEnableOption "cosmic desktop environment";
   };
 
   config = lib.mkIf config.desktop.cosmic-desktop.enable {

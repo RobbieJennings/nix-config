@@ -8,7 +8,7 @@
 
 {
   options = {
-    utilities.discover.enable = lib.mkEnableOption "enables discover app store";
+    utilities.discover.enable = lib.mkEnableOption "discover app store";
   };
 
   config = lib.mkIf config.utilities.discover.enable {
