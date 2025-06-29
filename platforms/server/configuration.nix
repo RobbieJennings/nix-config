@@ -14,6 +14,7 @@
     pkgs.git
     pkgs.vim
     pkgs.wget
+    pkgs.just
   ];
   server.enable = true;
 
