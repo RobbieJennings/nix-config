@@ -1,4 +1,7 @@
-{ inputs, ... }:
+{
+  inputs,
+  ...
+}:
 
 let
   overlays = import ../overlays { inherit inputs; };
@@ -40,27 +43,9 @@ in
       modules = defaults ++ modules;
     };
 
-  mkPlatform =
-    platformPath:
-    let
-      platform = import platformPath;
-    in
-    with platform;
-    mkPlatform;
+  mkPlatform = platformPath: import platformPath { inherit inputs; };
 
-  mkHost =
-    hostPath: hostname:
-    let
-      host = import hostPath;
-    in
-    with host;
-    mkHost hostname;
+  mkHost = hostPath: hostname: import hostPath { inherit inputs hostname; };
 
-  mkUser =
-    userPath: username:
-    let
-      user = import userPath;
-    in
-    with user;
-    mkUser username;
+  mkUser = userPath: username: import userPath { inherit inputs username; };
 }

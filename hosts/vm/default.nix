@@ -1,14 +1,15 @@
 {
-  mkHost =
-    hostname:
-    { inputs, ... }:
-    {
-      imports = [
-        inputs.disko.nixosModules.disko
-        ./hardware-configuration.nix
-        ./disk-configuration.nix
-      ];
+  hostname,
+  inputs,
+  ...
+}:
 
-      networking.hostName = hostname;
-    };
+{
+  imports = [
+    inputs.disko.nixosModules.disko
+    ./hardware-configuration.nix
+    ./disk-configuration.nix
+  ];
+
+  networking.hostName = hostname;
 }

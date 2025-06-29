@@ -1,11 +1,9 @@
+{ ... }:
+
 {
-  mkPlatform =
-    { ... }:
-    {
-      imports = [
-        ./configuration.nix
-        ./persist.nix
-        ./secrets.nix
-      ];
-    };
+  imports = [
+    ./configuration.nix
+    ./persist.nix
+    ./secrets.nix
+  ];
 }

@@ -1,37 +1,46 @@
-let
-  home = import ./home.nix;
-  password = import ./password.nix;
-  persist = import ./persist.nix;
-in
 {
-  mkUser =
-    username:
-    { config, lib, ... }:
+  username,
+  ...
+}:
+
+{
+  config,
+  lib,
+  ...
+}:
+
+{
+  config = lib.mkMerge [
     {
-      config = lib.mkMerge [
-        {
-          users.users.${username} = {
-            isNormalUser = true;
-            extraGroups = [
-              "wheel"
-              "networkManager"
-            ];
-            initialPassword = lib.mkDefault "password";
-          };
-        }
+      users.users.${username} = {
+        isNormalUser = true;
+        extraGroups = [
+          "wheel"
+          "networkManager"
+        ];
+        initialPassword = lib.mkDefault "password";
+      };
 
-        {
-          home-manager.users.${username} = home.mkHome username config.secrets.enable;
-        }
+      home-manager.users.${username} = import ./home.nix {
+        inherit username;
+        secrets.enable = config.secrets.enable;
+      };
+    }
 
-        (lib.mkIf config.secrets.enable {
-          sops.secrets = password.mkSecret username;
-          users.users = password.mkUser config username;
-        })
+    (lib.mkIf config.impermanence.enable {
+      environment.persistence."/persist" = import ./persist.nix {
+        inherit username;
+      };
+    })
 
-        (lib.mkIf config.impermanence.enable {
-          environment.persistence."/persist" = persist.mkPersist username;
-        })
-      ];
-    };
+    (lib.mkIf config.secrets.enable {
+      sops.secrets = {
+        "passwords/${username}".neededForUsers = true;
+      };
+      users.users.${username} = {
+        initialPassword = null;
+        hashedPasswordFile = config.sops.secrets."passwords/${username}".path;
+      };
+    })
+  ];
 }
