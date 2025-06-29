@@ -30,7 +30,10 @@
     };
     vscode = {
       enable = lib.mkDefault true;
-      profiles.default.extensions = with pkgs.vscode-extensions; [ bbenoist.nix ];
+      profiles.default.extensions = with pkgs.vscode-extensions; [
+        bbenoist.nix
+        skellock.just
+      ];
     };
   };
 
