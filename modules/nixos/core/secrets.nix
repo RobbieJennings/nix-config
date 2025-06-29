@@ -12,6 +12,9 @@
   };
 
   config = lib.mkIf config.secrets.enable {
-    environment.systemPackages = [ pkgs.sops ];
+    environment.systemPackages = [
+      pkgs.sops
+      pkgs.ssh-to-age
+    ];
   };
 }
