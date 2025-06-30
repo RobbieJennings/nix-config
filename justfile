@@ -3,8 +3,23 @@
 default:
   @just --list
 
+# Run flake checks
+# Usage: $ sudo just check
+check:
+  nix flake check
+
+# Update flake lockfile
+# Usage: $ just update
+update:
+  nix flake update
+
+# Format flake
+# Usage: $ just format
+format:
+  nix fmt
+
 # Deploy a specific host
-# Usage: $ sudo just deploy host <host name>
+# Usage: $ sudo just deploy <host name>
 deploy host:
   nixos-rebuild switch --flake .#{{host}}
 
@@ -18,25 +33,43 @@ rebuild:
 debug:
   nixos-rebuild test --flake . --show-trace --verbose
 
-# Run flake checks
-# Usage: $ sudo just check
-check:
-  nix flake check
+# Generate age key for user
+# Usage: $ just generate-user-age
+generate-user-age:
+  mkdir -p ~/.config/sops/age
+  ssh-to-age -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
 
-# Update flake lockfile
-# Usage: $ just update
-update:
-  nix flake update
+# Generate age key for root
+# Usage: $ sudo just generate-root-age
+generate-root-age:
+  mkdir -p /root/.config/sops/age
+  ssh-to-age -private-key -i /root/.ssh/id_ed25519 > /root/.config/sops/age/keys.txt
 
-# Print version history
-# Usage: $ just history
-history:
-  nix profile history --profile /nix/var/nix/profiles/system
+# Edit SOPS encrypted file in secrets directory
+# Usage: $ (sudo) just edit-secret <filename>
+edit-secret secret:
+  sops edit ./secrets/{{secret}}.yaml
+
+# Generate docs
+# Usage: $ just docs
+docs:
+  nix build .#nixosOptionsDoc && cat result > ./docs/nixos-options.md && rm result
+  nix build .#homeManagerOptionsDoc && cat result > ./docs/home-manager-options.md && rm result
+
+# Generate git-hooks
+# Usage: $ just hooks
+hooks:
+  nix develop
 
 # Open nix repl
 # Usage: $ just repl
 repl:
   nix repl -f flake:nixpkgs
+
+# Print version history
+# Usage: $ just history
+history:
+  nix profile history --profile /nix/var/nix/profiles/system
 
 # Remove all generations older than 7 days
 # Usage: $ sudo just clean
