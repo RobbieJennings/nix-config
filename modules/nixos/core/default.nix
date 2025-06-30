@@ -25,6 +25,5 @@
     bootloader.enable = lib.mkDefault true;
     networking.enable = lib.mkDefault true;
     localisation.enable = lib.mkDefault true;
-    impermanence.enable = lib.mkDefault true;
   };
 }

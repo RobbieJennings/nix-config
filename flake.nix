@@ -93,6 +93,7 @@
       nixosConfigurations = {
         xps15 = mkSystem system [
           { secrets.enable = true; }
+          { impermanence.enable = true; }
           (mkPlatform ./platforms/desktop)
           (mkHost ./hosts/xps15 "xps15")
           (mkUser ./users/desktop-admin "robbie")
