@@ -18,7 +18,7 @@
     photography.enable = lib.mkEnableOption "all photography applications";
   };
 
-  config = lib.mkIf config.utilities.enable {
+  config = lib.mkIf config.photography.enable {
     photography = {
       vuescan.enable = lib.mkDefault true;
       darktable.enable = lib.mkDefault true;
