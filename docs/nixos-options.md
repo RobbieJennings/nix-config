@@ -18,7 +18,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/auto-upgrade\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/auto-upgrade.nix)
+ - [modules/nixos/core/auto-upgrade\.nix](../modules/nixos/core/auto-upgrade.nix)
 
 
 
@@ -44,7 +44,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/bootloader\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/bootloader.nix)
+ - [modules/nixos/core/bootloader\.nix](../modules/nixos/core/bootloader.nix)
 
 
 
@@ -70,7 +70,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/bootloader\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/bootloader.nix)
+ - [modules/nixos/core/bootloader\.nix](../modules/nixos/core/bootloader.nix)
 
 
 
@@ -96,7 +96,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop)
+ - [modules/nixos/desktop](../modules/nixos/desktop)
 
 
 
@@ -122,7 +122,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/audio\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/audio.nix)
+ - [modules/nixos/desktop/audio\.nix](../modules/nixos/desktop/audio.nix)
 
 
 
@@ -148,7 +148,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/bluetooth\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/bluetooth.nix)
+ - [modules/nixos/desktop/bluetooth\.nix](../modules/nixos/desktop/bluetooth.nix)
 
 
 
@@ -174,7 +174,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/cosmic-desktop\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/cosmic-desktop.nix)
+ - [modules/nixos/desktop/cosmic-desktop\.nix](../modules/nixos/desktop/cosmic-desktop.nix)
 
 
 
@@ -200,7 +200,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/kde-connect\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/kde-connect.nix)
+ - [modules/nixos/desktop/kde-connect\.nix](../modules/nixos/desktop/kde-connect.nix)
 
 
 
@@ -226,7 +226,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/kde-plasma\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/kde-plasma.nix)
+ - [modules/nixos/desktop/kde-plasma\.nix](../modules/nixos/desktop/kde-plasma.nix)
 
 
 
@@ -252,7 +252,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/printing\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/printing.nix)
+ - [modules/nixos/desktop/printing\.nix](../modules/nixos/desktop/printing.nix)
 
 
 
@@ -278,7 +278,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/scanning\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/scanning.nix)
+ - [modules/nixos/desktop/scanning\.nix](../modules/nixos/desktop/scanning.nix)
 
 
 
@@ -304,7 +304,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/steam\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/steam.nix)
+ - [modules/nixos/desktop/steam\.nix](../modules/nixos/desktop/steam.nix)
 
 
 
@@ -330,7 +330,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/virtualisation\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/desktop/virtualisation.nix)
+ - [modules/nixos/desktop/virtualisation\.nix](../modules/nixos/desktop/virtualisation.nix)
 
 
 
@@ -356,7 +356,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/garbage-collection\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/garbage-collection.nix)
+ - [modules/nixos/core/garbage-collection\.nix](../modules/nixos/core/garbage-collection.nix)
 
 
 
@@ -382,7 +382,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/impermanence\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/impermanence.nix)
+ - [modules/nixos/core/impermanence\.nix](../modules/nixos/core/impermanence.nix)
 
 
 
@@ -408,7 +408,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/localisation\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/localisation.nix)
+ - [modules/nixos/core/localisation\.nix](../modules/nixos/core/localisation.nix)
 
 
 
@@ -434,7 +434,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/networking\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/networking.nix)
+ - [modules/nixos/core/networking\.nix](../modules/nixos/core/networking.nix)
 
 
 
@@ -460,7 +460,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/secrets\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/secrets.nix)
+ - [modules/nixos/core/secrets\.nix](../modules/nixos/core/secrets.nix)
 
 
 
@@ -486,7 +486,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server)
+ - [modules/nixos/server](../modules/nixos/server)
 
 
 
@@ -512,7 +512,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/hello-world\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/hello-world.nix)
+ - [modules/nixos/server/hello-world\.nix](../modules/nixos/server/hello-world.nix)
 
 
 
@@ -538,7 +538,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/jellyfin\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/jellyfin.nix)
+ - [modules/nixos/server/jellyfin\.nix](../modules/nixos/server/jellyfin.nix)
 
 
 
@@ -564,7 +564,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/kubernetes\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/kubernetes.nix)
+ - [modules/nixos/server/kubernetes\.nix](../modules/nixos/server/kubernetes.nix)
 
 
 
@@ -590,7 +590,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/longhorn\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/server/longhorn.nix)
+ - [modules/nixos/server/longhorn\.nix](../modules/nixos/server/longhorn.nix)
 
 
 
@@ -616,6 +616,6 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/zsh\.nix](file:///nix/store/g119h37j5zsxigirjx1f5wakvk3qw43d-source/modules/nixos/core/zsh.nix)
+ - [modules/nixos/core/zsh\.nix](../modules/nixos/core/zsh.nix)
 
 

@@ -18,7 +18,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/cosmic-manager](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/cosmic-manager)
+ - [modules/home-manager/cosmic-manager](../modules/home-manager/cosmic-manager)
 
 
 
@@ -44,7 +44,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming)
+ - [modules/home-manager/gaming](../modules/home-manager/gaming)
 
 
 
@@ -70,7 +70,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/heroic\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/heroic.nix)
+ - [modules/home-manager/gaming/heroic\.nix](../modules/home-manager/gaming/heroic.nix)
 
 
 
@@ -96,7 +96,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/lutris\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/lutris.nix)
+ - [modules/home-manager/gaming/lutris\.nix](../modules/home-manager/gaming/lutris.nix)
 
 
 
@@ -122,7 +122,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/prism\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/gaming/prism.nix)
+ - [modules/home-manager/gaming/prism\.nix](../modules/home-manager/gaming/prism.nix)
 
 
 
@@ -148,7 +148,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography)
+ - [modules/home-manager/photography](../modules/home-manager/photography)
 
 
 
@@ -174,7 +174,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/darktable\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/darktable.nix)
+ - [modules/home-manager/photography/darktable\.nix](../modules/home-manager/photography/darktable.nix)
 
 
 
@@ -200,7 +200,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/gimp\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/gimp.nix)
+ - [modules/home-manager/photography/gimp\.nix](../modules/home-manager/photography/gimp.nix)
 
 
 
@@ -226,7 +226,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/krita\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/krita.nix)
+ - [modules/home-manager/photography/krita\.nix](../modules/home-manager/photography/krita.nix)
 
 
 
@@ -252,7 +252,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/vuescan\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/photography/vuescan.nix)
+ - [modules/home-manager/photography/vuescan\.nix](../modules/home-manager/photography/vuescan.nix)
 
 
 
@@ -278,7 +278,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/plasma-manager](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/plasma-manager)
+ - [modules/home-manager/plasma-manager](../modules/home-manager/plasma-manager)
 
 
 
@@ -304,7 +304,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/secrets](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/secrets)
+ - [modules/home-manager/secrets](../modules/home-manager/secrets)
 
 
 
@@ -330,7 +330,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities)
+ - [modules/home-manager/utilities](../modules/home-manager/utilities)
 
 
 
@@ -356,7 +356,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/calculator\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/calculator.nix)
+ - [modules/home-manager/utilities/calculator\.nix](../modules/home-manager/utilities/calculator.nix)
 
 
 
@@ -382,7 +382,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/calibre\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/calibre.nix)
+ - [modules/home-manager/utilities/calibre\.nix](../modules/home-manager/utilities/calibre.nix)
 
 
 
@@ -408,7 +408,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/camera\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/camera.nix)
+ - [modules/home-manager/utilities/camera\.nix](../modules/home-manager/utilities/camera.nix)
 
 
 
@@ -434,7 +434,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/discover\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/discover.nix)
+ - [modules/home-manager/utilities/discover\.nix](../modules/home-manager/utilities/discover.nix)
 
 
 
@@ -460,7 +460,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/office\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/office.nix)
+ - [modules/home-manager/utilities/office\.nix](../modules/home-manager/utilities/office.nix)
 
 
 
@@ -486,7 +486,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/remote-desktop\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/remote-desktop.nix)
+ - [modules/home-manager/utilities/remote-desktop\.nix](../modules/home-manager/utilities/remote-desktop.nix)
 
 
 
@@ -512,7 +512,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/screenshot\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/screenshot.nix)
+ - [modules/home-manager/utilities/screenshot\.nix](../modules/home-manager/utilities/screenshot.nix)
 
 
 
@@ -538,7 +538,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/spotify\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/spotify.nix)
+ - [modules/home-manager/utilities/spotify\.nix](../modules/home-manager/utilities/spotify.nix)
 
 
 
@@ -564,7 +564,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/vlc\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/utilities/vlc.nix)
+ - [modules/home-manager/utilities/vlc\.nix](../modules/home-manager/utilities/vlc.nix)
 
 
 
@@ -590,7 +590,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web)
+ - [modules/home-manager/web](../modules/home-manager/web)
 
 
 
@@ -616,7 +616,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/brave\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/brave.nix)
+ - [modules/home-manager/web/brave\.nix](../modules/home-manager/web/brave.nix)
 
 
 
@@ -642,7 +642,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/chrome\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/chrome.nix)
+ - [modules/home-manager/web/chrome\.nix](../modules/home-manager/web/chrome.nix)
 
 
 
@@ -668,7 +668,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/firefox\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/firefox.nix)
+ - [modules/home-manager/web/firefox\.nix](../modules/home-manager/web/firefox.nix)
 
 
 
@@ -694,7 +694,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/ktorrent\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/ktorrent.nix)
+ - [modules/home-manager/web/ktorrent\.nix](../modules/home-manager/web/ktorrent.nix)
 
 
 
@@ -720,6 +720,6 @@ boolean
 ` true `
 
 *Declared by:*
- - [/nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/thunderbird\.nix](file:///nix/store/5d4r20fp400xnmclkxdmiiy8x8lzbsv1-source/modules/home-manager/web/thunderbird.nix)
+ - [modules/home-manager/web/thunderbird\.nix](../modules/home-manager/web/thunderbird.nix)
 
 
