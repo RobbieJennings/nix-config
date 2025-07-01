@@ -12,7 +12,8 @@
   };
 
   config = lib.mkIf config.desktop.kde-plasma.enable {
-    # Enable SDDM lgoin manager
+    services.desktopManager.plasma6.enable = true;
+
     services.displayManager = {
       sddm = {
         enable = true;
@@ -20,15 +21,16 @@
       };
     };
 
-    # Add wallpaper to SDDM theme
     environment.systemPackages = [
       (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
         [General]
         background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Mountain/contents/images_dark/5120x2880.png
       '')
+      pkgs.kdePackages.spectacle
+      pkgs.kdePackages.discover
+      pkgs.kdePackages.krdp
+      pkgs.kdePackages.kalk
+      pkgs.kdePackages.kamoso
     ];
-
-    # Enable KDE Plasma desktop environment
-    services.desktopManager.plasma6.enable = true;
   };
 }
