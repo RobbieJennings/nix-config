@@ -1,5 +1,7 @@
 {
   username,
+  gitUserName,
+  gitUserEmail,
   ...
 }:
 
@@ -23,7 +25,7 @@
       };
 
       home-manager.users.${username} = import ./home.nix {
-        inherit username;
+        inherit username gitUserName gitUserEmail;
         secrets.enable = config.secrets.enable;
       };
     }

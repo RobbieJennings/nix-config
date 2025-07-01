@@ -1,5 +1,7 @@
 {
   username,
+  gitUserName,
+  gitUserEmail,
   secrets,
   ...
 }:
@@ -25,8 +27,8 @@
   programs = {
     git = {
       enable = lib.mkDefault true;
-      userEmail = "robbie.jennings97@gmail.com";
-      userName = "robbiejennings";
+      userEmail = gitUserEmail;
+      userName = gitUserName;
     };
     vscode = {
       enable = lib.mkDefault true;

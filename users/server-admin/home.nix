@@ -1,5 +1,7 @@
 {
   username,
+  gitUserName,
+  gitUserEmail,
   secrets,
   ...
 }:
@@ -19,7 +21,11 @@
     homeDirectory = "/home/${username}";
   };
 
-  programs.git.enable = lib.mkDefault true;
+  programs.git = {
+    enable = lib.mkDefault true;
+    userEmail = gitUserEmail;
+    userName = gitUserName;
+  };
 
   inherit secrets;
 

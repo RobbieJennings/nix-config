@@ -96,13 +96,13 @@
           { impermanence.enable = true; }
           (mkPlatform ./platforms/desktop)
           (mkHost ./hosts/xps15 "xps15")
-          (mkUser ./users/desktop-admin "robbie")
+          (mkUser ./users/desktop-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
         ];
 
         vmServer = mkSystem system [
           (mkPlatform ./platforms/server)
           (mkHost ./hosts/vm "vm_server")
-          (mkUser ./users/server-admin "robbie")
+          (mkUser ./users/server-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
         ];
       };
     };

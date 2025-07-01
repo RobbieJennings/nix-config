@@ -47,5 +47,14 @@ in
 
   mkHost = hostPath: hostname: import hostPath { inherit inputs hostname; };
 
-  mkUser = userPath: username: import userPath { inherit inputs username; };
+  mkUser =
+    userPath: username: gitUserName: gitUserEmail:
+    import userPath {
+      inherit
+        inputs
+        username
+        gitUserName
+        gitUserEmail
+        ;
+    };
 }
