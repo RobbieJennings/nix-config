@@ -3,6 +3,16 @@
 default:
   @just --list
 
+# List all system configurations
+# Usage: $ just list-systems
+list-systems:
+  nix flake show | grep "NixOS configuration" | sed 's/[^a-zA-Z]//g' | sed 's/mmm//g' | sed 's/mmNixOSconfigurationm//g'
+
+# List all secret files
+# Usage: $ just list-secrets
+list-secrets:
+  ls secrets | sed 's/.yaml//g'
+
 # Run flake checks
 # Usage: $ sudo just check
 check:
@@ -19,9 +29,9 @@ format:
   nix fmt
 
 # Deploy a specific host
-# Usage: $ sudo just deploy <host name>
-deploy host:
-  nixos-rebuild switch --flake .#{{host}}
+# Usage: $ sudo just deploy <system>
+deploy system:
+  nixos-rebuild switch --flake .#{{system}}
 
 # Rebuild current system
 # Usage: $ sudo just rebuild
@@ -46,7 +56,7 @@ generate-root-age:
   ssh-to-age -private-key -i /root/.ssh/id_ed25519 > /root/.config/sops/age/keys.txt
 
 # Edit SOPS encrypted file in secrets directory
-# Usage: $ (sudo) just edit-secret <filename>
+# Usage: $ (sudo) just edit-secret <secret>
 edit-secret secret:
   sops edit ./secrets/{{secret}}.yaml
 
