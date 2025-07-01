@@ -6,7 +6,7 @@ default:
 # List all system configurations
 # Usage: $ just list-systems
 list-systems:
-  nix flake show | grep "NixOS configuration" | sed 's/[^a-zA-Z]//g' | sed 's/mmm//g' | sed 's/mmNixOSconfigurationm//g'
+  nix flake show | grep "NixOS configuration" | sed 's/[─│├└: ]*//g' | sed 's/NixOSconfiguration//g'
 
 # List all secret files
 # Usage: $ just list-secrets
