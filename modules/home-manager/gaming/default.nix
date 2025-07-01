@@ -17,7 +17,7 @@
     gaming.enable = lib.mkEnableOption "all gaming clients";
   };
 
-  config = lib.mkIf config.web.enable {
+  config = lib.mkIf config.gaming.enable {
     gaming = {
       heroic.enable = lib.mkDefault true;
       lutris.enable = lib.mkDefault true;

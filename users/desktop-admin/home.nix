@@ -30,13 +30,6 @@
       userEmail = gitUserEmail;
       userName = gitUserName;
     };
-    vscode = {
-      enable = lib.mkDefault true;
-      profiles.default.extensions = with pkgs.vscode-extensions; [
-        bbenoist.nix
-        skellock.just
-      ];
-    };
   };
 
   inherit secrets;
@@ -46,6 +39,7 @@
   web.enable = lib.mkDefault true;
   gaming.enable = lib.mkDefault true;
   photography.enable = lib.mkDefault true;
+  development.enable = lib.mkDefault true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

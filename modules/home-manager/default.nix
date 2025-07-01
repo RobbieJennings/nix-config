@@ -16,6 +16,7 @@
     ./web
     ./gaming
     ./photography
+    ./development
     ./plasma-manager
     ./cosmic-manager
     ./secrets
