@@ -19,6 +19,7 @@
       workspace.wallpaper = lib.mkDefault "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Mountain/contents/images_dark/5120x2880.png";
       workspace.lookAndFeel = lib.mkDefault "org.kde.breezedark.desktop";
       kwin.effects.translucency.enable = lib.mkDefault true;
+
       panels = lib.mkDefault [
         {
           location = "bottom";

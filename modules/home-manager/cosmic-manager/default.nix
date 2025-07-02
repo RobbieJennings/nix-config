@@ -13,23 +13,25 @@
   };
 
   config = lib.mkIf config.cosmic-manager.enable {
-    programs.cosmic-ext-calculator.enable = true;
     home.packages = with pkgs; [
       inter
       jetbrains-mono
     ];
+
     wayland.desktopManager.cosmic = {
       enable = true;
+
       applets = {
-        audio.settings.show_media_controls_in_top_panel = false;
+        audio.settings.show_media_controls_in_top_panel = true;
         time.settings = {
-          first_day_of_week = 7; # Monday
+          first_day_of_week = 0; # Monday
           military_time = true;
           show_date_in_top_panel = true;
           show_seconds = false;
           show_weekday = true;
         };
       };
+
       panels = [
         {
           anchor = cosmicLib.cosmic.mkRON "enum" "Top";
@@ -40,7 +42,11 @@
           name = "Panel";
           opacity = 0.8;
           output = cosmicLib.cosmic.mkRON "enum" "All";
-          plugins_center = cosmicLib.cosmic.mkRON "optional" [ "com.system76.CosmicAppletTime" ];
+          plugins_center = cosmicLib.cosmic.mkRON "optional" [
+            "com.system76.CosmicPanelWorkspacesButton"
+            "com.system76.CosmicAppletTime"
+            "com.system76.CosmicPanelAppButton"
+          ];
           plugins_wings = cosmicLib.cosmic.mkRON "optional" (
             cosmicLib.cosmic.mkRON "tuple" [
               [

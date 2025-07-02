@@ -14,5 +14,8 @@
   config = lib.mkIf config.desktop.cosmic-desktop.enable {
     services.displayManager.cosmic-greeter.enable = lib.mkDefault true;
     services.desktopManager.cosmic.enable = lib.mkDefault true;
+    environment.systemPackages = [
+      pkgs.cosmic-ext-calculator
+    ];
   };
 }
