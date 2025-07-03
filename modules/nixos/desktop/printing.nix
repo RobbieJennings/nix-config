@@ -12,6 +12,6 @@
   };
 
   config = lib.mkIf config.desktop.printing.enable {
-    services.printing.enable = lib.mkDefault true;
+    services.printing.enable = true;
   };
 }

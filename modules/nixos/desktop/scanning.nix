@@ -12,7 +12,7 @@
   };
 
   config = lib.mkIf config.desktop.scanning.enable {
-    hardware.sane.enable = lib.mkDefault true;
+    hardware.sane.enable = true;
     hardware.sane.extraBackends = [ pkgs.epkowa ];
     services.udev.packages = [ pkgs.vuescan ];
     environment.systemPackages = [ pkgs.epson-v550-plugin ];

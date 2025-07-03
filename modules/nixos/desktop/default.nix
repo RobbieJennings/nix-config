@@ -24,7 +24,7 @@
   };
 
   config = lib.mkIf config.desktop.enable {
-    services.flatpak.enable = lib.mkDefault true;
+    services.flatpak.enable = true;
     desktop = {
       audio.enable = lib.mkDefault true;
       bluetooth.enable = lib.mkDefault true;

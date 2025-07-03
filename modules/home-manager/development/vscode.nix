@@ -11,9 +11,9 @@
     development.vscode.enable = lib.mkEnableOption "VS Code";
   };
 
-  config = lib.mkIf config.gaming.heroic.enable {
+  config = lib.mkIf config.development.vscode.enable {
     programs.vscode = {
-      enable = lib.mkDefault true;
+      enable = true;
       profiles.default.extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
         skellock.just

@@ -26,7 +26,7 @@
 
   programs = {
     git = {
-      enable = lib.mkDefault true;
+      enable = true;
       userEmail = gitUserEmail;
       userName = gitUserName;
     };
