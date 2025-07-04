@@ -104,6 +104,12 @@
           (mkHost ./hosts/vm "vm_server")
           (mkUser ./users/server-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
         ];
+
+        vmDesktop = mkSystem system [
+          (mkPlatform ./platforms/desktop)
+          (mkHost ./hosts/vm "vm_desktop")
+          (mkUser ./users/desktop-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
+        ];
       };
     };
 }
