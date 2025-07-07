@@ -101,13 +101,13 @@
 
         vmServer = mkSystem system [
           (mkPlatform ./platforms/server)
-          (mkHost ./hosts/vm "vm_server")
+          (mkHost ./hosts/vm "vmServer")
           (mkUser ./users/server-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
         ];
 
         vmDesktop = mkSystem system [
           (mkPlatform ./platforms/desktop)
-          (mkHost ./hosts/vm "vm_desktop")
+          (mkHost ./hosts/vm "vmDesktop")
           (mkUser ./users/desktop-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
         ];
       };

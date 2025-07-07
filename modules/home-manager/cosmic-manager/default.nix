@@ -21,6 +21,29 @@
     wayland.desktopManager.cosmic = {
       enable = true;
 
+      compositor = {
+        xkb_config = {
+          layout = "gb";
+          model = "pc104";
+          options = cosmicLib.cosmic.mkRON "optional" "terminate:ctrl_alt_bksp";
+          repeat_delay = 600;
+          repeat_rate = 25;
+          rules = "";
+          variant = "extd";
+        };
+        workspaces = {
+          workspace_layout = cosmicLib.cosmic.mkRON "enum" "Vertical";
+          workspace_mode = cosmicLib.cosmic.mkRON "enum" "Global";
+        };
+      };
+
+      shortcuts = [
+        {
+          action = cosmicLib.cosmic.mkRON "enum" "Minimize";
+          key = "Super+Shift+M";
+        }
+      ];
+
       applets = {
         audio.settings.show_media_controls_in_top_panel = true;
         time.settings = {
@@ -30,6 +53,14 @@
           show_seconds = false;
           show_weekday = true;
         };
+        app-list.settings.favorites =
+          [
+            "com.system76.cosmicTerm"
+            "com.system76.cosmicFiles"
+            "com.system76.cosmicStore"
+          ]
+          ++ (if config.web.brave.enable then [ "Brave-browser" ] else [ ])
+          ++ (if config.development.vscode.enable then [ "code" ] else [ ]);
       };
 
       panels = [
@@ -69,6 +100,65 @@
       ];
 
       appearance = {
+        theme = {
+          mode = "dark";
+          dark = {
+            active_hint = 2;
+            gaps = cosmicLib.cosmic.mkRON "tuple" [
+              0
+              4
+            ];
+            corner_radii = {
+              radius_0 = cosmicLib.cosmic.mkRON "tuple" [
+                0.0
+                0.0
+                0.0
+                0.0
+              ];
+              radius_xs = cosmicLib.cosmic.mkRON "tuple" [
+                2.0
+                2.0
+                2.0
+                2.0
+              ];
+              radius_s = cosmicLib.cosmic.mkRON "tuple" [
+                8.0
+                8.0
+                8.0
+                8.0
+              ];
+              radius_m = cosmicLib.cosmic.mkRON "tuple" [
+                8.0
+                8.0
+                8.0
+                8.0
+              ];
+              radius_l = cosmicLib.cosmic.mkRON "tuple" [
+                8.0
+                8.0
+                8.0
+                8.0
+              ];
+              radius_xl = cosmicLib.cosmic.mkRON "tuple" [
+                8.0
+                8.0
+                8.0
+                8.0
+              ];
+            };
+            accent = cosmicLib.cosmic.mkRON "optional" {
+              red = 0.7921569;
+              green = 0.7294118;
+              blue = 0.7058824;
+            };
+          };
+          light = {
+            inherit (config.wayland.desktopManager.cosmic.appearance.theme.dark.active_hint) ;
+            inherit (config.wayland.desktopManager.cosmic.appearance.theme.dark.gaps) ;
+            inherit (config.wayland.desktopManager.cosmic.appearance.theme.dark.corner_radii) ;
+            inherit (config.wayland.desktopManager.cosmic.appearance.theme.dark.accent) ;
+          };
+        };
         toolkit = {
           apply_theme_global = true;
           interface_font = {
