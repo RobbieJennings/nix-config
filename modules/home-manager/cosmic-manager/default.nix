@@ -153,10 +153,54 @@
             };
           };
           light = {
-            inherit (config.wayland.desktopManager.cosmic.appearance.theme.dark.active_hint) ;
-            inherit (config.wayland.desktopManager.cosmic.appearance.theme.dark.gaps) ;
-            inherit (config.wayland.desktopManager.cosmic.appearance.theme.dark.corner_radii) ;
-            inherit (config.wayland.desktopManager.cosmic.appearance.theme.dark.accent) ;
+            active_hint = 2;
+            gaps = cosmicLib.cosmic.mkRON "tuple" [
+              0
+              4
+            ];
+            corner_radii = {
+              radius_0 = cosmicLib.cosmic.mkRON "tuple" [
+                0.0
+                0.0
+                0.0
+                0.0
+              ];
+              radius_xs = cosmicLib.cosmic.mkRON "tuple" [
+                2.0
+                2.0
+                2.0
+                2.0
+              ];
+              radius_s = cosmicLib.cosmic.mkRON "tuple" [
+                8.0
+                8.0
+                8.0
+                8.0
+              ];
+              radius_m = cosmicLib.cosmic.mkRON "tuple" [
+                8.0
+                8.0
+                8.0
+                8.0
+              ];
+              radius_l = cosmicLib.cosmic.mkRON "tuple" [
+                8.0
+                8.0
+                8.0
+                8.0
+              ];
+              radius_xl = cosmicLib.cosmic.mkRON "tuple" [
+                8.0
+                8.0
+                8.0
+                8.0
+              ];
+            };
+            accent = cosmicLib.cosmic.mkRON "optional" {
+              red = 0.33333334;
+              green = 0.2784314;
+              blue = 0.25882354;
+            };
           };
         };
         toolkit = {
