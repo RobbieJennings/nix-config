@@ -43,11 +43,6 @@
                       mountOptions = [ "subvol=nix" ];
                     };
 
-                    "/media" = {
-                      mountpoint = "/media";
-                      mountOptions = [ "subvol=media" ];
-                    };
-
                     "/swap" = {
                       mountpoint = "/.swapvol";
                       swap.swapfile.size = "16384M";
