@@ -16,6 +16,7 @@
     pkgs.wget
     pkgs.just
   ];
+
   server.enable = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
