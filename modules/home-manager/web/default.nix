@@ -12,7 +12,7 @@
     ./chrome.nix
     ./brave.nix
     ./thunderbird.nix
-    ./ktorrent.nix
+    ./qbittorrent.nix
   ];
 
   options = {
@@ -25,7 +25,7 @@
       chrome.enable = lib.mkDefault true;
       brave.enable = lib.mkDefault true;
       thunderbird.enable = lib.mkDefault true;
-      ktorrent.enable = lib.mkDefault true;
+      qbittorrent.enable = lib.mkDefault true;
     };
   };
 }
