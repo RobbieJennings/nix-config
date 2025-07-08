@@ -16,6 +16,8 @@
     services.desktopManager.cosmic.enable = true;
     environment.systemPackages = [
       pkgs.cosmic-ext-calculator
+      pkgs.evince
+      pkgs.loupe
     ];
   };
 }
