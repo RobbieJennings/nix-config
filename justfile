@@ -28,6 +28,11 @@ update:
 format:
   nix fmt
 
+# Switch to a new configuration without adding boot menu entry
+# Usage: $ sudo just test
+test system:
+  nixos-rebuild test --flake .#{{system}} --show-trace --verbose
+
 # Deploy a specific host
 # Usage: $ sudo just deploy <system>
 deploy system:
@@ -37,11 +42,6 @@ deploy system:
 # Usage: $ sudo just rebuild
 rebuild:
   nixos-rebuild switch --flake .
-
-# Debug flake for current system
-# Usage: $ sudo just debug
-debug:
-  nixos-rebuild test --flake . --show-trace --verbose
 
 # Generate age key for user
 # Usage: $ just generate-user-age
