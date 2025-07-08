@@ -108,8 +108,7 @@
         vmDesktop = mkSystem system [
           { impermanence.enable = true; }
           { auto-upgrade.enable = false; }
-          { desktop.kde-plasma.enable = true; }
-          { desktop.cosmic-desktop.enable = false; }
+          { server.enable = true; }
           (mkPlatform ./platforms/desktop)
           (mkHost ./hosts/vm "vmDesktop")
           (mkUser ./users/desktop-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
