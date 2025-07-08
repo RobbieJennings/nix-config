@@ -334,6 +334,58 @@ boolean
 
 
 
+## docker\.enable
+
+
+
+Whether to enable docker\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/core/docker\.nix](../modules/nixos/core/docker.nix)
+
+
+
+## firmware-update\.enable
+
+
+
+Whether to enable fwupd\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/core/firmware-update\.nix](../modules/nixos/core/firmware-update.nix)
+
+
+
 ## garbage-collection\.enable
 
 

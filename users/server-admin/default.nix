@@ -19,6 +19,7 @@
         extraGroups = [
           "wheel"
           "networkManager"
+          "docker"
         ];
         initialPassword = lib.mkDefault "password";
       };

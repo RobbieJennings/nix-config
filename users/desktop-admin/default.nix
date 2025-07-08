@@ -19,6 +19,7 @@
         extraGroups = [
           "wheel"
           "networkManager"
+          "docker"
           "libvirtd"
         ];
         initialPassword = lib.mkDefault "password";

@@ -1,5 +1,7 @@
 ## cosmic-manager\.enable
 
+
+
 Whether to enable cosmic-manager customisations\.
 
 
@@ -19,6 +21,160 @@ boolean
 
 *Declared by:*
  - [modules/home-manager/cosmic-manager](../modules/home-manager/cosmic-manager)
+
+
+
+## cosmic-manager\.appearance\.enable
+
+Whether to enable cosmic-manager appearance customisations\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/cosmic-manager/appearance\.nix](../modules/home-manager/cosmic-manager/appearance.nix)
+
+
+
+## cosmic-manager\.applets\.enable
+
+
+
+Whether to enable cosmic-manager applets customisations\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/cosmic-manager/applets\.nix](../modules/home-manager/cosmic-manager/applets.nix)
+
+
+
+## cosmic-manager\.compositor\.enable
+
+
+
+Whether to enable cosmic-manager compositor customisations\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/cosmic-manager/compositor\.nix](../modules/home-manager/cosmic-manager/compositor.nix)
+
+
+
+## cosmic-manager\.panels\.enable
+
+
+
+Whether to enable cosmic-manager panels customisations\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/cosmic-manager/panels\.nix](../modules/home-manager/cosmic-manager/panels.nix)
+
+
+
+## cosmic-manager\.shortcuts\.enable
+
+
+
+Whether to enable cosmic-manager shortcuts customisations\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/cosmic-manager/shortcuts\.nix](../modules/home-manager/cosmic-manager/shortcuts.nix)
+
+
+
+## cosmic-manager\.wallpapers\.enable
+
+
+
+Whether to enable cosmic-manager wallpapers customisations\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/cosmic-manager/wallpapers\.nix](../modules/home-manager/cosmic-manager/wallpapers.nix)
 
 
 
@@ -282,6 +438,110 @@ boolean
 
 
 
+## plasma-manager\.input\.enable
+
+
+
+Whether to enable plasma-manager input customisations\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/plasma-manager/input\.nix](../modules/home-manager/plasma-manager/input.nix)
+
+
+
+## plasma-manager\.look-and-feel\.enable
+
+
+
+Whether to enable plasma-manager look and feel customisations\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/plasma-manager/look-and-feel\.nix](../modules/home-manager/plasma-manager/look-and-feel.nix)
+
+
+
+## plasma-manager\.panels\.enable
+
+
+
+Whether to enable plasma-manager panel customisations\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/plasma-manager/panels\.nix](../modules/home-manager/plasma-manager/panels.nix)
+
+
+
+## plasma-manager\.wallpaper\.enable
+
+
+
+Whether to enable plasma-manager wallpaper customisations\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/plasma-manager/wallpaper\.nix](../modules/home-manager/plasma-manager/wallpaper.nix)
+
+
+
 ## secrets\.enable
 
 
@@ -334,32 +594,6 @@ boolean
 
 
 
-## utilities\.calculator\.enable
-
-
-
-Whether to enable kalc calculator\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/home-manager/utilities/calculator\.nix](../modules/home-manager/utilities/calculator.nix)
-
-
-
 ## utilities\.calibre\.enable
 
 
@@ -386,58 +620,6 @@ boolean
 
 
 
-## utilities\.camera\.enable
-
-
-
-Whether to enable komoso camera\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/home-manager/utilities/camera\.nix](../modules/home-manager/utilities/camera.nix)
-
-
-
-## utilities\.discover\.enable
-
-
-
-Whether to enable discover app store\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/home-manager/utilities/discover\.nix](../modules/home-manager/utilities/discover.nix)
-
-
-
 ## utilities\.office\.enable
 
 
@@ -461,58 +643,6 @@ boolean
 
 *Declared by:*
  - [modules/home-manager/utilities/office\.nix](../modules/home-manager/utilities/office.nix)
-
-
-
-## utilities\.remoteDesktop\.enable
-
-
-
-Whether to enable krdp remote desktop client\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/home-manager/utilities/remote-desktop\.nix](../modules/home-manager/utilities/remote-desktop.nix)
-
-
-
-## utilities\.screenshot\.enable
-
-
-
-Whether to enable spectacle screenshot tool\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/home-manager/utilities/screenshot\.nix](../modules/home-manager/utilities/screenshot.nix)
 
 
 
@@ -672,11 +802,11 @@ boolean
 
 
 
-## web\.ktorrent\.enable
+## web\.qbittorrent\.enable
 
 
 
-Whether to enable ktorrent client\.
+Whether to enable qbittorrent client\.
 
 
 
@@ -694,7 +824,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/home-manager/web/ktorrent\.nix](../modules/home-manager/web/ktorrent.nix)
+ - [modules/home-manager/web/qbittorrent\.nix](../modules/home-manager/web/qbittorrent.nix)
 
 
 
