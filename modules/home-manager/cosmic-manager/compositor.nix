@@ -25,7 +25,7 @@
       };
       workspaces = {
         workspace_layout = cosmicLib.cosmic.mkRON "enum" "Vertical";
-        workspace_mode = cosmicLib.cosmic.mkRON "enum" "Global";
+        workspace_mode = cosmicLib.cosmic.mkRON "enum" "OutputBound";
       };
     };
   };
