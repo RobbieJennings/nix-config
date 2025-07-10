@@ -15,9 +15,13 @@
     programs.vscode = {
       enable = true;
       profiles.default.extensions = with pkgs.vscode-extensions; [
+        golang.go
         bbenoist.nix
         skellock.just
       ];
+      userSettings = {
+        "terminal.integrated.fontFamily" = "JetBrainsMono Nerd Font Mono";
+      };
     };
   };
 }

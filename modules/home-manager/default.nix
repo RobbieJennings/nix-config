@@ -21,4 +21,11 @@
     ./cosmic-manager
     ./secrets
   ];
+
+  config = {
+    home.packages = with pkgs; [
+      inter
+      nerd-fonts.jetbrains-mono
+    ];
+  };
 }

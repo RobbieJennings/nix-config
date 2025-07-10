@@ -15,6 +15,12 @@
     programs.plasma = {
       workspace.lookAndFeel = "org.kde.breezedark.desktop";
       kwin.effects.translucency.enable = true;
+      fonts = {
+        fixedWidth = {
+          family = "JetBrainsMono Nerd Font Mono";
+          pointSize = 11;
+        };
+      };
     };
   };
 }

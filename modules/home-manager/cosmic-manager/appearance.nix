@@ -13,11 +13,6 @@
   };
 
   config = lib.mkIf config.cosmic-manager.appearance.enable {
-    home.packages = with pkgs; [
-      inter
-      jetbrains-mono
-    ];
-
     wayland.desktopManager.cosmic.appearance = {
       theme = {
         mode = "dark";
@@ -131,7 +126,7 @@
           weight = cosmicLib.cosmic.mkRON "enum" "Normal";
         };
         monospace_font = {
-          family = "JetBrains Mono";
+          family = "JetBrainsMono Nerd Font Mono";
           stretch = cosmicLib.cosmic.mkRON "enum" "Normal";
           style = cosmicLib.cosmic.mkRON "enum" "Normal";
           weight = cosmicLib.cosmic.mkRON "enum" "Normal";
