@@ -9,6 +9,7 @@
 {
   imports = [
     ./vscode.nix
+    ./neovim.nix
   ];
 
   options = {
@@ -18,6 +19,7 @@
   config = lib.mkIf config.development.enable {
     development = {
       vscode.enable = lib.mkDefault true;
+      neovim.enable = lib.mkDefault true;
     };
   };
 }
