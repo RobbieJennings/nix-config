@@ -14,7 +14,7 @@ list-secrets:
   ls secrets | sed 's/.yaml//g'
 
 # Run flake checks
-# Usage: $ sudo just check
+# Usage: $ just check
 check:
   nix flake check
 

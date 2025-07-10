@@ -58,15 +58,19 @@
   outputs =
     inputs@{ self, ... }:
     let
-      system = "x86_64-linux";
-      pkgs = import inputs.nixpkgs { inherit system; };
+      forAllSystems = inputs.nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-linux"
+      ];
+      pkgs = forAllSystems (system: import inputs.nixpkgs { inherit system; });
       utils = import ./utils { inherit inputs; };
     in
     with utils;
     {
-      formatter.${system} = pkgs.nixfmt-tree;
+      formatter = forAllSystems (system: pkgs.${system}.nixfmt-tree);
 
-      checks.${system} = {
+      checks = forAllSystems (system: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
@@ -76,22 +80,22 @@
             nil.enable = true;
           };
         };
-      };
+      });
 
-      devShells.${system} = {
-        default = pkgs.mkShell {
+      devShells = forAllSystems (system: {
+        default = pkgs.${system}.mkShell {
           inherit (self.checks.${system}.pre-commit-check) shellHook;
           buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
         };
-      };
+      });
 
-      packages.${system} = {
-        nixosOptionsDoc = pkgs.callPackage ./utils/nixos-options-doc.nix { };
-        homeManagerOptionsDoc = pkgs.callPackage ./utils/home-manager-options-doc.nix { };
-      };
+      packages = forAllSystems (system: {
+        nixosOptionsDoc = pkgs.${system}.callPackage ./utils/nixos-options-doc.nix { };
+        homeManagerOptionsDoc = pkgs.${system}.callPackage ./utils/home-manager-options-doc.nix { };
+      });
 
       nixosConfigurations = {
-        xps15 = mkSystem system [
+        xps15 = mkSystem "x86_64-linux" [
           { secrets.enable = true; }
           { impermanence.enable = true; }
           (mkPlatform ./platforms/desktop)
@@ -99,13 +103,13 @@
           (mkUser ./users/desktop-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
         ];
 
-        vmServer = mkSystem system [
+        vmServer = mkSystem "x86_64-linux" [
           (mkPlatform ./platforms/server)
           (mkHost ./hosts/vm "vmServer")
           (mkUser ./users/server-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
         ];
 
-        vmDesktop = mkSystem system [
+        vmDesktop = mkSystem "x86_64-linux" [
           { impermanence.enable = true; }
           { auto-upgrade.enable = false; }
           { server.enable = true; }
