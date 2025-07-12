@@ -18,6 +18,26 @@
       fonts = {
         fixedWidth = {
           family = "JetBrainsMono Nerd Font Mono";
+          pointSize = 11;
+        };
+        general = {
+          family = "Inter";
+          pointSize = 11;
+        };
+        menu = {
+          family = "Inter";
+          pointSize = 10;
+        };
+        small = {
+          family = "Inter";
+          pointSize = 8;
+        };
+        toolbar = {
+          family = "Inter";
+          pointSize = 10;
+        };
+        windowTitle = {
+          family = "Inter";
           pointSize = 10;
         };
       };

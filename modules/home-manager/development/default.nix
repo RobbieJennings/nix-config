@@ -10,6 +10,7 @@
   imports = [
     ./vscode.nix
     ./neovim.nix
+    ./oh-my-posh.nix
   ];
 
   options = {
@@ -20,6 +21,7 @@
     development = {
       vscode.enable = lib.mkDefault true;
       neovim.enable = lib.mkDefault true;
+      oh-my-posh.enable = lib.mkDefault true;
     };
   };
 }
