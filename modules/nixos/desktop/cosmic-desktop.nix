@@ -18,6 +18,7 @@
       pkgs.cosmic-ext-calculator
       pkgs.evince
       pkgs.loupe
+      pkgs.mission-center
     ];
   };
 }

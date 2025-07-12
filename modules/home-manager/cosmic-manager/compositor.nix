@@ -27,6 +27,12 @@
         workspace_layout = cosmicLib.cosmic.mkRON "enum" "Vertical";
         workspace_mode = cosmicLib.cosmic.mkRON "enum" "OutputBound";
       };
+      input_default.scroll_config = cosmicLib.cosmic.mkRON "optional" {
+        method = cosmicLib.cosmic.mkRON "optional" (cosmicLib.cosmic.mkRON "enum" "TwoFinger");
+        natural_scroll = cosmicLib.cosmic.mkRON "optional" true;
+        scroll_button = cosmicLib.cosmic.mkRON "optional" 2;
+        scroll_factor = cosmicLib.cosmic.mkRON "optional" 1.0;
+      };
     };
   };
 }
