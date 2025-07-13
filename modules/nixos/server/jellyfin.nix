@@ -8,7 +8,7 @@
 
 {
   options = {
-    server.jellyfin.enable = lib.mkEnableOption "deploys jellyfin helm chart on k3s";
+    server.jellyfin.enable = lib.mkEnableOption "jellyfin helm chart on k3s";
   };
 
   config = lib.mkIf config.server.jellyfin.enable {

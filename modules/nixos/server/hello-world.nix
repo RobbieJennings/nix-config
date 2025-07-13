@@ -17,7 +17,7 @@ let
 in
 {
   options = {
-    server.hello-world.enable = lib.mkEnableOption "deploys hello world helm chart on k3s";
+    server.hello-world.enable = lib.mkEnableOption "hello world helm chart on k3s";
   };
 
   config = lib.mkIf config.server.hello-world.enable {

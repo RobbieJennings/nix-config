@@ -546,7 +546,7 @@ boolean
 
 
 
-Whether to enable deploys hello world helm chart on k3s\.
+Whether to enable hello world helm chart on k3s\.
 
 
 
@@ -572,7 +572,7 @@ boolean
 
 
 
-Whether to enable deploys jellyfin helm chart on k3s\.
+Whether to enable jellyfin helm chart on k3s\.
 
 
 
@@ -624,7 +624,7 @@ boolean
 
 
 
-Whether to enable deploys longhorn helm chart on k3s\.
+Whether to enable longhorn helm chart on k3s\.
 
 
 

@@ -8,7 +8,7 @@
 
 {
   options = {
-    server.longhorn.enable = lib.mkEnableOption "deploys longhorn helm chart on k3s";
+    server.longhorn.enable = lib.mkEnableOption "longhorn helm chart on k3s";
   };
 
   config = lib.mkIf config.server.longhorn.enable {
