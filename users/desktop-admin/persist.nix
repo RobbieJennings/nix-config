@@ -6,7 +6,6 @@
 {
   users.${username} = {
     directories = [
-      "Books"
       "Desktop"
       "Documents"
       "Downloads"
@@ -14,6 +13,7 @@
       "Pictures"
       "Videos"
       "Games"
+      "Books"
       "nix-config"
       {
         directory = ".ssh";
@@ -32,11 +32,6 @@
       ".local/share/PrismLauncher"
       ".config"
       ".var"
-    ];
-    files = [
-      ".bashrc"
-      ".zshrc"
-      ".p10k.zsh"
     ];
   };
 }

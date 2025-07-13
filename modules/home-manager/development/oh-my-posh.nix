@@ -12,11 +12,15 @@
   };
 
   config = lib.mkIf config.development.oh-my-posh.enable {
-    programs.oh-my-posh = {
-      enable = true;
-      enableBashIntegration = true;
-      enableZshIntegration = true;
-      useTheme = "atomic";
+    programs = {
+      bash.enable = true;
+      zsh.enable = true;
+      oh-my-posh = {
+        enable = true;
+        enableBashIntegration = true;
+        enableZshIntegration = true;
+        useTheme = "gruvbox";
+      };
     };
   };
 }
