@@ -65,7 +65,7 @@ Adding `impermanence.enable` to a system configuration will cause the deletion o
 To add git hooks to your development environment run `just develop` to enter the default development shell for this project which will automatically add formatting and static code analysis checks. This shell can be exited straight away.
 
 ### Generating Options Documentation
-To generate markdown documentation of all nixos and home-manager module options in this project run `just docs`. This will output `home-manager-options.md` and nixos-options.md into the ``docs/`` directory.
+To generate markdown documentation of all nixos and home-manager module options in this project run `just docs`. This will output `home-manager-options.md` and `nixos-options.md` into the ``docs/`` directory.
 
 ## 📜 License
 The code contained in this repository (and only the code in this repository, not including anything that may be pulled upon installation of this nix-config) is free to use under the [GPL-3.0 License](./LICENSE)
