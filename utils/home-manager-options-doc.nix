@@ -10,6 +10,7 @@ let
     modules = [
       { _module.check = false; }
       ../modules/home-manager/cosmic-manager
+      ../modules/home-manager/development
       ../modules/home-manager/gaming
       ../modules/home-manager/photography
       ../modules/home-manager/plasma-manager

@@ -178,6 +178,110 @@ boolean
 
 
 
+## development\.enable
+
+
+
+Whether to enable all development tools\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/development](../modules/home-manager/development)
+
+
+
+## development\.neovim\.enable
+
+
+
+Whether to enable Neovim\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/development/neovim\.nix](../modules/home-manager/development/neovim.nix)
+
+
+
+## development\.oh-my-posh\.enable
+
+
+
+Whether to enable oh-my-posh\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/development/oh-my-posh\.nix](../modules/home-manager/development/oh-my-posh.nix)
+
+
+
+## development\.vscode\.enable
+
+
+
+Whether to enable VS Code\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/development/vscode\.nix](../modules/home-manager/development/vscode.nix)
+
+
+
 ## gaming\.enable
 
 
