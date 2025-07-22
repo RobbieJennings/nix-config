@@ -13,4 +13,6 @@
   ];
 
   networking.hostName = hostname;
+  services.power-profiles-daemon.enable = false;
+  services.tlp.enable = true;
 }
