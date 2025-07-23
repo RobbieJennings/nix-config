@@ -26,7 +26,7 @@ boolean
 
 
 
-Whether to enable grub bootloader\.
+Whether to enable systemd-boot bootloader\.
 
 
 
@@ -357,32 +357,6 @@ boolean
 
 *Declared by:*
  - [modules/nixos/core/docker\.nix](../modules/nixos/core/docker.nix)
-
-
-
-## firmware-update\.enable
-
-
-
-Whether to enable fwupd\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/core/firmware-update\.nix](../modules/nixos/core/firmware-update.nix)
 
 
 

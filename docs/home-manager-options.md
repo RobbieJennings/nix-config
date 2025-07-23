@@ -1,3 +1,53 @@
+## backup\.enable
+
+Whether to enable enable restic backup\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/backup](../modules/home-manager/backup)
+
+
+
+## backup\.restic\.enable
+
+
+
+Whether to enable restic backups\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/backup/restic\.nix](../modules/home-manager/backup/restic.nix)
+
+
+
 ## cosmic-manager\.enable
 
 
@@ -25,6 +75,8 @@ boolean
 
 
 ## cosmic-manager\.appearance\.enable
+
+
 
 Whether to enable cosmic-manager appearance customisations\.
 

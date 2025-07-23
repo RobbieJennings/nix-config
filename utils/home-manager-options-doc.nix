@@ -16,6 +16,7 @@ let
       ../modules/home-manager/plasma-manager
       ../modules/home-manager/secrets
       ../modules/home-manager/utilities
+      ../modules/home-manager/backup
       ../modules/home-manager/web
     ];
   };

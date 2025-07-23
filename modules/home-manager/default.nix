@@ -13,6 +13,7 @@
     inputs.plasma-manager.homeManagerModules.plasma-manager
     inputs.cosmic-manager.homeManagerModules.cosmic-manager
     ./utilities
+    ./backup
     ./web
     ./gaming
     ./photography

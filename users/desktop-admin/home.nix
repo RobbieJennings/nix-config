@@ -40,6 +40,7 @@
   gaming.enable = lib.mkDefault true;
   photography.enable = lib.mkDefault true;
   development.enable = lib.mkDefault true;
+  backup.enable = lib.mkDefault true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
