@@ -25,7 +25,7 @@
   - 📦 [Flatpak installation](https://github.com/gmodena/nix-flatpak)
   - 🖥️ [KDE Plasma management](https://github.com/nix-community/plasma-manager)
   - 🗔 [Cosmic Desktop management](https://github.com/HeitorAugustoLN/cosmic-manager)
-  - 🗄️ [Restic backup](https://github.com/HeitorAugustoLN/cosmic-manager)
+  - 🗄️ [Restic backup](https://restic.net)
   - 🧰 Development tools
   - 🔍 Web browsers
   - 📷 Photo scanning/editing tools
