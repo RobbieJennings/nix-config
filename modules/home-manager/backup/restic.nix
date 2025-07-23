@@ -44,7 +44,11 @@
         passwordFile = config.sops.templates."restic-password".path;
         rcloneConfigFile = config.sops.templates."restic-rclone.conf".path;
         user = "backups";
-        paths = [ "~/Documents" ];
+        paths = [
+          "~/Documents"
+          "~/Pictures"
+          "~/Books"
+        ];
         timerConfig = {
           OnCalendar = "00:00";
           RandomizedDelaySec = "45m";
