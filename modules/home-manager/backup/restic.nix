@@ -35,6 +35,7 @@
       };
 
       home.activation."rclone.conf" = ''
+        mkdir -p ~/.config/rclone
         ln -sf ${config.sops.templates."restic-rclone.conf".path} ~/.config/rclone/rclone.conf
       '';
 
