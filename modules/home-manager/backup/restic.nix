@@ -20,7 +20,7 @@
     })
 
     (lib.mkIf (config.backup.restic.enable && config.secrets.enable) {
-      services.restic.backups.gdrive = {
+      services.restic.backups.backup = {
         repositoryFile = config.sops.secrets."restic/repository".path;
         passwordFile = config.sops.secrets."restic/password".path;
         paths = [
