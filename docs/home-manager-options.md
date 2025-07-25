@@ -22,6 +22,32 @@ boolean
 
 
 
+## backup\.rclone\.enable
+
+
+
+Whether to enable rclone google drive remote\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/backup/rclone\.nix](../modules/home-manager/backup/rclone.nix)
+
+
+
 ## backup\.restic\.enable
 
 
