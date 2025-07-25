@@ -16,9 +16,9 @@
         "vuescan/serial_number" = { };
         "restic/repository" = { };
         "restic/password" = { };
-        "restic/rclone/client_id" = { };
-        "restic/rclone/client_secret" = { };
-        "restic/rclone/access_token" = { };
+        "rclone/client_id" = { };
+        "rclone/client_secret" = { };
+        "rclone/access_token" = { };
       };
     };
   };

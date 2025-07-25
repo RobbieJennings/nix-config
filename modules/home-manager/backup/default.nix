@@ -9,6 +9,7 @@
 {
   imports = [
     ./restic.nix
+    ./rclone.nix
   ];
 
   options = {
@@ -18,6 +19,7 @@
   config = lib.mkIf config.backup.enable {
     backup = {
       restic.enable = lib.mkDefault true;
+      rclone.enable = lib.mkDefault true;
     };
   };
 }
