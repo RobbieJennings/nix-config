@@ -20,14 +20,15 @@
     })
 
     (lib.mkIf (config.backup.restic.enable && config.secrets.enable) {
-      services.restic.backups = {
-        daily = {
+      services.restic = {
+        enable = true;
+        backups.daily = {
           repositoryFile = config.sops.secrets."restic/repository".path;
           passwordFile = config.sops.secrets."restic/password".path;
           paths = [
-            "~/Documents"
-            "~/Pictures"
-            "~/Books"
+            "${config.home.homeDirectory}/Documents"
+            "${config.home.homeDirectory}/Pictures"
+            "${config.home.homeDirectory}/Books"
           ];
           pruneOpts = [
             "--keep-daily 3"
