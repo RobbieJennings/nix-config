@@ -20,18 +20,26 @@
     })
 
     (lib.mkIf (config.backup.restic.enable && config.secrets.enable) {
-      services.restic.backups.backup = {
-        repositoryFile = config.sops.secrets."restic/repository".path;
-        passwordFile = config.sops.secrets."restic/password".path;
-        paths = [
-          "~/Documents"
-          "~/Pictures"
-          "~/Books"
-        ];
-        timerConfig = {
-          OnCalendar = "00:00";
-          RandomizedDelaySec = "45m";
-          Persistent = true;
+      services.restic.backups = {
+        daily = {
+          repositoryFile = config.sops.secrets."restic/repository".path;
+          passwordFile = config.sops.secrets."restic/password".path;
+          paths = [
+            "~/Documents"
+            "~/Pictures"
+            "~/Books"
+          ];
+          pruneOpts = [
+            "--keep-daily 3"
+            "--keep-weekly 7"
+            "--keep-monthly 15"
+            "--keep-yearly 30"
+          ];
+          timerConfig = {
+            OnCalendar = "00:00";
+            RandomizedDelaySec = "45m";
+            Persistent = true;
+          };
         };
       };
     })
