@@ -53,7 +53,7 @@ sudo nixos-install --flake github:robbiejennings/nix-config#<system>
 ```
 
 ### Enabling Secrets
-Encrypted secrets can be included using sops-nix. This requires the installed system have the necessary SSH keys as defined in `.sops.yaml` located in `/root/.ssh/id_ed25519` for system level secrets and `/home/<username>/.ssh/id_ed25519` for user level secrets.
+Encrypted secrets can be included using sops-nix. This requires the installed system have the necessary SSH keys as defined in `.sops.yaml` located in `/root/.ssh/` for system level secrets and `/home/<username>/.ssh/` for user level secrets.
 
 These secrets can then be edited by generating age keys using `sudo just generate-root-age` or `just generate-user-age`. Each host or user has a single secret file located in the `secrets/` directory of this project. Once these keys are generated secret files can be decrypted using `just edit-secret <filename>`.
 

@@ -1,6 +1,6 @@
 ## backup\.enable
 
-Whether to enable enable restic backup\.
+Whether to enable backup with rclone and restic\.
 
 
 

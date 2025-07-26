@@ -13,7 +13,7 @@
   ];
 
   options = {
-    backup.enable = lib.mkEnableOption "enable restic backup";
+    backup.enable = lib.mkEnableOption "backup with rclone and restic";
   };
 
   config = lib.mkIf config.backup.enable {
