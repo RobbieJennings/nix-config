@@ -17,17 +17,17 @@
     })
 
     (lib.mkIf (config.backup.rclone.enable && config.secrets.enable) {
-      programs.rclone.remotes.gdrive = {
-        config = {
-          type = "drive";
-          scope = "drive.file";
-        };
-        secrets = {
-          client_id = config.sops.secrets."rclone/client_id".path;
-          client_secret = config.sops.secrets."rclone/client_secret".path;
-          token = config.sops.secrets."rclone/access_token".path;
-        };
-      };
+      sops.templates."rclone.conf".content = ''
+        [gdrive]
+        scope = drive.file
+        type = drive
+        client_id = ${config.sops.placeholder."rclone/client_id"}
+        client_secret = ${config.sops.placeholder."rclone/client_secret"}
+        token = ${config.sops.placeholder."rclone/access_token"}
+      '';
+      home.activation."rclone.conf" = ''
+        ln -sf ${config.sops.templates."rclone.conf".path} ~/.config/rclone/rclone.conf
+      '';
     })
   ];
 }
