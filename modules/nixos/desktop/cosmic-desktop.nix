@@ -16,9 +16,17 @@
     services.desktopManager.cosmic.enable = true;
     environment.systemPackages = [
       pkgs.cosmic-ext-calculator
-      pkgs.evince
-      pkgs.loupe
-      pkgs.mission-center
+      pkgs.loupe # image viewer
+      pkgs.papers # document viewer
+      pkgs.simple-scan # document scanner
+      pkgs.system-config-printer # printer setup
+      pkgs.snapshot # camera
+      pkgs.gnome-characters # emojis
+      pkgs.baobab # disk analysis
+      pkgs.gnome-disk-utility # disk formatting
+      pkgs.popsicle # iso flashing
+      pkgs.gnome-system-monitor # system monitor
+      pkgs.networkmanagerapplet # advanced network configuration
     ];
   };
 }
