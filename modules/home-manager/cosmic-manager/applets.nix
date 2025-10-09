@@ -22,14 +22,13 @@
         show_seconds = false;
         show_weekday = true;
       };
-      app-list.settings.favorites =
-        [
-          "com.system76.cosmicTerm"
-          "com.system76.cosmicFiles"
-          "com.system76.cosmicStore"
-        ]
-        ++ (if config.web.brave.enable then [ "Brave-browser" ] else [ ])
-        ++ (if config.development.vscode.enable then [ "code" ] else [ ]);
+      app-list.settings.favorites = [
+        "com.system76.cosmicTerm"
+        "com.system76.cosmicFiles"
+        "com.system76.cosmicStore"
+      ]
+      ++ (if config.web.brave.enable then [ "Brave-browser" ] else [ ])
+      ++ (if config.development.vscode.enable then [ "code" ] else [ ]);
     };
   };
 }

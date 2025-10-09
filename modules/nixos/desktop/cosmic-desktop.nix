@@ -15,7 +15,9 @@
     services.displayManager.cosmic-greeter.enable = true;
     services.desktopManager.cosmic.enable = true;
     environment.systemPackages = [
-      pkgs.cosmic-ext-calculator
+      pkgs.cosmic-ext-calculator # calculator
+      pkgs.seahorse # key management
+      pkgs.file-roller # archive management
       pkgs.loupe # image viewer
       pkgs.papers # document viewer
       pkgs.simple-scan # document scanner
