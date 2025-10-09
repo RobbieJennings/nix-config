@@ -35,8 +35,9 @@
               "com.system76.CosmicAppList"
             ]
             [
-              "com.system76.CosmicAppletTiling"
+              "com.system76.CosmicAppletStatusArea"
               "com.system76.CosmicAppletNotifications"
+              "com.system76.CosmicAppletTiling"
               "com.system76.CosmicAppletAudio"
               "com.system76.CosmicAppletBluetooth"
               "com.system76.CosmicAppletNetwork"
