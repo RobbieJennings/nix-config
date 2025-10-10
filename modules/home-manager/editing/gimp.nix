@@ -8,10 +8,10 @@
 
 {
   options = {
-    photography.gimp.enable = lib.mkEnableOption "gimp editing app";
+    editing.gimp.enable = lib.mkEnableOption "gimp editing app";
   };
 
-  config = lib.mkIf config.photography.gimp.enable {
+  config = lib.mkIf config.editing.gimp.enable {
     services.flatpak.packages = [
       {
         appId = "org.gimp.GIMP";

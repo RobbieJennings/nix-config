@@ -38,7 +38,7 @@
   utilities.enable = lib.mkDefault true;
   web.enable = lib.mkDefault true;
   gaming.enable = lib.mkDefault true;
-  photography.enable = lib.mkDefault true;
+  editing.enable = lib.mkDefault true;
   development.enable = lib.mkDefault true;
   backup.enable = lib.mkDefault true;
 

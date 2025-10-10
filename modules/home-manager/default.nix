@@ -16,7 +16,7 @@
     ./backup
     ./web
     ./gaming
-    ./photography
+    ./editing
     ./development
     ./plasma-manager
     ./cosmic-manager

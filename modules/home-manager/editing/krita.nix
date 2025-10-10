@@ -8,10 +8,10 @@
 
 {
   options = {
-    photography.krita.enable = lib.mkEnableOption "krita editing app";
+    editing.krita.enable = lib.mkEnableOption "krita editing app";
   };
 
-  config = lib.mkIf config.photography.krita.enable {
+  config = lib.mkIf config.editing.krita.enable {
     services.flatpak.packages = [
       {
         appId = "org.kde.krita";

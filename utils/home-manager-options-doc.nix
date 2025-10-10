@@ -12,7 +12,7 @@ let
       ../modules/home-manager/cosmic-manager
       ../modules/home-manager/development
       ../modules/home-manager/gaming
-      ../modules/home-manager/photography
+      ../modules/home-manager/editing
       ../modules/home-manager/plasma-manager
       ../modules/home-manager/secrets
       ../modules/home-manager/utilities

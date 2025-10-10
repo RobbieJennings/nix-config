@@ -8,14 +8,14 @@
 
 {
   options = {
-    photography.vuescan.enable = lib.mkEnableOption "vuescan scanning app";
+    editing.vuescan.enable = lib.mkEnableOption "vuescan scanning app";
   };
 
   config = lib.mkMerge [
-    (lib.mkIf config.photography.vuescan.enable {
+    (lib.mkIf config.editing.vuescan.enable {
       home.packages = [ pkgs.vuescan ];
     })
-    (lib.mkIf (config.photography.vuescan.enable && config.secrets.enable) {
+    (lib.mkIf (config.editing.vuescan.enable && config.secrets.enable) {
       sops.templates.".vuescanrc".content = ''
         UserID=${config.sops.placeholder."vuescan/user_id"}
         SerialNumber=${config.sops.placeholder."vuescan/serial_number"}

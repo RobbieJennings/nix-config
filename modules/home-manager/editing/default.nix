@@ -12,18 +12,22 @@
     ./darktable.nix
     ./krita.nix
     ./gimp.nix
+    ./kdenlive.nix
+    ./audacity.nix
   ];
 
   options = {
-    photography.enable = lib.mkEnableOption "all photography applications";
+    editing.enable = lib.mkEnableOption "all editing applications";
   };
 
-  config = lib.mkIf config.photography.enable {
-    photography = {
+  config = lib.mkIf config.editing.enable {
+    editing = {
       vuescan.enable = lib.mkDefault true;
       darktable.enable = lib.mkDefault true;
       krita.enable = lib.mkDefault true;
       gimp.enable = lib.mkDefault true;
+      kdenlive.enable = lib.mkDefault true;
+      audacity.enable = lib.mkDefault true;
     };
   };
 }

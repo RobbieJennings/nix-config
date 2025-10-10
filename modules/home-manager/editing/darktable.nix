@@ -8,10 +8,10 @@
 
 {
   options = {
-    photography.darktable.enable = lib.mkEnableOption "darktable editing app";
+    editing.darktable.enable = lib.mkEnableOption "darktable editing app";
   };
 
-  config = lib.mkIf config.photography.darktable.enable {
+  config = lib.mkIf config.editing.darktable.enable {
     services.flatpak.packages = [
       {
         appId = "org.darktable.Darktable";
