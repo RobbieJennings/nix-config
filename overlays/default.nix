@@ -14,6 +14,12 @@
   };
 
   modifications = final: prev: {
-
+    # Don't want applet in system tray
+    networkmanagerapplet = prev.networkmanagerapplet.overrideAttrs (old: {
+      mesonFlags = [
+        "-Dselinux=false"
+        "-Dappindicator=no"
+      ];
+    });
   };
 }
