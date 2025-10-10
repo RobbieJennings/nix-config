@@ -29,6 +29,7 @@
       pkgs.popsicle # iso flashing
       pkgs.gnome-system-monitor # system monitor
       pkgs.networkmanagerapplet # advanced network configuration
+      pkgs.gnome-connections # remote desktop client
     ];
   };
 }
