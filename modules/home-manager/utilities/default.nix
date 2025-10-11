@@ -14,6 +14,7 @@
     ./calibre.nix
     ./obsidian.nix
     ./obs.nix
+    ./kolourpaint.nix
   ];
 
   options = {
@@ -28,6 +29,7 @@
       calibre.enable = lib.mkDefault true;
       obsidian.enable = lib.mkDefault true;
       obs.enable = lib.mkDefault true;
+      kolourpaint.enable = lib.mkDefault true;
     };
   };
 }
