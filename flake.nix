@@ -98,24 +98,54 @@
         xps15 = mkSystem "x86_64-linux" [
           { secrets.enable = true; }
           { impermanence.enable = true; }
-          (mkPlatform ./platforms/desktop)
-          (mkHost ./hosts/xps15 "xps15")
-          (mkUser ./users/desktop-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
+          (mkPlatform {
+            path = ./platforms/desktop;
+          })
+          (mkHost {
+            path = ./hosts/xps15;
+            hostname = "xps15";
+          })
+          (mkUser {
+            path = ./users/desktop-admin;
+            username = "robbie";
+            gitUserName = "robbiejennings";
+            gitUserEmail = "robbie.jennings97@gmail.com";
+          })
         ];
 
         vmServer = mkSystem "x86_64-linux" [
-          (mkPlatform ./platforms/server)
-          (mkHost ./hosts/vm "vmServer")
-          (mkUser ./users/server-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
+          (mkPlatform {
+            path = ./platforms/server;
+          })
+          (mkHost {
+            path = ./hosts/vm;
+            hostname = "vmServer";
+          })
+          (mkUser {
+            path = ./users/desktop-admin;
+            username = "robbie";
+            gitUserName = "robbiejennings";
+            gitUserEmail = "robbie.jennings97@gmail.com";
+          })
         ];
 
         vmDesktop = mkSystem "x86_64-linux" [
           { impermanence.enable = true; }
           { auto-upgrade.enable = false; }
           { server.enable = true; }
-          (mkPlatform ./platforms/desktop)
-          (mkHost ./hosts/vm "vmDesktop")
-          (mkUser ./users/desktop-admin "robbie" "robbiejennings" "robbie.jennings97@gmail.com")
+          (mkPlatform {
+            path = ./platforms/desktop;
+          })
+          (mkHost {
+            path = ./hosts/vm;
+            hostname = "vmDesktop";
+          })
+          (mkUser {
+            path = ./users/desktop-admin;
+            username = "robbie";
+            gitUserName = "robbiejennings";
+            gitUserEmail = "robbie.jennings97@gmail.com";
+          })
         ];
       };
     };

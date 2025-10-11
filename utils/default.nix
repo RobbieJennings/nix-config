@@ -43,13 +43,36 @@ in
       modules = defaults ++ modules;
     };
 
-  mkPlatform = platformPath: import platformPath { inherit inputs; };
+  mkPlatform =
+    {
+      path,
+    }:
+    import path {
+      inherit
+        inputs
+        ;
+    };
 
-  mkHost = hostPath: hostname: import hostPath { inherit inputs hostname; };
+  mkHost =
+    {
+      path,
+      hostname,
+    }:
+    import path {
+      inherit
+        inputs
+        hostname
+        ;
+    };
 
   mkUser =
-    userPath: username: gitUserName: gitUserEmail:
-    import userPath {
+    {
+      path,
+      username,
+      gitUserName ? null,
+      gitUserEmail ? null,
+    }:
+    import path {
       inherit
         inputs
         username

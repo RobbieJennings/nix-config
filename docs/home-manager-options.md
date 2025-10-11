@@ -360,6 +360,188 @@ boolean
 
 
 
+## editing\.enable
+
+
+
+Whether to enable all editing applications\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/editing](../modules/home-manager/editing)
+
+
+
+## editing\.audacity\.enable
+
+
+
+Whether to enable audacity editing app\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/editing/audacity\.nix](../modules/home-manager/editing/audacity.nix)
+
+
+
+## editing\.darktable\.enable
+
+
+
+Whether to enable darktable editing app\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/editing/darktable\.nix](../modules/home-manager/editing/darktable.nix)
+
+
+
+## editing\.gimp\.enable
+
+
+
+Whether to enable gimp editing app\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/editing/gimp\.nix](../modules/home-manager/editing/gimp.nix)
+
+
+
+## editing\.kdenlive\.enable
+
+
+
+Whether to enable kdenlive editing app\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/editing/kdenlive\.nix](../modules/home-manager/editing/kdenlive.nix)
+
+
+
+## editing\.krita\.enable
+
+
+
+Whether to enable krita editing app\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/editing/krita\.nix](../modules/home-manager/editing/krita.nix)
+
+
+
+## editing\.vuescan\.enable
+
+
+
+Whether to enable vuescan scanning app\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/editing/vuescan\.nix](../modules/home-manager/editing/vuescan.nix)
+
+
+
 ## gaming\.enable
 
 
@@ -461,136 +643,6 @@ boolean
 
 *Declared by:*
  - [modules/home-manager/gaming/prism\.nix](../modules/home-manager/gaming/prism.nix)
-
-
-
-## photography\.enable
-
-
-
-Whether to enable all photography applications\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/home-manager/photography](../modules/home-manager/photography)
-
-
-
-## photography\.darktable\.enable
-
-
-
-Whether to enable darktable editing app\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/home-manager/photography/darktable\.nix](../modules/home-manager/photography/darktable.nix)
-
-
-
-## photography\.gimp\.enable
-
-
-
-Whether to enable gimp editing app\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/home-manager/photography/gimp\.nix](../modules/home-manager/photography/gimp.nix)
-
-
-
-## photography\.krita\.enable
-
-
-
-Whether to enable krita editing app\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/home-manager/photography/krita\.nix](../modules/home-manager/photography/krita.nix)
-
-
-
-## photography\.vuescan\.enable
-
-
-
-Whether to enable vuescan scanning app\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/home-manager/photography/vuescan\.nix](../modules/home-manager/photography/vuescan.nix)
 
 
 
@@ -799,6 +851,84 @@ boolean
 
 *Declared by:*
  - [modules/home-manager/utilities/calibre\.nix](../modules/home-manager/utilities/calibre.nix)
+
+
+
+## utilities\.kolourpaint\.enable
+
+
+
+Whether to enable kolourpaint drawing app\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/utilities/kolourpaint\.nix](../modules/home-manager/utilities/kolourpaint.nix)
+
+
+
+## utilities\.obs\.enable
+
+
+
+Whether to enable obs studio screen recorder\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/utilities/obs\.nix](../modules/home-manager/utilities/obs.nix)
+
+
+
+## utilities\.obsidian\.enable
+
+
+
+Whether to enable obsidian markdown notes\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/utilities/obsidian\.nix](../modules/home-manager/utilities/obsidian.nix)
 
 
 
