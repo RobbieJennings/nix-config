@@ -12,6 +12,8 @@
     ./office.nix
     ./spotify.nix
     ./calibre.nix
+    ./obsidian.nix
+    ./obs.nix
   ];
 
   options = {
@@ -24,6 +26,8 @@
       office.enable = lib.mkDefault true;
       spotify.enable = lib.mkDefault true;
       calibre.enable = lib.mkDefault true;
+      obsidian.enable = lib.mkDefault true;
+      obs.enable = lib.mkDefault true;
     };
   };
 }

@@ -16,8 +16,7 @@
   modifications = final: prev: {
     # Don't want applet in system tray
     networkmanagerapplet = prev.networkmanagerapplet.overrideAttrs (old: {
-      mesonFlags = [
-        "-Dselinux=false"
+      mesonFlags = (inputs.nixpkgs.lib.lists.remove "-Dappindicator=yes" (old.mesonFlags or [ ])) ++ [
         "-Dappindicator=no"
       ];
     });
