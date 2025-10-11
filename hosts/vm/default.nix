@@ -5,6 +5,12 @@
 }:
 
 {
+  config,
+  pkgs,
+  ...
+}:
+
+{
   imports = [
     inputs.disko.nixosModules.disko
     ./hardware-configuration.nix
