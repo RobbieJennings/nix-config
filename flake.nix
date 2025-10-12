@@ -122,7 +122,7 @@
             hostname = "vmServer";
           })
           (mkUser {
-            path = ./users/desktop-admin;
+            path = ./users/server-admin;
             username = "robbie";
             gitUserName = "robbiejennings";
             gitUserEmail = "robbie.jennings97@gmail.com";
