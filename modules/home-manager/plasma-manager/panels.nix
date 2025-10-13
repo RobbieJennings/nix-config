@@ -32,7 +32,7 @@
                 "applications:org.kde.discover.desktop"
               ]
               ++ (if config.web.brave.enable then [ "applications:com.brave.Browser.desktop" ] else [ ])
-              ++ (if config.web.brave.enable then [ "applications:code.desktop" ] else [ ]);
+              ++ (if config.development.vscode.enable then [ "applications:codium.desktop" ] else [ ]);
             };
           }
           "org.kde.plasma.marginsseparator"
