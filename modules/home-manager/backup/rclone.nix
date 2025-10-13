@@ -26,6 +26,7 @@
         token = ${config.sops.placeholder."rclone/access_token"}
       '';
       home.activation."rclone.conf" = ''
+        mkdir -p ~/.config/rclone
         ln -sf ${config.sops.templates."rclone.conf".path} ~/.config/rclone/rclone.conf
       '';
     })
