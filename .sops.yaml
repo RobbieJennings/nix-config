@@ -1,7 +1,12 @@
 keys:
+  - &vmDesktop age1cs3l5m0v28akzns34q4epz9nne8403sep2tyqxh3f8puj87y0ccq38vn38
   - &xps15 age1df376a66px79jxymgxkzp9jvr4prgttkhfdy78wzuljc5ptrhspsqcnk5l
   - &robbie age1s4h7hhuvtzrlaz7ugqkz6s9gwseumv77na9kczwkpew4mjy5fy9s4vc6rv
 creation_rules:
+  - path_regex: vmDesktop.yaml$
+    key_groups:
+    - age:
+      - *vmDesktop
   - path_regex: xps15.yaml$
     key_groups:
     - age:

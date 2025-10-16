@@ -1,14 +1,6 @@
-{
-  hostname,
-  inputs,
-  ...
-}:
+{ inputs, ... }:
 
-{
-  config,
-  pkgs,
-  ...
-}:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -18,7 +10,6 @@
     ./disk-configuration.nix
   ];
 
-  networking.hostName = hostname;
   services.power-profiles-daemon.enable = false;
   services.tlp.enable = true;
   hardware.graphics = {

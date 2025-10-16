@@ -1,10 +1,7 @@
-{
-  username,
-  ...
-}:
+{ username, ... }:
 
 {
-  users.${username} = {
+  persistence."/persist".users.${username} = {
     directories = [
       "Desktop"
       "Documents"

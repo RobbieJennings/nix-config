@@ -1,14 +1,4 @@
-{
-  hostname,
-  inputs,
-  ...
-}:
-
-{
-  config,
-  pkgs,
-  ...
-}:
+{ inputs, ... }:
 
 {
   imports = [
@@ -16,6 +6,4 @@
     ./hardware-configuration.nix
     ./disk-configuration.nix
   ];
-
-  networking.hostName = hostname;
 }

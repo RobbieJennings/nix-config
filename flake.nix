@@ -60,7 +60,6 @@
     let
       forAllSystems = inputs.nixpkgs.lib.genAttrs [
         "x86_64-linux"
-        "x86_64-darwin"
         "aarch64-linux"
       ];
       pkgs = forAllSystems (system: import inputs.nixpkgs { inherit system; });
@@ -95,58 +94,60 @@
       });
 
       nixosConfigurations = {
-        xps15 = mkSystem "x86_64-linux" [
-          { secrets.enable = true; }
-          { impermanence.enable = true; }
-          (mkPlatform {
-            path = ./platforms/desktop;
-          })
-          (mkHost {
-            path = ./hosts/xps15;
-            hostname = "xps15";
-          })
-          (mkUser {
-            path = ./users/desktop-admin;
-            username = "robbie";
-            gitUserName = "robbiejennings";
-            gitUserEmail = "robbie.jennings97@gmail.com";
-          })
-        ];
+        xps15 = mkSystem {
+          system = "x86_64-linux";
+          host = "xps15";
+          hostname = "xps15";
+          platform = "desktop";
+          impermanence.enable = true;
+          secrets.enable = true;
+          users = [
+            {
+              user = "desktop-admin";
+              username = "robbie";
+              gitUserName = "robbiejennings";
+              gitUserEmail = "robbie.jennings97@gmail.com";
+              secrets.enable = true;
+            }
+          ];
+        };
 
-        vmServer = mkSystem "x86_64-linux" [
-          (mkPlatform {
-            path = ./platforms/server;
-          })
-          (mkHost {
-            path = ./hosts/vm;
-            hostname = "vmServer";
-          })
-          (mkUser {
-            path = ./users/server-admin;
-            username = "robbie";
-            gitUserName = "robbiejennings";
-            gitUserEmail = "robbie.jennings97@gmail.com";
-          })
-        ];
+        vmServer = mkSystem {
+          system = "x86_64-linux";
+          host = "vm";
+          hostname = "vmServer";
+          platform = "server";
+          users = [
+            {
+              user = "server-admin";
+              username = "robbie";
+              gitUserName = "robbiejennings";
+              gitUserEmail = "robbie.jennings97@gmail.com";
+            }
+          ];
+        };
 
-        vmDesktop = mkSystem "x86_64-linux" [
-          { impermanence.enable = true; }
-          { auto-upgrade.enable = false; }
-          { server.enable = true; }
-          (mkPlatform {
-            path = ./platforms/desktop;
-          })
-          (mkHost {
-            path = ./hosts/vm;
-            hostname = "vmDesktop";
-          })
-          (mkUser {
-            path = ./users/desktop-admin;
-            username = "robbie";
-            gitUserName = "robbiejennings";
-            gitUserEmail = "robbie.jennings97@gmail.com";
-          })
-        ];
+        vmDesktop = mkSystem {
+          system = "x86_64-linux";
+          host = "vm";
+          hostname = "vmDesktop";
+          platform = "desktop";
+          impermanence.enable = true;
+          secrets.enable = true;
+          users = [
+            {
+              user = "desktop-admin";
+              username = "robbie";
+              gitUserName = "robbiejennings";
+              gitUserEmail = "robbie.jennings97@gmail.com";
+              secrets.enable = true;
+            }
+          ];
+          extra = {
+            auto-upgrade.enable = false;
+            server.enable = true;
+          };
+        };
       };
     };
 }

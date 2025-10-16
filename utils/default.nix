@@ -1,7 +1,4 @@
-{
-  inputs,
-  ...
-}:
+{ inputs, ... }:
 
 let
   overlays = import ../overlays { inherit inputs; };
@@ -10,6 +7,7 @@ let
   defaults = [
     inputs.home-manager.nixosModules.home-manager
     {
+      imports = [ nixosModules ];
       nix.settings = {
         auto-optimise-store = true;
         experimental-features = [
@@ -31,53 +29,88 @@ let
         useUserPackages = true;
         extraSpecialArgs = { inherit inputs homeManagerModules; };
       };
+      system.stateVersion = "25.05";
     }
   ];
 in
 {
   mkSystem =
-    system: modules:
+    {
+      system,
+      host,
+      platform,
+      hostname,
+      secrets ? {
+        enable = false;
+      },
+      impermanence ? {
+        enable = false;
+      },
+      users,
+      extra ? { },
+    }:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = { inherit inputs nixosModules; };
-      modules = defaults ++ modules;
-    };
-
-  mkPlatform =
-    {
-      path,
-    }:
-    import path {
-      inherit
-        inputs
-        ;
-    };
-
-  mkHost =
-    {
-      path,
-      hostname,
-    }:
-    import path {
-      inherit
-        inputs
-        hostname
-        ;
-    };
-
-  mkUser =
-    {
-      path,
-      username,
-      gitUserName ? null,
-      gitUserEmail ? null,
-    }:
-    import path {
-      inherit
-        inputs
-        username
-        gitUserName
-        gitUserEmail
-        ;
+      modules =
+        defaults
+        ++ [
+          (import ../hosts/${host} { inherit inputs; })
+          (import ../platforms/${platform} { inherit inputs; })
+          { inherit secrets impermanence; }
+          { networking.hostName = hostname; }
+          extra
+        ]
+        ++ builtins.map ({ user, username, ... }: import ../users/${user} { inherit username; }) users
+        ++ builtins.map (
+          {
+            username,
+            gitUserName,
+            gitUserEmail,
+            secrets ? {
+              enable = false;
+            },
+            ...
+          }:
+          { config, lib, ... }:
+          {
+            config = {
+              home-manager.users.${username} = {
+                inherit secrets;
+                imports = [ homeManagerModules ];
+                home = {
+                  inherit username;
+                  homeDirectory = "/home/${username}";
+                  stateVersion = "25.05";
+                };
+                programs = {
+                  home-manager.enable = true;
+                  git = {
+                    userName = gitUserName;
+                    userEmail = gitUserEmail;
+                  };
+                };
+              };
+            };
+          }
+        ) users
+        ++ (
+          if secrets.enable then
+            builtins.map (
+              { username, ... }:
+              { config, ... }:
+              {
+                config = {
+                  sops.secrets."passwords/${username}".neededForUsers = true;
+                  users.users.${username} = {
+                    initialPassword = null;
+                    hashedPasswordFile = config.sops.secrets."passwords/${username}".path;
+                  };
+                };
+              }
+            ) users
+          else
+            [ ]
+        );
     };
 }

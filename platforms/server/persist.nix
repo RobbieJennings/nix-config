@@ -1,11 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  inputs,
-  nixosModules,
-  ...
-}:
+{ config, lib, ... }:
 
 {
   config = lib.mkIf config.impermanence.enable {
