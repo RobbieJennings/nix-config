@@ -490,6 +490,58 @@ boolean
 
 
 
+## secrets\.kubernetes\.enable
+
+
+
+Whether to enable k3s token secret\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/kubernetes\.nix](../modules/nixos/server/kubernetes.nix)
+
+
+
+## secrets\.passwords\.enable
+
+
+
+Whether to enable user password secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/core/secrets\.nix](../modules/nixos/core/secrets.nix)
+
+
+
 ## server\.enable
 
 

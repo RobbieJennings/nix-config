@@ -802,6 +802,84 @@ boolean
 
 
 
+## secrets\.rclone\.enable
+
+
+
+Whether to enable rclone google drive secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/backup/rclone\.nix](../modules/home-manager/backup/rclone.nix)
+
+
+
+## secrets\.restic\.enable
+
+
+
+Whether to enable restic repository secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/backup/restic\.nix](../modules/home-manager/backup/restic.nix)
+
+
+
+## secrets\.vuescan\.enable
+
+
+
+Whether to enable vuescan license secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/home-manager/editing/vuescan\.nix](../modules/home-manager/editing/vuescan.nix)
+
+
+
 ## utilities\.enable
 
 
