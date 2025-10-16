@@ -24,7 +24,7 @@
         if config.impermanence.enable then
           lib.mkDefault [ "/persist/root/.ssh/id_ed25519" ]
         else
-          lib.mkDefault [ "/.ssh/id_ed25510" ];
+          lib.mkDefault [ "/root/.ssh/id_ed25510" ];
     };
   };
 }
