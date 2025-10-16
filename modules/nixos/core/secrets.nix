@@ -9,6 +9,7 @@
 {
   options = {
     secrets.enable = lib.mkEnableOption "importing secrets using sops-nix";
+    secrets.passwords.enable = lib.mkEnableOption "user password secrets";
   };
 
   config = lib.mkIf config.secrets.enable {

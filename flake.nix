@@ -100,14 +100,22 @@
           hostname = "xps15";
           platform = "desktop";
           impermanence.enable = true;
-          secrets.enable = true;
+          secrets = {
+            enable = true;
+            passwords.enable = true;
+          };
           users = [
             {
               user = "desktop-admin";
               username = "robbie";
               gitUserName = "robbiejennings";
               gitUserEmail = "robbie.jennings97@gmail.com";
-              secrets.enable = true;
+              secrets = {
+                enable = true;
+                vuescan.enable = true;
+                rclone.enable = true;
+                restic.enable = true;
+              };
             }
           ];
         };
@@ -133,14 +141,23 @@
           hostname = "vmDesktop";
           platform = "desktop";
           impermanence.enable = true;
-          secrets.enable = true;
+          secrets = {
+            enable = true;
+            passwords.enable = true;
+            kubernetes.enable = true;
+          };
           users = [
             {
               user = "desktop-admin";
               username = "robbie";
               gitUserName = "robbiejennings";
               gitUserEmail = "robbie.jennings97@gmail.com";
-              secrets.enable = true;
+              secrets = {
+                enable = true;
+                vuescan.enable = true;
+                rclone.enable = true;
+                restic.enable = true;
+              };
             }
           ];
           extra = {

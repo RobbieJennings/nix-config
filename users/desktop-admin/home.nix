@@ -1,7 +1,6 @@
 { lib, pkgs, ... }:
 
 {
-  imports = [ ./secrets.nix ];
   programs.git.enable = true;
   cosmic-manager.enable = lib.mkDefault true;
   plasma-manager.enable = lib.mkDefault true;

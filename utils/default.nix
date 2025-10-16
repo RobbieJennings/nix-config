@@ -74,43 +74,34 @@ in
           }:
           { config, lib, ... }:
           {
-            config = {
-              home-manager.users.${username} = {
-                inherit secrets;
-                imports = [ homeManagerModules ];
-                home = {
-                  inherit username;
-                  homeDirectory = "/home/${username}";
-                  stateVersion = "25.05";
-                };
-                programs = {
-                  home-manager.enable = true;
-                  git = {
-                    userName = gitUserName;
-                    userEmail = gitUserEmail;
-                  };
-                };
-              };
-            };
-          }
-        ) users
-        ++ (
-          if secrets.enable then
-            builtins.map (
-              { username, ... }:
-              { config, ... }:
+            config = lib.mkMerge [
               {
-                config = {
-                  sops.secrets."passwords/${username}".neededForUsers = true;
-                  users.users.${username} = {
-                    initialPassword = null;
-                    hashedPasswordFile = config.sops.secrets."passwords/${username}".path;
+                home-manager.users.${username} = {
+                  inherit secrets;
+                  imports = [ homeManagerModules ];
+                  home = {
+                    inherit username;
+                    homeDirectory = "/home/${username}";
+                    stateVersion = "25.05";
+                  };
+                  programs = {
+                    home-manager.enable = true;
+                    git = {
+                      userName = gitUserName;
+                      userEmail = gitUserEmail;
+                    };
                   };
                 };
               }
-            ) users
-          else
-            [ ]
-        );
+              (lib.mkIf (config.secrets.enable && config.secrets.passwords.enable) {
+                sops.secrets."passwords/${username}".neededForUsers = true;
+                users.users.${username} = {
+                  initialPassword = null;
+                  hashedPasswordFile = config.sops.secrets."passwords/${username}".path;
+                };
+              })
+            ];
+          }
+        ) users;
     };
 }

@@ -9,6 +9,7 @@
 {
   options = {
     backup.restic.enable = lib.mkEnableOption "restic backups";
+    secrets.restic.enable = lib.mkEnableOption "restic repository secrets";
   };
 
   config = lib.mkMerge [
@@ -19,7 +20,11 @@
       ];
     })
 
-    (lib.mkIf (config.backup.restic.enable && config.secrets.enable) {
+    (lib.mkIf (config.backup.restic.enable && config.secrets.enable && config.secrets.restic.enable) {
+      sops.secrets = {
+        "restic/repository" = { };
+        "restic/password" = { };
+      };
       services.restic = {
         enable = true;
         backups.daily = {
