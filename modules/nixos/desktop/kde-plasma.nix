@@ -21,6 +21,7 @@
       };
     };
 
+    programs.partition-manager.enable = true;
     environment.systemPackages = [
       (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
         [General]
@@ -29,7 +30,12 @@
       pkgs.kdePackages.spectacle
       pkgs.kdePackages.discover
       pkgs.kdePackages.krdp
+      pkgs.kdePackages.krdc
       pkgs.kdePackages.kalk
+      pkgs.snapshot
+      pkgs.kdePackages.skanpage
+      pkgs.kdePackages.isoimagewriter
+      pkgs.kdePackages.filelight
     ];
   };
 }
