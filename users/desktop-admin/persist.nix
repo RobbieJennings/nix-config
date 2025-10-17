@@ -27,6 +27,8 @@
       ".local/share/flatpak"
       ".local/share/Steam"
       ".local/share/PrismLauncher"
+      ".local/state/cosmic"
+      ".local/state/cosmic-comp"
       ".config"
       ".var"
     ];
