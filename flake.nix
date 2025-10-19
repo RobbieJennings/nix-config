@@ -53,6 +53,11 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -141,11 +146,6 @@
           hostname = "vmDesktop";
           platform = "desktop";
           impermanence.enable = true;
-          secrets = {
-            enable = true;
-            passwords.enable = true;
-            kubernetes.enable = true;
-          };
           users = [
             {
               user = "desktop-admin";
@@ -155,8 +155,22 @@
             }
           ];
           extra = {
-            auto-upgrade.enable = false;
-            server.enable = true;
+            config = {
+              auto-upgrade.enable = false;
+              desktop.cosmic-desktop.enable = false;
+              desktop.kde-plasma.enable = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.robbie = {
+                imports = [ inputs.stylix.homeModules.stylix ];
+                plasma-manager = {
+                  enable = false;
+                };
+                stylix = {
+                  enable = false;
+                  base16Scheme = "${pkgs."x86_64-linux".base16-schemes}/share/themes/gruvbox-dark.yaml";
+                };
+              };
+            };
           };
         };
       };
