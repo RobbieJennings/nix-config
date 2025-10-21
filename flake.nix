@@ -146,30 +146,34 @@
           hostname = "vmDesktop";
           platform = "desktop";
           impermanence.enable = true;
+          theme = {
+            enable = false;
+            image = {
+              url = "https://raw.githubusercontent.com/AngelJumbo/gruvbox-wallpapers/refs/heads/main/wallpapers/photography/forest-2.jpg";
+              hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
+            };
+          };
           users = [
             {
               user = "desktop-admin";
               username = "robbie";
               gitUserName = "robbiejennings";
               gitUserEmail = "robbie.jennings97@gmail.com";
+              theme = {
+                enable = false;
+                image = {
+                  url = "https://raw.githubusercontent.com/AngelJumbo/gruvbox-wallpapers/refs/heads/main/wallpapers/photography/forest-2.jpg";
+                  hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
+                };
+                base16Scheme = "catppuccin-mocha";
+              };
             }
           ];
           extra = {
             config = {
               auto-upgrade.enable = false;
-              desktop.cosmic-desktop.enable = false;
-              desktop.kde-plasma.enable = true;
-              home-manager.backupFileExtension = "backup";
-              home-manager.users.robbie = {
-                imports = [ inputs.stylix.homeModules.stylix ];
-                plasma-manager = {
-                  enable = false;
-                };
-                stylix = {
-                  enable = false;
-                  base16Scheme = "${pkgs."x86_64-linux".base16-schemes}/share/themes/gruvbox-dark.yaml";
-                };
-              };
+              # desktop.cosmic-desktop.enable = false;
+              # desktop.kde-plasma.enable = true;
             };
           };
         };

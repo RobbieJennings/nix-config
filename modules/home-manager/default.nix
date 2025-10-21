@@ -12,6 +12,7 @@
     inputs.nix-flatpak.homeManagerModules.nix-flatpak
     inputs.plasma-manager.homeModules.plasma-manager
     inputs.cosmic-manager.homeManagerModules.cosmic-manager
+    inputs.stylix.homeModules.stylix
     ./utilities
     ./backup
     ./web
@@ -21,9 +22,11 @@
     ./plasma-manager
     ./cosmic-manager
     ./secrets
+    ../nixos/core/theme.nix
   ];
 
   config = {
+    theme.enable = lib.mkDefault true;
     home.packages = with pkgs; [
       inter
       nerd-fonts.jetbrains-mono

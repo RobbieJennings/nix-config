@@ -9,7 +9,7 @@
 {
   options = {
     bootloader.enable = lib.mkEnableOption "systemd-boot bootloader";
-    bootloader.pretty = lib.mkEnableOption "silent boot with breeze theme";
+    bootloader.pretty = lib.mkEnableOption "silent boot with plymouth";
   };
 
   config = lib.mkMerge [
@@ -27,10 +27,7 @@
           systemd.enable = true;
           verbose = false;
         };
-        plymouth = {
-          enable = true;
-          theme = lib.mkDefault "breeze";
-        };
+        plymouth.enable = true;
         kernelParams = [ "quiet" ];
       };
     })

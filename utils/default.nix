@@ -23,12 +23,13 @@ let
           overlays.unstable-packages
         ];
       };
-      users.mutableUsers = false;
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = { inherit inputs homeManagerModules; };
+        backupFileExtension = "backup";
       };
+      users.mutableUsers = false;
       system.stateVersion = "25.05";
     }
   ];
@@ -40,12 +41,9 @@ in
       host,
       platform,
       hostname,
-      secrets ? {
-        enable = false;
-      },
-      impermanence ? {
-        enable = false;
-      },
+      secrets ? { },
+      impermanence ? { },
+      theme ? { },
       users,
       extra ? { },
     }:
@@ -57,7 +55,7 @@ in
         ++ [
           (import ../hosts/${host} { inherit inputs; })
           (import ../platforms/${platform} { inherit inputs; })
-          { inherit secrets impermanence; }
+          { inherit secrets impermanence theme; }
           { networking.hostName = hostname; }
           extra
         ]
@@ -67,9 +65,8 @@ in
             username,
             gitUserName,
             gitUserEmail,
-            secrets ? {
-              enable = false;
-            },
+            secrets ? { },
+            theme ? { },
             ...
           }:
           { config, lib, ... }:
@@ -77,7 +74,7 @@ in
             config = lib.mkMerge [
               {
                 home-manager.users.${username} = {
-                  inherit secrets;
+                  inherit secrets theme;
                   imports = [ homeManagerModules ];
                   home = {
                     inherit username;

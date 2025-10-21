@@ -9,6 +9,7 @@ let
   eval = lib.evalModules {
     modules = [
       { _module.check = false; }
+      ../modules/nixos/core/theme.nix
       ../modules/home-manager/cosmic-manager
       ../modules/home-manager/development
       ../modules/home-manager/gaming

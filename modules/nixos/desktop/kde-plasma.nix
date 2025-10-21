@@ -23,10 +23,6 @@
 
     programs.partition-manager.enable = true;
     environment.systemPackages = [
-      (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
-        [General]
-        background=${pkgs.gruvbox-wallpapers}/wallpapers/irl/forest-2.jpg
-      '')
       pkgs.kdePackages.spectacle
       pkgs.kdePackages.discover
       pkgs.kdePackages.krdp
@@ -36,6 +32,24 @@
       pkgs.kdePackages.skanpage
       pkgs.kdePackages.isoimagewriter
       pkgs.kdePackages.filelight
+    ]
+    ++ (
+      if config.theme.enable then
+        [
+          (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+            [General]
+            background=${(pkgs.fetchurl config.theme.image)}
+          '')
+        ]
+      else
+        [ ]
+    );
+
+    stylix.targets.qt.enable = lib.mkForce false;
+    home-manager.sharedModules = [
+      {
+        stylix.targets.qt.enable = lib.mkForce false;
+      }
     ];
   };
 }
