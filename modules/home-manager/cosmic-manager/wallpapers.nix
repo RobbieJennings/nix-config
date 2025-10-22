@@ -12,7 +12,7 @@
     cosmic-manager.wallpapers.enable = lib.mkEnableOption "cosmic-manager wallpapers customisations";
   };
 
-  config = lib.mkIf config.cosmic-manager.wallpapers.enable {
+  config = lib.mkIf (config.theme.enable && config.cosmic-manager.wallpapers.enable) {
     wayland.desktopManager.cosmic.wallpapers = [
       {
         filter_by_theme = true;
@@ -22,9 +22,7 @@
         sampling_method = cosmicLib.cosmic.mkRON "enum" "Alphanumeric";
         scaling_mode = cosmicLib.cosmic.mkRON "enum" "Zoom";
         source = cosmicLib.cosmic.mkRON "enum" {
-          value = [
-            "${pkgs.gruvbox-wallpapers}/wallpapers/irl/forest-2.jpg"
-          ];
+          value = [ "${(pkgs.fetchurl config.theme.image)}" ];
           variant = "Path";
         };
       }

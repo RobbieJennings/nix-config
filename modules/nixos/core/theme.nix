@@ -76,9 +76,9 @@
               };
               default = {
                 package = pkgs.nerd-fonts.jetbrains-mono;
-                name = "Nerd Font Jetbrains Mono";
+                name = "JetBrainsMono Nerd Font Mono";
               };
-              defaultText = lib.literalExpression "Nerd Font Jetbrains Mono";
+              defaultText = lib.literalExpression "JetBrainsMono Nerd Font Mono";
               description = "The font to use for the terminal";
             };
             emoji = lib.mkOption {

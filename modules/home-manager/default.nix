@@ -26,10 +26,10 @@
   ];
 
   config = {
-    theme.enable = lib.mkDefault true;
-    home.packages = with pkgs; [
-      inter
-      nerd-fonts.jetbrains-mono
+    home.packages = [
+      config.theme.fonts.interface.package
+      config.theme.fonts.monospace.package
+      config.theme.fonts.emoji.package
     ];
   };
 }
