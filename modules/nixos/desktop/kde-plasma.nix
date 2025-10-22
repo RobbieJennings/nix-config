@@ -45,11 +45,11 @@
         [ ]
     );
 
-    # Let plasma manage qt, use kde target for plasma
     stylix.targets.qt.enable = lib.mkForce false;
     home-manager.sharedModules = [
       {
         stylix.targets.qt.enable = lib.mkForce false;
+        plasma-manager.enable = lib.mkDefault true;
       }
     ];
   };

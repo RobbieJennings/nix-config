@@ -32,11 +32,11 @@
       pkgs.gnome-connections # remote desktop client
     ];
 
-    # Let cosmic manage GTK, use cosmic-manager for cosmic
     stylix.targets.gtk.enable = lib.mkForce false;
     home-manager.sharedModules = [
       {
         stylix.targets.gtk.enable = lib.mkForce false;
+        cosmic-manager.enable = lib.mkDefault true;
       }
     ];
   };
