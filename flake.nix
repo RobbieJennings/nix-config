@@ -121,6 +121,12 @@
                 rclone.enable = true;
                 restic.enable = true;
               };
+              theme = {
+                image = {
+                  url = "https://raw.githubusercontent.com/AngelJumbo/gruvbox-wallpapers/refs/heads/main/wallpapers/photography/forest-2.jpg";
+                  hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
+                };
+              };
             }
           ];
         };
@@ -153,10 +159,6 @@
               gitUserName = "robbiejennings";
               gitUserEmail = "robbie.jennings97@gmail.com";
               theme = {
-                image = {
-                  url = "https://raw.githubusercontent.com/AngelJumbo/gruvbox-wallpapers/refs/heads/main/wallpapers/photography/forest-2.jpg";
-                  hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
-                };
                 base16Scheme = "tokyo-night-dark";
               };
             }
@@ -164,8 +166,6 @@
           extra = {
             config = {
               auto-upgrade.enable = false;
-              # desktop.cosmic-desktop.enable = false;
-              # desktop.kde-plasma.enable = true;
             };
           };
         };
