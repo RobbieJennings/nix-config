@@ -865,7 +865,7 @@ submodule
 
 
 *Default:*
-` Nerd Font Jetbrains Mono `
+` JetBrainsMono Nerd Font Mono `
 
 *Declared by:*
  - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
