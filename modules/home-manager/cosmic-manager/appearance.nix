@@ -100,8 +100,8 @@ in
         theme = {
           mode = "${config.theme.polarity}";
           "${config.theme.polarity}" = {
-            accent = stylix2Cosmic "base0F";
-            windowHint = stylix2Cosmic "base0F";
+            accent = stylix2Cosmic "base04";
+            windowHint = stylix2Cosmic "base04";
             neutral_tint = stylix2Cosmic "base02";
             text_tint = stylix2Cosmic "base05";
             success = stylix2Cosmic "base0B";
