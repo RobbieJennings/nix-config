@@ -702,7 +702,7 @@ boolean
 
 
 
-yaml filename of base16 colour scheme found in pkgs\.base16-schemse/share/themes
+tinted theming colour scheme
 
 
 
@@ -957,6 +957,27 @@ Download URL
 
 *Type:*
 string
+
+*Declared by:*
+ - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+
+
+
+## theme\.polarity
+
+
+
+light or dark theme
+
+
+
+*Type:*
+one of “light”, “dark”
+
+
+
+*Default:*
+` "dark" `
 
 *Declared by:*
  - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)

@@ -158,9 +158,6 @@
               username = "robbie";
               gitUserName = "robbiejennings";
               gitUserEmail = "robbie.jennings97@gmail.com";
-              theme = {
-                base16Scheme = "tokyo-night-dark";
-              };
             }
           ];
           extra = {

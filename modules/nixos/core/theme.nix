@@ -11,10 +11,19 @@
     theme = {
       enable = lib.mkEnableOption "stylix theme";
 
+      polarity = lib.mkOption {
+        type = lib.types.enum [
+          "light"
+          "dark"
+        ];
+        default = "dark";
+        description = "light or dark theme";
+      };
+
       base16Scheme = lib.mkOption {
         type = lib.types.str;
         default = "default-dark";
-        description = "yaml filename of base16 colour scheme found in pkgs.base16-schemse/share/themes";
+        description = "tinted theming colour scheme";
         example = "catppuccin-mocha";
       };
 
@@ -112,6 +121,7 @@
   config = lib.mkIf config.theme.enable {
     stylix = {
       enable = true;
+      inherit (config.theme.polarity) ;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.theme.base16Scheme}.yaml";
       image = pkgs.fetchurl config.theme.image;
       fonts = {
