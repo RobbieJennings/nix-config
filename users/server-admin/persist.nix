@@ -21,5 +21,9 @@
       ".config"
       ".var"
     ];
+    files = [
+      ".bash_history"
+      ".zsh_history"
+    ];
   };
 }

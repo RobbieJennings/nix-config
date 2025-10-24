@@ -31,6 +31,11 @@
       ".local/state/cosmic-comp"
       ".config"
       ".var"
+      ".vscode-oss/extensions"
+    ];
+    files = [
+      ".bash_history"
+      ".zsh_history"
     ];
   };
 }
