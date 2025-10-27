@@ -126,7 +126,7 @@
                   url = "https://raw.githubusercontent.com/AngelJumbo/gruvbox-wallpapers/refs/heads/main/wallpapers/photography/forest-2.jpg";
                   hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
                 };
-                base16Scheme = "gruvbox-dark-medium";
+                base16Scheme = "gruvbox-material-dark-hard";
               };
             }
           ];
