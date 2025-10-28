@@ -67,6 +67,7 @@ in
             gitUserEmail,
             secrets ? { },
             theme ? { },
+            extra ? { },
             ...
           }:
           { config, lib, ... }:
@@ -88,7 +89,8 @@ in
                       userEmail = gitUserEmail;
                     };
                   };
-                };
+                }
+                // extra;
               }
               (lib.mkIf (config.secrets.enable && config.secrets.passwords.enable) {
                 sops.secrets."passwords/${username}".neededForUsers = true;
