@@ -132,7 +132,7 @@
           ];
         };
 
-        vm = mkSystem {
+        nixos-vm = mkSystem {
           system = "x86_64-linux";
           host = "vm";
           hostname = "nixos-vm";
