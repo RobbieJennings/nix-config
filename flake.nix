@@ -132,25 +132,10 @@
           ];
         };
 
-        vmServer = mkSystem {
+        vm = mkSystem {
           system = "x86_64-linux";
           host = "vm";
-          hostname = "vmServer";
-          platform = "server";
-          users = [
-            {
-              user = "server-admin";
-              username = "robbie";
-              gitUserName = "robbiejennings";
-              gitUserEmail = "robbie.jennings97@gmail.com";
-            }
-          ];
-        };
-
-        vmDesktop = mkSystem {
-          system = "x86_64-linux";
-          host = "vm";
-          hostname = "vmDesktop";
+          hostname = "nixos-vm";
           platform = "desktop";
           impermanence.enable = true;
           users = [
@@ -163,6 +148,7 @@
           ];
           extra = {
             config = {
+              server.enable = true;
               auto-upgrade.enable = false;
             };
           };
