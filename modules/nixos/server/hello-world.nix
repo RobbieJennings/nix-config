@@ -28,48 +28,39 @@ in
         repo = "https://helm.github.io/examples";
         version = "0.1.0";
         hash = "sha256-U2XjNEWE82/Q3KbBvZLckXbtjsXugUbK6KdqT5kCccM=";
-        # configure the chart values like you would do in values.yaml
+        createNamespace = true;
+        targetNamespace = "hello-world";
         values = {
           image = {
             repository = image.imageName;
             tag = image.imageTag;
           };
-          serviceAccount.create = false;
         };
-        # Deploy additional resources that are not part of the Helm chart. This is especially useful
-        # for CRDs that shouldn't be managed by Helm.
         extraDeploy = [
           {
-            apiVersion = "networking.k8s.io/v1";
-            kind = "Ingress";
+            apiVersion = "v1";
+            kind = "Service";
             metadata = {
-              name = "hello-world";
-              annotations."traefik.ingress.kubernetes.io/router.middlewares" =
-                "default-hello-world-strip-prefix@kubernetescrd";
+              name = "hello-world-tcp";
+              namespace = "hello-world";
+              annotations = {
+                "metallb.universe.tf/address-pool" = "default";
+              };
             };
             spec = {
-              ingressClassName = "traefik";
-              rules = [
+              type = "LoadBalancer";
+              loadBalancerIP = "192.168.0.201";
+              selector = {
+                "app.kubernetes.io/name" = "hello-world";
+              };
+              ports = [
                 {
-                  http.paths = [
-                    {
-                      path = "/hello";
-                      pathType = "Exact";
-                      backend.service = {
-                        name = "hello-world";
-                        port.number = 80;
-                      };
-                    }
-                  ];
+                  port = 80;
+                  targetPort = 80;
+                  protocol = "TCP";
                 }
               ];
             };
-          }
-          {
-            apiVersion = "traefik.io/v1alpha1";
-            kind = "Middleware";
-            metadata.name = "hello-world-strip-prefix";
-            spec.stripPrefix.prefixes = [ "/hello" ];
           }
         ];
       };

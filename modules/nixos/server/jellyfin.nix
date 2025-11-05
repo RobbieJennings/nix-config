@@ -16,43 +16,70 @@
       autoDeployCharts.jellyfin = {
         name = "jellyfin";
         repo = "https://jellyfin.github.io/jellyfin-helm";
-        version = "2.3.0";
-        hash = "sha256-6ZEHzD7GqLytHoyIYQFYcKlN4yXwwpK6ZikXR2iOvW8=";
+        version = "2.5.0";
+        hash = "sha256-GzyLqPAXGQTVICEeq9RnWs9IF4ceqp9WZR3XLgEEsPU=";
+        targetNamespace = "jellyfin";
+        createNamespace = true;
         values = {
-
+          # TODO
         };
         extraDeploy = [
           {
-            apiVersion = "networking.k8s.io/v1";
-            kind = "Ingress";
+            apiVersion = "v1";
+            kind = "Service";
             metadata = {
-              name = "jellyfin";
-              annotations."traefik.ingress.kubernetes.io/router.middlewares" =
-                "default-jellyfin-strip-prefix@kubernetescrd";
+              name = "jellyfin-tcp";
+              namespace = "jellyfin";
+              annotations = {
+                "metallb.universe.tf/address-pool" = "default";
+                "metallb.universe.tf/allow-shared-ip" = "jellyfin-shared";
+              };
             };
             spec = {
-              ingressClassName = "traefik";
-              rules = [
+              type = "LoadBalancer";
+              loadBalancerIP = "192.168.0.203";
+              selector = {
+                "app.kubernetes.io/name" = "jellyfin";
+              };
+              ports = [
                 {
-                  http.paths = [
-                    {
-                      path = "/jellyfin";
-                      pathType = "Exact";
-                      backend.service = {
-                        name = "jellyfin";
-                        port.number = 8096;
-                      };
-                    }
-                  ];
+                  port = 80;
+                  targetPort = 8096;
+                  protocol = "TCP";
                 }
               ];
             };
           }
           {
-            apiVersion = "traefik.io/v1alpha1";
-            kind = "Middleware";
-            metadata.name = "jellyfin-strip-prefix";
-            spec.stripPrefix.prefixes = [ "/jellyfin" ];
+            apiVersion = "v1";
+            kind = "Service";
+            metadata = {
+              name = "jellyfin-udp";
+              namespace = "jellyfin";
+              annotations = {
+                "metallb.universe.tf/address-pool" = "default";
+                "metallb.universe.tf/allow-shared-ip" = "jellyfin-shared";
+              };
+            };
+            spec = {
+              type = "LoadBalancer";
+              loadBalancerIP = "192.168.0.202";
+              selector = {
+                "app.kubernetes.io/name" = "jellyfin";
+              };
+              ports = [
+                {
+                  port = 1900;
+                  targetPort = 1900;
+                  protocol = "UDP";
+                }
+                {
+                  port = 7359;
+                  targetPort = 7359;
+                  protocol = "UDP";
+                }
+              ];
+            };
           }
         ];
       };

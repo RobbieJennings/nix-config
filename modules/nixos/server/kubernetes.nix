@@ -17,10 +17,7 @@
       services.k3s = {
         enable = true;
         images = [ config.services.k3s.package.airgapImages ];
-        extraFlags = [
-          "--embedded-registry"
-          "--disable metrics-server"
-        ];
+        extraFlags = [ "--embedded-registry" ];
       };
     })
     (lib.mkIf

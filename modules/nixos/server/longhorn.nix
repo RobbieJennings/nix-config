@@ -12,49 +12,50 @@
   };
 
   config = lib.mkIf config.server.longhorn.enable {
+    services.openiscsi = {
+      enable = true;
+      name = "${config.networking.hostName}-initiatorhost";
+    };
+    systemd.services.iscsid.serviceConfig = {
+      PrivateMounts = "yes";
+      BindPaths = "/run/current-system/sw/bin:/bin";
+    };
     services.k3s = {
       autoDeployCharts.longhorn = {
         name = "longhorn";
         repo = "https://charts.longhorn.io";
-        version = "1.8.1";
-        hash = "sha256-cc3U1SSSb8LxWHAzSAz5d97rTfL7cDfxc+qOjm8c3CA=";
+        version = "1.10.0";
+        hash = "sha256-K+nao6QNuX6R/WoyrtCly9kXvUHwsA3h5o8KmOajqAs=";
         createNamespace = true;
         targetNamespace = "longhorn-system";
         values = {
-
+          # TODO
         };
         extraDeploy = [
           {
-            apiVersion = "networking.k8s.io/v1";
-            kind = "Ingress";
+            apiVersion = "v1";
+            kind = "Service";
             metadata = {
-              name = "longhorn";
-              annotations."traefik.ingress.kubernetes.io/router.middlewares" =
-                "default-longhorn-strip-prefix@kubernetescrd";
+              name = "longhorn-tcp";
+              namespace = "longhorn-system";
+              annotations = {
+                "metallb.universe.tf/address-pool" = "default";
+              };
             };
             spec = {
-              ingressClassName = "traefik";
-              rules = [
+              type = "LoadBalancer";
+              loadBalancerIP = "192.168.0.202";
+              selector = {
+                "app" = "longhorn-ui";
+              };
+              ports = [
                 {
-                  http.paths = [
-                    {
-                      path = "/longhorn";
-                      pathType = "Exact";
-                      backend.service = {
-                        name = "longhorn";
-                        port.number = 80;
-                      };
-                    }
-                  ];
+                  port = 80;
+                  targetPort = 8000;
+                  protocol = "TCP";
                 }
               ];
             };
-          }
-          {
-            apiVersion = "traefik.io/v1alpha1";
-            kind = "Middleware";
-            metadata.name = "longhorn-strip-prefix";
-            spec.stripPrefix.prefixes = [ "/longhorn" ];
           }
         ];
       };

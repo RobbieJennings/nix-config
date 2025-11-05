@@ -9,8 +9,9 @@
 {
   imports = [
     ./kubernetes.nix
-    ./hello-world.nix
+    ./metallb.nix
     ./longhorn.nix
+    ./hello-world.nix
     ./jellyfin.nix
   ];
 
@@ -21,8 +22,9 @@
   config = lib.mkIf config.server.enable {
     server = {
       kubernetes.enable = lib.mkDefault true;
-      hello-world.enable = lib.mkDefault true;
+      metallb.enable = lib.mkDefault true;
       longhorn.enable = lib.mkDefault true;
+      hello-world.enable = lib.mkDefault true;
       jellyfin.enable = lib.mkDefault true;
     };
   };
