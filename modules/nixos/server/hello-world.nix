@@ -28,9 +28,10 @@ in
         repo = "https://helm.github.io/examples";
         version = "0.1.0";
         hash = "sha256-U2XjNEWE82/Q3KbBvZLckXbtjsXugUbK6KdqT5kCccM=";
-        createNamespace = true;
         targetNamespace = "hello-world";
+        createNamespace = true;
         values = {
+          replicaCount = 1;
           image = {
             repository = image.imageName;
             tag = image.imageTag;
@@ -49,7 +50,7 @@ in
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.0.201";
+              loadBalancerIP = "192.168.0.200";
               selector = {
                 "app.kubernetes.io/name" = "hello-world";
               };

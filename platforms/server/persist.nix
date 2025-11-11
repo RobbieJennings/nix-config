@@ -8,6 +8,8 @@
         "/var/log"
         "/var/lib/nixos"
         "/var/lib/systemd/coredump"
+        "/var/lib/rancher/k3s"
+        "/var/lib/longhorn"
         "/etc/NetworkManager/system-connections"
         "/var/lib/libvirt"
         "/etc/nixos"

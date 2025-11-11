@@ -18,10 +18,20 @@
         repo = "https://jellyfin.github.io/jellyfin-helm";
         version = "2.5.0";
         hash = "sha256-GzyLqPAXGQTVICEeq9RnWs9IF4ceqp9WZR3XLgEEsPU=";
-        targetNamespace = "jellyfin";
+        targetNamespace = "media";
         createNamespace = true;
         values = {
-          # TODO
+          replicaCount = 1;
+          persistence.config = {
+            enabled = true;
+            accessMode = "ReadWriteOnce";
+            size = "5Gi";
+          };
+          persistence.media = {
+            enabled = true;
+            accessMode = "ReadWriteMany";
+            size = "25Gi";
+          };
         };
         extraDeploy = [
           {
@@ -29,7 +39,7 @@
             kind = "Service";
             metadata = {
               name = "jellyfin-tcp";
-              namespace = "jellyfin";
+              namespace = "media";
               annotations = {
                 "metallb.universe.tf/address-pool" = "default";
                 "metallb.universe.tf/allow-shared-ip" = "jellyfin-shared";
@@ -37,7 +47,7 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.0.203";
+              loadBalancerIP = "192.168.0.202";
               selector = {
                 "app.kubernetes.io/name" = "jellyfin";
               };
@@ -55,7 +65,7 @@
             kind = "Service";
             metadata = {
               name = "jellyfin-udp";
-              namespace = "jellyfin";
+              namespace = "media";
               annotations = {
                 "metallb.universe.tf/address-pool" = "default";
                 "metallb.universe.tf/allow-shared-ip" = "jellyfin-shared";

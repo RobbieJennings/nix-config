@@ -13,7 +13,6 @@
 
   config = lib.mkIf config.server.metallb.enable {
     services.k3s = {
-      extraFlags = [ "--disable=servicelb" ];
       autoDeployCharts.metallb = {
         name = "metallb";
         repo = "https://metallb.github.io/metallb";
@@ -21,9 +20,6 @@
         hash = "sha256-Tw/DE82XgZoceP/wo4nf4cn5i8SQ8z9SExdHXfHXuHM=";
         targetNamespace = "metallb-system";
         createNamespace = true;
-        values = {
-          # TODO
-        };
         extraDeploy = [
           {
             apiVersion = "metallb.io/v1beta1";
