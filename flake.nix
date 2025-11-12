@@ -150,6 +150,10 @@
             config = {
               server.enable = true;
               auto-upgrade.enable = false;
+              environment.persistence."/persist".directories = [
+                "/var/lib/rancher/k3s"
+                "/var/lib/longhorn"
+              ];
             };
           };
         };
