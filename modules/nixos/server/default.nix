@@ -9,9 +9,9 @@
 {
   imports = [
     ./kubernetes.nix
+    ./longhorn.nix
+    ./metallb.nix
     ./hello-world.nix
-    ./load-balancing
-    ./storage
     ./media
   ];
 
@@ -22,9 +22,9 @@
   config = lib.mkIf config.server.enable {
     server = {
       kubernetes.enable = lib.mkDefault true;
+      longhorn.enable = lib.mkDefault true;
+      metallb.enable = lib.mkDefault true;
       hello-world.enable = lib.mkDefault true;
-      load-balancing.enable = lib.mkDefault true;
-      storage.enable = lib.mkDefault true;
       media.enable = lib.mkDefault true;
     };
   };

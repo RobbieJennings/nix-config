@@ -8,10 +8,10 @@
 
 {
   options = {
-    server.storage.longhorn.enable = lib.mkEnableOption "longhorn helm chart on k3s";
+    server.longhorn.enable = lib.mkEnableOption "longhorn helm chart on k3s";
   };
 
-  config = lib.mkIf (config.server.storage.enable && config.server.storage.longhorn.enable) {
+  config = lib.mkIf config.server.longhorn.enable {
     systemd.tmpfiles.rules = [
       "L+ /usr/local/bin - - - - /run/current-system/sw/bin/"
     ];
