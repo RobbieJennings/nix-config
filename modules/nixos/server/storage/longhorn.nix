@@ -8,14 +8,14 @@
 
 {
   options = {
-    server.longhorn.enable = lib.mkEnableOption "longhorn helm chart on k3s";
+    server.storage.longhorn.enable = lib.mkEnableOption "longhorn helm chart on k3s";
   };
 
-  config = lib.mkIf config.server.longhorn.enable {
+  config = lib.mkIf (config.server.storage.enable && config.server.storage.longhorn.enable) {
     systemd.tmpfiles.rules = [
       "L+ /usr/local/bin - - - - /run/current-system/sw/bin/"
     ];
-    environment.systemPackages = [ 
+    environment.systemPackages = [
       pkgs.util-linux
       pkgs.nfs-utils
     ];
@@ -32,24 +32,28 @@
         targetNamespace = "longhorn-system";
         createNamespace = true;
         values = {
-          defaultSettings.defaultReplicaCount	=  "1";
-          persistence.reclaimPolicy = "Retain";
-          persistence.defaultClassReplicaCount = 1;
+          defaultSettings.defaultReplicaCount = "1";
           longhornUI.replicas = 1;
-          csi.attacherReplicaCount = "1";
-          csi.provisionerReplicaCount = "1";
-          csi.resizerReplicaCount = "1";
-          csi.snapshotterReplicaCount = "1";
+          persistence = {
+            defaultClassReplicaCount = 1;
+            reclaimPolicy = "Retain";
+          };
+          csi = {
+            attacherReplicaCount = "1";
+            provisionerReplicaCount = "1";
+            resizerReplicaCount = "1";
+            snapshotterReplicaCount = "1";
+          };
         };
         extraDeploy = [
           {
             apiVersion = "v1";
             kind = "Service";
             metadata = {
-              name = "longhorn-tcp";
+              name = "longhorn-lb";
               namespace = "longhorn-system";
               annotations = {
-                "metallb.universe.tf/address-pool" = "default";
+                "metallb.io/address-pool" = "default";
               };
             };
             spec = {
@@ -60,7 +64,8 @@
               };
               ports = [
                 {
-                  port = 80;
+                  name = "http";
+                  port = 8000;
                   targetPort = 8000;
                   protocol = "TCP";
                 }

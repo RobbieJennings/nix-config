@@ -42,10 +42,10 @@ in
             apiVersion = "v1";
             kind = "Service";
             metadata = {
-              name = "hello-world-tcp";
+              name = "hello-world-lb";
               namespace = "hello-world";
               annotations = {
-                "metallb.universe.tf/address-pool" = "default";
+                "metallb.io/address-pool" = "default";
               };
             };
             spec = {
@@ -56,6 +56,7 @@ in
               };
               ports = [
                 {
+                  name = "http";
                   port = 80;
                   targetPort = 80;
                   protocol = "TCP";

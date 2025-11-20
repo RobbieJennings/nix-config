@@ -594,32 +594,6 @@ boolean
 
 
 
-## server\.jellyfin\.enable
-
-
-
-Whether to enable jellyfin helm chart on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/jellyfin\.nix](../modules/nixos/server/jellyfin.nix)
-
-
-
 ## server\.kubernetes\.enable
 
 
@@ -646,7 +620,189 @@ boolean
 
 
 
-## server\.longhorn\.enable
+## server\.load-balancing\.enable
+
+
+
+Whether to enable metallb load balancing on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/load-balancing](../modules/nixos/server/load-balancing)
+
+
+
+## server\.load-balancing\.metallb\.enable
+
+
+
+Whether to enable metalLB helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/load-balancing/metallb\.nix](../modules/nixos/server/load-balancing/metallb.nix)
+
+
+
+## server\.media\.enable
+
+
+
+Whether to enable jellyfin, transmission and servarr services on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/media](../modules/nixos/server/media)
+
+
+
+## server\.media\.jellyfin\.enable
+
+
+
+Whether to enable jellyfin helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/media/jellyfin\.nix](../modules/nixos/server/media/jellyfin.nix)
+
+
+
+## server\.media\.sonarr\.enable
+
+
+
+Whether to enable sonarr manifest on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/media/sonarr\.nix](../modules/nixos/server/media/sonarr.nix)
+
+
+
+## server\.media\.transmission\.enable
+
+
+
+Whether to enable transmission manifest on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/media/transmission\.nix](../modules/nixos/server/media/transmission.nix)
+
+
+
+## server\.storage\.enable
+
+
+
+Whether to enable longhorn storage on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/storage](../modules/nixos/server/storage)
+
+
+
+## server\.storage\.longhorn\.enable
 
 
 
@@ -668,7 +824,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/server/longhorn\.nix](../modules/nixos/server/longhorn.nix)
+ - [modules/nixos/server/storage/longhorn\.nix](../modules/nixos/server/storage/longhorn.nix)
 
 
 
