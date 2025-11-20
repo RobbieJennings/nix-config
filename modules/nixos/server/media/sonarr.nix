@@ -6,6 +6,15 @@
   ...
 }:
 
+let
+  image = pkgs.dockerTools.pullImage {
+    imageName = "linuxserver/sonarr";
+    imageDigest = "sha256:4b8a853b76337cd5de5f69961e23b7d0792ce7bf0a8be083dd7202ef670bfc34";
+    sha256 = "sha256-/wqQhgSMQ8fHwjNS+8n4VtWi/2bREJAPbCaIqeJKMDw=";
+    finalImageTag = "4.0.16";
+    arch = "amd64";
+  };
+in
 {
   options = {
     server.media.sonarr.enable = lib.mkEnableOption "sonarr manifest on k3s";
@@ -13,6 +22,7 @@
 
   config = lib.mkIf (config.server.media.enable && config.server.media.sonarr.enable) {
     services.k3s = {
+      images = [ image ];
       manifests.sonarr.content = [
         {
           apiVersion = "v1";
@@ -43,7 +53,7 @@
                 containers = [
                   {
                     name = "sonarr";
-                    image = "linuxserver/sonarr:latest";
+                    image = "${image.imageName}:${image.imageTag}";
                     ports = [ { containerPort = 8989; } ];
                     volumeMounts = [
                       {
@@ -51,8 +61,8 @@
                         mountPath = "/config";
                       }
                       {
-                        name = "videos";
-                        mountPath = "/tv";
+                        name = "media";
+                        mountPath = "/shows";
                       }
                       {
                         name = "downloads";
@@ -67,7 +77,7 @@
                     persistentVolumeClaim.claimName = "sonarr-config";
                   }
                   {
-                    name = "videos";
+                    name = "media";
                     persistentVolumeClaim.claimName = "media";
                   }
                   {

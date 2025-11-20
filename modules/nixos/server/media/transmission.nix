@@ -6,6 +6,15 @@
   ...
 }:
 
+let
+  image = pkgs.dockerTools.pullImage {
+    imageName = "linuxserver/transmission";
+    imageDigest = "sha256:978b9e0b06eda2cfed79c861fc8ca440b8b29e45dc9dc2522daa67c3818a0d88";
+    sha256 = "sha256-uQWuUyhumbEmxTgYzhWtLjg6z+67qQqlRZ2W134ZHbA=";
+    finalImageTag = "4.0.6";
+    arch = "amd64";
+  };
+in
 {
   options = {
     server.media.transmission.enable = lib.mkEnableOption "transmission manifest on k3s";
@@ -13,6 +22,7 @@
 
   config = lib.mkIf (config.server.media.enable && config.server.media.transmission.enable) {
     services.k3s = {
+      images = [ image ];
       manifests.transmission.content = [
         {
           apiVersion = "v1";
@@ -56,13 +66,8 @@
                 containers = [
                   {
                     name = "transmission";
-                    image = "linuxserver/transmission:latest";
-                    ports = [
-                      {
-                        containerPort = 9091;
-                        name = "http";
-                      }
-                    ];
+                    image = "${image.imageName}:${image.imageTag}";
+                    ports = [ { containerPort = 9091; } ];
                     volumeMounts = [
                       {
                         name = "config";

@@ -20,6 +20,7 @@
         autohide = cosmicLib.cosmic.mkRON "optional" null;
         background = cosmicLib.cosmic.mkRON "enum" "ThemeDefault";
         expand_to_edges = true;
+        margin = 2;
         name = "Panel";
         opacity = 0.8;
         output = cosmicLib.cosmic.mkRON "enum" "All";
