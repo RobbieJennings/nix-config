@@ -7,6 +7,12 @@
 }:
 
 let
+  chart = {
+    name = "hello-world";
+    repo = "https://helm.github.io/examples";
+    version = "0.1.0";
+    hash = "sha256-U2XjNEWE82/Q3KbBvZLckXbtjsXugUbK6KdqT5kCccM=";
+  };
   image = pkgs.dockerTools.pullImage {
     imageName = "nginx";
     imageDigest = "sha256:4ff102c5d78d254a6f0da062b3cf39eaf07f01eec0927fd21e219d0af8bc0591";
@@ -23,11 +29,7 @@ in
   config = lib.mkIf config.server.hello-world.enable {
     services.k3s = {
       images = [ image ];
-      autoDeployCharts.hello-world = {
-        name = "hello-world";
-        repo = "https://helm.github.io/examples";
-        version = "0.1.0";
-        hash = "sha256-U2XjNEWE82/Q3KbBvZLckXbtjsXugUbK6KdqT5kCccM=";
+      autoDeployCharts.hello-world = chart // {
         targetNamespace = "hello-world";
         createNamespace = true;
         values = {
