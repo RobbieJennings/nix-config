@@ -15,7 +15,10 @@
   config = lib.mkMerge [
     (lib.mkIf config.bootloader.enable {
       boot.loader = {
-        systemd-boot.enable = true;
+        systemd-boot = {
+          enable = true;
+          configurationLimit = 20;
+        };
         efi.canTouchEfiVariables = true;
       };
     })
