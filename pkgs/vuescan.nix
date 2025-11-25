@@ -38,7 +38,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://www.hamrick.com/files/vuex6498.tgz";
-    sha256 = "sha256-J/rZy9OxJ/lawMaD+Al51eDCgPz3Vl+On+blMEhTfYY=";
+    sha256 = "sha256-2nBDY56VFxOylVALy4OaePMwtfqg9ZjnHmH+58tyv5o=";
   };
 
   nativeBuildInputs = [
