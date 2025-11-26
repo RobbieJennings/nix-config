@@ -54,7 +54,7 @@ in
                   {
                     name = "prowlarr";
                     image = "${image.imageName}:${image.imageTag}";
-                    ports = [ { containerPort = 8989; } ];
+                    ports = [ { containerPort = 9696; } ];
                     volumeMounts = [
                       {
                         name = "config";
