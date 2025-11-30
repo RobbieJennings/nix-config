@@ -50,10 +50,25 @@ in
             template = {
               metadata.labels.app = "radarr";
               spec = {
+                securityContext = {
+                  runAsUser = 1000;
+                  runAsGroup = 1000;
+                  fsGroup = 1000;
+                };
                 containers = [
                   {
                     name = "radarr";
                     image = "${image.imageName}:${image.imageTag}";
+                    env = [
+                      {
+                        name = "PUID";
+                        value = "1000";
+                      }
+                      {
+                        name = "PGID";
+                        value = "1000";
+                      }
+                    ];
                     ports = [ { containerPort = 7878; } ];
                     volumeMounts = [
                       {
