@@ -30,7 +30,7 @@ let
         backupFileExtension = "backup";
       };
       users.mutableUsers = false;
-      system.stateVersion = "25.05";
+      system.stateVersion = "25.11";
     }
   ];
 in
@@ -80,13 +80,13 @@ in
                   home = {
                     inherit username;
                     homeDirectory = "/home/${username}";
-                    stateVersion = "25.05";
+                    stateVersion = "25.11";
                   };
                   programs = {
                     home-manager.enable = true;
-                    git = {
-                      userName = gitUserName;
-                      userEmail = gitUserEmail;
+                    git.settings.user = {
+                      name = gitUserName;
+                      email = gitUserEmail;
                     };
                   };
                 }

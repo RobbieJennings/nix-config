@@ -16,7 +16,7 @@
     (lib.mkIf config.server.kubernetes.enable {
       services.k3s = {
         enable = true;
-        images = [ config.services.k3s.package.airgapImages ];
+        images = [ config.services.k3s.package.airgap-images ];
         extraFlags = [
           "--embedded-registry"
           "--disable servicelb"

@@ -620,37 +620,11 @@ boolean
 
 
 
-## server\.load-balancing\.enable
+## server\.longhorn\.enable
 
 
 
-Whether to enable metallb load balancing on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/load-balancing](../modules/nixos/server/load-balancing)
-
-
-
-## server\.load-balancing\.metallb\.enable
-
-
-
-Whether to enable metalLB helm chart on k3s\.
+Whether to enable longhorn helm chart on k3s\.
 
 
 
@@ -668,7 +642,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/server/load-balancing/metallb\.nix](../modules/nixos/server/load-balancing/metallb.nix)
+ - [modules/nixos/server/longhorn\.nix](../modules/nixos/server/longhorn.nix)
 
 
 
@@ -724,6 +698,84 @@ boolean
 
 
 
+## server\.media\.lidarr\.enable
+
+
+
+Whether to enable lidarr manifest on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/media/lidarr\.nix](../modules/nixos/server/media/lidarr.nix)
+
+
+
+## server\.media\.prowlarr\.enable
+
+
+
+Whether to enable prowlarr manifest on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/media/prowlarr\.nix](../modules/nixos/server/media/prowlarr.nix)
+
+
+
+## server\.media\.radarr\.enable
+
+
+
+Whether to enable radarr manifest on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/media/radarr\.nix](../modules/nixos/server/media/radarr.nix)
+
+
+
 ## server\.media\.sonarr\.enable
 
 
@@ -776,37 +828,11 @@ boolean
 
 
 
-## server\.storage\.enable
+## server\.metallb\.enable
 
 
 
-Whether to enable longhorn storage on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/storage](../modules/nixos/server/storage)
-
-
-
-## server\.storage\.longhorn\.enable
-
-
-
-Whether to enable longhorn helm chart on k3s\.
+Whether to enable metalLB helm chart on k3s\.
 
 
 
@@ -824,7 +850,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/server/storage/longhorn\.nix](../modules/nixos/server/storage/longhorn.nix)
+ - [modules/nixos/server/metallb\.nix](../modules/nixos/server/metallb.nix)
 
 
 

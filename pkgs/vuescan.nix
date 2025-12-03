@@ -4,7 +4,7 @@
   fetchurl,
   autoPatchelfHook,
   gnutar,
-  wrapGAppsHook,
+  wrapGAppsHook3,
   glibc,
   gtk3,
   makeDesktopItem,
@@ -38,13 +38,13 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://www.hamrick.com/files/vuex6498.tgz";
-    sha256 = "sha256-Nn8rez+2koruxlo42F3fPtwDInXAN64WjsuvJMwDj/I=";
+    sha256 = "sha256-ry4PSLEr9CtIScbLtu4bsVC2/WWejsg35Aiil+W+ovQ=";
   };
 
   nativeBuildInputs = [
     autoPatchelfHook
     gnutar
-    wrapGAppsHook
+    wrapGAppsHook3
   ];
   buildInputs = [
     glibc
@@ -61,6 +61,7 @@ stdenv.mkDerivation rec {
     cp vuescan.svg $out/share/icons/hicolor/scalable/apps/vuescan.svg
     cp vuescan.rul $out/lib/udev/rules.d/60-vuescan.rules
     ln -s ${desktopItem}/share/applications/* $out/share/applications
+    runHook postInstall
   '';
 
   meta = with lib; {

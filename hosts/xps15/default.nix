@@ -12,18 +12,4 @@
 
   services.power-profiles-daemon.enable = false;
   services.tlp.enable = true;
-  hardware.graphics = {
-    enable = true;
-    extraPackages = [
-      pkgs.intel-media-sdk
-    ];
-  };
-  virtualisation.kvmgt = {
-    enable = true;
-    vgpus = {
-      "i915-GVTg_V5_4" = {
-        uuid = [ "d4640c7e-aaae-11f0-9ac1-af1cd8c1d661" ];
-      };
-    };
-  };
 }

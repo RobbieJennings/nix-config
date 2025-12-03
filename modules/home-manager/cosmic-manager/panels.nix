@@ -25,14 +25,13 @@
         opacity = 0.8;
         output = cosmicLib.cosmic.mkRON "enum" "All";
         plugins_center = cosmicLib.cosmic.mkRON "optional" [
-          "com.system76.CosmicPanelWorkspacesButton"
           "com.system76.CosmicAppletTime"
-          "com.system76.CosmicPanelAppButton"
         ];
         plugins_wings = cosmicLib.cosmic.mkRON "optional" (
           cosmicLib.cosmic.mkRON "tuple" [
             [
               "com.system76.CosmicAppletWorkspaces"
+              "com.system76.CosmicPanelAppButton"
               "com.system76.CosmicAppList"
             ]
             [

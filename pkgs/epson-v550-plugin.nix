@@ -34,6 +34,7 @@ stdenv.mkDerivation rec {
     mkdir -p $out/lib
     cp -r usr/share/* $out/share
     cp -r usr/lib64/* $out/lib
+    runHook postInstall
   '';
 
   meta = with lib; {
