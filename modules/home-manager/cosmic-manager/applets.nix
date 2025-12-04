@@ -13,25 +13,12 @@
   };
 
   config = lib.mkIf config.cosmic-manager.applets.enable {
-    home.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = "1";
-    services.flatpak = {
-      remotes = [
-        {
-          name = "cosmic-flatpak";
-          location = "https://apt.pop-os.org/cosmic/cosmic.flatpakrepo";
-        }
-      ];
-      packages = [
-        {
-          appId = "io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager";
-          origin = "cosmic-flatpak";
-        }
-        {
-          appId = "io.github.cosmic_utils.minimon-applet";
-          origin = "cosmic-flatpak";
-        }
-      ];
-    };
+    home.packages = [
+      pkgs.cosmic-ext-applet-privacy-indicator
+      pkgs.cosmic-ext-applet-minimon
+      pkgs.cosmic-ext-applet-caffeine
+      pkgs.cosmic-ext-applet-clipboard-manager
+    ];
     wayland.desktopManager.cosmic.applets = {
       audio.settings.show_media_controls_in_top_panel = true;
       time.settings = {

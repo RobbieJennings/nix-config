@@ -35,10 +35,12 @@
               "com.system76.CosmicAppList"
             ]
             [
+              "dev.DBrox.CosmicPrivacyIndicator"
               "io.github.cosmic_utils.minimon-applet"
               "com.system76.CosmicAppletStatusArea"
-              "io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager"
+              "net.tropicbliss.CosmicExtAppletCaffeine"
               "com.system76.CosmicAppletNotifications"
+              "io.github.wiiznokes.cosmic-ext-applet-clipboard-manager"
               "com.system76.CosmicAppletTiling"
               "com.system76.CosmicAppletAudio"
               "com.system76.CosmicAppletBluetooth"
