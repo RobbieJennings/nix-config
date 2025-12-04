@@ -35,7 +35,9 @@
               "com.system76.CosmicAppList"
             ]
             [
+              "io.github.cosmic_utils.minimon-applet"
               "com.system76.CosmicAppletStatusArea"
+              "io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager"
               "com.system76.CosmicAppletNotifications"
               "com.system76.CosmicAppletTiling"
               "com.system76.CosmicAppletAudio"
