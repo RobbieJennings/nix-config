@@ -130,6 +130,13 @@
               };
             }
           ];
+          extra.config = {
+            server.enable = true;
+            environment.persistence."/persist".directories = [
+              "/var/lib/rancher/k3s"
+              "/var/lib/longhorn"
+            ];
+          };
         };
 
         nixos-vm = mkSystem {

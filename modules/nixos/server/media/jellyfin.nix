@@ -72,17 +72,7 @@ in
                       }
                       {
                         name = "media";
-                        mountPath = "/movies";
-                        readOnly = true;
-                      }
-                      {
-                        name = "media";
-                        mountPath = "/shows";
-                        readOnly = true;
-                      }
-                      {
-                        name = "media";
-                        mountPath = "/music";
+                        mountPath = "/media";
                         readOnly = true;
                       }
                     ];

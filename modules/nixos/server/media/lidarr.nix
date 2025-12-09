@@ -77,7 +77,7 @@ in
                       }
                       {
                         name = "media";
-                        mountPath = "/music";
+                        mountPath = "/media";
                       }
                       {
                         name = "downloads";
