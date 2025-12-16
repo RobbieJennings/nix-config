@@ -672,6 +672,32 @@ boolean
 
 
 
+## server\.media\.flaresolverr\.enable
+
+
+
+Whether to enable FlareSolverr for Prowlarr\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/media/flaresolverr\.nix](../modules/nixos/server/media/flaresolverr.nix)
+
+
+
 ## server\.media\.jellyfin\.enable
 
 

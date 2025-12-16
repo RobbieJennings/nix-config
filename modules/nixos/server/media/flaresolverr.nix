@@ -1,0 +1,97 @@
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+
+let
+  image = pkgs.dockerTools.pullImage {
+    imageName = "flaresolverr/flaresolverr";
+    imageDigest = "sha256:7962759d99d7e125e108e0f5e7f3cdbcd36161776d058d1d9b7153b92ef1af9e";
+    sha256 = "sha256-ANmJg+ZQYLXIZrbOSufKR8khSiuJ9S+83DCFCBf2Yf4=";
+    finalImageTag = "3.4.6";
+    arch = "amd64";
+  };
+in
+{
+  options = {
+    server.media.flaresolverr.enable = lib.mkEnableOption "FlareSolverr for Prowlarr";
+  };
+
+  config = lib.mkIf (config.server.media.enable && config.server.media.flaresolverr.enable) {
+    services.k3s = {
+      images = [ image ];
+      manifests.flaresolverr.content = [
+        {
+          apiVersion = "apps/v1";
+          kind = "Deployment";
+          metadata = {
+            name = "flaresolverr";
+            namespace = "media";
+          };
+          spec = {
+            replicas = 1;
+            selector.matchLabels.app = "flaresolverr";
+            template = {
+              metadata.labels.app = "flaresolverr";
+              spec = {
+                containers = [
+                  {
+                    name = "flaresolverr";
+                    image = "${image.imageName}:${image.imageTag}";
+                    ports = [ { containerPort = 8191; } ];
+                    env = [
+                      {
+                        name = "LOG_LEVEL";
+                        value = "info";
+                      }
+                      {
+                        name = "TZ";
+                        value = "UTC";
+                      }
+                    ];
+                    resources = {
+                      requests.memory = "512Mi";
+                      requests.cpu = "500m";
+                      limits.memory = "1Gi";
+                      limits.cpu = "1000m";
+                    };
+                  }
+                ];
+              };
+            };
+          };
+        }
+        {
+          apiVersion = "v1";
+          kind = "Service";
+          metadata = {
+            name = "flaresolverr-lb";
+            namespace = "media";
+            annotations = {
+              "metallb.io/address-pool" = "default";
+              "metallb.universe.tf/allow-shared-ip" = "media";
+            };
+          };
+          spec = {
+            type = "LoadBalancer";
+            loadBalancerIP = "192.168.0.202";
+            selector = {
+              "app" = "flaresolverr";
+            };
+            ports = [
+              {
+                name = "http";
+                port = 8191;
+                targetPort = 8191;
+                protocol = "TCP";
+              }
+            ];
+          };
+        }
+      ];
+    };
+  };
+}

@@ -10,6 +10,7 @@
   imports = [
     ./jellyfin.nix
     ./transmission.nix
+    ./flaresolverr.nix
     ./prowlarr.nix
     ./radarr.nix
     ./sonarr.nix
@@ -61,6 +62,7 @@
     server.media = {
       jellyfin.enable = lib.mkDefault true;
       transmission.enable = lib.mkDefault true;
+      flaresolverr.enable = lib.mkDefault true;
       prowlarr.enable = lib.mkDefault true;
       radarr.enable = lib.mkDefault true;
       sonarr.enable = lib.mkDefault true;
