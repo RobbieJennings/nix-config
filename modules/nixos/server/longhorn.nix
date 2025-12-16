@@ -176,35 +176,14 @@ in
               };
             };
           };
+          service.ui = {
+            type = "LoadBalancer";
+            loadBalancerIP = "192.168.0.201";
+            annotations = {
+              "metallb.io/address-pool" = "default";
+            };
+          };
         };
-        extraDeploy = [
-          {
-            apiVersion = "v1";
-            kind = "Service";
-            metadata = {
-              name = "longhorn-lb";
-              namespace = "longhorn-system";
-              annotations = {
-                "metallb.io/address-pool" = "default";
-              };
-            };
-            spec = {
-              type = "LoadBalancer";
-              loadBalancerIP = "192.168.0.201";
-              selector = {
-                "app" = "longhorn-ui";
-              };
-              ports = [
-                {
-                  name = "http";
-                  port = 8000;
-                  targetPort = 8000;
-                  protocol = "TCP";
-                }
-              ];
-            };
-          }
-        ];
       };
     };
   };

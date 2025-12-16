@@ -38,35 +38,14 @@ in
             repository = image.imageName;
             tag = image.imageTag;
           };
+          service = {
+            type = "LoadBalancer";
+            loadBalancerIP = "192.168.0.200";
+            annotations = {
+              "metallb.io/address-pool" = "default";
+            };
+          };
         };
-        extraDeploy = [
-          {
-            apiVersion = "v1";
-            kind = "Service";
-            metadata = {
-              name = "hello-world-lb";
-              namespace = "hello-world";
-              annotations = {
-                "metallb.io/address-pool" = "default";
-              };
-            };
-            spec = {
-              type = "LoadBalancer";
-              loadBalancerIP = "192.168.0.200";
-              selector = {
-                "app.kubernetes.io/name" = "hello-world";
-              };
-              ports = [
-                {
-                  name = "http";
-                  port = 80;
-                  targetPort = 80;
-                  protocol = "TCP";
-                }
-              ];
-            };
-          }
-        ];
       };
     };
   };
