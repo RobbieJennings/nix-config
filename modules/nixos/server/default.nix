@@ -12,6 +12,7 @@
     ./longhorn.nix
     ./metallb.nix
     ./hello-world.nix
+    ./nextcloud.nix
     ./media
   ];
 
@@ -25,6 +26,7 @@
       longhorn.enable = lib.mkDefault true;
       metallb.enable = lib.mkDefault true;
       hello-world.enable = lib.mkDefault true;
+      nextcloud.enable = lib.mkDefault true;
       media.enable = lib.mkDefault true;
     };
   };
