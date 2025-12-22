@@ -37,6 +37,13 @@ in
             repository = image.imageName;
             tag = image.imageTag;
           };
+          service = {
+            type = "LoadBalancer";
+            loadBalancerIP = "192.168.0.203";
+            annotations = {
+              "metallb.io/address-pool" = "default";
+            };
+          };
         };
       };
     };
