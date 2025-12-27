@@ -30,6 +30,7 @@
       pkgs.gnome-system-monitor # system monitor
       pkgs.networkmanagerapplet # advanced network configuration
       pkgs.gnome-connections # remote desktop client
+      pkgs.pavucontrol # volume control
     ];
 
     stylix.targets.gtk.enable = lib.mkForce false;
