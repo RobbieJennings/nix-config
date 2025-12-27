@@ -13,11 +13,18 @@ let
     version = "8.7.0";
     hash = "sha256-LoEz0+iETV9kBxiRB7aML4Jzk4LhmrUQMHBQipYnWzE=";
   };
-  image = pkgs.dockerTools.pullImage {
+  nextcloudImage = pkgs.dockerTools.pullImage {
     imageName = "nextcloud";
     imageDigest = "sha256:a9ef7ed15dbf3f9fcf6dc2a41a15af572fcc077f220640cabfe574a3ffbf5766";
     sha256 = "sha256-Z9/e4KP2gH6HP+pglHpWGK0cnmReJjR1InRh8kfjUmQ=";
     finalImageTag = "32.0.3";
+    arch = "amd64";
+  };
+  postgresqlImage = pkgs.dockerTools.pullImage {
+    imageName = "bitnamilegacy/postgresql";
+    imageDigest = "sha256:5cf757a084469da93ca39a294c9ec7c1aaf2d2a5f728001676ece1a9607fa57f";
+    sha256 = "sha256-iNx2E4xnEterjgXd7NUlscLHEmDNVt2y3Mq7Ki98x+Q=";
+    finalImageTag = "17.5.0-debian-12-r3";
     arch = "amd64";
   };
 in
@@ -28,20 +35,43 @@ in
 
   config = lib.mkIf config.server.nextcloud.enable {
     services.k3s = {
-      images = [ image ];
+      images = [
+        nextcloudImage
+        postgresqlImage
+      ];
       autoDeployCharts.nextcloud = chart // {
         targetNamespace = "nextcloud";
         createNamespace = true;
         values = {
           image = {
-            repository = image.imageName;
-            tag = image.imageTag;
+            repository = nextcloudImage.imageName;
+            tag = nextcloudImage.imageTag;
           };
           service = {
             type = "LoadBalancer";
             loadBalancerIP = "192.168.0.203";
             annotations = {
               "metallb.io/address-pool" = "default";
+            };
+          };
+          persistence = {
+            enabled = true;
+            nextcloudData = {
+              enabled = true;
+              size = "10Gi";
+            };
+          };
+          internalDatabase.enabled = false;
+          externalDatabase = {
+            enabled = true;
+            type = "postgresql";
+            host = "nextcloud-postgresql.nextcloud.svc.cluster.local";
+          };
+          postgresql = {
+            enabled = true;
+            image = {
+              repository = postgresqlImage.imageName;
+              tag = postgresqlImage.imageTag;
             };
           };
         };
