@@ -880,6 +880,32 @@ boolean
 
 
 
+## server\.nextcloud\.enable
+
+
+
+Whether to enable nextcloud helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/nextcloud\.nix](../modules/nixos/server/nextcloud.nix)
+
+
+
 ## theme\.enable
 
 
