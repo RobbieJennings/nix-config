@@ -47,6 +47,10 @@ in
             repository = nextcloudImage.imageName;
             tag = nextcloudImage.imageTag;
           };
+          nextcloud = {
+            host = "192.168.0.203";
+            trustedDomains = [ "192.168.0.203" ];
+          };
           service = {
             type = "LoadBalancer";
             loadBalancerIP = "192.168.0.203";
@@ -56,6 +60,7 @@ in
           };
           persistence = {
             enabled = true;
+            size = "8Gi";
             nextcloudData = {
               enabled = true;
               size = "10Gi";
@@ -73,6 +78,20 @@ in
               repository = postgresqlImage.imageName;
               tag = postgresqlImage.imageTag;
             };
+            primary.persistence = {
+              enabled = true;
+              size = "8Gi";
+            };
+          };
+          livenessProbe = {
+            enabled = false;
+            initialDelaySeconds = 300;
+            periodSeconds = 30;
+          };
+          readinessProbe = {
+            enabled = false;
+            initialDelaySeconds = 300;
+            periodSeconds = 30;
           };
         };
       };
