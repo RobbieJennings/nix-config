@@ -27,6 +27,13 @@ let
     finalImageTag = "17.5.0-debian-12-r3";
     arch = "amd64";
   };
+  redisImage = pkgs.dockerTools.pullImage {
+    imageName = "bitnamilegacy/redis";
+    imageDigest = "sha256:25bf63f3caf75af4628c0dfcf39859ad1ac8abe135be85e99699f9637b16dc28";
+    sha256 = "sha256-C65uCmmgU/gy/hINbpIbqvcUpCbDHHSg5OdTuwknviw=";
+    finalImageTag = "8.0.1-debian-12-r1";
+    arch = "amd64";
+  };
 in
 {
   options = {
@@ -81,6 +88,24 @@ in
             primary.persistence = {
               enabled = true;
               size = "8Gi";
+            };
+          };
+          redis = {
+            enabled = true;
+            image = {
+              repository = redisImage.imageName;
+              tag = redisImage.imageTag;
+            };
+            master.persistence = {
+              enabled = true;
+              size = "8Gi";
+            };
+            replica = {
+              replicaCount = 1;
+              persistence = {
+                enabled = true;
+                size = "8Gi";
+              };
             };
           };
           cronjob = {
