@@ -13,6 +13,7 @@
     ./metallb.nix
     ./hello-world.nix
     ./nextcloud.nix
+    ./gitea.nix
     ./media
   ];
 
@@ -27,6 +28,7 @@
       metallb.enable = lib.mkDefault true;
       hello-world.enable = lib.mkDefault true;
       nextcloud.enable = lib.mkDefault true;
+      gitea.enable = lib.mkDefault true;
       media.enable = lib.mkDefault true;
     };
   };

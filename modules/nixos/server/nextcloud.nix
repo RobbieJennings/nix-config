@@ -52,6 +52,8 @@ in
       images = [
         nextcloudImage
         postgresqlImage
+        redisImage
+        collaboraImage
       ];
       autoDeployCharts.nextcloud = chart // {
         targetNamespace = "nextcloud";
