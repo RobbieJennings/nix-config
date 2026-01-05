@@ -30,7 +30,7 @@ let
   redisImage = pkgs.dockerTools.pullImage {
     imageName = "bitnamilegacy/redis";
     imageDigest = "sha256:25bf63f3caf75af4628c0dfcf39859ad1ac8abe135be85e99699f9637b16dc28";
-    sha256 = "sha256-C65uCmmgU/gy/hINbpIbqvcUpCbDHHSg5OdTuwknviw=";
+    sha256 = "sha256-6jt1aa3gnfFd9CP2XKAhT3WgOTTibv+29BUvkwiE3CQ=";
     finalImageTag = "8.0.1-debian-12-r1";
     arch = "amd64";
   };
