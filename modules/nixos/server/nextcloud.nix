@@ -84,12 +84,10 @@ in
             };
           };
           livenessProbe = {
-            enabled = false;
             initialDelaySeconds = 300;
             periodSeconds = 30;
           };
           readinessProbe = {
-            enabled = false;
             initialDelaySeconds = 300;
             periodSeconds = 30;
           };
