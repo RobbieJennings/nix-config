@@ -34,6 +34,13 @@ let
     finalImageTag = "8.0.1-debian-12-r1";
     arch = "amd64";
   };
+  collaboraImage = pkgs.dockerTools.pullImage {
+    imageName = "collabora/code";
+    imageDigest = "sha256:4585c88c15d681a04495e9881e99974040373089b941d6909f9c9e817553457c";
+    sha256 = "sha256-di7mSLOlmF0utm37w0FWySFKHiKJ2/EuMeHQMT7Py8s=";
+    finalImageTag = "25.04.7.2.1";
+    arch = "amd64";
+  };
 in
 {
   options = {
@@ -63,6 +70,7 @@ in
             loadBalancerIP = "192.168.0.203";
             annotations = {
               "metallb.io/address-pool" = "default";
+              "metallb.universe.tf/allow-shared-ip" = "nextcloud";
             };
           };
           persistence = {
@@ -105,6 +113,21 @@ in
               persistence = {
                 enabled = true;
                 size = "8Gi";
+              };
+            };
+          };
+          collabora = {
+            enabled = true;
+            image = {
+              repository = collaboraImage.imageName;
+              tag = collaboraImage.imageTag;
+            };
+            service = {
+              type = "LoadBalancer";
+              annotations = {
+                "metallb.io/address-pool" = "default";
+                "metallb.io/loadBalancerIPs" = "192.168.0.203";
+                "metallb.universe.tf/allow-shared-ip" = "nextcloud";
               };
             };
           };
