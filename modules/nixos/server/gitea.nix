@@ -7,11 +7,11 @@
 }:
 
 let
-  giteaChart = {
+  chart = {
     name = "gitea";
-    repo = "https://dl.gitea.io/charts/";
+    repo = "https://dl.gitea.io/charts";
     version = "12.4.0";
-    hash = "sha256-Z1zFvqZ9jZ5LJ6Y6m+7t2Z1y2X5v8w0e3q4r5t6y7u8i9o0p";
+    hash = "sha256-AAs1JMBWalE0PE4WJUHy6aNMcouETl+LV1IqW31tsn4=";
   };
   giteaImage = pkgs.dockerTools.pullImage {
     imageName = "gitea/gitea";
@@ -47,7 +47,7 @@ in
         postgresqlImage
         valkeyImage
       ];
-      autoDeployCharts.gitea = giteaChart // {
+      autoDeployCharts.gitea = chart // {
         targetNamespace = "gitea";
         createNamespace = true;
         values = {
