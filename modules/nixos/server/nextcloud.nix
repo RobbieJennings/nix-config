@@ -83,6 +83,10 @@ in
               size = "8Gi";
             };
           };
+          cronjob = {
+            enabled = true;
+            type = "sidecar";
+          };
           livenessProbe = {
             initialDelaySeconds = 300;
             periodSeconds = 30;
