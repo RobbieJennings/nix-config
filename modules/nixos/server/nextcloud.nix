@@ -106,16 +106,10 @@ in
               repository = redisImage.imageName;
               tag = redisImage.imageTag;
             };
+            architecture = "standalone";
             master.persistence = {
               enabled = true;
               size = "8Gi";
-            };
-            replica = {
-              replicaCount = 1;
-              persistence = {
-                enabled = true;
-                size = "8Gi";
-              };
             };
           };
           collabora = {

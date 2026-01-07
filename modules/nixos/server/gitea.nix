@@ -70,7 +70,7 @@ in
               };
               server = {
                 DOMAIN = "192.168.0.204";
-                ROOT_URL = "http://192.168.0.204/";
+                ROOT_URL = "http://192.168.0.204";
               };
             };
           };
@@ -118,13 +118,6 @@ in
             primary.persistence = {
               enabled = true;
               size = "8Gi";
-            };
-            replica = {
-              replicaCount = 1;
-              persistence = {
-                enabled = true;
-                size = "8Gi";
-              };
             };
           };
         };
