@@ -100,7 +100,7 @@ in
             namespace = "media";
             annotations = {
               "metallb.io/address-pool" = "default";
-              "metallb.universe.tf/allow-shared-ip" = "media";
+              "metallb.io/allow-shared-ip" = "media";
             };
           };
           spec = {

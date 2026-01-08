@@ -70,7 +70,7 @@ in
               };
               server = {
                 DOMAIN = "192.168.0.204";
-                ROOT_URL = "http://192.168.0.204";
+                ROOT_URL = "http://192.168.0.204:3000";
               };
             };
           };
@@ -80,7 +80,7 @@ in
               loadBalancerIP = "192.168.0.204";
               annotations = {
                 "metallb.io/address-pool" = "default";
-                "metallb.universe.tf/allow-shared-ip" = "gitea";
+                "metallb.io/allow-shared-ip" = "gitea";
               };
             };
             ssh = {
@@ -88,7 +88,7 @@ in
               loadBalancerIP = "192.168.0.204";
               annotations = {
                 "metallb.io/address-pool" = "default";
-                "metallb.universe.tf/allow-shared-ip" = "gitea";
+                "metallb.io/allow-shared-ip" = "gitea";
               };
             };
           };

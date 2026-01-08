@@ -72,7 +72,7 @@ in
             loadBalancerIP = "192.168.0.203";
             annotations = {
               "metallb.io/address-pool" = "default";
-              "metallb.universe.tf/allow-shared-ip" = "nextcloud";
+              "metallb.io/allow-shared-ip" = "nextcloud";
             };
           };
           persistence = {
@@ -123,7 +123,7 @@ in
               annotations = {
                 "metallb.io/address-pool" = "default";
                 "metallb.io/loadBalancerIPs" = "192.168.0.203";
-                "metallb.universe.tf/allow-shared-ip" = "nextcloud";
+                "metallb.io/allow-shared-ip" = "nextcloud";
               };
             };
           };
