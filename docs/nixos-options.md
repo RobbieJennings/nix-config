@@ -568,6 +568,32 @@ boolean
 
 
 
+## server\.gitea\.enable
+
+
+
+Whether to enable Gitea Helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/nixos/server/gitea\.nix](../modules/nixos/server/gitea.nix)
+
+
+
 ## server\.hello-world\.enable
 
 
