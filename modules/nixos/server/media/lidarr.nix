@@ -38,62 +38,6 @@ in
           };
         }
         {
-          apiVersion = "batch/v1";
-          kind = "Job";
-          metadata = {
-            name = "lidarr-init-dirs";
-            namespace = "media";
-          };
-          spec = {
-            template = {
-              spec = {
-                restartPolicy = "OnFailure";
-                securityContext = {
-                  runAsUser = 1000;
-                  runAsGroup = 1000;
-                  fsGroup = 1000;
-                };
-                containers = [
-                  {
-                    name = "init-dirs";
-                    image = "busybox:latest";
-                    command = [
-                      "sh"
-                      "-c"
-                      ''
-                        mkdir -p /downloads/complete/lidarr
-                        mkdir -p /downloads/incomplete/lidarr
-                        mkdir -p /media/music
-                        echo "Directories created successfully"
-                      ''
-                    ];
-                    volumeMounts = [
-                      {
-                        name = "media";
-                        mountPath = "/media";
-                      }
-                      {
-                        name = "downloads";
-                        mountPath = "/downloads";
-                      }
-                    ];
-                  }
-                ];
-                volumes = [
-                  {
-                    name = "media";
-                    persistentVolumeClaim.claimName = "media";
-                  }
-                  {
-                    name = "downloads";
-                    persistentVolumeClaim.claimName = "downloads";
-                  }
-                ];
-              };
-            };
-          };
-        }
-        {
           apiVersion = "apps/v1";
           kind = "Deployment";
           metadata = {
@@ -111,6 +55,38 @@ in
                   runAsGroup = 1000;
                   fsGroup = 1000;
                 };
+                initContainers = [
+                  {
+                    name = "init-lidarr";
+                    image = "${image.imageName}:${image.imageTag}";
+                    command = [
+                      "sh"
+                      "-c"
+                      ''
+                        set -e
+                        mkdir -p /downloads/complete/lidarr
+                        mkdir -p /downloads/incomplete/lidarr
+                        mkdir -p /media/music
+                        echo "Lidarr directories initialized"
+                      ''
+                    ];
+                    securityContext = {
+                      readOnlyRootFilesystem = true;
+                      allowPrivilegeEscalation = false;
+                      capabilities.drop = [ "ALL" ];
+                    };
+                    volumeMounts = [
+                      {
+                        name = "media";
+                        mountPath = "/media";
+                      }
+                      {
+                        name = "downloads";
+                        mountPath = "/downloads";
+                      }
+                    ];
+                  }
+                ];
                 containers = [
                   {
                     name = "lidarr";
