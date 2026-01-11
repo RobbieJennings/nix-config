@@ -51,6 +51,14 @@ in
                         name = "TZ";
                         value = "UTC";
                       }
+                      {
+                        name = "DOTNET_SYSTEM_NET_DISABLEIPV6";
+                        value = "1";
+                      }
+                      {
+                        name = "DOTNET_SYSTEM_NET_FORCE_IPV4";
+                        value = "1";
+                      }
                     ];
                     resources = {
                       requests.memory = "512Mi";
@@ -58,6 +66,12 @@ in
                       limits.memory = "1Gi";
                       limits.cpu = "1000m";
                     };
+                  }
+                ];
+                dnsConfig.options = [
+                  {
+                    name = "ndots";
+                    value = "1";
                   }
                 ];
               };

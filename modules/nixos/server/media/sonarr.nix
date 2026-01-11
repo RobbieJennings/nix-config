@@ -124,6 +124,14 @@ in
                         name = "PGID";
                         value = "1000";
                       }
+                      {
+                        name = "DOTNET_SYSTEM_NET_DISABLEIPV6";
+                        value = "1";
+                      }
+                      {
+                        name = "DOTNET_SYSTEM_NET_FORCE_IPV4";
+                        value = "1";
+                      }
                     ];
                     ports = [ { containerPort = 8989; } ];
                     volumeMounts = [
@@ -154,6 +162,12 @@ in
                   {
                     name = "downloads";
                     persistentVolumeClaim.claimName = "downloads";
+                  }
+                ];
+                dnsConfig.options = [
+                  {
+                    name = "ndots";
+                    value = "1";
                   }
                 ];
               };
