@@ -91,6 +91,34 @@ in
                       }
                     ];
                     ports = [ { containerPort = 9091; } ];
+                    startupProbe = {
+                      httpGet = {
+                        path = "/";
+                        port = 9091;
+                      };
+                      failureThreshold = 30;
+                      periodSeconds = 5;
+                    };
+                    readinessProbe = {
+                      httpGet = {
+                        path = "/";
+                        port = 9091;
+                      };
+                      initialDelaySeconds = 10;
+                      periodSeconds = 10;
+                      timeoutSeconds = 2;
+                      failureThreshold = 3;
+                    };
+                    livenessProbe = {
+                      httpGet = {
+                        path = "/";
+                        port = 9091;
+                      };
+                      initialDelaySeconds = 20;
+                      periodSeconds = 20;
+                      timeoutSeconds = 2;
+                      failureThreshold = 3;
+                    };
                     volumeMounts = [
                       {
                         name = "config";

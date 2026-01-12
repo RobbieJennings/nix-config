@@ -110,6 +110,34 @@ in
                       }
                     ];
                     ports = [ { containerPort = 7878; } ];
+                    startupProbe = {
+                      httpGet = {
+                        path = "/";
+                        port = 7878;
+                      };
+                      failureThreshold = 30;
+                      periodSeconds = 5;
+                    };
+                    readinessProbe = {
+                      httpGet = {
+                        path = "/";
+                        port = 7878;
+                      };
+                      initialDelaySeconds = 15;
+                      periodSeconds = 10;
+                      timeoutSeconds = 2;
+                      failureThreshold = 3;
+                    };
+                    livenessProbe = {
+                      httpGet = {
+                        path = "/";
+                        port = 7878;
+                      };
+                      initialDelaySeconds = 30;
+                      periodSeconds = 20;
+                      timeoutSeconds = 2;
+                      failureThreshold = 3;
+                    };
                     volumeMounts = [
                       {
                         name = "config";

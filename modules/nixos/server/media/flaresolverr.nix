@@ -37,11 +37,15 @@ in
             template = {
               metadata.labels.app = "flaresolverr";
               spec = {
+                securityContext = {
+                  runAsUser = 1000;
+                  runAsGroup = 1000;
+                  fsGroup = 1000;
+                };
                 containers = [
                   {
                     name = "flaresolverr";
                     image = "${image.imageName}:${image.imageTag}";
-                    ports = [ { containerPort = 8191; } ];
                     env = [
                       {
                         name = "LOG_LEVEL";
@@ -60,6 +64,35 @@ in
                         value = "1";
                       }
                     ];
+                    ports = [ { containerPort = 8191; } ];
+                    startupProbe = {
+                      httpGet = {
+                        path = "/";
+                        port = 8191;
+                      };
+                      failureThreshold = 30;
+                      periodSeconds = 5;
+                    };
+                    readinessProbe = {
+                      httpGet = {
+                        path = "/";
+                        port = 8191;
+                      };
+                      initialDelaySeconds = 15;
+                      periodSeconds = 10;
+                      timeoutSeconds = 2;
+                      failureThreshold = 3;
+                    };
+                    livenessProbe = {
+                      httpGet = {
+                        path = "/";
+                        port = 8191;
+                      };
+                      initialDelaySeconds = 30;
+                      periodSeconds = 20;
+                      timeoutSeconds = 2;
+                      failureThreshold = 3;
+                    };
                     resources = {
                       requests.memory = "512Mi";
                       requests.cpu = "500m";
