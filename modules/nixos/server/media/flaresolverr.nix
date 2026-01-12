@@ -94,10 +94,10 @@ in
                       failureThreshold = 3;
                     };
                     resources = {
-                      requests.memory = "512Mi";
                       requests.cpu = "500m";
-                      limits.memory = "1Gi";
+                      requests.memory = "512Mi";
                       limits.cpu = "1000m";
+                      limits.memory = "1Gi";
                     };
                   }
                 ];

@@ -65,6 +65,12 @@ in
                         value = "Europe/Dublin";
                       }
                     ];
+                    resources = {
+                      requests.cpu = "1000m";
+                      requests.memory = "1Gi";
+                      limits.cpu = "2000m";
+                      limits.memory = "2Gi";
+                    };
                     startupProbe = {
                       httpGet = {
                         path = "/System/Info/Public";
