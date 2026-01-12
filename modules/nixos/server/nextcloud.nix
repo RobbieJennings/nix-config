@@ -83,6 +83,12 @@ in
               size = "10Gi";
             };
           };
+          resources = {
+            requests.cpu = "500m";
+            requests.memory = "2Gi";
+            limits.cpu = "1000m";
+            limits.memory = "4Gi";
+          };
           internalDatabase.enabled = false;
           externalDatabase = {
             enabled = true;
@@ -95,9 +101,27 @@ in
               repository = postgresqlImage.imageName;
               tag = postgresqlImage.imageTag;
             };
-            primary.persistence = {
-              enabled = true;
-              size = "8Gi";
+            primary = {
+              persistence = {
+                enabled = true;
+                size = "8Gi";
+              };
+              resources = {
+                requests.cpu = "500m";
+                requests.memory = "512Mi";
+                limits.cpu = "1000m";
+                limits.memory = "1Gi";
+              };
+              extraEnvVars = [
+                {
+                  name = "POSTGRESQL_SHARED_BUFFERS";
+                  value = "256MB";
+                }
+                {
+                  name = "POSTGRESQL_EFFECTIVE_CACHE_SIZE";
+                  value = "768MB";
+                }
+              ];
             };
           };
           redis = {
@@ -107,9 +131,21 @@ in
               tag = redisImage.imageTag;
             };
             architecture = "standalone";
-            master.persistence = {
-              enabled = true;
-              size = "8Gi";
+            master = {
+              persistence = {
+                enabled = true;
+                size = "8Gi";
+              };
+              resources = {
+                requests.cpu = "100m";
+                requests.memory = "128Mi";
+                limits.cpu = "200m";
+                limits.memory = "256Mi";
+              };
+              extraFlags = [
+                "--maxmemory 200mb"
+                "--maxmemory-policy allkeys-lru"
+              ];
             };
           };
           collabora = {
@@ -126,10 +162,22 @@ in
                 "metallb.io/allow-shared-ip" = "nextcloud";
               };
             };
+            resources = {
+              requests.cpu = "500m";
+              requests.memory = "1Gi";
+              limits.cpu = "1000m";
+              limits.memory = "2Gi";
+            };
           };
           cronjob = {
             enabled = true;
             type = "sidecar";
+            resources = {
+              requests.cpu = "200m";
+              requests.memory = "256Mi";
+              limits.cpu = "500m";
+              limits.memory = "512Mi";
+            };
           };
           livenessProbe = {
             initialDelaySeconds = 300;

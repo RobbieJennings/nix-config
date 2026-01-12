@@ -111,6 +111,19 @@ in
             enabled = true;
             size = "10Gi";
           };
+          resources = {
+            requests.cpu = "500m";
+            requests.memory = "512Mi";
+            limits.cpu = "1000m";
+            limits.memory = "1Gi";
+          };
+          dnsConfig.options = [
+            # Needed for hardcoded valkey address to resolve in configure-gitea container
+            {
+              name = "ndots";
+              value = "1";
+            }
+          ];
           postgresql-ha.enabled = false;
           postgresql = {
             enabled = true;
@@ -118,9 +131,27 @@ in
               repository = postgresqlImage.imageName;
               tag = postgresqlImage.imageTag;
             };
-            primary.persistence = {
-              enabled = true;
-              size = "8Gi";
+            primary = {
+              persistence = {
+                enabled = true;
+                size = "8Gi";
+              };
+              resources = {
+                requests.cpu = "500m";
+                requests.memory = "512Mi";
+                limits.cpu = "1000m";
+                limits.memory = "1Gi";
+              };
+              extraEnvVars = [
+                {
+                  name = "POSTGRESQL_SHARED_BUFFERS";
+                  value = "256MB";
+                }
+                {
+                  name = "POSTGRESQL_EFFECTIVE_CACHE_SIZE";
+                  value = "768MB";
+                }
+              ];
             };
           };
           valkey-cluster.enabled = false;
@@ -130,18 +161,23 @@ in
               repository = valkeyImage.imageName;
               tag = valkeyImage.imageTag;
             };
-            primary.persistence = {
-              enabled = true;
-              size = "8Gi";
+            primary = {
+              persistence = {
+                enabled = true;
+                size = "8Gi";
+              };
+              resources = {
+                requests.cpu = "100m";
+                requests.memory = "128Mi";
+                limits.cpu = "200m";
+                limits.memory = "256Mi";
+              };
+              extraFlags = [
+                "--maxmemory 200mb"
+                "--maxmemory-policy allkeys-lru"
+              ];
             };
           };
-          dnsConfig.options = [
-            # Needed for hardcoded valkey address to resolve in configure-gitea container
-            {
-              name = "ndots";
-              value = "1";
-            }
-          ];
         };
       };
     };
