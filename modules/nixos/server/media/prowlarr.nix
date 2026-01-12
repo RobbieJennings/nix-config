@@ -79,10 +79,10 @@ in
                     ];
                     ports = [ { containerPort = 9696; } ];
                     resources = {
-                      requests.cpu = "250m";
-                      requests.memory = "256Mi";
-                      limits.cpu = "500m";
-                      limits.memory = "512Mi";
+                      requests.cpu = "500m";
+                      requests.memory = "512Mi";
+                      limits.cpu = "1000m";
+                      limits.memory = "1Gi";
                     };
                     startupProbe = {
                       httpGet = {

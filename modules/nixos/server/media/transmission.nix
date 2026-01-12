@@ -82,24 +82,50 @@ in
                         value = "1000";
                       }
                       {
-                        name = "DOTNET_SYSTEM_NET_DISABLEIPV6";
-                        value = "1";
+                        name = "TRANSMISSION_CACHE_SIZE_MB";
+                        value = "64";
                       }
                       {
-                        name = "DOTNET_SYSTEM_NET_FORCE_IPV4";
-                        value = "1";
+                        name = "TRANSMISSION_QUEUE_STALLED_MINUTES";
+                        value = "30";
+                      }
+                      {
+                        name = "TRANSMISSION_DOWNLOAD_QUEUE_SIZE";
+                        value = "5";
+                      }
+                      {
+                        name = "TRANSMISSION_PREALLOCATION";
+                        value = "sparse";
+                      }
+                      {
+                        name = "TRANSMISSION_PEER_LIMIT_GLOBAL";
+                        value = "200";
+                      }
+                      {
+                        name = "TRANSMISSION_PEER_LIMIT_PER_TORRENT";
+                        value = "50";
                       }
                     ];
-                    ports = [ { containerPort = 9091; } ];
+                    ports = [
+                      { containerPort = 9091; }
+                      {
+                        containerPort = 51413;
+                        protocol = "TCP";
+                      }
+                      {
+                        containerPort = 51413;
+                        protocol = "UDP";
+                      }
+                    ];
                     resources = {
-                      requests.cpu = "250m";
-                      requests.memory = "256Mi";
-                      limits.cpu = "500m";
-                      limits.memory = "512Mi";
+                      requests.cpu = "500m";
+                      requests.memory = "512Mi";
+                      limits.cpu = "1000m";
+                      limits.memory = "1Gi";
                     };
                     startupProbe = {
                       httpGet = {
-                        path = "/";
+                        path = "/transmission/web/";
                         port = 9091;
                       };
                       failureThreshold = 30;
@@ -107,7 +133,7 @@ in
                     };
                     readinessProbe = {
                       httpGet = {
-                        path = "/";
+                        path = "/transmission/web/";
                         port = 9091;
                       };
                       initialDelaySeconds = 10;
@@ -117,7 +143,7 @@ in
                     };
                     livenessProbe = {
                       httpGet = {
-                        path = "/";
+                        path = "/transmission/web/";
                         port = 9091;
                       };
                       initialDelaySeconds = 20;
