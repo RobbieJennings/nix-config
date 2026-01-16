@@ -10,8 +10,8 @@ let
   chart = {
     name = "longhorn";
     repo = "https://charts.longhorn.io";
-    version = "1.10.0";
-    hash = "sha256-K+nao6QNuX6R/WoyrtCly9kXvUHwsA3h5o8KmOajqAs=";
+    version = "1.10.1";
+    hash = "sha256-qHHTl+Gc8yQ5SavUH9KUhp9cLEkAFPKecYZqJDPsf7k=";
   };
   csiAttacherImage = pkgs.dockerTools.pullImage {
     imageName = "longhornio/csi-attacher";
@@ -50,37 +50,37 @@ let
   };
   longhornEngineImage = pkgs.dockerTools.pullImage {
     imageName = "longhornio/longhorn-engine";
-    imageDigest = "sha256:5b265b8dcbbb4a21459a8f2e8e42292d87ad0ee4dda5ab9b32ca7b35a64f8240";
-    sha256 = "sha256-vd70ZLpAfAQSf353SmsXKg5/YHqHOnQwpcC/PzIU4YY=";
-    finalImageTag = "v1.10.1-rc2";
+    imageDigest = "sha256:b6b30ace865932a686afde56757213d6c86834645443f3af1528a93b7ddf52f4";
+    sha256 = "sha256-ussctYityuRM7DmqtKKGorj22SkcVHvtc3OP03A3xF8=";
+    finalImageTag = "v1.10.1";
     arch = "amd64";
   };
   longhornInstanceManagerImage = pkgs.dockerTools.pullImage {
     imageName = "longhornio/longhorn-instance-manager";
-    imageDigest = "sha256:2f78d6651a3afea919431a69c3bad9c250b0f336805af50119893da8f39a6c0d";
-    sha256 = "sha256-xzO/MY8QkKNbGyIeujGN4hS2hTpgOtdPIVCeKxww/AU=";
-    finalImageTag = "v1.10.1-rc2";
+    imageDigest = "sha256:84e0a5c1d67599a445f5b4fa853152ff53f6b1bd42a7cf7c01f4152cf60782af";
+    sha256 = "sha256-+6DObQfiNghYFuMfERjjToOOkN1ZOGGTt4DWBF9c4GU=";
+    finalImageTag = "v1.10.1";
     arch = "amd64";
   };
   longhornManagerImage = pkgs.dockerTools.pullImage {
     imageName = "longhornio/longhorn-manager";
-    imageDigest = "sha256:f5fde96a232654c9139732d6f60af9651b2b4abbc913684e7c0f724b153401e4";
-    sha256 = "sha256-aoH959uavb4hhVjCF+YmajYPr72/T5wHThnncf/o264=";
-    finalImageTag = "v1.10.1-rc2";
+    imageDigest = "sha256:afda26c16e7ab106f94dbc11da1bc91f410487d2e66609ebd126f0d908f7243a";
+    sha256 = "sha256-BP01Yxeaqq256XNXgctc2NWSdONVNkmJlS+e6izTCIU=";
+    finalImageTag = "v1.10.1";
     arch = "amd64";
   };
   longhornShareManagerImage = pkgs.dockerTools.pullImage {
     imageName = "longhornio/longhorn-share-manager";
-    imageDigest = "sha256:c865d3021e49824a1fb65b849e3d1c462d94890118622364d63a0fc2cb9d915e";
-    sha256 = "sha256-duLHC0+02+YyOayYM7Xl8UmImE9YZaTT4cZKrBmZQZY=";
-    finalImageTag = "v1.10.1-rc2";
+    imageDigest = "sha256:1edc95ae8f9e9699f9b082bf0eac82b338b2f120462424201957cb6287b2e3e9";
+    sha256 = "sha256-3CJxq42YuXusgcWdLuzgTrsAgivlRM5M+5WsxpHrTDU=";
+    finalImageTag = "v1.10.1";
     arch = "amd64";
   };
   longhornUiImage = pkgs.dockerTools.pullImage {
     imageName = "longhornio/longhorn-ui";
-    imageDigest = "sha256:dbaf9535e439001800798f90ed73ed1a32fd268825918f7ad3d388e412b981f9";
-    sha256 = "sha256-3dfDMIM8cHwmyvtHxc2SlyBMaur28yacR5biiS7zDDA=";
-    finalImageTag = "v1.10.1-rc2";
+    imageDigest = "sha256:62fd171f4fbed01ebb51653674c68ea1c531aa562dab23cb029033dffd6bccc6";
+    sha256 = "sha256-Fx64zHqaeQq9kM9fYEJAOVCIx0EtfHy/qj56cd4S2BQ=";
+    finalImageTag = "v1.10.1";
     arch = "amd64";
   };
 in
@@ -118,17 +118,17 @@ in
         targetNamespace = "longhorn-system";
         createNamespace = true;
         values = {
-          defaultSettings.defaultReplicaCount = "1";
+          defaultSettings.defaultReplicaCount = 1;
           longhornUI.replicas = 1;
           persistence = {
             defaultClassReplicaCount = 1;
             reclaimPolicy = "Retain";
           };
           csi = {
-            attacherReplicaCount = "1";
-            provisionerReplicaCount = "1";
-            resizerReplicaCount = "1";
-            snapshotterReplicaCount = "1";
+            attacherReplicaCount = 1;
+            provisionerReplicaCount = 1;
+            resizerReplicaCount = 1;
+            snapshotterReplicaCount = 1;
           };
           image = {
             csi = {
@@ -136,7 +136,7 @@ in
                 repository = csiAttacherImage.imageName;
                 tag = csiAttacherImage.imageTag;
               };
-              nodeDriverRegirar = {
+              nodeDriverRegistrar = {
                 repository = csiNodeDriverRegistrarImage.imageName;
                 tag = csiNodeDriverRegistrarImage.imageTag;
               };
