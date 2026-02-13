@@ -65,13 +65,15 @@ edit-secret secret:
 docs:
   mkdir -p docs
 
-  nix build .#nixosOptionsDoc && cat result > ./docs/nixos-options.md && rm result
+  nix build .#nixos-options-doc && cat result > ./docs/nixos-options.md && rm result
   sed -i 's+\/nix\/store\/[a-z0-9]*-source\/++g' ./docs/nixos-options.md
   sed -i 's+file:\/\/+../+g' ./docs/nixos-options.md
+  sed -i 's+, via option flake[^])]*++g' ./docs/nixos-options.md
 
-  nix build .#homeManagerOptionsDoc && cat result > ./docs/home-manager-options.md && rm result
+  nix build .#home-manager-options-doc && cat result > ./docs/home-manager-options.md && rm result
   sed -i 's+\/nix\/store\/[a-z0-9]*-source\/++g' ./docs/home-manager-options.md
   sed -i 's+file:\/\/+../+g' ./docs/home-manager-options.md
+  sed -i 's+, via option flake[^])]*++g' ./docs/home-manager-options.md
 
 # Generate git-hooks
 # Usage: $ just hooks

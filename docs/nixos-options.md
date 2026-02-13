@@ -1,4 +1,30 @@
+## audio\.enable
+
+Whether to enable audio using pipewire\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/desktop/audio\.nix](../modules/desktop/audio.nix)
+
+
+
 ## auto-upgrade\.enable
+
+
 
 Whether to enable automatic update of nix flake from github\.
 
@@ -18,7 +44,33 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/auto-upgrade\.nix](../modules/nixos/core/auto-upgrade.nix)
+ - [modules/core/auto-upgrade\.nix](../modules/core/auto-upgrade.nix)
+
+
+
+## bluetooth\.enable
+
+
+
+Whether to enable bluetooth\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/desktop/bluetooth\.nix](../modules/desktop/bluetooth.nix)
 
 
 
@@ -44,7 +96,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/bootloader\.nix](../modules/nixos/core/bootloader.nix)
+ - [modules/core/bootloader\.nix](../modules/core/bootloader.nix)
 
 
 
@@ -70,89 +122,11 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/bootloader\.nix](../modules/nixos/core/bootloader.nix)
+ - [modules/core/bootloader\.nix](../modules/core/bootloader.nix)
 
 
 
-## desktop\.enable
-
-
-
-Whether to enable default desktop modules\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/desktop](../modules/nixos/desktop)
-
-
-
-## desktop\.audio\.enable
-
-
-
-Whether to enable audio using pipewire\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/desktop/audio\.nix](../modules/nixos/desktop/audio.nix)
-
-
-
-## desktop\.bluetooth\.enable
-
-
-
-Whether to enable bluetooth\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/desktop/bluetooth\.nix](../modules/nixos/desktop/bluetooth.nix)
-
-
-
-## desktop\.cosmic-desktop\.enable
+## cosmic-desktop\.enable
 
 
 
@@ -174,163 +148,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/desktop/cosmic-desktop\.nix](../modules/nixos/desktop/cosmic-desktop.nix)
-
-
-
-## desktop\.kde-connect\.enable
-
-
-
-Whether to enable kde connect phone pairing app\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/desktop/kde-connect\.nix](../modules/nixos/desktop/kde-connect.nix)
-
-
-
-## desktop\.kde-plasma\.enable
-
-
-
-Whether to enable kde plasma desktop environment\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/desktop/kde-plasma\.nix](../modules/nixos/desktop/kde-plasma.nix)
-
-
-
-## desktop\.printing\.enable
-
-
-
-Whether to enable printing using CUPS\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/desktop/printing\.nix](../modules/nixos/desktop/printing.nix)
-
-
-
-## desktop\.scanning\.enable
-
-
-
-Whether to enable scanning using SANE and installs necessary drivers for Epson Perfection V550 Scanner\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/desktop/scanning\.nix](../modules/nixos/desktop/scanning.nix)
-
-
-
-## desktop\.steam\.enable
-
-
-
-Whether to enable steam gaming client\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/desktop/steam\.nix](../modules/nixos/desktop/steam.nix)
-
-
-
-## desktop\.virtualisation\.enable
-
-
-
-Whether to enable virtualisation using libvirt \& qemu\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/desktop/virtualisation\.nix](../modules/nixos/desktop/virtualisation.nix)
+ - [modules/desktop/cosmic-desktop\.nix](../modules/desktop/cosmic-desktop.nix)
 
 
 
@@ -356,7 +174,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/docker\.nix](../modules/nixos/core/docker.nix)
+ - [modules/core/docker\.nix](../modules/core/docker.nix)
 
 
 
@@ -382,7 +200,59 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/garbage-collection\.nix](../modules/nixos/core/garbage-collection.nix)
+ - [modules/core/gargabe-collection\.nix](../modules/core/gargabe-collection.nix)
+
+
+
+## gitea\.enable
+
+
+
+Whether to enable Gitea Helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/gitea\.nix](../modules/server/gitea.nix)
+
+
+
+## hello-world\.enable
+
+
+
+Whether to enable hello world helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/hello-world\.nix](../modules/server/hello-world.nix)
 
 
 
@@ -408,7 +278,85 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/impermanence\.nix](../modules/nixos/core/impermanence.nix)
+ - [modules/core/impermanence\.nix](../modules/core/impermanence.nix)
+
+
+
+## k3s\.enable
+
+
+
+Whether to enable k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/k3s\.nix](../modules/server/k3s.nix)
+
+
+
+## kde-connect\.enable
+
+
+
+Whether to enable kde connect phone pairing app\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/desktop/kde-connect\.nix](../modules/desktop/kde-connect.nix)
+
+
+
+## kde-plasma\.enable
+
+
+
+Whether to enable kde plasma desktop environment\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/desktop/kde-plasma\.nix](../modules/desktop/kde-plasma.nix)
 
 
 
@@ -434,7 +382,267 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/localisation\.nix](../modules/nixos/core/localisation.nix)
+ - [modules/core/localisation\.nix](../modules/core/localisation.nix)
+
+
+
+## longhorn\.enable
+
+
+
+Whether to enable longhorn helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/longhorn\.nix](../modules/server/longhorn.nix)
+
+
+
+## media-server\.enable
+
+
+
+Whether to enable jellyfin, transmission and servarr services on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/media/default\.nix](../modules/server/media/default.nix)
+
+
+
+## media-server\.flaresolverr\.enable
+
+
+
+Whether to enable FlareSolverr for Prowlarr\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/media/flaresolverr\.nix](../modules/server/media/flaresolverr.nix)
+
+
+
+## media-server\.jellyfin\.enable
+
+
+
+Whether to enable jellyfin helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/media/jellyfin\.nix](../modules/server/media/jellyfin.nix)
+
+
+
+## media-server\.lidarr\.enable
+
+
+
+Whether to enable lidarr manifest on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/media/lidarr\.nix](../modules/server/media/lidarr.nix)
+
+
+
+## media-server\.prowlarr\.enable
+
+
+
+Whether to enable prowlarr manifest on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/media/prowlarr\.nix](../modules/server/media/prowlarr.nix)
+
+
+
+## media-server\.radarr\.enable
+
+
+
+Whether to enable radarr manifest on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/media/radarr\.nix](../modules/server/media/radarr.nix)
+
+
+
+## media-server\.sonarr\.enable
+
+
+
+Whether to enable sonarr manifest on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/media/sonarr\.nix](../modules/server/media/sonarr.nix)
+
+
+
+## media-server\.transmission\.enable
+
+
+
+Whether to enable transmission manifest on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/media/transmission\.nix](../modules/server/media/transmission.nix)
+
+
+
+## metallb\.enable
+
+
+
+Whether to enable metalLB helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/metallb\.nix](../modules/server/metallb.nix)
 
 
 
@@ -460,7 +668,85 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/networking\.nix](../modules/nixos/core/networking.nix)
+ - [modules/core/networking\.nix](../modules/core/networking.nix)
+
+
+
+## nextcloud\.enable
+
+
+
+Whether to enable nextcloud helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/nextcloud\.nix](../modules/server/nextcloud.nix)
+
+
+
+## printing\.enable
+
+
+
+Whether to enable printing using CUPS\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/desktop/printing\.nix](../modules/desktop/printing.nix)
+
+
+
+## scanning\.enable
+
+
+
+Whether to enable scanning using SANE and installs necessary drivers for Epson Perfection V550 Scanner\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/desktop/scanning\.nix](../modules/desktop/scanning.nix)
 
 
 
@@ -486,11 +772,11 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/secrets\.nix](../modules/nixos/core/secrets.nix)
+ - [modules/core/secrets\.nix](../modules/core/secrets.nix)
 
 
 
-## secrets\.kubernetes\.enable
+## secrets\.k3s\.enable
 
 
 
@@ -512,7 +798,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/server/kubernetes\.nix](../modules/nixos/server/kubernetes.nix)
+ - [modules/server/k3s\.nix](../modules/server/k3s.nix)
 
 
 
@@ -538,41 +824,15 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/secrets\.nix](../modules/nixos/core/secrets.nix)
+ - [modules/core/secrets\.nix](../modules/core/secrets.nix)
 
 
 
-## server\.enable
+## steam\.enable
 
 
 
-Whether to enable default server modules\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server](../modules/nixos/server)
-
-
-
-## server\.gitea\.enable
-
-
-
-Whether to enable Gitea Helm chart on k3s\.
+Whether to enable steam gaming client\.
 
 
 
@@ -590,345 +850,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/server/gitea\.nix](../modules/nixos/server/gitea.nix)
-
-
-
-## server\.hello-world\.enable
-
-
-
-Whether to enable hello world helm chart on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/hello-world\.nix](../modules/nixos/server/hello-world.nix)
-
-
-
-## server\.kubernetes\.enable
-
-
-
-Whether to enable k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/kubernetes\.nix](../modules/nixos/server/kubernetes.nix)
-
-
-
-## server\.longhorn\.enable
-
-
-
-Whether to enable longhorn helm chart on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/longhorn\.nix](../modules/nixos/server/longhorn.nix)
-
-
-
-## server\.media\.enable
-
-
-
-Whether to enable jellyfin, transmission and servarr services on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/media](../modules/nixos/server/media)
-
-
-
-## server\.media\.flaresolverr\.enable
-
-
-
-Whether to enable FlareSolverr for Prowlarr\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/media/flaresolverr\.nix](../modules/nixos/server/media/flaresolverr.nix)
-
-
-
-## server\.media\.jellyfin\.enable
-
-
-
-Whether to enable jellyfin helm chart on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/media/jellyfin\.nix](../modules/nixos/server/media/jellyfin.nix)
-
-
-
-## server\.media\.lidarr\.enable
-
-
-
-Whether to enable lidarr manifest on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/media/lidarr\.nix](../modules/nixos/server/media/lidarr.nix)
-
-
-
-## server\.media\.prowlarr\.enable
-
-
-
-Whether to enable prowlarr manifest on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/media/prowlarr\.nix](../modules/nixos/server/media/prowlarr.nix)
-
-
-
-## server\.media\.radarr\.enable
-
-
-
-Whether to enable radarr manifest on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/media/radarr\.nix](../modules/nixos/server/media/radarr.nix)
-
-
-
-## server\.media\.sonarr\.enable
-
-
-
-Whether to enable sonarr manifest on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/media/sonarr\.nix](../modules/nixos/server/media/sonarr.nix)
-
-
-
-## server\.media\.transmission\.enable
-
-
-
-Whether to enable transmission manifest on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/media/transmission\.nix](../modules/nixos/server/media/transmission.nix)
-
-
-
-## server\.metallb\.enable
-
-
-
-Whether to enable metalLB helm chart on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/metallb\.nix](../modules/nixos/server/metallb.nix)
-
-
-
-## server\.nextcloud\.enable
-
-
-
-Whether to enable nextcloud helm chart on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/nixos/server/nextcloud\.nix](../modules/nixos/server/nextcloud.nix)
+ - [modules/desktop/steam\.nix](../modules/desktop/steam.nix)
 
 
 
@@ -954,7 +876,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -980,7 +902,7 @@ string
 ` "catppuccin-mocha" `
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1001,7 +923,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1022,7 +944,7 @@ submodule
 ` Noto Color Emoji `
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1038,7 +960,7 @@ package to use for the emoji font
 package
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1054,7 +976,7 @@ The name to use for the emoji font
 string
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1075,7 +997,7 @@ submodule
 ` Inter `
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1091,7 +1013,7 @@ package to use for the interface font
 package
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1107,7 +1029,7 @@ The name to use for the interface font
 string
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1128,7 +1050,7 @@ submodule
 ` JetBrainsMono Nerd Font Mono `
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1144,7 +1066,7 @@ package to use for the monospace font
 package
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1160,7 +1082,7 @@ The name to use for the monospace font
 string
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1187,7 +1109,7 @@ submodule
 ```
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1203,7 +1125,7 @@ SHA256 hash in SRI format
 string
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1219,7 +1141,7 @@ Download URL
 string
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
 
 
 
@@ -1240,7 +1162,33 @@ one of “light”, “dark”
 ` "dark" `
 
 *Declared by:*
- - [modules/nixos/core/theme\.nix](../modules/nixos/core/theme.nix)
+ - [modules/core/theme\.nix](../modules/core/theme.nix)
+
+
+
+## virtualisation\.enable
+
+
+
+Whether to enable virtualisation using libvirt \& qemu\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/desktop/virtualisation\.nix](../modules/desktop/virtualisation.nix)
 
 
 
@@ -1266,6 +1214,6 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/nixos/core/zsh\.nix](../modules/nixos/core/zsh.nix)
+ - [modules/core/zsh\.nix](../modules/core/zsh.nix)
 
 
