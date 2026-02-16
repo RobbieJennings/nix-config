@@ -14,6 +14,7 @@
       imports = [
         inputs.self.modules.nixos.auto-upgrade
         inputs.self.modules.nixos.garbage-collection
+        inputs.self.modules.nixos.fwupd
         inputs.self.modules.nixos.bootloader
         inputs.self.modules.nixos.networking
         inputs.self.modules.nixos.docker
@@ -27,6 +28,7 @@
       config = {
         auto-upgrade.enable = lib.mkDefault true;
         garbage-collection.enable = lib.mkDefault true;
+        fwupd.enable = lib.mkDefault true;
         bootloader.enable = lib.mkDefault true;
         networking.enable = lib.mkDefault true;
         docker.enable = lib.mkDefault true;
