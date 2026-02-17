@@ -45,10 +45,6 @@
               data."settings.yaml" = ''
                 title: Homelab
                 theme: dark
-                layout:
-                  Media:
-                    style: row
-                    columns: 3
               '';
             }
             {
@@ -62,8 +58,12 @@
                 - Infrastructure:
                     - Longhorn:
                         href: http://192.168.0.201
+
+                - Code:
                     - Gitea:
                         href: http://192.168.0.204:3000
+
+                - Storage:
                     - Nextcloud:
                         href: http://192.168.0.203:8080
 
