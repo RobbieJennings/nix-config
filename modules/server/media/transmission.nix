@@ -85,10 +85,18 @@
                             name = "PGID";
                             value = "1000";
                           }
+
+                          # Performance
                           {
                             name = "TRANSMISSION_CACHE_SIZE_MB";
-                            value = "64";
+                            value = "256";
                           }
+                          {
+                            name = "TRANSMISSION_PREALLOCATION";
+                            value = "fallocate";
+                          }
+
+                          # Queue tuning
                           {
                             name = "TRANSMISSION_QUEUE_STALLED_MINUTES";
                             value = "30";
@@ -97,17 +105,31 @@
                             name = "TRANSMISSION_DOWNLOAD_QUEUE_SIZE";
                             value = "5";
                           }
-                          {
-                            name = "TRANSMISSION_PREALLOCATION";
-                            value = "sparse";
-                          }
+
+                          # Peer tuning
                           {
                             name = "TRANSMISSION_PEER_LIMIT_GLOBAL";
-                            value = "200";
+                            value = "150";
                           }
                           {
                             name = "TRANSMISSION_PEER_LIMIT_PER_TORRENT";
-                            value = "50";
+                            value = "40";
+                          }
+
+                          # Clean incomplete handling
+                          {
+                            name = "TRANSMISSION_INCOMPLETE_DIR_ENABLED";
+                            value = "true";
+                          }
+                          {
+                            name = "TRANSMISSION_INCOMPLETE_DIR";
+                            value = "/downloads/.incomplete";
+                          }
+
+                          # Security
+                          {
+                            name = "TRANSMISSION_RPC_AUTHENTICATION_REQUIRED";
+                            value = "true";
                           }
                         ];
                         ports = [
