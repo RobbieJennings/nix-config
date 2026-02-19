@@ -121,7 +121,7 @@
                 };
                 persistence = {
                   enabled = true;
-                  size = "10Gi";
+                  size = "25Gi";
                 };
                 resources = {
                   requests.cpu = "500m";

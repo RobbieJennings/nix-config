@@ -162,7 +162,7 @@
                             path = "/transmission/web/";
                             port = 9091;
                           };
-                          initialDelaySeconds = 10;
+                          initialDelaySeconds = 15;
                           periodSeconds = 10;
                           timeoutSeconds = 2;
                           failureThreshold = 3;
@@ -172,7 +172,7 @@
                             path = "/transmission/web/";
                             port = 9091;
                           };
-                          initialDelaySeconds = 20;
+                          initialDelaySeconds = 30;
                           periodSeconds = 20;
                           timeoutSeconds = 2;
                           failureThreshold = 3;

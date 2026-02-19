@@ -71,6 +71,7 @@
             "/etc/NetworkManager/system-connections"
             "/etc/nixos"
             "/root/.ssh"
+            "/media-server"
           ];
         };
       }
