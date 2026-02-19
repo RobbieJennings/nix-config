@@ -42,149 +42,185 @@
     {
       options = {
         gitea.enable = lib.mkEnableOption "Gitea Helm chart on k3s";
+        secrets.gitea.enable = lib.mkEnableOption "Gitea secrets";
       };
 
-      config = lib.mkIf config.gitea.enable {
-        services.k3s = {
-          images = [
-            giteaImage
-            postgresqlImage
-            valkeyImage
-          ];
-          autoDeployCharts.gitea = chart // {
-            targetNamespace = "gitea";
-            createNamespace = true;
-            values = {
-              image = {
-                registry = "docker.io";
-                repository = giteaImage.imageName;
-                tag = giteaImage.imageTag;
-              };
-              gitea = {
-                admin = {
-                  username = "admin";
-                  password = "changeme";
-                  email = "admin@local";
-                };
-                config = {
-                  database = {
-                    DB_TYPE = "postgres";
-                    HOST = "gitea-postgresql.gitea.svc.cluster.local:5432";
-                  };
-                  cache = {
-                    ADAPTER = "redis";
-                    HOST = "gitea-valkey-primary.gitea.svc.cluster.local:6379";
-                  };
-                  queue = {
-                    TYPE = "redis";
-                    CONN_STR = "redis://gitea-valkey-primary.gitea.svc.cluster.local:6379/0";
-                  };
-                  session = {
-                    PROVIDER = "redis";
-                    PROVIDER_CONFIG = "redis://gitea-valkey-primary.gitea.svc.cluster.local:6379/0";
-                  };
-                  indexer = {
-                    ISSUE_INDEXER_TYPE = "bleve";
-                    REPO_INDEXER_ENABLED = true;
-                  };
-                  server = {
-                    DOMAIN = "192.168.0.204";
-                    ROOT_URL = "http://192.168.0.204:3000";
-                  };
-                };
-              };
-              service = {
-                http = {
-                  type = "LoadBalancer";
-                  loadBalancerIP = "192.168.0.204";
-                  annotations = {
-                    "metallb.io/address-pool" = "default";
-                    "metallb.io/allow-shared-ip" = "gitea";
-                  };
-                };
-                ssh = {
-                  type = "LoadBalancer";
-                  loadBalancerIP = "192.168.0.204";
-                  annotations = {
-                    "metallb.io/address-pool" = "default";
-                    "metallb.io/allow-shared-ip" = "gitea";
-                  };
-                };
-              };
-              persistence = {
-                enabled = true;
-                size = "10Gi";
-              };
-              resources = {
-                requests.cpu = "500m";
-                requests.memory = "512Mi";
-                limits.cpu = "1000m";
-                limits.memory = "1Gi";
-              };
-              dnsConfig.options = [
-                # Needed for hardcoded valkey address to resolve in configure-gitea container
-                {
-                  name = "ndots";
-                  value = "1";
-                }
-              ];
-              postgresql-ha.enabled = false;
-              postgresql = {
-                enabled = true;
+      config = lib.mkMerge [
+        (lib.mkIf config.gitea.enable {
+          services.k3s = {
+            images = [
+              giteaImage
+              postgresqlImage
+              valkeyImage
+            ];
+            autoDeployCharts.gitea = chart // {
+              targetNamespace = "gitea";
+              createNamespace = true;
+              values = {
                 image = {
-                  repository = postgresqlImage.imageName;
-                  tag = postgresqlImage.imageTag;
+                  registry = "docker.io";
+                  repository = giteaImage.imageName;
+                  tag = giteaImage.imageTag;
                 };
-                primary = {
-                  persistence = {
-                    enabled = true;
-                    size = "8Gi";
+                gitea = {
+                  admin =
+                    if (config.secrets.enable && config.secrets.gitea.enable) then
+                      {
+                        existingSecret = "gitea-secrets";
+                      }
+                    else
+                      {
+                        username = "admin";
+                        password = "changeme";
+                        email = "admin@local";
+                      };
+                  config = {
+                    database = {
+                      DB_TYPE = "postgres";
+                      HOST = "gitea-postgresql.gitea.svc.cluster.local:5432";
+                    };
+                    cache = {
+                      ADAPTER = "redis";
+                      HOST = "gitea-valkey-primary.gitea.svc.cluster.local:6379";
+                    };
+                    queue = {
+                      TYPE = "redis";
+                      CONN_STR = "redis://gitea-valkey-primary.gitea.svc.cluster.local:6379/0";
+                    };
+                    session = {
+                      PROVIDER = "redis";
+                      PROVIDER_CONFIG = "redis://gitea-valkey-primary.gitea.svc.cluster.local:6379/0";
+                    };
+                    indexer = {
+                      ISSUE_INDEXER_TYPE = "bleve";
+                      REPO_INDEXER_ENABLED = true;
+                    };
+                    server = {
+                      DOMAIN = "192.168.0.204";
+                      ROOT_URL = "http://192.168.0.204:3000";
+                    };
                   };
-                  resources = {
-                    requests.cpu = "500m";
-                    requests.memory = "512Mi";
-                    limits.cpu = "1000m";
-                    limits.memory = "1Gi";
-                  };
-                  extraEnvVars = [
-                    {
-                      name = "POSTGRESQL_SHARED_BUFFERS";
-                      value = "256MB";
-                    }
-                    {
-                      name = "POSTGRESQL_EFFECTIVE_CACHE_SIZE";
-                      value = "768MB";
-                    }
-                  ];
                 };
-              };
-              valkey-cluster.enabled = false;
-              valkey = {
-                enabled = true;
-                image = {
-                  repository = valkeyImage.imageName;
-                  tag = valkeyImage.imageTag;
+                service = {
+                  http = {
+                    type = "LoadBalancer";
+                    loadBalancerIP = "192.168.0.204";
+                    annotations = {
+                      "metallb.io/address-pool" = "default";
+                      "metallb.io/allow-shared-ip" = "gitea";
+                    };
+                  };
+                  ssh = {
+                    type = "LoadBalancer";
+                    loadBalancerIP = "192.168.0.204";
+                    annotations = {
+                      "metallb.io/address-pool" = "default";
+                      "metallb.io/allow-shared-ip" = "gitea";
+                    };
+                  };
                 };
-                primary = {
-                  persistence = {
-                    enabled = true;
-                    size = "8Gi";
+                persistence = {
+                  enabled = true;
+                  size = "10Gi";
+                };
+                resources = {
+                  requests.cpu = "500m";
+                  requests.memory = "512Mi";
+                  limits.cpu = "1000m";
+                  limits.memory = "1Gi";
+                };
+                dnsConfig.options = [
+                  # Needed for hardcoded valkey address to resolve in configure-gitea container
+                  {
+                    name = "ndots";
+                    value = "1";
+                  }
+                ];
+                postgresql-ha.enabled = false;
+                postgresql = {
+                  enabled = true;
+                  image = {
+                    repository = postgresqlImage.imageName;
+                    tag = postgresqlImage.imageTag;
                   };
-                  resources = {
-                    requests.cpu = "100m";
-                    requests.memory = "128Mi";
-                    limits.cpu = "200m";
-                    limits.memory = "256Mi";
+                  primary = {
+                    persistence = {
+                      enabled = true;
+                      size = "8Gi";
+                    };
+                    resources = {
+                      requests.cpu = "500m";
+                      requests.memory = "512Mi";
+                      limits.cpu = "1000m";
+                      limits.memory = "1Gi";
+                    };
+                    extraEnvVars = [
+                      {
+                        name = "POSTGRESQL_SHARED_BUFFERS";
+                        value = "256MB";
+                      }
+                      {
+                        name = "POSTGRESQL_EFFECTIVE_CACHE_SIZE";
+                        value = "768MB";
+                      }
+                    ];
                   };
-                  extraFlags = [
-                    "--maxmemory 200mb"
-                    "--maxmemory-policy allkeys-lru"
-                  ];
+                };
+                valkey-cluster.enabled = false;
+                valkey = {
+                  enabled = true;
+                  image = {
+                    repository = valkeyImage.imageName;
+                    tag = valkeyImage.imageTag;
+                  };
+                  primary = {
+                    persistence = {
+                      enabled = true;
+                      size = "8Gi";
+                    };
+                    resources = {
+                      requests.cpu = "100m";
+                      requests.memory = "128Mi";
+                      limits.cpu = "200m";
+                      limits.memory = "256Mi";
+                    };
+                    extraFlags = [
+                      "--maxmemory 200mb"
+                      "--maxmemory-policy allkeys-lru"
+                    ];
+                  };
                 };
               };
             };
           };
-        };
-      };
+        })
+        (lib.mkIf (config.gitea.enable && config.secrets.enable && config.secrets.gitea.enable) {
+          sops = {
+            secrets = {
+              "gitea/username" = { };
+              "gitea/password" = { };
+              "gitea/email" = { };
+              "gitea/key" = { };
+            };
+            templates.giteaSecrets = {
+              content = builtins.toJSON {
+                apiVersion = "v1";
+                kind = "Secret";
+                type = "Opaque";
+                metadata = {
+                  name = "gitea-secrets";
+                  namespace = "gitea";
+                };
+                stringData = {
+                  username = config.sops.placeholder."gitea/username";
+                  password = config.sops.placeholder."gitea/password";
+                  email = config.sops.placeholder."gitea/email";
+                };
+              };
+              path = "/var/lib/rancher/k3s/server/manifests/gitea-secret.json";
+            };
+          };
+        })
+      ];
     };
 }

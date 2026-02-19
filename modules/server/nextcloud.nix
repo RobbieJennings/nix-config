@@ -49,151 +49,184 @@
     {
       options = {
         nextcloud.enable = lib.mkEnableOption "nextcloud helm chart on k3s";
+        secrets.nextcloud.enable = lib.mkEnableOption "Nextcloud secrets";
       };
 
-      config = lib.mkIf config.nextcloud.enable {
-        services.k3s = {
-          images = [
-            nextcloudImage
-            postgresqlImage
-            redisImage
-            collaboraImage
-          ];
-          autoDeployCharts.nextcloud = chart // {
-            targetNamespace = "nextcloud";
-            createNamespace = true;
-            values = {
-              image = {
-                repository = nextcloudImage.imageName;
-                tag = nextcloudImage.imageTag;
-              };
-              nextcloud = {
-                host = "192.168.0.203";
-                trustedDomains = [ "192.168.0.203" ];
-              };
-              service = {
-                type = "LoadBalancer";
-                loadBalancerIP = "192.168.0.203";
-                annotations = {
-                  "metallb.io/address-pool" = "default";
-                  "metallb.io/allow-shared-ip" = "nextcloud";
-                };
-              };
-              persistence = {
-                enabled = true;
-                size = "8Gi";
-                nextcloudData = {
-                  enabled = true;
-                  size = "10Gi";
-                };
-              };
-              resources = {
-                requests.cpu = "500m";
-                requests.memory = "2Gi";
-                limits.cpu = "1000m";
-                limits.memory = "4Gi";
-              };
-              internalDatabase.enabled = false;
-              externalDatabase = {
-                enabled = true;
-                type = "postgresql";
-                host = "nextcloud-postgresql.nextcloud.svc.cluster.local";
-              };
-              postgresql = {
-                enabled = true;
+      config = lib.mkMerge [
+        (lib.mkIf config.nextcloud.enable {
+          services.k3s = {
+            images = [
+              nextcloudImage
+              postgresqlImage
+              redisImage
+              collaboraImage
+            ];
+            autoDeployCharts.nextcloud = chart // {
+              targetNamespace = "nextcloud";
+              createNamespace = true;
+              values = {
                 image = {
-                  repository = postgresqlImage.imageName;
-                  tag = postgresqlImage.imageTag;
+                  repository = nextcloudImage.imageName;
+                  tag = nextcloudImage.imageTag;
                 };
-                primary = {
-                  persistence = {
-                    enabled = true;
-                    size = "8Gi";
+                nextcloud = {
+                  host = "192.168.0.203";
+                  trustedDomains = [ "192.168.0.203" ];
+                  existingSecret = {
+                    enabled = if (config.secrets.enable && config.secrets.nextcloud.enable) then true else false;
+                    secretName = "nextcloud-secrets";
+                    usernameKey = "username";
+                    passwordKey = "password";
                   };
-                  resources = {
-                    requests.cpu = "500m";
-                    requests.memory = "512Mi";
-                    limits.cpu = "1000m";
-                    limits.memory = "1Gi";
-                  };
-                  extraEnvVars = [
-                    {
-                      name = "POSTGRESQL_SHARED_BUFFERS";
-                      value = "256MB";
-                    }
-                    {
-                      name = "POSTGRESQL_EFFECTIVE_CACHE_SIZE";
-                      value = "768MB";
-                    }
-                  ];
-                };
-              };
-              redis = {
-                enabled = true;
-                image = {
-                  repository = redisImage.imageName;
-                  tag = redisImage.imageTag;
-                };
-                architecture = "standalone";
-                master = {
-                  persistence = {
-                    enabled = true;
-                    size = "8Gi";
-                  };
-                  resources = {
-                    requests.cpu = "100m";
-                    requests.memory = "128Mi";
-                    limits.cpu = "200m";
-                    limits.memory = "256Mi";
-                  };
-                  extraFlags = [
-                    "--maxmemory 200mb"
-                    "--maxmemory-policy allkeys-lru"
-                  ];
-                };
-              };
-              collabora = {
-                enabled = true;
-                image = {
-                  repository = collaboraImage.imageName;
-                  tag = collaboraImage.imageTag;
                 };
                 service = {
                   type = "LoadBalancer";
+                  loadBalancerIP = "192.168.0.203";
                   annotations = {
                     "metallb.io/address-pool" = "default";
-                    "metallb.io/loadBalancerIPs" = "192.168.0.203";
                     "metallb.io/allow-shared-ip" = "nextcloud";
+                  };
+                };
+                persistence = {
+                  enabled = true;
+                  size = "8Gi";
+                  nextcloudData = {
+                    enabled = true;
+                    size = "10Gi";
                   };
                 };
                 resources = {
                   requests.cpu = "500m";
-                  requests.memory = "1Gi";
+                  requests.memory = "2Gi";
                   limits.cpu = "1000m";
-                  limits.memory = "2Gi";
+                  limits.memory = "4Gi";
                 };
-              };
-              cronjob = {
-                enabled = true;
-                type = "sidecar";
-                resources = {
-                  requests.cpu = "200m";
-                  requests.memory = "256Mi";
-                  limits.cpu = "500m";
-                  limits.memory = "512Mi";
+                internalDatabase.enabled = false;
+                externalDatabase = {
+                  enabled = true;
+                  type = "postgresql";
+                  host = "nextcloud-postgresql.nextcloud.svc.cluster.local";
                 };
-              };
-              livenessProbe = {
-                initialDelaySeconds = 300;
-                periodSeconds = 30;
-              };
-              readinessProbe = {
-                initialDelaySeconds = 300;
-                periodSeconds = 30;
+                postgresql = {
+                  enabled = true;
+                  image = {
+                    repository = postgresqlImage.imageName;
+                    tag = postgresqlImage.imageTag;
+                  };
+                  primary = {
+                    persistence = {
+                      enabled = true;
+                      size = "8Gi";
+                    };
+                    resources = {
+                      requests.cpu = "500m";
+                      requests.memory = "512Mi";
+                      limits.cpu = "1000m";
+                      limits.memory = "1Gi";
+                    };
+                    extraEnvVars = [
+                      {
+                        name = "POSTGRESQL_SHARED_BUFFERS";
+                        value = "256MB";
+                      }
+                      {
+                        name = "POSTGRESQL_EFFECTIVE_CACHE_SIZE";
+                        value = "768MB";
+                      }
+                    ];
+                  };
+                };
+                redis = {
+                  enabled = true;
+                  image = {
+                    repository = redisImage.imageName;
+                    tag = redisImage.imageTag;
+                  };
+                  architecture = "standalone";
+                  master = {
+                    persistence = {
+                      enabled = true;
+                      size = "8Gi";
+                    };
+                    resources = {
+                      requests.cpu = "100m";
+                      requests.memory = "128Mi";
+                      limits.cpu = "200m";
+                      limits.memory = "256Mi";
+                    };
+                    extraFlags = [
+                      "--maxmemory 200mb"
+                      "--maxmemory-policy allkeys-lru"
+                    ];
+                  };
+                };
+                collabora = {
+                  enabled = true;
+                  image = {
+                    repository = collaboraImage.imageName;
+                    tag = collaboraImage.imageTag;
+                  };
+                  service = {
+                    type = "LoadBalancer";
+                    annotations = {
+                      "metallb.io/address-pool" = "default";
+                      "metallb.io/loadBalancerIPs" = "192.168.0.203";
+                      "metallb.io/allow-shared-ip" = "nextcloud";
+                    };
+                  };
+                  resources = {
+                    requests.cpu = "500m";
+                    requests.memory = "1Gi";
+                    limits.cpu = "1000m";
+                    limits.memory = "2Gi";
+                  };
+                };
+                cronjob = {
+                  enabled = true;
+                  type = "sidecar";
+                  resources = {
+                    requests.cpu = "200m";
+                    requests.memory = "256Mi";
+                    limits.cpu = "500m";
+                    limits.memory = "512Mi";
+                  };
+                };
+                livenessProbe = {
+                  initialDelaySeconds = 300;
+                  periodSeconds = 30;
+                };
+                readinessProbe = {
+                  initialDelaySeconds = 300;
+                  periodSeconds = 30;
+                };
               };
             };
           };
-        };
-      };
+        })
+        (lib.mkIf (config.nextcloud.enable && config.secrets.enable && config.secrets.nextcloud.enable) {
+          sops = {
+            secrets = {
+              "nextcloud/username" = { };
+              "nextcloud/password" = { };
+            };
+            templates.nextcloudSecrets = {
+              content = builtins.toJSON {
+                apiVersion = "v1";
+                kind = "Secret";
+                type = "Opaque";
+                metadata = {
+                  name = "nextcloud-secrets";
+                  namespace = "nextcloud";
+                };
+                stringData = {
+                  username = config.sops.placeholder."nextcloud/username";
+                  password = config.sops.placeholder."nextcloud/password";
+                };
+              };
+              path = "/var/lib/rancher/k3s/server/manifests/nextcloud-secret.json";
+            };
+          };
+        })
+      ];
     };
 }

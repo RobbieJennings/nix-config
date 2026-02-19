@@ -31,8 +31,8 @@
           };
         })
         (lib.mkIf (config.k3s.enable && config.secrets.enable && config.secrets.k3s.enable) {
-          sops.secrets.k3s-token = { };
-          services.k3s.tokenFile = config.sops.secrets.k3s-token.path;
+          sops.secrets."k3s/token" = { };
+          services.k3s.tokenFile = config.sops.secrets."k3s/token".path;
         })
       ];
     };

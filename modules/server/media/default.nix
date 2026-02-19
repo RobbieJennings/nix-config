@@ -23,56 +23,71 @@
 
       options = {
         media-server.enable = lib.mkEnableOption "jellyfin, transmission and servarr services on k3s";
+        secrets.media-server.enable = lib.mkEnableOption "jellyfin, transmission and servarr secrets";
       };
 
-      config = lib.mkIf config.media-server.enable {
-        services.k3s = {
-          manifests.media.content = [
-            {
-              apiVersion = "v1";
-              kind = "Namespace";
-              metadata = {
-                name = "media";
-              };
-            }
-            {
-              apiVersion = "v1";
-              kind = "PersistentVolumeClaim";
-              metadata = {
-                name = "media";
-                namespace = "media";
-              };
-              spec = {
-                accessModes = [ "ReadWriteMany" ];
-                storageClassName = "longhorn";
-                resources.requests.storage = "25Gi";
-              };
-            }
-            {
-              apiVersion = "v1";
-              kind = "PersistentVolumeClaim";
-              metadata = {
-                name = "downloads";
-                namespace = "media";
-              };
-              spec = {
-                accessModes = [ "ReadWriteMany" ];
-                storageClassName = "longhorn";
-                resources.requests.storage = "25Gi";
-              };
-            }
-          ];
-        };
+      config = lib.mkMerge [
+        (lib.mkIf config.media-server.enable {
+          services.k3s = {
+            manifests.media.content = [
+              {
+                apiVersion = "v1";
+                kind = "Namespace";
+                metadata = {
+                  name = "media";
+                };
+              }
+              {
+                apiVersion = "v1";
+                kind = "PersistentVolumeClaim";
+                metadata = {
+                  name = "media";
+                  namespace = "media";
+                };
+                spec = {
+                  accessModes = [ "ReadWriteMany" ];
+                  storageClassName = "longhorn";
+                  resources.requests.storage = "25Gi";
+                };
+              }
+              {
+                apiVersion = "v1";
+                kind = "PersistentVolumeClaim";
+                metadata = {
+                  name = "downloads";
+                  namespace = "media";
+                };
+                spec = {
+                  accessModes = [ "ReadWriteMany" ];
+                  storageClassName = "longhorn";
+                  resources.requests.storage = "25Gi";
+                };
+              }
+            ];
+          };
 
-        media-server = {
-          jellyfin.enable = lib.mkDefault true;
-          transmission.enable = lib.mkDefault true;
-          flaresolverr.enable = lib.mkDefault true;
-          prowlarr.enable = lib.mkDefault true;
-          radarr.enable = lib.mkDefault true;
-          sonarr.enable = lib.mkDefault true;
-          lidarr.enable = lib.mkDefault true;
-        };
-      };
+          media-server = {
+            jellyfin.enable = lib.mkDefault true;
+            transmission.enable = lib.mkDefault true;
+            flaresolverr.enable = lib.mkDefault true;
+            prowlarr.enable = lib.mkDefault true;
+            radarr.enable = lib.mkDefault true;
+            sonarr.enable = lib.mkDefault true;
+            lidarr.enable = lib.mkDefault true;
+          };
+        })
+        (lib.mkIf
+          (config.media-server.enable && config.secrets.enable && config.secrets.media-server.enable)
+          {
+            sops.secrets = {
+              "jellyfin/key" = { };
+              "radarr/key" = { };
+              "sonarr/key" = { };
+              "lidarr/key" = { };
+              "prowlarr/key" = { };
+            };
+          }
+        )
+      ];
     };
 }

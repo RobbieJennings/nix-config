@@ -52,6 +52,10 @@
         secrets = {
           enable = true;
           passwords.enable = true;
+          k3s.enable = true;
+          gitea.enable = true;
+          nextcloud.enable = true;
+          media-server.enable = true;
         };
         impermanence.enable = true;
         environment.persistence."/persist" = {
