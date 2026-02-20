@@ -142,6 +142,7 @@
                     repository = redisImage.imageName;
                     tag = redisImage.imageTag;
                   };
+                  architecture = "standalone";
                   master = {
                     persistence = {
                       enabled = true;
