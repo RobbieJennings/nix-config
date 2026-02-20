@@ -124,53 +124,6 @@
             values = {
               defaultSettings = {
                 defaultReplicaCount = 1;
-
-                # NVMe performance profile
-                guaranteedEngineCPU = "1000m";
-                guaranteedReplicaManagerCPU = "250m";
-                guaranteedInstanceManagerCPU = "250m";
-
-                # No replica logic needed
-                replicaSoftAntiAffinity = "false";
-                replicaAutoBalance = "disabled";
-                defaultReplicaAutoBalance = "disabled";
-
-                # No locality tricks on single node
-                dataLocality = "disabled";
-                defaultDataLocality = "disabled";
-
-                # Storage headroom (NVMe)
-                storageMinimalAvailablePercentage = "5";
-                storageReservedPercentageForDefaultDisk = "5";
-
-                # Stability
-                autoSalvage = "true";
-                autoDeletePodWhenVolumeDetachedUnexpectedly = "true";
-                allowVolumeCreationWithDegradedAvailability = "true";
-                nodeDownPodDeletionPolicy = "delete-statefulset-pod";
-
-                # Faster failure detection
-                engineReplicaTimeout = "15";
-                replicaReplenishmentWaitInterval = "120";
-
-                # Snapshot control
-                snapshotDataIntegrity = "fast-check";
-                snapshotMaxCount = "50";
-                snapshotMaxSize = "10Gi";
-                orphanAutoDeletion = "true";
-
-                # Reduce background churn
-                allowRecurringJobWhileVolumeDetached = "false";
-                concurrentReplicaRebuildPerNodeLimit = "1";
-                concurrentBackupRestorePerNodeLimit = "1";
-
-                # Backup polling
-                backupstorePollInterval = "300";
-
-                # Keep v1 engine (stable)
-                v2DataEngine = "false";
-
-                disableSchedulingOnCordonedNode = "true";
               };
               persistence = {
                 defaultClassReplicaCount = 1;

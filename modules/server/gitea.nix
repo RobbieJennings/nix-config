@@ -75,29 +75,13 @@
                         email = "admin@local";
                       };
                   config = {
-                    database = {
-                      DB_TYPE = "postgres";
-                      HOST = "gitea-postgresql.gitea.svc.cluster.local:5432";
-                    };
-                    cache = {
-                      ADAPTER = "redis";
-                      HOST = "gitea-valkey-primary.gitea.svc.cluster.local:6379";
-                    };
-                    queue = {
-                      TYPE = "redis";
-                      CONN_STR = "redis://gitea-valkey-primary.gitea.svc.cluster.local:6379/0";
-                    };
-                    session = {
-                      PROVIDER = "redis";
-                      PROVIDER_CONFIG = "redis://gitea-valkey-primary.gitea.svc.cluster.local:6379/0";
+                    server = {
+                      DOMAIN = "192.168.0.204";
+                      ROOT_URL = "http://192.168.0.204:3000";
                     };
                     indexer = {
                       ISSUE_INDEXER_TYPE = "bleve";
                       REPO_INDEXER_ENABLED = true;
-                    };
-                    server = {
-                      DOMAIN = "192.168.0.204";
-                      ROOT_URL = "http://192.168.0.204:3000";
                     };
                   };
                 };
@@ -131,9 +115,11 @@
                 };
                 dnsConfig.options = [
                   # Needed for hardcoded valkey address to resolve in configure-gitea container
+                  # Fixed in master branch, should be available in 12.6.0
+                  # https://gitea.com/gitea/helm-gitea/commit/3cc94ca9a67060f86f606b420cc2adafb83f4d29
                   {
                     name = "ndots";
-                    value = "1";
+                    value = "0";
                   }
                 ];
                 postgresql-ha.enabled = false;

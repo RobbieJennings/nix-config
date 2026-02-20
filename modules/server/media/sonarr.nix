@@ -95,24 +95,6 @@
                       {
                         name = "sonarr";
                         image = "${image.imageName}:${image.imageTag}";
-                        env = [
-                          {
-                            name = "PUID";
-                            value = "1000";
-                          }
-                          {
-                            name = "PGID";
-                            value = "1000";
-                          }
-                          {
-                            name = "DOTNET_SYSTEM_NET_DISABLEIPV6";
-                            value = "1";
-                          }
-                          {
-                            name = "DOTNET_SYSTEM_NET_FORCE_IPV4";
-                            value = "1";
-                          }
-                        ];
                         ports = [ { containerPort = 8989; } ];
                         resources = {
                           requests.cpu = "1000m";
@@ -181,7 +163,7 @@
                     dnsConfig.options = [
                       {
                         name = "ndots";
-                        value = "1";
+                        value = "0";
                       }
                     ];
                   };

@@ -126,6 +126,12 @@
                         persistentVolumeClaim.claimName = "media";
                       }
                     ];
+                    dnsConfig.options = [
+                      {
+                        name = "ndots";
+                        value = "0";
+                      }
+                    ];
                   };
                 };
               };

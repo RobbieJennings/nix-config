@@ -59,14 +59,6 @@
                             name = "TZ";
                             value = "UTC";
                           }
-                          {
-                            name = "DOTNET_SYSTEM_NET_DISABLEIPV6";
-                            value = "1";
-                          }
-                          {
-                            name = "DOTNET_SYSTEM_NET_FORCE_IPV4";
-                            value = "1";
-                          }
                         ];
                         ports = [ { containerPort = 8191; } ];
                         startupProbe = {
@@ -108,7 +100,7 @@
                     dnsConfig.options = [
                       {
                         name = "ndots";
-                        value = "1";
+                        value = "0";
                       }
                     ];
                   };

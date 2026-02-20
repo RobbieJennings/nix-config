@@ -76,62 +76,6 @@
                       {
                         name = "transmission";
                         image = "${image.imageName}:${image.imageTag}";
-                        env = [
-                          {
-                            name = "PUID";
-                            value = "1000";
-                          }
-                          {
-                            name = "PGID";
-                            value = "1000";
-                          }
-
-                          # Performance
-                          {
-                            name = "TRANSMISSION_CACHE_SIZE_MB";
-                            value = "256";
-                          }
-                          {
-                            name = "TRANSMISSION_PREALLOCATION";
-                            value = "fallocate";
-                          }
-
-                          # Queue tuning
-                          {
-                            name = "TRANSMISSION_QUEUE_STALLED_MINUTES";
-                            value = "30";
-                          }
-                          {
-                            name = "TRANSMISSION_DOWNLOAD_QUEUE_SIZE";
-                            value = "5";
-                          }
-
-                          # Peer tuning
-                          {
-                            name = "TRANSMISSION_PEER_LIMIT_GLOBAL";
-                            value = "150";
-                          }
-                          {
-                            name = "TRANSMISSION_PEER_LIMIT_PER_TORRENT";
-                            value = "40";
-                          }
-
-                          # Clean incomplete handling
-                          {
-                            name = "TRANSMISSION_INCOMPLETE_DIR_ENABLED";
-                            value = "true";
-                          }
-                          {
-                            name = "TRANSMISSION_INCOMPLETE_DIR";
-                            value = "/downloads/.incomplete";
-                          }
-
-                          # Security
-                          {
-                            name = "TRANSMISSION_RPC_AUTHENTICATION_REQUIRED";
-                            value = "true";
-                          }
-                        ];
                         ports = [
                           { containerPort = 9091; }
                           {
@@ -210,7 +154,7 @@
                     dnsConfig.options = [
                       {
                         name = "ndots";
-                        value = "1";
+                        value = "0";
                       }
                     ];
                   };

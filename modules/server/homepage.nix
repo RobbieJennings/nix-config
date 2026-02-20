@@ -99,13 +99,13 @@
                   name = "homepage-settings";
                   namespace = "homepage";
                 };
-                data."settings.yaml" = ''
-                  title: Homelab
-                  theme: dark
-                  providers:
-                    longhorn:
-                      url: http://192.168.0.201
-                '';
+                data."settings.yaml" = builtins.toJSON {
+                  title = "Homelab";
+                  theme = "dark";
+                  providers = {
+                    longhorn.url = "http://192.168.0.201";
+                  };
+                };
               }
               {
                 apiVersion = "v1";
@@ -114,27 +114,36 @@
                   name = "homepage-widgets";
                   namespace = "homepage";
                 };
-                data."widgets.yaml" = ''
-                  - resources:
-                      label: System
-                      uptime: true
-                      cputemp: true
-                      cpu: true
-                      memory: true
-                      tempmin: 0
-                      tempmax: 100
-                  - longhorn:
-                      url: http://192.168.0.201
-                      expanded: true
-                      total: true
-                      labels: true
-                      nodes: true
-                  - search:
-                      provider: google
-                      focus: true
-                      showSearchSuggestions: true
-                      target: _blank
-                '';
+                data."widgets.yaml" = builtins.toJSON [
+                  {
+                    resources = {
+                      label = "System";
+                      uptime = true;
+                      cputemp = true;
+                      cpu = true;
+                      memory = true;
+                      tempmin = 0;
+                      tempmax = 100;
+                    };
+                  }
+                  {
+                    longhorn = {
+                      url = "http://192.168.0.201";
+                      expanded = true;
+                      total = true;
+                      labels = true;
+                      nodes = true;
+                    };
+                  }
+                  {
+                    search = {
+                      provider = "google";
+                      focus = true;
+                      showSearchSuggestions = true;
+                      target = "_blank";
+                    };
+                  }
+                ];
               }
               {
                 apiVersion = "v1";
@@ -143,79 +152,137 @@
                   name = "homepage-services";
                   namespace = "homepage";
                 };
-                data."services.yaml" = ''
-                  - Infrastructure:
-                      - Longhorn:
-                          href: http://192.168.0.201
-                          description: Volume Management
-
-                  - Files:
-                      - Gitea:
-                          href: http://192.168.0.204:3000
-                          description: Git Server
-                          widgets:
-                            - type: gitea
-                              url: http://192.168.0.204:3000
-                              key: {{HOMEPAGE_VAR_GITEA_KEY}}
-                      - Nextcloud:
-                          href: http://192.168.0.203:8080
-                          description: Cloud Storage
-                          widgets:
-                            - type: nextcloud
-                              url: http://192.168.0.203:8080
-                              username: {{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}
-                              password: {{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}
-
-                  - Media:
-                      - Jellyfin:
-                          href: http://192.168.0.202:8096
-                          description: Media Playback
-                          widgets:
-                            - type: jellyfin
-                              url: http://192.168.0.202:8096
-                              key: {{HOMEPAGE_VAR_JELLYFIN_KEY}}
-                              version: 1
-                              enableBlocks: true
-                              enableNowPlaying: true
-                              enableUser: true
-                              enableMediaControl: true
-                              showEpisodeNumber: true
-                              expandOneStreamToTwoRows: true
-                      - Transmission:
-                          href: http://192.168.0.202:9091
-                          description: Torrent Management
-                          widgets:
-                            - type: transmission
-                              url: http://192.168.0.202:9091
-                      - Prowlarr:
-                          href: http://192.168.0.202:9696
-                          description: Indexer Management
-                          widgets:
-                            - type: prowlarr
-                              url: http://192.168.0.202:9696
-                              key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
-                      - Radarr:
-                          href: http://192.168.0.202:7878
-                          description: Movie Management
-                          widgets:
-                            - type: radarr
-                              url: http://192.168.0.202:7878
-                              key: {{HOMEPAGE_VAR_RADARR_KEY}}
-                      - Sonarr:
-                          href: http://192.168.0.202:8989
-                          description: TV Show Management
-                          widgets:
-                            - type: sonarr
-                              url: http://192.168.0.202:8989
-                              key: {{HOMEPAGE_VAR_SONARR_KEY}}
-                      - Lidarr:
-                          href: http://192.168.0.202:8686
-                          description: Music Management
-                          widgets:
-                            - type: lidarr
-                              url: http://192.168.0.202:8686
-                              key: {{HOMEPAGE_VAR_LIDARR_KEY}}
-                '';
+                data."services.yaml" = builtins.toJSON [
+                  {
+                    Infrastructure = [
+                      {
+                        Longhorn = {
+                          href = "http://192.168.0.201";
+                          description = "Volume Management";
+                        };
+                      }
+                    ];
+                  }
+                  {
+                    Files = [
+                      {
+                        Gitea = {
+                          href = "http://192.168.0.204:3000";
+                          description = "Git Server";
+                          widgets = [
+                            {
+                              type = "gitea";
+                              url = "http://192.168.0.204:3000";
+                              key = "{{HOMEPAGE_VAR_GITEA_KEY}}";
+                            }
+                          ];
+                        };
+                      }
+                      {
+                        Nextcloud = {
+                          href = "http://192.168.0.203:8080";
+                          description = "Cloud Storage";
+                          widgets = [
+                            {
+                              type = "nextcloud";
+                              url = "http://192.168.0.203:8080";
+                              username = "{{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}";
+                              password = "{{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}";
+                            }
+                          ];
+                        };
+                      }
+                    ];
+                  }
+                  {
+                    Media = [
+                      {
+                        Jellyfin = {
+                          href = "http://192.168.0.202:8096";
+                          description = "Media Playback";
+                          widgets = [
+                            {
+                              type = "jellyfin";
+                              url = "http://192.168.0.202:8096";
+                              key = "{{HOMEPAGE_VAR_JELLYFIN_KEY}}";
+                              version = 1;
+                              enableBlocks = true;
+                              enableNowPlaying = true;
+                              enableUser = true;
+                              enableMediaControl = true;
+                              showEpisodeNumber = true;
+                              expandOneStreamToTwoRows = true;
+                            }
+                          ];
+                        };
+                      }
+                      {
+                        Transmission = {
+                          href = "http://192.168.0.202:9091";
+                          description = "Torrent Management";
+                          widgets = [
+                            {
+                              type = "transmission";
+                              url = "http://192.168.0.202:9091";
+                            }
+                          ];
+                        };
+                      }
+                      {
+                        Prowlarr = {
+                          href = "http://192.168.0.202:9696";
+                          description = "Indexer Management";
+                          widgets = [
+                            {
+                              type = "prowlarr";
+                              url = "http://192.168.0.202:9696";
+                              key = "{{HOMEPAGE_VAR_PROWLARR_KEY}}";
+                            }
+                          ];
+                        };
+                      }
+                      {
+                        Radarr = {
+                          href = "http://192.168.0.202:7878";
+                          description = "Movie Management";
+                          widgets = [
+                            {
+                              type = "radarr";
+                              url = "http://192.168.0.202:7878";
+                              key = "{{HOMEPAGE_VAR_RADARR_KEY}}";
+                            }
+                          ];
+                        };
+                      }
+                      {
+                        Sonarr = {
+                          href = "http://192.168.0.202:8989";
+                          description = "TV Show Management";
+                          widgets = [
+                            {
+                              type = "sonarr";
+                              url = "http://192.168.0.202:8989";
+                              key = "{{HOMEPAGE_VAR_SONARR_KEY}}";
+                            }
+                          ];
+                        };
+                      }
+                      {
+                        Lidarr = {
+                          href = "http://192.168.0.202:8686";
+                          description = "Music Management";
+                          widgets = [
+                            {
+                              type = "lidarr";
+                              url = "http://192.168.0.202:8686";
+                              key = "{{HOMEPAGE_VAR_LIDARR_KEY}}";
+                            }
+                          ];
+                        };
+                      }
+                    ];
+                  }
+                ];
               }
               {
                 apiVersion = "v1";
@@ -224,25 +291,47 @@
                   name = "homepage-bookmarks";
                   namespace = "homepage";
                 };
-                data."bookmarks.yaml" = ''
-                  - Developer:
-                    - Github:
-                      - abbr: GH
-                        href: https://github.com/
-                        description: Code hosting
-
-                  - Entertainment:
-                    - YouTube:
-                      - abbr: YT
-                        href: https://youtube.com/
-                        description: Video sharing
-
-                  - Social:
-                    - Reddit:
-                      - abbr: RE
-                        href: https://reddit.com/
-                        description: The front page of the internet
-                '';
+                data."bookmarks.yaml" = builtins.toJSON [
+                  {
+                    Developer = [
+                      {
+                        Github = [
+                          {
+                            abbr = "GH";
+                            href = "https://github.com/";
+                            description = "Code hosting";
+                          }
+                        ];
+                      }
+                    ];
+                  }
+                  {
+                    Entertainment = [
+                      {
+                        YouTube = [
+                          {
+                            abbr = "YT";
+                            href = "https://youtube.com/";
+                            description = "Video sharing";
+                          }
+                        ];
+                      }
+                    ];
+                  }
+                  {
+                    Social = [
+                      {
+                        Reddit = [
+                          {
+                            abbr = "RE";
+                            href = "https://reddit.com/";
+                            description = "The front page of the internet";
+                          }
+                        ];
+                      }
+                    ];
+                  }
+                ];
               }
               {
                 apiVersion = "apps/v1";
