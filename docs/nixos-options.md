@@ -178,6 +178,32 @@ boolean
 
 
 
+## fwupd\.enable
+
+
+
+Whether to enable firmware update manager\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/core/fwupd\.nix](../modules/core/fwupd.nix)
+
+
+
 ## garbage-collection\.enable
 
 
@@ -200,7 +226,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/core/gargabe-collection\.nix](../modules/core/gargabe-collection.nix)
+ - [modules/core/garbage-collection\.nix](../modules/core/garbage-collection.nix)
 
 
 
@@ -230,11 +256,11 @@ boolean
 
 
 
-## hello-world\.enable
+## homepage\.enable
 
 
 
-Whether to enable hello world helm chart on k3s\.
+Whether to enable Homepage dashboard on k3s\.
 
 
 
@@ -252,7 +278,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/hello-world\.nix](../modules/server/hello-world.nix)
+ - [modules/server/homepage\.nix](../modules/server/homepage.nix)
 
 
 
@@ -776,6 +802,32 @@ boolean
 
 
 
+## secrets\.gitea\.enable
+
+
+
+Whether to enable Gitea secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/gitea\.nix](../modules/server/gitea.nix)
+
+
+
 ## secrets\.k3s\.enable
 
 
@@ -799,6 +851,58 @@ boolean
 
 *Declared by:*
  - [modules/server/k3s\.nix](../modules/server/k3s.nix)
+
+
+
+## secrets\.media-server\.enable
+
+
+
+Whether to enable jellyfin, transmission and servarr secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/media/default\.nix](../modules/server/media/default.nix)
+
+
+
+## secrets\.nextcloud\.enable
+
+
+
+Whether to enable Nextcloud secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/nextcloud\.nix](../modules/server/nextcloud.nix)
 
 
 
