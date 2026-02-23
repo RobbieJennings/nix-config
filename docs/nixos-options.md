@@ -672,6 +672,110 @@ boolean
 
 
 
+## monitoring\.enable
+
+
+
+Whether to enable prometheus, grafana and loki services on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/monitoring/default\.nix](../modules/server/monitoring/default.nix)
+
+
+
+## monitoring\.grafana\.enable
+
+
+
+Whether to enable prometheus service on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/monitoring/grafana\.nix](../modules/server/monitoring/grafana.nix)
+
+
+
+## monitoring\.loki\.enable
+
+
+
+Whether to enable loki service on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/monitoring/loki\.nix](../modules/server/monitoring/loki.nix)
+
+
+
+## monitoring\.prometheus\.enable
+
+
+
+Whether to enable prometheus service on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/monitoring/prometheus\.nix](../modules/server/monitoring/prometheus.nix)
+
+
+
 ## networking\.enable
 
 
@@ -825,6 +929,32 @@ boolean
 
 *Declared by:*
  - [modules/server/gitea\.nix](../modules/server/gitea.nix)
+
+
+
+## secrets\.grafana\.enable
+
+
+
+Whether to enable grafana secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/monitoring/grafana\.nix](../modules/server/monitoring/grafana.nix)
 
 
 
