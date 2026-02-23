@@ -36,6 +36,16 @@
                 namespace = "homepage";
               };
               stringData = {
+                GRAFANA_USERNAME =
+                  if (config.secrets.enable && config.secrets.grafana.enable) then
+                    config.sops.placeholder."grafana/username"
+                  else
+                    "";
+                GRAFANA_PASSWORD =
+                  if (config.secrets.enable && config.secrets.grafana.enable) then
+                    config.sops.placeholder."grafana/password"
+                  else
+                    "";
                 NEXTCLOUD_USERNAME =
                   if (config.secrets.enable && config.secrets.nextcloud.enable) then
                     config.sops.placeholder."nextcloud/username"
@@ -155,6 +165,33 @@
                 data."services.yaml" = builtins.toJSON [
                   {
                     Infrastructure = [
+                      {
+                        Grafana = {
+                          href = "http://192.168.0.210";
+                          description = "Dashboards";
+                          widgets = [
+                            {
+                              type = "grafana";
+                              url = "http://192.168.0.210";
+                              alerts = "alertmanager";
+                              username = "{{HOMEPAGE_VAR_GRAFANA_USERNAME}}";
+                              password = "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}";
+                            }
+                          ];
+                        };
+                      }
+                      {
+                        Prometheus = {
+                          href = "http://192.168.0.210:9090";
+                          description = "Metrics Server";
+                          widgets = [
+                            {
+                              type = "prometheus";
+                              url = "http://192.168.0.210:9090";
+                            }
+                          ];
+                        };
+                      }
                       {
                         Longhorn = {
                           href = "http://192.168.0.201";
@@ -357,6 +394,20 @@
                             {
                               name = "HOMEPAGE_ALLOWED_HOSTS";
                               value = "192.168.0.200,localhost";
+                            }
+                            {
+                              name = "HOMEPAGE_VAR_GRAFANA_USERNAME";
+                              valueFrom.secretKeyRef = {
+                                name = "homepage-secrets";
+                                key = "GRAFANA_USERNAME";
+                              };
+                            }
+                            {
+                              name = "HOMEPAGE_VAR_GRAFANA_PASSWORD";
+                              valueFrom.secretKeyRef = {
+                                name = "homepage-secrets";
+                                key = "GRAFANA_PASSWORD";
+                              };
                             }
                             {
                               name = "HOMEPAGE_VAR_NEXTCLOUD_USERNAME";

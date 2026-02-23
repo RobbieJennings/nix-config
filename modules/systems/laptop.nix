@@ -53,6 +53,7 @@
           enable = true;
           passwords.enable = true;
           k3s.enable = true;
+          grafana.enable = true;
           gitea.enable = true;
           nextcloud.enable = true;
           media-server.enable = true;
