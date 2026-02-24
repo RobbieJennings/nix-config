@@ -46,6 +46,13 @@
         scanning.enable = lib.mkDefault true;
         steam.enable = lib.mkDefault true;
         virtualisation.enable = lib.mkDefault true;
+
+        assertions = [
+          {
+            assertion = !(config.cosmic-desktop.enable && config.kde-plasma.enable);
+            message = "Cannot enable both COSMIC and Plasma at the same time.";
+          }
+        ];
       };
     };
 }
