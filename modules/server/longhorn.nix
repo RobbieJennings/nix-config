@@ -83,7 +83,7 @@
       longhornUiImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/longhorn-ui";
         imageDigest = "sha256:62fd171f4fbed01ebb51653674c68ea1c531aa562dab23cb029033dffd6bccc6";
-        sha256 = "sha256-Fx64zHqaeQq9kM9fYEJAOVCIx0EtfHy/qj56cd4S2BQ=";
+        sha256 = "sha256-zzAyKsmAQb/aBE157lg0NxCp7jzHmtUwZI1cg0CS/rs=";
         finalImageTag = "v1.10.1";
         arch = "amd64";
       };
