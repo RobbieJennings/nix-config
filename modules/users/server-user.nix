@@ -39,6 +39,7 @@
                 imports = [
                   inputs.self.modules.homeManager.oh-my-posh
                 ];
+                oh-my-posh.enable = true;
               };
             }
 
