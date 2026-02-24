@@ -18,22 +18,22 @@
 
       config = lib.mkMerge [
         (lib.mkIf config.bootloader.enable {
-          boot.loader = {
-            systemd-boot = {
-              enable = true;
-              configurationLimit = 20;
+          boot = {
+            initrd.systemd.enable = true;
+            loader = {
+              efi.canTouchEfiVariables = true;
+              systemd-boot = {
+                enable = true;
+                configurationLimit = 20;
+              };
             };
-            efi.canTouchEfiVariables = true;
           };
         })
 
         (lib.mkIf (config.bootloader.enable && config.bootloader.pretty) {
           boot = {
             loader.timeout = lib.mkDefault 0;
-            initrd = {
-              systemd.enable = true;
-              verbose = false;
-            };
+            initrd.verbose = false;
             plymouth.enable = true;
             kernelParams = [ "quiet" ];
           };

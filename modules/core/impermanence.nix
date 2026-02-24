@@ -16,6 +16,7 @@
       };
 
       config = lib.mkIf config.impermanence.enable {
+        fileSystems."/persist".neededForBoot = true;
         boot.initrd.systemd.services.rollback = {
           description = "Rollback BTRFS root subvolume to a pristine state";
           wantedBy = [ "initrd.target" ];
@@ -24,26 +25,20 @@
           unitConfig.DefaultDependencies = "no";
           serviceConfig.Type = "oneshot";
           script = ''
-            mkdir /mnt
-            mount /dev/mapper/crypted /mnt
+            set -e
+            ROOT_DEV="${config.fileSystems."/".device}"
 
-            delete_subvolume_recursively() {
-              for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
-                delete_subvolume_recursively "/mnt/$i"
-              done
-              btrfs subvolume delete "$1"
-            }
+            mkdir -p /mnt
+            mount -o subvol=/ "$ROOT_DEV" /mnt
 
             if [[ -e /mnt/root ]]; then
-              delete_subvolume_recursively "/mnt/root"
+              btrfs subvolume delete -R /mnt/root
             fi
 
             btrfs subvolume create /mnt/root
             umount /mnt
           '';
         };
-
-        fileSystems."/persist".neededForBoot = true;
       };
     };
 }
