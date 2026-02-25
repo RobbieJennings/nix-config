@@ -76,8 +76,8 @@
                       };
                   config = {
                     server = {
-                      DOMAIN = "192.168.0.204";
-                      ROOT_URL = "http://192.168.0.204:3000";
+                      DOMAIN = "192.168.1.204";
+                      ROOT_URL = "http://192.168.1.204:3000";
                     };
                     indexer = {
                       ISSUE_INDEXER_TYPE = "bleve";
@@ -88,7 +88,7 @@
                 service = {
                   http = {
                     type = "LoadBalancer";
-                    loadBalancerIP = "192.168.0.204";
+                    loadBalancerIP = "192.168.1.204";
                     annotations = {
                       "metallb.io/address-pool" = "default";
                       "metallb.io/allow-shared-ip" = "gitea";
@@ -96,7 +96,7 @@
                   };
                   ssh = {
                     type = "LoadBalancer";
-                    loadBalancerIP = "192.168.0.204";
+                    loadBalancerIP = "192.168.1.204";
                     annotations = {
                       "metallb.io/address-pool" = "default";
                       "metallb.io/allow-shared-ip" = "gitea";

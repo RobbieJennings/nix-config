@@ -65,7 +65,7 @@
                   namespace = "metallb-system";
                 };
                 spec = {
-                  addresses = [ "192.168.0.200-192.168.0.210" ];
+                  addresses = [ "192.168.1.200-192.168.1.210" ];
                   autoAssign = true;
                 };
               }

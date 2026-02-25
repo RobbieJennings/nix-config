@@ -120,7 +120,7 @@
               };
               spec = {
                 type = "LoadBalancer";
-                loadBalancerIP = "192.168.0.202";
+                loadBalancerIP = "192.168.1.202";
                 selector = {
                   "app" = "flaresolverr";
                 };

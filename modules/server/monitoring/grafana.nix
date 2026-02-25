@@ -60,7 +60,7 @@
                 };
                 service = {
                   type = "LoadBalancer";
-                  loadBalancerIP = "192.168.0.210";
+                  loadBalancerIP = "192.168.1.210";
                   annotations = {
                     "metallb.io/address-pool" = "default";
                     "metallb.io/allow-shared-ip" = "monitoring";
@@ -80,7 +80,7 @@
                         name = "Prometheus";
                         type = "prometheus";
                         access = "proxy";
-                        url = "http://192.168.0.210:9090";
+                        url = "http://192.168.1.210:9090";
                         isDefault = true;
                         editable = false;
                       }
@@ -88,7 +88,7 @@
                         name = "Loki";
                         type = "loki";
                         access = "proxy";
-                        url = "http://192.168.0.210:3100";
+                        url = "http://192.168.1.210:3100";
                         editable = false;
                       }
                     ];

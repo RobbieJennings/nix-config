@@ -57,7 +57,7 @@
                   type = "LoadBalancer";
                   annotations = {
                     "metallb.io/address-pool" = "default";
-                    "metallb.io/loadBalancerIPs" = "192.168.0.210";
+                    "metallb.io/loadBalancerIPs" = "192.168.1.210";
                     "metallb.io/allow-shared-ip" = "monitoring";
                   };
                 };

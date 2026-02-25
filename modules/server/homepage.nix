@@ -113,7 +113,7 @@
                   title = "Homelab";
                   theme = "dark";
                   providers = {
-                    longhorn.url = "http://192.168.0.201";
+                    longhorn.url = "http://192.168.1.201";
                   };
                 };
               }
@@ -138,7 +138,7 @@
                   }
                   {
                     longhorn = {
-                      url = "http://192.168.0.201";
+                      url = "http://192.168.1.201";
                       expanded = true;
                       total = true;
                       labels = true;
@@ -167,12 +167,12 @@
                     Infrastructure = [
                       {
                         Grafana = {
-                          href = "http://192.168.0.210";
+                          href = "http://192.168.1.210";
                           description = "Dashboards";
                           widgets = [
                             {
                               type = "grafana";
-                              url = "http://192.168.0.210";
+                              url = "http://192.168.1.210";
                               alerts = "alertmanager";
                               username = "{{HOMEPAGE_VAR_GRAFANA_USERNAME}}";
                               password = "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}";
@@ -182,19 +182,19 @@
                       }
                       {
                         Prometheus = {
-                          href = "http://192.168.0.210:9090";
+                          href = "http://192.168.1.210:9090";
                           description = "Metrics Server";
                           widgets = [
                             {
                               type = "prometheus";
-                              url = "http://192.168.0.210:9090";
+                              url = "http://192.168.1.210:9090";
                             }
                           ];
                         };
                       }
                       {
                         Longhorn = {
-                          href = "http://192.168.0.201";
+                          href = "http://192.168.1.201";
                           description = "Volume Management";
                         };
                       }
@@ -204,12 +204,12 @@
                     Files = [
                       {
                         Gitea = {
-                          href = "http://192.168.0.204:3000";
+                          href = "http://192.168.1.204:3000";
                           description = "Git Server";
                           widgets = [
                             {
                               type = "gitea";
-                              url = "http://192.168.0.204:3000";
+                              url = "http://192.168.1.204:3000";
                               key = "{{HOMEPAGE_VAR_GITEA_KEY}}";
                             }
                           ];
@@ -217,12 +217,12 @@
                       }
                       {
                         Nextcloud = {
-                          href = "http://192.168.0.203:8080";
+                          href = "http://192.168.1.203:8080";
                           description = "Cloud Storage";
                           widgets = [
                             {
                               type = "nextcloud";
-                              url = "http://192.168.0.203:8080";
+                              url = "http://192.168.1.203:8080";
                               username = "{{HOMEPAGE_VAR_NEXTCLOUD_USERNAME}}";
                               password = "{{HOMEPAGE_VAR_NEXTCLOUD_PASSWORD}}";
                             }
@@ -235,12 +235,12 @@
                     Media = [
                       {
                         Jellyfin = {
-                          href = "http://192.168.0.202:8096";
+                          href = "http://192.168.1.202:8096";
                           description = "Media Playback";
                           widgets = [
                             {
                               type = "jellyfin";
-                              url = "http://192.168.0.202:8096";
+                              url = "http://192.168.1.202:8096";
                               key = "{{HOMEPAGE_VAR_JELLYFIN_KEY}}";
                               version = 1;
                               enableBlocks = true;
@@ -255,24 +255,24 @@
                       }
                       {
                         Transmission = {
-                          href = "http://192.168.0.202:9091";
+                          href = "http://192.168.1.202:9091";
                           description = "Torrent Management";
                           widgets = [
                             {
                               type = "transmission";
-                              url = "http://192.168.0.202:9091";
+                              url = "http://192.168.1.202:9091";
                             }
                           ];
                         };
                       }
                       {
                         Prowlarr = {
-                          href = "http://192.168.0.202:9696";
+                          href = "http://192.168.1.202:9696";
                           description = "Indexer Management";
                           widgets = [
                             {
                               type = "prowlarr";
-                              url = "http://192.168.0.202:9696";
+                              url = "http://192.168.1.202:9696";
                               key = "{{HOMEPAGE_VAR_PROWLARR_KEY}}";
                             }
                           ];
@@ -280,12 +280,12 @@
                       }
                       {
                         Radarr = {
-                          href = "http://192.168.0.202:7878";
+                          href = "http://192.168.1.202:7878";
                           description = "Movie Management";
                           widgets = [
                             {
                               type = "radarr";
-                              url = "http://192.168.0.202:7878";
+                              url = "http://192.168.1.202:7878";
                               key = "{{HOMEPAGE_VAR_RADARR_KEY}}";
                             }
                           ];
@@ -293,12 +293,12 @@
                       }
                       {
                         Sonarr = {
-                          href = "http://192.168.0.202:8989";
+                          href = "http://192.168.1.202:8989";
                           description = "TV Show Management";
                           widgets = [
                             {
                               type = "sonarr";
-                              url = "http://192.168.0.202:8989";
+                              url = "http://192.168.1.202:8989";
                               key = "{{HOMEPAGE_VAR_SONARR_KEY}}";
                             }
                           ];
@@ -306,12 +306,12 @@
                       }
                       {
                         Lidarr = {
-                          href = "http://192.168.0.202:8686";
+                          href = "http://192.168.1.202:8686";
                           description = "Music Management";
                           widgets = [
                             {
                               type = "lidarr";
-                              url = "http://192.168.0.202:8686";
+                              url = "http://192.168.1.202:8686";
                               key = "{{HOMEPAGE_VAR_LIDARR_KEY}}";
                             }
                           ];
@@ -393,7 +393,7 @@
                           env = [
                             {
                               name = "HOMEPAGE_ALLOWED_HOSTS";
-                              value = "192.168.0.200,localhost";
+                              value = "192.168.1.200,localhost";
                             }
                             {
                               name = "HOMEPAGE_VAR_GRAFANA_USERNAME";
@@ -558,7 +558,7 @@
                 };
                 spec = {
                   type = "LoadBalancer";
-                  loadBalancerIP = "192.168.0.200";
+                  loadBalancerIP = "192.168.1.200";
                   selector = {
                     "app" = "homepage";
                   };

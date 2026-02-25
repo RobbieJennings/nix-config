@@ -70,8 +70,8 @@
                   tag = nextcloudImage.imageTag;
                 };
                 nextcloud = {
-                  host = "192.168.0.203";
-                  trustedDomains = [ "192.168.0.203" ];
+                  host = "192.168.1.203";
+                  trustedDomains = [ "192.168.1.203" ];
                   existingSecret = {
                     enabled = if (config.secrets.enable && config.secrets.nextcloud.enable) then true else false;
                     secretName = "nextcloud-secrets";
@@ -81,7 +81,7 @@
                 };
                 service = {
                   type = "LoadBalancer";
-                  loadBalancerIP = "192.168.0.203";
+                  loadBalancerIP = "192.168.1.203";
                   annotations = {
                     "metallb.io/address-pool" = "default";
                     "metallb.io/allow-shared-ip" = "nextcloud";
@@ -170,7 +170,7 @@
                     type = "LoadBalancer";
                     annotations = {
                       "metallb.io/address-pool" = "default";
-                      "metallb.io/loadBalancerIPs" = "192.168.0.203";
+                      "metallb.io/loadBalancerIPs" = "192.168.1.203";
                       "metallb.io/allow-shared-ip" = "nextcloud";
                     };
                   };

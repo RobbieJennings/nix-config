@@ -105,7 +105,7 @@
                 };
                 service = {
                   type = "LoadBalancer";
-                  loadBalancerIP = "192.168.0.210";
+                  loadBalancerIP = "192.168.1.210";
                   annotations = {
                     "metallb.io/address-pool" = "default";
                     "metallb.io/allow-shared-ip" = "monitoring";

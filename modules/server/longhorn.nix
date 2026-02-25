@@ -183,7 +183,7 @@
               };
               service.ui = {
                 type = "LoadBalancer";
-                loadBalancerIP = "192.168.0.201";
+                loadBalancerIP = "192.168.1.201";
                 annotations = {
                   "metallb.io/address-pool" = "default";
                 };
