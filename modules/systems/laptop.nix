@@ -45,18 +45,12 @@
       inputs.self.modules.nixos.xps15
       inputs.self.modules.nixos.core
       inputs.self.modules.nixos.desktop
-      inputs.self.modules.nixos.server
       inputs.self.modules.nixos.robbie-laptop
       {
         networking.hostName = "xps15";
         secrets = {
           enable = true;
           passwords.enable = true;
-          k3s.enable = true;
-          grafana.enable = true;
-          gitea.enable = true;
-          nextcloud.enable = true;
-          media-server.enable = true;
         };
         impermanence.enable = true;
         environment.persistence."/persist" = {
@@ -67,12 +61,9 @@
             "/var/lib/nixos"
             "/var/lib/systemd/coredump"
             "/var/lib/libvirt"
-            "/var/lib/rancher/k3s"
-            "/var/lib/longhorn"
             "/etc/NetworkManager/system-connections"
             "/etc/nixos"
             "/root/.ssh"
-            "/media-server"
           ];
         };
       }
