@@ -92,7 +92,7 @@
                   size = "8Gi";
                   nextcloudData = {
                     enabled = true;
-                    size = "100Gi";
+                    size = "25GI";
                   };
                 };
                 resources = {
