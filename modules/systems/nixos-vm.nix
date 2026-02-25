@@ -32,6 +32,23 @@
       inputs.self.modules.nixos.robbie-vm
       {
         networking.hostName = "nixos-vm";
+        cosmic-desktop.enable = false;
+        kde-plasma.enable = true;
+        impermanence.enable = true;
+        environment.persistence."/persist" = {
+          hideMounts = true;
+          directories = [
+            "/var/log"
+            "/var/lib/nixos"
+            "/var/lib/systemd/coredump"
+            "/var/lib/rancher/k3s"
+            "/var/lib/longhorn"
+            "/etc/NetworkManager/system-connections"
+            "/etc/nixos"
+            "/root/.ssh"
+            "/media-server"
+          ];
+        };
       }
     ];
   };
