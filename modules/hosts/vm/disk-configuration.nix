@@ -32,33 +32,29 @@
                     mountpoint = "/boot";
                   };
                 };
-                luks = {
+                root = {
                   size = "100%";
                   content = {
-                    type = "luks";
-                    name = "crypted";
-                    content = {
-                      type = "btrfs";
-                      extraArgs = [ "-f" ];
-                      subvolumes = {
-                        "/root" = {
-                          mountpoint = "/";
-                        };
+                    type = "btrfs";
+                    extraArgs = [ "-f" ];
+                    subvolumes = {
+                      "/root" = {
+                        mountpoint = "/";
+                      };
 
-                        "/persist" = {
-                          mountpoint = "/persist";
-                          mountOptions = [ "subvol=persist" ];
-                        };
+                      "/persist" = {
+                        mountpoint = "/persist";
+                        mountOptions = [ "subvol=persist" ];
+                      };
 
-                        "/nix" = {
-                          mountpoint = "/nix";
-                          mountOptions = [ "subvol=nix" ];
-                        };
+                      "/nix" = {
+                        mountpoint = "/nix";
+                        mountOptions = [ "subvol=nix" ];
+                      };
 
-                        "/swap" = {
-                          mountpoint = "/.swapvol";
-                          swap.swapfile.size = "8192M";
-                        };
+                      "/swap" = {
+                        mountpoint = "/.swapvol";
+                        swap.swapfile.size = "8192M";
                       };
                     };
                   };
