@@ -32,8 +32,6 @@
       inputs.self.modules.nixos.robbie-vm
       {
         networking.hostName = "nixos-vm";
-        cosmic-desktop.enable = false;
-        kde-plasma.enable = true;
         impermanence.enable = true;
         environment.persistence."/persist" = {
           hideMounts = true;
