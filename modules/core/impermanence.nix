@@ -20,16 +20,14 @@
         boot.initrd.systemd.services.rollback = {
           description = "Rollback BTRFS root subvolume to a pristine state";
           wantedBy = [ "initrd.target" ];
-          after = [ "systemd-cryptsetup@crypted.service" ];
+          after = [ "initrd-root-device.target" ];
           before = [ "sysroot.mount" ];
           unitConfig.DefaultDependencies = "no";
           serviceConfig.Type = "oneshot";
           script = ''
             set -e
-            ROOT_DEV="${config.fileSystems."/".device}"
-
             mkdir -p /mnt
-            mount -o subvol=/ "$ROOT_DEV" /mnt
+            mount ${config.fileSystems."/".device} /mnt
 
             if [[ -e /mnt/root ]]; then
               btrfs subvolume delete -R /mnt/root
