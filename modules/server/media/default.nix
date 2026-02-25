@@ -49,7 +49,7 @@
                   name = "media-pv";
                 };
                 spec = {
-                  capacity.storage = "25GI";
+                  capacity.storage = "25Gi";
                   accessModes = [ "ReadWriteMany" ];
                   persistentVolumeReclaimPolicy = "Retain";
                   storageClassName = "media";
@@ -69,7 +69,7 @@
                 spec = {
                   accessModes = [ "ReadWriteMany" ];
                   storageClassName = "media";
-                  resources.requests.storage = "25GI";
+                  resources.requests.storage = "25Gi";
                 };
               }
               {
@@ -79,7 +79,7 @@
                   name = "downloads-pv";
                 };
                 spec = {
-                  capacity.storage = "25GI";
+                  capacity.storage = "25Gi";
                   accessModes = [ "ReadWriteMany" ];
                   persistentVolumeReclaimPolicy = "Retain";
                   storageClassName = "downloads";
@@ -99,7 +99,7 @@
                 spec = {
                   accessModes = [ "ReadWriteMany" ];
                   storageClassName = "downloads";
-                  resources.requests.storage = "25GI";
+                  resources.requests.storage = "25Gi";
                 };
               }
             ];
