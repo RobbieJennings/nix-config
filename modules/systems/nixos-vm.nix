@@ -39,14 +39,13 @@
           hideMounts = true;
           directories = [
             "/var/log"
+            "/var/lib/bluetooth"
             "/var/lib/nixos"
             "/var/lib/systemd/coredump"
-            "/var/lib/rancher/k3s"
-            "/var/lib/longhorn"
+            "/var/lib/libvirt"
             "/etc/NetworkManager/system-connections"
             "/etc/nixos"
             "/root/.ssh"
-            "/media-server"
           ];
         };
       }
