@@ -1,7 +1,12 @@
 keys:
+  - &optiplex3070 age1njxufyk4z7960q8ulu02hfr4rxuujtpu9jprdhz375mtxmd6dccqsfk24e
   - &xps15 age1df376a66px79jxymgxkzp9jvr4prgttkhfdy78wzuljc5ptrhspsqcnk5l
   - &robbie age1s4h7hhuvtzrlaz7ugqkz6s9gwseumv77na9kczwkpew4mjy5fy9s4vc6rv
 creation_rules:
+  - path_regex: optiplex3070.yaml$
+    key_groups:
+    - age:
+      - *optiplex3070
   - path_regex: xps15.yaml$
     key_groups:
     - age:

@@ -36,7 +36,7 @@
       {
         networking.hostName = "optiplex3070";
         secrets = {
-          enable = false;
+          enable = true;
           passwords.enable = true;
           k3s.enable = true;
           grafana.enable = true;
