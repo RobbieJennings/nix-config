@@ -34,13 +34,6 @@
                   "wheel"
                 ];
               };
-
-              home-manager.users."${username}" = {
-                imports = [
-                  inputs.self.modules.homeManager.oh-my-posh
-                ];
-                oh-my-posh.enable = true;
-              };
             }
 
             (lib.mkIf (config.secrets.enable && config.secrets.passwords.enable) {

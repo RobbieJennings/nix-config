@@ -35,6 +35,8 @@
       inputs.self.modules.nixos.robbie-server
       {
         networking.hostName = "optiplex3070";
+        cosmic-desktop.enable = false;
+        kde-plasma.enable = true;
         secrets = {
           enable = false;
           passwords.enable = true;
