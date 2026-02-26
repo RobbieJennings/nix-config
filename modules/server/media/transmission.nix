@@ -88,10 +88,10 @@
                           }
                         ];
                         resources = {
-                          requests.cpu = "500m";
-                          requests.memory = "512Mi";
-                          limits.cpu = "1000m";
-                          limits.memory = "1Gi";
+                          requests.cpu = "50m";
+                          requests.memory = "128Mi";
+                          limits.cpu = "300m";
+                          limits.memory = "256Mi";
                         };
                         startupProbe = {
                           httpGet = {

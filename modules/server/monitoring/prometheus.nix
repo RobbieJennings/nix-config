@@ -97,10 +97,10 @@
                     };
                   };
                   resources = {
-                    requests.cpu = "200m";
-                    requests.memory = "512Mi";
-                    limits.cpu = "1000m";
-                    limits.memory = "2Gi";
+                    requests.cpu = "100m";
+                    requests.memory = "384Mi";
+                    limits.cpu = "500m";
+                    limits.memory = "768Mi";
                   };
                 };
                 service = {
@@ -129,10 +129,10 @@
                     };
                   };
                   resources = {
-                    requests.cpu = "100m";
-                    requests.memory = "256Mi";
-                    limits.cpu = "500m";
-                    limits.memory = "512Mi";
+                    requests.cpu = "50m";
+                    requests.memory = "128Mi";
+                    limits.cpu = "200m";
+                    limits.memory = "256Mi";
                   };
                 };
               };
@@ -144,12 +144,12 @@
                 };
                 resources = {
                   requests = {
-                    cpu = "50m";
-                    memory = "128Mi";
+                    cpu = "30m";
+                    memory = "64Mi";
                   };
                   limits = {
-                    cpu = "250m";
-                    memory = "256Mi";
+                    cpu = "150m";
+                    memory = "128Mi";
                   };
                 };
               };
@@ -161,12 +161,12 @@
                 };
                 resources = {
                   requests = {
-                    cpu = "50m";
-                    memory = "64Mi";
+                    cpu = "20m";
+                    memory = "32Mi";
                   };
                   limits = {
-                    cpu = "200m";
-                    memory = "128Mi";
+                    cpu = "100m";
+                    memory = "64Mi";
                   };
                 };
               };
@@ -178,12 +178,12 @@
                 };
                 resources = {
                   requests = {
-                    cpu = "100m";
-                    memory = "256Mi";
+                    cpu = "50m";
+                    memory = "128Mi";
                   };
                   limits = {
-                    cpu = "500m";
-                    memory = "512Mi";
+                    cpu = "300m";
+                    memory = "256Mi";
                   };
                 };
                 prometheusConfigReloader = {

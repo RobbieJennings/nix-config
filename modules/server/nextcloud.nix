@@ -96,10 +96,10 @@
                   };
                 };
                 resources = {
-                  requests.cpu = "500m";
-                  requests.memory = "2Gi";
-                  limits.cpu = "1000m";
-                  limits.memory = "4Gi";
+                  requests.cpu = "100m";
+                  requests.memory = "256Mi";
+                  limits.cpu = "500m";
+                  limits.memory = "512Mi";
                 };
                 internalDatabase.enabled = false;
                 externalDatabase = {
@@ -119,19 +119,19 @@
                       size = "8Gi";
                     };
                     resources = {
-                      requests.cpu = "500m";
-                      requests.memory = "512Mi";
-                      limits.cpu = "1000m";
-                      limits.memory = "1Gi";
+                      requests.cpu = "100m";
+                      requests.memory = "256Mi";
+                      limits.cpu = "500m";
+                      limits.memory = "512Mi";
                     };
                     extraEnvVars = [
                       {
                         name = "POSTGRESQL_SHARED_BUFFERS";
-                        value = "256MB";
+                        value = "128MB";
                       }
                       {
                         name = "POSTGRESQL_EFFECTIVE_CACHE_SIZE";
-                        value = "768MB";
+                        value = "384MB";
                       }
                     ];
                   };
@@ -149,13 +149,13 @@
                       size = "8Gi";
                     };
                     resources = {
-                      requests.cpu = "100m";
-                      requests.memory = "128Mi";
-                      limits.cpu = "200m";
-                      limits.memory = "256Mi";
+                      requests.cpu = "20m";
+                      requests.memory = "64Mi";
+                      limits.cpu = "100m";
+                      limits.memory = "128Mi";
                     };
                     extraFlags = [
-                      "--maxmemory 200mb"
+                      "--maxmemory 100mb"
                       "--maxmemory-policy allkeys-lru"
                     ];
                   };
@@ -175,20 +175,20 @@
                     };
                   };
                   resources = {
-                    requests.cpu = "500m";
-                    requests.memory = "1Gi";
-                    limits.cpu = "1000m";
-                    limits.memory = "2Gi";
+                    requests.cpu = "100m";
+                    requests.memory = "256Mi";
+                    limits.cpu = "800m";
+                    limits.memory = "512Mi";
                   };
                 };
                 cronjob = {
                   enabled = true;
                   type = "sidecar";
                   resources = {
-                    requests.cpu = "200m";
-                    requests.memory = "256Mi";
-                    limits.cpu = "500m";
-                    limits.memory = "512Mi";
+                    requests.cpu = "50m";
+                    requests.memory = "128Mi";
+                    limits.cpu = "300m";
+                    limits.memory = "256Mi";
                   };
                 };
                 livenessProbe = {

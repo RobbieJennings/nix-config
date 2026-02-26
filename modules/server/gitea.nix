@@ -108,10 +108,10 @@
                   size = "25Gi";
                 };
                 resources = {
-                  requests.cpu = "500m";
-                  requests.memory = "512Mi";
-                  limits.cpu = "1000m";
-                  limits.memory = "1Gi";
+                  requests.cpu = "50m";
+                  requests.memory = "128Mi";
+                  limits.cpu = "300m";
+                  limits.memory = "256Mi";
                 };
                 dnsConfig.options = [
                   # Needed for hardcoded valkey address to resolve in configure-gitea container
@@ -135,19 +135,19 @@
                       size = "8Gi";
                     };
                     resources = {
-                      requests.cpu = "500m";
-                      requests.memory = "512Mi";
-                      limits.cpu = "1000m";
-                      limits.memory = "1Gi";
+                      requests.cpu = "50m";
+                      requests.memory = "128Mi";
+                      limits.cpu = "300m";
+                      limits.memory = "256Mi";
                     };
                     extraEnvVars = [
                       {
                         name = "POSTGRESQL_SHARED_BUFFERS";
-                        value = "256MB";
+                        value = "65MB";
                       }
                       {
                         name = "POSTGRESQL_EFFECTIVE_CACHE_SIZE";
-                        value = "768MB";
+                        value = "192MB";
                       }
                     ];
                   };
@@ -165,13 +165,13 @@
                       size = "8Gi";
                     };
                     resources = {
-                      requests.cpu = "100m";
-                      requests.memory = "128Mi";
-                      limits.cpu = "200m";
-                      limits.memory = "256Mi";
+                      requests.cpu = "20m";
+                      requests.memory = "64Mi";
+                      limits.cpu = "100m";
+                      limits.memory = "128Mi";
                     };
                     extraFlags = [
-                      "--maxmemory 200mb"
+                      "--maxmemory 100mb"
                       "--maxmemory-policy allkeys-lru"
                     ];
                   };

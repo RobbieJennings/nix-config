@@ -105,11 +105,11 @@
                 };
                 resources = {
                   requests = {
-                    cpu = "100m";
+                    cpu = "50m";
                     memory = "256Mi";
                   };
                   limits = {
-                    cpu = "500m";
+                    cpu = "300m";
                     memory = "512Mi";
                   };
                 };
@@ -121,12 +121,12 @@
                 };
                 resources = {
                   requests = {
-                    cpu = "10m";
-                    memory = "32Mi";
+                    cpu = "5m";
+                    memory = "16Mi";
                   };
                   limits = {
-                    cpu = "100m";
-                    memory = "128Mi";
+                    cpu = "50m";
+                    memory = "64Mi";
                   };
                 };
               };

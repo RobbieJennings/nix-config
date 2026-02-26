@@ -97,10 +97,10 @@
                         image = "${image.imageName}:${image.imageTag}";
                         ports = [ { containerPort = 8989; } ];
                         resources = {
-                          requests.cpu = "1000m";
-                          requests.memory = "1Gi";
-                          limits.cpu = "2000m";
-                          limits.memory = "2Gi";
+                          requests.cpu = "30m";
+                          requests.memory = "96Mi";
+                          limits.cpu = "200m";
+                          limits.memory = "192Mi";
                         };
                         startupProbe = {
                           httpGet = {
