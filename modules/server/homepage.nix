@@ -37,55 +37,24 @@
               };
               stringData = {
                 GRAFANA_USERNAME =
-                  if (config.secrets.enable && config.secrets.grafana.enable) then
-                    config.sops.placeholder."grafana/username"
-                  else
-                    "";
+                  if config.secrets.grafana.enable then config.sops.placeholder."grafana/username" else "";
                 GRAFANA_PASSWORD =
-                  if (config.secrets.enable && config.secrets.grafana.enable) then
-                    config.sops.placeholder."grafana/password"
-                  else
-                    "";
+                  if config.secrets.grafana.enable then config.sops.placeholder."grafana/password" else "";
                 NEXTCLOUD_USERNAME =
-                  if (config.secrets.enable && config.secrets.nextcloud.enable) then
-                    config.sops.placeholder."nextcloud/username"
-                  else
-                    "";
+                  if config.secrets.nextcloud.enable then config.sops.placeholder."nextcloud/username" else "";
                 NEXTCLOUD_PASSWORD =
-                  if (config.secrets.enable && config.secrets.nextcloud.enable) then
-                    config.sops.placeholder."nextcloud/password"
-                  else
-                    "";
-                GITEA_KEY =
-                  if (config.secrets.enable && config.secrets.gitea.enable) then
-                    config.sops.placeholder."gitea/key"
-                  else
-                    "";
+                  if config.secrets.nextcloud.enable then config.sops.placeholder."nextcloud/password" else "";
+                GITEA_KEY = if config.secrets.gitea.enable then config.sops.placeholder."gitea/key" else "";
                 JELLYFIN_KEY =
-                  if (config.secrets.enable && config.secrets.media-server.enable) then
-                    config.sops.placeholder."jellyfin/key"
-                  else
-                    "";
+                  if config.secrets.media-server.enable then config.sops.placeholder."jellyfin/key" else "";
                 RADARR_KEY =
-                  if (config.secrets.enable && config.secrets.media-server.enable) then
-                    config.sops.placeholder."radarr/key"
-                  else
-                    "";
+                  if config.secrets.media-server.enable then config.sops.placeholder."radarr/key" else "";
                 SONARR_KEY =
-                  if (config.secrets.enable && config.secrets.media-server.enable) then
-                    config.sops.placeholder."sonarr/key"
-                  else
-                    "";
+                  if config.secrets.media-server.enable then config.sops.placeholder."sonarr/key" else "";
                 LIDARR_KEY =
-                  if (config.secrets.enable && config.secrets.media-server.enable) then
-                    config.sops.placeholder."lidarr/key"
-                  else
-                    "";
+                  if config.secrets.media-server.enable then config.sops.placeholder."lidarr/key" else "";
                 PROWLARR_KEY =
-                  if (config.secrets.enable && config.secrets.media-server.enable) then
-                    config.sops.placeholder."prowlarr/key"
-                  else
-                    "";
+                  if config.secrets.media-server.enable then config.sops.placeholder."prowlarr/key" else "";
               };
             };
             path = "/var/lib/rancher/k3s/server/manifests/homepage-secret.json";
