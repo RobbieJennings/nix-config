@@ -90,10 +90,10 @@
                           failureThreshold = 3;
                         };
                         resources = {
-                          requests.cpu = "50m";
-                          requests.memory = "128Mi";
-                          limits.cpu = "300m";
-                          limits.memory = "256Mi";
+                          requests.cpu = "100m";
+                          requests.memory = "256Mi";
+                          limits.cpu = "500m";
+                          limits.memory = "512Mi";
                         };
                       }
                     ];
