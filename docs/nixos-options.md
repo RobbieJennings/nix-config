@@ -1062,6 +1062,32 @@ boolean
 
 
 
+## ssh\.enable
+
+
+
+Whether to enable ssh\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/core/ssh\.nix](../modules/core/ssh.nix)
+
+
+
 ## steam\.enable
 
 
