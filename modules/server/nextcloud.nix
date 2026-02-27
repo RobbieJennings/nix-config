@@ -175,10 +175,10 @@
                     };
                   };
                   resources = {
-                    requests.cpu = "100m";
-                    requests.memory = "256Mi";
-                    limits.cpu = "800m";
-                    limits.memory = "512Mi";
+                    requests.cpu = "200m";
+                    requests.memory = "768Mi";
+                    limits.cpu = "1000m";
+                    limits.memory = "1Gi";
                   };
                 };
                 cronjob = {
