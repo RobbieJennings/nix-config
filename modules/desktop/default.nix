@@ -23,6 +23,17 @@
         inputs.self.modules.nixos.virtualisation
       ];
 
+      options = {
+        desktopEnvironment = lib.mkOption {
+          type = lib.types.enum [
+            "plasma"
+            "cosmic"
+          ];
+          default = "plasma";
+          description = "Select desktop environment: Plasma or COSMIC.";
+        };
+      };
+
       config = {
         services.flatpak.enable = true;
         hardware.keyboard.qmk.enable = true;
@@ -40,7 +51,8 @@
         bootloader.pretty = true;
         audio.enable = lib.mkDefault true;
         bluetooth.enable = lib.mkDefault true;
-        cosmic-desktop.enable = lib.mkDefault true;
+        cosmic-desktop.enable = if config.desktopEnvironment == "cosmic" then true else false;
+        kde-plasma.enable = if config.desktopEnvironment == "plasma" then true else false;
         kde-connect.enable = lib.mkDefault true;
         printing.enable = lib.mkDefault true;
         scanning.enable = lib.mkDefault true;

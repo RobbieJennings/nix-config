@@ -126,6 +126,32 @@ boolean
 
 
 
+## cert-manager\.enable
+
+
+
+Whether to enable cert-manager Helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/cert-manager\.nix](../modules/server/cert-manager.nix)
+
+
+
 ## cosmic-desktop\.enable
 
 
@@ -149,6 +175,27 @@ boolean
 
 *Declared by:*
  - [modules/desktop/cosmic-desktop\.nix](../modules/desktop/cosmic-desktop.nix)
+
+
+
+## desktopEnvironment
+
+
+
+Select desktop environment: Plasma or COSMIC\.
+
+
+
+*Type:*
+one of “plasma”, “cosmic”
+
+
+
+*Default:*
+` "plasma" `
+
+*Declared by:*
+ - [modules/desktop/default\.nix](../modules/desktop/default.nix)
 
 
 
@@ -305,6 +352,84 @@ boolean
 
 *Declared by:*
  - [modules/core/impermanence\.nix](../modules/core/impermanence.nix)
+
+
+
+## intel-device-plugins\.enable
+
+
+
+Whether to enable Intel device plugins for kubernetes\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/intel-plugins/default\.nix](../modules/server/intel-plugins/default.nix)
+
+
+
+## intel-device-plugins\.gpu\.enable
+
+
+
+Whether to enable Intel GPU plugin for Kubernetes\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/intel-plugins/gpu-device-plugin\.nix](../modules/server/intel-plugins/gpu-device-plugin.nix)
+
+
+
+## intel-device-plugins\.operator\.enable
+
+
+
+Whether to enable Intel Device Plugins Operator\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/intel-plugins/device-plugins-operator\.nix](../modules/server/intel-plugins/device-plugins-operator.nix)
 
 
 
@@ -825,6 +950,32 @@ boolean
 
 *Declared by:*
  - [modules/server/nextcloud\.nix](../modules/server/nextcloud.nix)
+
+
+
+## node-feature-discovery\.enable
+
+
+
+Whether to enable Node Feature Discovery\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/node-feature-discover\.nix](../modules/server/node-feature-discover.nix)
 
 
 

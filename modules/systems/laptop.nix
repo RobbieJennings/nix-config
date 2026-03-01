@@ -48,6 +48,7 @@
       inputs.self.modules.nixos.robbie-laptop
       {
         networking.hostName = "xps15";
+        desktopEnvironment = "cosmic";
         secrets = {
           enable = true;
           passwords.enable = true;

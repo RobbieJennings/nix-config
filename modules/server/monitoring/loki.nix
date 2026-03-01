@@ -33,7 +33,9 @@
       };
     in
     {
-      options.monitoring.loki.enable = lib.mkEnableOption "loki service on k3s";
+      options = {
+        monitoring.loki.enable = lib.mkEnableOption "loki service on k3s";
+      };
 
       config = lib.mkIf config.monitoring.loki.enable {
         services.k3s = {
