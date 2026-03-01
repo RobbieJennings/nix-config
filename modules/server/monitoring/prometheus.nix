@@ -143,14 +143,10 @@
                   tag = kubeStateMetricsImage.imageTag;
                 };
                 resources = {
-                  requests = {
-                    cpu = "30m";
-                    memory = "64Mi";
-                  };
-                  limits = {
-                    cpu = "150m";
-                    memory = "128Mi";
-                  };
+                  requests.cpu = "30m";
+                  requests.memory = "64Mi";
+                  limits.cpu = "150m";
+                  limits.memory = "128Mi";
                 };
               };
               prometheus-node-exporter = {
@@ -160,14 +156,10 @@
                   tag = nodeExporterImage.imageTag;
                 };
                 resources = {
-                  requests = {
-                    cpu = "20m";
-                    memory = "32Mi";
-                  };
-                  limits = {
-                    cpu = "100m";
-                    memory = "64Mi";
-                  };
+                  requests.cpu = "20m";
+                  requests.memory = "32Mi";
+                  limits.cpu = "100m";
+                  limits.memory = "64Mi";
                 };
               };
               prometheusOperator = {
@@ -177,14 +169,10 @@
                   tag = prometheusOperatorImage.imageTag;
                 };
                 resources = {
-                  requests = {
-                    cpu = "50m";
-                    memory = "128Mi";
-                  };
-                  limits = {
-                    cpu = "300m";
-                    memory = "256Mi";
-                  };
+                  requests.cpu = "50m";
+                  requests.memory = "128Mi";
+                  limits.cpu = "300m";
+                  limits.memory = "256Mi";
                 };
                 prometheusConfigReloader = {
                   image = {

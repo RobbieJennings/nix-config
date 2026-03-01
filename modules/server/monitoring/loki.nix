@@ -104,14 +104,10 @@
                   size = "10Gi";
                 };
                 resources = {
-                  requests = {
-                    cpu = "50m";
-                    memory = "256Mi";
-                  };
-                  limits = {
-                    cpu = "300m";
-                    memory = "512Mi";
-                  };
+                  requests.cpu = "50m";
+                  memory.cpu = "256Mi";
+                  limits.cpu = "300m";
+                  limits.memory = "512Mi";
                 };
               };
               loki-canary = {
@@ -120,14 +116,10 @@
                   tag = lokiCanaryImage.imageTag;
                 };
                 resources = {
-                  requests = {
-                    cpu = "5m";
-                    memory = "16Mi";
-                  };
-                  limits = {
-                    cpu = "50m";
-                    memory = "64Mi";
-                  };
+                  requests.cpu = "5m";
+                  requests.memory = "16Mi";
+                  limits.cpu = "50m";
+                  limits.memory = "64Mi";
                 };
               };
             };

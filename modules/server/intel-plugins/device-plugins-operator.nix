@@ -44,14 +44,10 @@
                 };
               };
               resources = {
-                requests = {
-                  cpu = "20m";
-                  memory = "64Mi";
-                };
-                limits = {
-                  cpu = "200m";
-                  memory = "128Mi";
-                };
+                requests.cpu = "20m";
+                requests.memory = "64Mi";
+                limits.cpu = "200m";
+                limits.memory = "128Mi";
               };
             };
           };
@@ -59,4 +55,3 @@
       };
     };
 }
-
