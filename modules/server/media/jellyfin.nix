@@ -74,6 +74,7 @@
                           requests.memory = "256Mi";
                           limits.cpu = "1500m";
                           limits.memory = "512Mi";
+                          limits."gpu.intel.com/i915" = 1;
                         };
                         startupProbe = {
                           httpGet = {
