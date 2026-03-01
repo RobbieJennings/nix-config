@@ -70,11 +70,16 @@
                           }
                         ];
                         resources = {
-                          requests.cpu = "100m";
-                          requests.memory = "256Mi";
-                          limits.cpu = "1500m";
-                          limits.memory = "512Mi";
-                          limits."gpu.intel.com/i915" = 1;
+                          requests = {
+                            cpu = "100m";
+                            memory = "256Mi";
+                            "gpu.intel.com/i915" = 1;
+                          };
+                          limits = {
+                            cpu = "1500m";
+                            memory = "512Mi";
+                            "gpu.intel.com/i915" = 1;
+                          };
                         };
                         startupProbe = {
                           httpGet = {
