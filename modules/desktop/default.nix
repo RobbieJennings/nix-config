@@ -48,7 +48,7 @@
           }
         ];
 
-        bootloader.pretty = true;
+        bootloader.pretty = lib.mkDefault true;
         audio.enable = lib.mkDefault true;
         bluetooth.enable = lib.mkDefault true;
         cosmic-desktop.enable = if config.desktopEnvironment == "cosmic" then true else false;
