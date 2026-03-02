@@ -67,11 +67,6 @@
                 template = {
                   metadata.labels.app = "transmission";
                   spec = {
-                    securityContext = {
-                      runAsUser = 1000;
-                      runAsGroup = 1000;
-                      fsGroup = 1000;
-                    };
                     containers = [
                       {
                         name = "transmission";
@@ -85,6 +80,16 @@
                           {
                             containerPort = 51413;
                             protocol = "UDP";
+                          }
+                        ];
+                        env = [
+                          {
+                            name = "PUID";
+                            value = "1000";
+                          }
+                          {
+                            name = "PGID";
+                            value = "1000";
                           }
                         ];
                         resources = {

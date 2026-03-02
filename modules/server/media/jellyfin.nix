@@ -54,11 +54,6 @@
                 template = {
                   metadata.labels.app = "jellyfin";
                   spec = {
-                    securityContext = {
-                      runAsUser = 1000;
-                      runAsGroup = 1000;
-                      fsGroup = 1000;
-                    };
                     containers = [
                       {
                         name = "jellyfin";
@@ -72,6 +67,14 @@
                           {
                             name = "TZ";
                             value = "Europe/Dublin";
+                          }
+                          {
+                            name = "PUID";
+                            value = "1000";
+                          }
+                          {
+                            name = "PGID";
+                            value = "1000";
                           }
                         ];
                         resources = {

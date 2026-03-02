@@ -54,11 +54,6 @@
                 template = {
                   metadata.labels.app = "sonarr";
                   spec = {
-                    securityContext = {
-                      runAsUser = 1000;
-                      runAsGroup = 1000;
-                      fsGroup = 1000;
-                    };
                     initContainers = [
                       {
                         name = "init-sonarr";
@@ -96,6 +91,16 @@
                         name = "sonarr";
                         image = "${image.imageName}:${image.imageTag}";
                         ports = [ { containerPort = 8989; } ];
+                        env = [
+                          {
+                            name = "PUID";
+                            value = "1000";
+                          }
+                          {
+                            name = "PGID";
+                            value = "1000";
+                          }
+                        ];
                         resources = {
                           requests.cpu = "100m";
                           requests.memory = "256Mi";

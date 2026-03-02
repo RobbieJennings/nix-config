@@ -54,16 +54,21 @@
                 template = {
                   metadata.labels.app = "prowlarr";
                   spec = {
-                    securityContext = {
-                      runAsUser = 1000;
-                      runAsGroup = 1000;
-                      fsGroup = 1000;
-                    };
                     containers = [
                       {
                         name = "prowlarr";
                         image = "${image.imageName}:${image.imageTag}";
                         ports = [ { containerPort = 9696; } ];
+                        env = [
+                          {
+                            name = "PUID";
+                            value = "1000";
+                          }
+                          {
+                            name = "PGID";
+                            value = "1000";
+                          }
+                        ];
                         resources = {
                           requests.cpu = "100m";
                           requests.memory = "256Mi";
