@@ -31,8 +31,6 @@
         }
 
         (lib.mkIf config.cosmic-manager.enable {
-          xdg.configFile."gtk-3.0/gtk.css".force = true;
-          xdg.configFile."gtk-4.0/gtk.css".force = true;
           cosmic-manager = {
             appearance.enable = lib.mkDefault true;
             applets.enable = lib.mkDefault true;
