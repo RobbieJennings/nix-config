@@ -33,11 +33,17 @@
   - 🎮 Game launchers
   - ⚙️ Utilities
 
-### Server ⚠️Experimental⚠️
+### Server
   - 🌐 [K3S](https://k3s.io)
   - ☸️ [Helm](https://helm.sh)
   - 🗃️ [Longhorn](https://longhorn.io)
   - ⚖️ [MetalLB](https://metallb.io)
+  - 🏠 [Homepage](https://gethomepage.dev)
+  - 📊 [Grafana](https://grafana.com)
+  - 🪣 [Gitea](https://about.gitea.com)
+  - ☁️ [Nextcloud](https://nextcloud.com)
+  - 📼 [Jellyfin](https://jellyfin.org)
+  - 🏴‍☠️ [Servarr](https://wiki.servarr.com)
 
 ## 🛠️ Usage
 
