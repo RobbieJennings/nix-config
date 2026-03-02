@@ -37,14 +37,6 @@
           pkgs.pavucontrol # volume control
         ];
 
-        stylix.targets.gtk.enable = lib.mkForce false;
-        home-manager.sharedModules = [
-          {
-            imports = [ inputs.self.modules.homeManager.cosmic-manager ];
-            stylix.targets.gtk.enable = lib.mkForce false;
-          }
-        ];
-
         nixpkgs.overlays = [
           # Don't want applet in system tray
           (final: prev: {
