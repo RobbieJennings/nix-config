@@ -202,6 +202,31 @@
                 ];
               };
             }
+            {
+              apiVersion = "v1";
+              kind = "Service";
+              metadata = {
+                name = "sonarr-tailscale";
+                namespace = "media";
+                annotations = {
+                  "tailscale.com/expose" = "true";
+                };
+              };
+              spec = {
+                type = "ClusterIP";
+                selector = {
+                  app = "sonarr";
+                };
+                ports = [
+                  {
+                    name = "http";
+                    port = 80;
+                    targetPort = 8989;
+                    protocol = "TCP";
+                  }
+                ];
+              };
+            }
           ];
         };
       };

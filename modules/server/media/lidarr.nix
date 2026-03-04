@@ -202,6 +202,31 @@
                 ];
               };
             }
+            {
+              apiVersion = "v1";
+              kind = "Service";
+              metadata = {
+                name = "lidarr-tailscale";
+                namespace = "media";
+                annotations = {
+                  "tailscale.com/expose" = "true";
+                };
+              };
+              spec = {
+                type = "ClusterIP";
+                selector = {
+                  app = "lidarr";
+                };
+                ports = [
+                  {
+                    name = "http";
+                    port = 80;
+                    targetPort = 8686;
+                    protocol = "TCP";
+                  }
+                ];
+              };
+            }
           ];
         };
       };

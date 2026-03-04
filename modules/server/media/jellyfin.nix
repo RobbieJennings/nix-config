@@ -174,17 +174,30 @@
                     targetPort = 8096;
                     protocol = "TCP";
                   }
+                ];
+              };
+            }
+            {
+              apiVersion = "v1";
+              kind = "Service";
+              metadata = {
+                name = "jellyfin-tailscale";
+                namespace = "media";
+                annotations = {
+                  "tailscale.com/expose" = "true";
+                };
+              };
+              spec = {
+                type = "ClusterIP";
+                selector = {
+                  app = "jellyfin";
+                };
+                ports = [
                   {
-                    name = "service-discovery";
-                    port = 1900;
-                    targetPort = 1900;
-                    protocol = "UDP";
-                  }
-                  {
-                    name = "client-discovery";
-                    port = 7359;
-                    targetPort = 7359;
-                    protocol = "UDP";
+                    name = "http";
+                    port = 80;
+                    targetPort = 8096;
+                    protocol = "TCP";
                   }
                 ];
               };

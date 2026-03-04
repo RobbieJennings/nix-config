@@ -55,30 +55,36 @@
             };
           };
         })
-        (lib.mkIf (config.tailscale-operator.enable && config.secrets.enable && config.secrets.tailscale-operator.enable) {
-          sops.secrets = {
-            "tailscale/client_id" = { };
-            "tailscale/client_secret" = { };
-          };
-          sops.templates.tailscaleOperatorOAuth = {
-            content = builtins.toJSON {
-              apiVersion = "v1";
-              kind = "Secret";
-              metadata = {
-                name = "operator-oauth";
-                namespace = "tailscale";
-              };
-              type = "Opaque";
-              immutable = true;
-              stringData = {
-                client_id = config.sops.placeholder."tailscale/client_id";
-                client_secret = config.sops.placeholder."tailscale/client_secret";
-              };
+        (lib.mkIf
+          (
+            config.tailscale-operator.enable
+            && config.secrets.enable
+            && config.secrets.tailscale-operator.enable
+          )
+          {
+            sops.secrets = {
+              "tailscale/client_id" = { };
+              "tailscale/client_secret" = { };
             };
-            path =
-              "/var/lib/rancher/k3s/server/manifests/tailscale-operator-oauth.json";
-          };
-        })
+            sops.templates.tailscaleOperatorOAuth = {
+              content = builtins.toJSON {
+                apiVersion = "v1";
+                kind = "Secret";
+                metadata = {
+                  name = "operator-oauth";
+                  namespace = "tailscale";
+                };
+                type = "Opaque";
+                immutable = true;
+                stringData = {
+                  client_id = config.sops.placeholder."tailscale/client_id";
+                  client_secret = config.sops.placeholder."tailscale/client_secret";
+                };
+              };
+              path = "/var/lib/rancher/k3s/server/manifests/tailscale-operator-oauth.json";
+            };
+          }
+        )
       ];
     };
 }

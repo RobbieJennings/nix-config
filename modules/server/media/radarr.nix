@@ -202,6 +202,31 @@
                 ];
               };
             }
+            {
+              apiVersion = "v1";
+              kind = "Service";
+              metadata = {
+                name = "prowlarr-tailscale";
+                namespace = "media";
+                annotations = {
+                  "tailscale.com/expose" = "true";
+                };
+              };
+              spec = {
+                type = "ClusterIP";
+                selector = {
+                  app = "prowlarr";
+                };
+                ports = [
+                  {
+                    name = "http";
+                    port = 80;
+                    targetPort = 7878;
+                    protocol = "TCP";
+                  }
+                ];
+              };
+            }
           ];
         };
       };

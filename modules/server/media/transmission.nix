@@ -204,6 +204,31 @@
                 ];
               };
             }
+            {
+              apiVersion = "v1";
+              kind = "Service";
+              metadata = {
+                name = "transmission-tailscale";
+                namespace = "media";
+                annotations = {
+                  "tailscale.com/expose" = "true";
+                };
+              };
+              spec = {
+                type = "ClusterIP";
+                selector = {
+                  app = "transmission";
+                };
+                ports = [
+                  {
+                    name = "http";
+                    port = 80;
+                    targetPort = 9091;
+                    protocol = "TCP";
+                  }
+                ];
+              };
+            }
           ];
         };
       };
