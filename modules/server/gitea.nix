@@ -103,6 +103,24 @@
                     };
                   };
                 };
+                ingress = {
+                  enabled = true;
+                  className = "tailscale";
+                  annotations = {
+                    "tailscale.com/expose" = "true";
+                  };
+                  hosts = [
+                    {
+                      host = "gitea";
+                      paths = [
+                        {
+                          path = "/";
+                          pathType = "Prefix";
+                        }
+                      ];
+                    }
+                  ];
+                };
                 persistence = {
                   enabled = true;
                   size = "25Gi";
@@ -210,3 +228,4 @@
       ];
     };
 }
+

@@ -43,6 +43,7 @@
           gitea.enable = true;
           nextcloud.enable = true;
           media-server.enable = true;
+          tailscale-operator.enable = true;
         };
         impermanence.enable = true;
         environment.persistence."/persist" = {

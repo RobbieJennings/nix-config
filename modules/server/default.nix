@@ -23,6 +23,7 @@
         inputs.self.modules.nixos.gitea
         inputs.self.modules.nixos.homepage
         inputs.self.modules.nixos.media-server
+        inputs.self.modules.nixos.tailscale-operator
       ];
 
       config = {
@@ -37,6 +38,7 @@
         gitea.enable = lib.mkDefault true;
         homepage.enable = lib.mkDefault true;
         media-server.enable = lib.mkDefault true;
+        tailscale-operator.enable = lib.mkDefault true;
       };
     };
 }
