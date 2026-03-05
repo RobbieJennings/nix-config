@@ -45,10 +45,10 @@
                     tag = image.imageTag;
                   };
                   resources = {
-                    requests.cpu = "100m";
-                    requests.memory = "128Mi";
-                    limits.cpu = "200m";
-                    limits.memory = "256Mi";
+                    requests.cpu = "10m";
+                    requests.memory = "32Mi";
+                    limits.cpu = "100m";
+                    limits.memory = "128Mi";
                   };
                 };
               };
