@@ -183,6 +183,34 @@
                 };
               };
             };
+            extraDeploy = [
+              {
+                apiVersion = "v1";
+                kind = "Service";
+                metadata = {
+                  name = "prometheus-tailscale";
+                  namespace = "monitoring";
+                  annotations = {
+                    "tailscale.com/expose" = "true";
+                  };
+                };
+                spec = {
+                  type = "ClusterIP";
+                  selector = {
+                    "app.kubernetes.io/name" = "prometheus";
+                    "app.kubernetes.io/instance" = "prometheus-kube-prometheus-prometheus";
+                  };
+                  ports = [
+                    {
+                      name = "http";
+                      port = 9090;
+                      targetPort = 9090;
+                      protocol = "TCP";
+                    }
+                  ];
+                };
+              }
+            ];
           };
         };
       };

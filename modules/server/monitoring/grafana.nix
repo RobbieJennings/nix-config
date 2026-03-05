@@ -95,6 +95,34 @@
                   };
                 };
               };
+              extraDeploy = [
+                {
+                  apiVersion = "v1";
+                  kind = "Service";
+                  metadata = {
+                    name = "grafana-tailscale";
+                    namespace = "monitoring";
+                    annotations = {
+                      "tailscale.com/expose" = "true";
+                    };
+                  };
+                  spec = {
+                    type = "ClusterIP";
+                    selector = {
+                      "app.kubernetes.io/name" = "grafana";
+                      "app.kubernetes.io/instance" = "grafana";
+                    };
+                    ports = [
+                      {
+                        name = "http";
+                        port = 3000;
+                        targetPort = 3000;
+                        protocol = "TCP";
+                      }
+                    ];
+                  };
+                }
+              ];
             };
           };
         })

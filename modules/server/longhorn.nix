@@ -189,6 +189,35 @@
                 };
               };
             };
+            extraDeploy = [
+              {
+                apiVersion = "v1";
+                kind = "Service";
+                metadata = {
+                  name = "longhorn-tailscale";
+                  namespace = "longhorn-system";
+                  annotations = {
+                    "tailscale.com/expose" = "true";
+                  };
+                };
+                spec = {
+                  type = "ClusterIP";
+                  selector = {
+                    "app.kubernetes.io/name" = "longhorn";
+                    "app.kubernetes.io/instance" = "longhorn";
+                    "app" = "longhorn-ui";
+                  };
+                  ports = [
+                    {
+                      name = "http";
+                      port = 8000;
+                      targetPort = 8000;
+                      protocol = "TCP";
+                    }
+                  ];
+                };
+              }
+            ];
           };
         };
       };
