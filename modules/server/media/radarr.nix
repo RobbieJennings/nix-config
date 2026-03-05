@@ -215,7 +215,7 @@
               spec = {
                 type = "ClusterIP";
                 selector = {
-                  app = "radarr";
+                  "app" = "radarr";
                 };
                 ports = [
                   {

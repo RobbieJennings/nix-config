@@ -190,7 +190,7 @@
               spec = {
                 type = "ClusterIP";
                 selector = {
-                  app = "jellyfin";
+                  "app" = "jellyfin";
                 };
                 ports = [
                   {

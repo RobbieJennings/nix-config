@@ -217,7 +217,7 @@
               spec = {
                 type = "ClusterIP";
                 selector = {
-                  app = "transmission";
+                  "app" = "transmission";
                 };
                 ports = [
                   {

@@ -167,7 +167,7 @@
               spec = {
                 type = "ClusterIP";
                 selector = {
-                  app = "prowlarr";
+                  "app" = "prowlarr";
                 };
                 ports = [
                   {
