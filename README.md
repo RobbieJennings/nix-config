@@ -38,6 +38,7 @@
   - ☸️ [Helm](https://helm.sh)
   - 🗃️ [Longhorn](https://longhorn.io)
   - ⚖️ [MetalLB](https://metallb.io)
+  - 🕸️ [Tailscale](https://tailscale.com)
   - 🏠 [Homepage](https://gethomepage.dev)
   - 📊 [Grafana](https://grafana.com)
   - 🪣 [Gitea](https://about.gitea.com)

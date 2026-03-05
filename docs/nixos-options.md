@@ -1213,6 +1213,32 @@ boolean
 
 
 
+## secrets\.tailscale-operator\.enable
+
+
+
+Whether to enable Enable SOPS-managed OAuth secret for Tailscale operator\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/tailscale-operator\.nix](../modules/server/tailscale-operator.nix)
+
+
+
 ## ssh\.enable
 
 
@@ -1262,6 +1288,58 @@ boolean
 
 *Declared by:*
  - [modules/desktop/steam\.nix](../modules/desktop/steam.nix)
+
+
+
+## tailscale\.enable
+
+
+
+Whether to enable tailscale client daemon\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/core/tailscale\.nix](../modules/core/tailscale.nix)
+
+
+
+## tailscale-operator\.enable
+
+
+
+Whether to enable Tailscale Kubernetes Operator\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/tailscale-operator\.nix](../modules/server/tailscale-operator.nix)
 
 
 
