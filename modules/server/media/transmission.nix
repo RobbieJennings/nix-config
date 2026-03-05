@@ -222,7 +222,7 @@
                 ports = [
                   {
                     name = "http";
-                    port = 80;
+                    port = 9091;
                     targetPort = 9091;
                     protocol = "TCP";
                   }
