@@ -177,6 +177,41 @@
                   };
                 };
               };
+              extraDeploy = [
+                {
+                  apiVersion = "v1";
+                  kind = "Service";
+                  metadata = {
+                    name = "gitea-tailscale";
+                    namespace = "gitea";
+                    annotations = {
+                      "tailscale.com/expose" = "true";
+                    };
+                  };
+                  spec = {
+                    type = "ClusterIP";
+                    selector = {
+                      "app.kubernetes.io/name" = "gitea";
+                      "app.kubernetes.io/instance" = "gitea";
+                      "app" = "gitea";
+                    };
+                    ports = [
+                      {
+                        name = "http";
+                        port = 3000;
+                        targetPort = 3000;
+                        protocol = "TCP";
+                      }
+                      {
+                        name = "ssh";
+                        port = 2222;
+                        targetPort = 2222;
+                        protocol = "TCP";
+                      }
+                    ];
+                  };
+                }
+              ];
             };
           };
         })

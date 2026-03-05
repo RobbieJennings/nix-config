@@ -71,7 +71,10 @@
                 };
                 nextcloud = {
                   host = "192.168.1.203";
-                  trustedDomains = [ "192.168.1.203" ];
+                  trustedDomains = [
+                    "192.168.1.203"
+                    "nextcloud-nextcloud-tailscale"
+                  ];
                   existingSecret = {
                     enabled = if (config.secrets.enable && config.secrets.nextcloud.enable) then true else false;
                     secretName = "nextcloud-secrets";
@@ -200,6 +203,35 @@
                   periodSeconds = 30;
                 };
               };
+              extraDeploy = [
+                {
+                  apiVersion = "v1";
+                  kind = "Service";
+                  metadata = {
+                    name = "nextcloud-tailscale";
+                    namespace = "nextcloud";
+                    annotations = {
+                      "tailscale.com/expose" = "true";
+                    };
+                  };
+                  spec = {
+                    type = "ClusterIP";
+                    selector = {
+                      "app.kubernetes.io/component" = "app";
+                      "app.kubernetes.io/instance" = "nextcloud";
+                      "app.kubernetes.io/name" = "nextcloud";
+                    };
+                    ports = [
+                      {
+                        name = "http";
+                        port = 80;
+                        targetPort = 80;
+                        protocol = "TCP";
+                      }
+                    ];
+                  };
+                }
+              ];
             };
           };
         })
