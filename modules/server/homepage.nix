@@ -151,7 +151,7 @@
                       }
                       {
                         Nextcloud = {
-                          href = "nextcloud-nextcloud-tailscale";
+                          href = "http://nextcloud-nextcloud-tailscale";
                           description = "Cloud Storage";
                           widgets = [
                             {
@@ -327,7 +327,7 @@
                           env = [
                             {
                               name = "HOMEPAGE_ALLOWED_HOSTS";
-                              value = "192.168.1.200,localhost";
+                              value = "192.168.1.200,localhost,homepage-homepage-tailscale:3000";
                             }
                             {
                               name = "HOMEPAGE_VAR_GRAFANA_USERNAME";
@@ -524,7 +524,7 @@
                     {
                       name = "http";
                       port = 3000;
-                      targetPort = 80;
+                      targetPort = 3000;
                       protocol = "TCP";
                     }
                   ];
