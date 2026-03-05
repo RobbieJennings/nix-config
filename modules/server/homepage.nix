@@ -101,7 +101,7 @@
                     Infrastructure = [
                       {
                         Grafana = {
-                          href = "http://192.168.1.210";
+                          href = "http://monitoring-grafana-tailscale:3000";
                           description = "Dashboards";
                           widgets = [
                             {
@@ -116,7 +116,7 @@
                       }
                       {
                         Prometheus = {
-                          href = "http://192.168.1.210:9090";
+                          href = "http://monitoring-prometheus-tailscale:9090";
                           description = "Metrics Server";
                           widgets = [
                             {
@@ -128,7 +128,7 @@
                       }
                       {
                         Longhorn = {
-                          href = "http://192.168.1.201";
+                          href = "http://longhorn-system-longhorn-tailscale:8000";
                           description = "Volume Management";
                         };
                       }
@@ -138,7 +138,7 @@
                     Files = [
                       {
                         Gitea = {
-                          href = "http://192.168.1.204:3000";
+                          href = "http://gitea-gitea-tailscale:3000";
                           description = "Git Server";
                           widgets = [
                             {
@@ -151,7 +151,7 @@
                       }
                       {
                         Nextcloud = {
-                          href = "http://192.168.1.203:8080";
+                          href = "nextcloud-nextcloud-tailscale";
                           description = "Cloud Storage";
                           widgets = [
                             {
@@ -169,7 +169,7 @@
                     Media = [
                       {
                         Jellyfin = {
-                          href = "http://192.168.1.202:8096";
+                          href = "http://media-jellyfin-tailscale:8096";
                           description = "Media Playback";
                           widgets = [
                             {
@@ -189,7 +189,7 @@
                       }
                       {
                         Transmission = {
-                          href = "http://192.168.1.202:9091";
+                          href = "http://media-transmission-tailscale:9091";
                           description = "Torrent Management";
                           widgets = [
                             {
@@ -201,7 +201,7 @@
                       }
                       {
                         Prowlarr = {
-                          href = "http://192.168.1.202:9696";
+                          href = "http://media-prowlarr-tailscale:9696";
                           description = "Indexer Management";
                           widgets = [
                             {
@@ -214,7 +214,7 @@
                       }
                       {
                         Radarr = {
-                          href = "http://192.168.1.202:7878";
+                          href = "http://media-radarr-tailscale:7878";
                           description = "Movie Management";
                           widgets = [
                             {
@@ -227,7 +227,7 @@
                       }
                       {
                         Sonarr = {
-                          href = "http://192.168.1.202:8989";
+                          href = "http://media-sonarr-tailscale:8989";
                           description = "TV Show Management";
                           widgets = [
                             {
@@ -240,7 +240,7 @@
                       }
                       {
                         Lidarr = {
-                          href = "http://192.168.1.202:8686";
+                          href = "http://media-lidarr-tailscale:8686";
                           description = "Music Management";
                           widgets = [
                             {
@@ -501,6 +501,31 @@
                       name = "http";
                       port = 80;
                       targetPort = 3000;
+                    }
+                  ];
+                };
+              }
+              {
+                apiVersion = "v1";
+                kind = "Service";
+                metadata = {
+                  name = "homepage-tailscale";
+                  namespace = "homepage";
+                  annotations = {
+                    "tailscale.com/expose" = "true";
+                  };
+                };
+                spec = {
+                  type = "ClusterIP";
+                  selector = {
+                    "app" = "homepage";
+                  };
+                  ports = [
+                    {
+                      name = "http";
+                      port = 3000;
+                      targetPort = 80;
+                      protocol = "TCP";
                     }
                   ];
                 };
