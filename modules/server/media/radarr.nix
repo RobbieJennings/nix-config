@@ -206,7 +206,7 @@
               apiVersion = "v1";
               kind = "Service";
               metadata = {
-                name = "prowlarr-tailscale";
+                name = "radarr-tailscale";
                 namespace = "media";
                 annotations = {
                   "tailscale.com/expose" = "true";
@@ -215,7 +215,7 @@
               spec = {
                 type = "ClusterIP";
                 selector = {
-                  app = "prowlarr";
+                  app = "radarr";
                 };
                 ports = [
                   {
