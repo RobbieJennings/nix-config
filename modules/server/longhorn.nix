@@ -52,6 +52,13 @@
         finalImageTag = "v8.4.0-20251030";
         arch = "amd64";
       };
+      csiLivenessProbeImage = pkgs.dockerTools.pullImage {
+        imageName = "longhornio/livenessprobe";
+        imageDigest = "sha256:7aed397ffdcb125374fa4dd44d95251598e9e97940bc5b84187b3cd3ffd655fd";
+        sha256 = "sha256-LMBH+hmOhRVoRyKneWb7kWgzEy3rdo/9aqeuhUreW9g=";
+        finalImageTag = "v2.17.0-20251030";
+        arch = "amd64";
+      };
       longhornEngineImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/longhorn-engine";
         imageDigest = "sha256:b6b30ace865932a686afde56757213d6c86834645443f3af1528a93b7ddf52f4";
@@ -112,6 +119,7 @@
             csiProvisionerImage
             csiResizerImage
             csiSnapshotterImage
+            csiLivenessProbeImage
             longhornEngineImage
             longhornInstanceManagerImage
             longhornManagerImage
@@ -156,6 +164,10 @@
                   snapshotter = {
                     repository = csiSnapshotterImage.imageName;
                     tag = csiSnapshotterImage.imageTag;
+                  };
+                  livenessProbe = {
+                    repository = csiLivenessProbeImage.imageName;
+                    tag = csiLivenessProbeImage.imageTag;
                   };
                 };
                 longhorn = {

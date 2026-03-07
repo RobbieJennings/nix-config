@@ -58,7 +58,6 @@
               createNamespace = true;
               values = {
                 image = {
-                  registry = "docker.io";
                   repository = giteaImage.imageName;
                   tag = giteaImage.imageTag;
                 };
