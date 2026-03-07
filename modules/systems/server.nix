@@ -54,6 +54,7 @@
             "/var/lib/systemd/coredump"
             "/var/lib/rancher/k3s"
             "/var/lib/longhorn"
+            "/var/lib/tailscale"
             "/etc/NetworkManager/system-connections"
             "/etc/nixos"
             "/root/.ssh"
