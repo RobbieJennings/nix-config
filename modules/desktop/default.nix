@@ -21,6 +21,7 @@
         inputs.self.modules.nixos.scanning
         inputs.self.modules.nixos.steam
         inputs.self.modules.nixos.virtualisation
+        inputs.self.modules.nixos.qmk
       ];
 
       options = {
@@ -36,18 +37,6 @@
 
       config = {
         services.flatpak.enable = true;
-        hardware.keyboard.qmk.enable = true;
-
-        home-manager.sharedModules = [
-          {
-            imports = [
-              inputs.nix-flatpak.homeManagerModules.nix-flatpak
-              inputs.plasma-manager.homeModules.plasma-manager
-              inputs.cosmic-manager.homeManagerModules.cosmic-manager
-            ];
-          }
-        ];
-
         bootloader.pretty = lib.mkDefault true;
         audio.enable = lib.mkDefault true;
         bluetooth.enable = lib.mkDefault true;
@@ -58,6 +47,17 @@
         scanning.enable = lib.mkDefault true;
         steam.enable = lib.mkDefault true;
         virtualisation.enable = lib.mkDefault true;
+        qmk.enable = lib.mkDefault true;
+
+        home-manager.sharedModules = [
+          {
+            imports = [
+              inputs.nix-flatpak.homeManagerModules.nix-flatpak
+              inputs.plasma-manager.homeModules.plasma-manager
+              inputs.cosmic-manager.homeManagerModules.cosmic-manager
+            ];
+          }
+        ];
 
         assertions = [
           {
