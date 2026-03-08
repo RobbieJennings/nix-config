@@ -127,6 +127,19 @@
                         };
                       }
                       {
+                        Tailscale = {
+                          href = "https://login.tailscale.com/admin/machines";
+                          description = "WireGuard Connections";
+                          widgets = [
+                            {
+                              type = "tailscale";
+                              deviceid = "{{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}";
+                              key = "{{HOMEPAGE_VAR_TAILSCALE_KEY}}";
+                            }
+                          ];
+                        };
+                      }
+                      {
                         Longhorn = {
                           href = "http://longhorn-system-longhorn-tailscale:8000";
                           description = "Volume Management";
@@ -344,6 +357,20 @@
                               };
                             }
                             {
+                              name = "HOMEPAGE_VAR_TAILSCALE_DEVICE_ID";
+                              valueFrom.secretKeyRef = {
+                                name = "homepage-secrets";
+                                key = "TAILSCALE_DEVICE_ID";
+                              };
+                            }
+                            {
+                              name = "HOMEPAGE_VAR_TAILSCALE_KEY";
+                              valueFrom.secretKeyRef = {
+                                name = "homepage-secrets";
+                                key = "TAILSCALE_KEY";
+                              };
+                            }
+                            {
                               name = "HOMEPAGE_VAR_NEXTCLOUD_USERNAME";
                               valueFrom.secretKeyRef = {
                                 name = "homepage-secrets";
@@ -476,6 +503,18 @@
                           configMap.name = "homepage-bookmarks";
                         }
                       ];
+                      dnsConfig = {
+                        nameservers = [
+                          "1.1.1.1"
+                          "8.8.8.8"
+                        ];
+                        options = [
+                          {
+                            name = "ndots";
+                            value = "0";
+                          }
+                        ];
+                      };
                     };
                   };
                 };
@@ -548,6 +587,13 @@
                   if config.secrets.grafana.enable then config.sops.placeholder."grafana/username" else "";
                 GRAFANA_PASSWORD =
                   if config.secrets.grafana.enable then config.sops.placeholder."grafana/password" else "";
+                TAILSCALE_DEVICE_ID =
+                  if config.secrets.tailscale-operator.enable then
+                    config.sops.placeholder."tailscale/device_id"
+                  else
+                    "";
+                TAILSCALE_KEY =
+                  if config.secrets.tailscale-operator.enable then config.sops.placeholder."tailscale/key" else "";
                 NEXTCLOUD_USERNAME =
                   if config.secrets.nextcloud.enable then config.sops.placeholder."nextcloud/username" else "";
                 NEXTCLOUD_PASSWORD =

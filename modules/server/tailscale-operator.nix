@@ -65,6 +65,8 @@
             sops.secrets = {
               "tailscale/client_id" = { };
               "tailscale/client_secret" = { };
+              "tailscale/device_id" = { };
+              "tailscale/key" = { };
             };
             sops.templates.tailscaleOperatorOAuth = {
               content = builtins.toJSON {
