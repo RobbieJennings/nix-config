@@ -231,6 +231,32 @@
                     ];
                   };
                 }
+                {
+                  apiVersion = "v1";
+                  kind = "Service";
+                  metadata = {
+                    # Internal alias so Collabora can resolve `nextcloud-nextcloud-tailscale`
+                    name = "nextcloud-nextcloud-tailscale";
+                    namespace = "nextcloud";
+                    # no tailscale.com/expose here – this is cluster‑internal only
+                  };
+                  spec = {
+                    type = "ClusterIP";
+                    selector = {
+                      "app.kubernetes.io/component" = "app";
+                      "app.kubernetes.io/instance" = "nextcloud";
+                      "app.kubernetes.io/name" = "nextcloud";
+                    };
+                    ports = [
+                      {
+                        name = "http";
+                        port = 80;
+                        targetPort = 80;
+                        protocol = "TCP";
+                      }
+                    ];
+                  };
+                }
               ];
             };
           };
