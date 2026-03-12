@@ -157,7 +157,7 @@
                       namespace = "immich";
                     };
                     spec = {
-                      accessModes = ["ReadWriteOnce"];
+                      accessModes = [ "ReadWriteOnce" ];
                       resources = {
                         requests = {
                           storage = "25Gi";

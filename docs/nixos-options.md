@@ -329,6 +329,32 @@ boolean
 
 
 
+## immich\.enable
+
+
+
+Whether to enable Immich helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/immich\.nix](../modules/server/immich.nix)
+
+
+
 ## impermanence\.enable
 
 
@@ -1005,6 +1031,32 @@ boolean
 
 
 
+## qmk\.enable
+
+
+
+Whether to enable QMK keyboard configuration\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/desktop/qmk\.nix](../modules/desktop/qmk.nix)
+
+
+
 ## scanning\.enable
 
 
@@ -1106,6 +1158,32 @@ boolean
 
 *Declared by:*
  - [modules/server/monitoring/grafana\.nix](../modules/server/monitoring/grafana.nix)
+
+
+
+## secrets\.immich\.enable
+
+
+
+Whether to enable Immich secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/immich\.nix](../modules/server/immich.nix)
 
 
 
