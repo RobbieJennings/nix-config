@@ -849,6 +849,32 @@ boolean
 
 
 
+## monitoring\.alloy\.enable
+
+
+
+Whether to enable alloy service on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/monitoring/alloy\.nix](../modules/server/monitoring/alloy.nix)
+
+
+
 ## monitoring\.grafana\.enable
 
 
