@@ -42,6 +42,7 @@
           grafana.enable = true;
           gitea.enable = true;
           nextcloud.enable = true;
+          immich.enable = true;
           media-server.enable = true;
           tailscale-operator.enable = true;
         };

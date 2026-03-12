@@ -21,6 +21,7 @@
         inputs.self.modules.nixos.monitoring
         inputs.self.modules.nixos.nextcloud
         inputs.self.modules.nixos.gitea
+        inputs.self.modules.nixos.immich
         inputs.self.modules.nixos.homepage
         inputs.self.modules.nixos.media-server
         inputs.self.modules.nixos.tailscale-operator
@@ -36,6 +37,7 @@
         monitoring.enable = lib.mkDefault true;
         nextcloud.enable = lib.mkDefault true;
         gitea.enable = lib.mkDefault true;
+        immich.enable = lib.mkDefault true;
         homepage.enable = lib.mkDefault true;
         media-server.enable = lib.mkDefault true;
         tailscale-operator.enable = lib.mkDefault true;

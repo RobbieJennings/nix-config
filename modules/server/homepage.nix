@@ -176,6 +176,20 @@
                           ];
                         };
                       }
+                      {
+                        Immich = {
+                          href = "http://immich-immich-tailscale:2283";
+                          description = "Photo & Video Storage";
+                          widgets = [
+                            {
+                              type = "immich";
+                              url = "http://192.168.1.205:2283";
+                              key = "{{HOMEPAGE_VAR_IMMICH_KEY}}";
+                              version = 2;
+                            }
+                          ];
+                        };
+                      }
                     ];
                   }
                   {
@@ -392,6 +406,13 @@
                               };
                             }
                             {
+                              name = "HOMEPAGE_VAR_IMMICH_KEY";
+                              valueFrom.secretKeyRef = {
+                                name = "homepage-secrets";
+                                key = "IMMICH_KEY";
+                              };
+                            }
+                            {
                               name = "HOMEPAGE_VAR_JELLYFIN_KEY";
                               valueFrom.secretKeyRef = {
                                 name = "homepage-secrets";
@@ -599,6 +620,7 @@
                 NEXTCLOUD_PASSWORD =
                   if config.secrets.nextcloud.enable then config.sops.placeholder."nextcloud/password" else "";
                 GITEA_KEY = if config.secrets.gitea.enable then config.sops.placeholder."gitea/key" else "";
+                IMMICH_KEY = if config.secrets.immich.enable then config.sops.placeholder."immich/key" else "";
                 JELLYFIN_KEY =
                   if config.secrets.media-server.enable then config.sops.placeholder."jellyfin/key" else "";
                 RADARR_KEY =

@@ -130,8 +130,11 @@
             targetNamespace = "longhorn-system";
             createNamespace = true;
             values = {
+              longhornUi.replicas = 1;
               defaultSettings = {
                 defaultReplicaCount = 1;
+                storageMinimalAvailablePercentage = 10;
+                storageReservedPercentageForDefaultDisk = 10;
               };
               persistence = {
                 defaultClassReplicaCount = 1;
