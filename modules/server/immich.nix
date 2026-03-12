@@ -25,9 +25,9 @@
       };
       immichImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/immich-app/immich-server";
-        imageDigest = "sha256:d81f4af6a622d0955e5b8e3927da32b3ec882466a7ee8a26906d9cccad4364ca";
-        sha256 = "sha256-6VPsJapLoUdVeh7MlSvT9JirUxfNlm9nQvxk7EiqaMk=";
-        finalImageTag = "v2.0.0";
+        imageDigest = "sha256:aa163d2e1cc2b16a9515dd1fef901e6f5231befad7024f093d7be1f2da14341a";
+        sha256 = "sha256-VRqUD6mVub5qoIL6zt5iy4jk7rBm6Y4ddU/+o724q2g=";
+        finalImageTag = "v2.5.6";
         arch = "amd64";
       };
       postgresqlImage = pkgs.dockerTools.pullImage {
