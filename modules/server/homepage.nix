@@ -100,6 +100,19 @@
                   {
                     Infrastructure = [
                       {
+                        Tailscale = {
+                          href = "https://login.tailscale.com/admin/machines";
+                          description = "WireGuard Connections";
+                          widgets = [
+                            {
+                              type = "tailscale";
+                              deviceid = "{{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}";
+                              key = "{{HOMEPAGE_VAR_TAILSCALE_KEY}}";
+                            }
+                          ];
+                        };
+                      }
+                      {
                         Grafana = {
                           href = "http://monitoring-grafana-tailscale:3000";
                           description = "Dashboards";
@@ -127,16 +140,9 @@
                         };
                       }
                       {
-                        Tailscale = {
-                          href = "https://login.tailscale.com/admin/machines";
-                          description = "WireGuard Connections";
-                          widgets = [
-                            {
-                              type = "tailscale";
-                              deviceid = "{{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}";
-                              key = "{{HOMEPAGE_VAR_TAILSCALE_KEY}}";
-                            }
-                          ];
+                        Alloy = {
+                          href = "http://monitoring-prometheus-tailscale:9090";
+                          description = "Logging Agent";
                         };
                       }
                       {
@@ -639,3 +645,4 @@
       ];
     };
 }
+
