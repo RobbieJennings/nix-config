@@ -213,6 +213,7 @@
                   namespace = "longhorn-system";
                   annotations = {
                     "tailscale.com/expose" = "true";
+                    "tailscale.com/hostname" = "longhorn";
                   };
                 };
                 spec = {
@@ -225,7 +226,7 @@
                   ports = [
                     {
                       name = "http";
-                      port = 8000;
+                      port = 80;
                       targetPort = 8000;
                       protocol = "TCP";
                     }

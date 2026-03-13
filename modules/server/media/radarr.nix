@@ -210,6 +210,7 @@
                 namespace = "media";
                 annotations = {
                   "tailscale.com/expose" = "true";
+                  "tailscale.com/hostname" = "radarr";
                 };
               };
               spec = {
@@ -220,7 +221,7 @@
                 ports = [
                   {
                     name = "http";
-                    port = 7878;
+                    port = 80;
                     targetPort = 7878;
                     protocol = "TCP";
                   }

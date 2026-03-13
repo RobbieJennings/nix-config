@@ -210,6 +210,7 @@
                 namespace = "media";
                 annotations = {
                   "tailscale.com/expose" = "true";
+                  "tailscale.com/hostname" = "sonarr";
                 };
               };
               spec = {
@@ -220,7 +221,7 @@
                 ports = [
                   {
                     name = "http";
-                    port = 8989;
+                    port = 80;
                     targetPort = 8989;
                     protocol = "TCP";
                   }

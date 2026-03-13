@@ -73,7 +73,7 @@
                   host = "192.168.1.203";
                   trustedDomains = [
                     "192.168.1.203"
-                    "nextcloud-nextcloud-tailscale"
+                    "nextcloud"
                   ];
                   existingSecret = {
                     enabled = if (config.secrets.enable && config.secrets.nextcloud.enable) then true else false;
@@ -212,6 +212,7 @@
                     namespace = "nextcloud";
                     annotations = {
                       "tailscale.com/expose" = "true";
+                      "tailscale.com/hostname" = "nextcloud";
                     };
                   };
                   spec = {
@@ -235,8 +236,8 @@
                   apiVersion = "v1";
                   kind = "Service";
                   metadata = {
-                    # Internal alias so Collabora can resolve `nextcloud-nextcloud-tailscale`
-                    name = "nextcloud-nextcloud-tailscale";
+                    # Internal alias so Collabora can resolve `nextcloud`
+                    name = "nextcloud";
                     namespace = "nextcloud";
                     # no tailscale.com/expose here – this is cluster‑internal only
                   };

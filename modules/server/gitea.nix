@@ -185,6 +185,7 @@
                     namespace = "gitea";
                     annotations = {
                       "tailscale.com/expose" = "true";
+                      "tailscale.com/hostname" = "gitea";
                     };
                   };
                   spec = {
@@ -197,7 +198,7 @@
                     ports = [
                       {
                         name = "http";
-                        port = 3000;
+                        port = 80;
                         targetPort = 3000;
                         protocol = "TCP";
                       }

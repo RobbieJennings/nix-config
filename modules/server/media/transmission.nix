@@ -212,6 +212,7 @@
                 namespace = "media";
                 annotations = {
                   "tailscale.com/expose" = "true";
+                  "tailscale.com/hostname" = "transmission";
                 };
               };
               spec = {
@@ -222,7 +223,7 @@
                 ports = [
                   {
                     name = "http";
-                    port = 9091;
+                    port = 80;
                     targetPort = 9091;
                     protocol = "TCP";
                   }

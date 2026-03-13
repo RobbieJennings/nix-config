@@ -162,6 +162,7 @@
                 namespace = "media";
                 annotations = {
                   "tailscale.com/expose" = "true";
+                  "tailscale.com/hostname" = "prowlarr";
                 };
               };
               spec = {
@@ -172,7 +173,7 @@
                 ports = [
                   {
                     name = "http";
-                    port = 9696;
+                    port = 80;
                     targetPort = 9696;
                     protocol = "TCP";
                   }

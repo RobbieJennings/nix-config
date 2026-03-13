@@ -114,7 +114,7 @@
                       }
                       {
                         Grafana = {
-                          href = "http://monitoring-grafana-tailscale:3000";
+                          href = "http://grafana/";
                           description = "Dashboards";
                           widgets = [
                             {
@@ -129,7 +129,7 @@
                       }
                       {
                         Prometheus = {
-                          href = "http://monitoring-prometheus-tailscale:9090";
+                          href = "http://prometheus/";
                           description = "Metrics Server";
                           widgets = [
                             {
@@ -141,13 +141,13 @@
                       }
                       {
                         Alloy = {
-                          href = "http://monitoring-prometheus-tailscale:9090";
+                          href = "http://alloy/";
                           description = "Logging Agent";
                         };
                       }
                       {
                         Longhorn = {
-                          href = "http://longhorn-system-longhorn-tailscale:8000";
+                          href = "http://longhorn/";
                           description = "Volume Management";
                         };
                       }
@@ -157,7 +157,7 @@
                     Files = [
                       {
                         Gitea = {
-                          href = "http://gitea-gitea-tailscale:3000";
+                          href = "http://gitea/";
                           description = "Git Server";
                           widgets = [
                             {
@@ -170,7 +170,7 @@
                       }
                       {
                         Nextcloud = {
-                          href = "http://nextcloud-nextcloud-tailscale";
+                          href = "http://nextcloud/";
                           description = "Cloud Storage";
                           widgets = [
                             {
@@ -184,7 +184,7 @@
                       }
                       {
                         Immich = {
-                          href = "http://immich-immich-tailscale:2283";
+                          href = "http://immich/";
                           description = "Photo & Video Storage";
                           widgets = [
                             {
@@ -202,7 +202,7 @@
                     Media = [
                       {
                         Jellyfin = {
-                          href = "http://media-jellyfin-tailscale:8096";
+                          href = "http://jellyfin/";
                           description = "Media Playback";
                           widgets = [
                             {
@@ -222,7 +222,7 @@
                       }
                       {
                         Transmission = {
-                          href = "http://media-transmission-tailscale:9091";
+                          href = "http://transmission/";
                           description = "Torrent Management";
                           widgets = [
                             {
@@ -234,7 +234,7 @@
                       }
                       {
                         Prowlarr = {
-                          href = "http://media-prowlarr-tailscale:9696";
+                          href = "http://prowlarr/";
                           description = "Indexer Management";
                           widgets = [
                             {
@@ -247,7 +247,7 @@
                       }
                       {
                         Radarr = {
-                          href = "http://media-radarr-tailscale:7878";
+                          href = "http://radarr/";
                           description = "Movie Management";
                           widgets = [
                             {
@@ -260,7 +260,7 @@
                       }
                       {
                         Sonarr = {
-                          href = "http://media-sonarr-tailscale:8989";
+                          href = "http://sonarr/";
                           description = "TV Show Management";
                           widgets = [
                             {
@@ -273,7 +273,7 @@
                       }
                       {
                         Lidarr = {
-                          href = "http://media-lidarr-tailscale:8686";
+                          href = "http://lidarr/";
                           description = "Music Management";
                           widgets = [
                             {
@@ -579,6 +579,7 @@
                   namespace = "homepage";
                   annotations = {
                     "tailscale.com/expose" = "true";
+                    "tailscale.com/hostname" = "homepage";
                   };
                 };
                 spec = {
@@ -589,7 +590,7 @@
                   ports = [
                     {
                       name = "http";
-                      port = 3000;
+                      port = 80;
                       targetPort = 3000;
                       protocol = "TCP";
                     }

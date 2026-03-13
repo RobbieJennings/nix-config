@@ -185,6 +185,7 @@
                 namespace = "media";
                 annotations = {
                   "tailscale.com/expose" = "true";
+                  "tailscale.com/hostname" = "jellyfin";
                 };
               };
               spec = {
@@ -195,7 +196,7 @@
                 ports = [
                   {
                     name = "http";
-                    port = 8096;
+                    port = 80;
                     targetPort = 8096;
                     protocol = "TCP";
                   }

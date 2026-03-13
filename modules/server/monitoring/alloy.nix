@@ -53,7 +53,9 @@
                     }
                     loki.source.kubernetes "pods" {
                       targets = discovery.kubernetes.pods.targets
-                      labels.cluster = "k3s"
+                      labels = {
+                        cluster = "k3s"
+                      }
                       forward_to = [loki.write.default.receiver]
                     }
                     loki.write "default" {
@@ -88,6 +90,7 @@
                   namespace = "monitoring";
                   annotations = {
                     "tailscale.com/expose" = "true";
+                    "tailscale.com/hostname" = "alloy";
                   };
                 };
                 spec = {
@@ -99,7 +102,7 @@
                   ports = [
                     {
                       name = "http";
-                      port = 12345;
+                      port = 80;
                       targetPort = 12345;
                       protocol = "TCP";
                     }

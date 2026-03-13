@@ -192,6 +192,7 @@
                   namespace = "monitoring";
                   annotations = {
                     "tailscale.com/expose" = "true";
+                    "tailscale.com/hostname" = "prometheus";
                   };
                 };
                 spec = {
@@ -203,7 +204,7 @@
                   ports = [
                     {
                       name = "http";
-                      port = 9090;
+                      port = 80;
                       targetPort = 9090;
                       protocol = "TCP";
                     }

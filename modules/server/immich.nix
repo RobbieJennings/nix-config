@@ -173,6 +173,7 @@
                       namespace = "immich";
                       annotations = {
                         "tailscale.com/expose" = "true";
+                        "tailscale.com/hostname" = "immich";
                       };
                     };
                     spec = {
@@ -185,7 +186,7 @@
                       ports = [
                         {
                           name = "http";
-                          port = 2283;
+                          port = 80;
                           targetPort = 2283;
                           protocol = "TCP";
                         }
