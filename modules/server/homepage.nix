@@ -360,7 +360,7 @@
                           env = [
                             {
                               name = "HOMEPAGE_ALLOWED_HOSTS";
-                              value = "192.168.1.200,localhost,homepage-homepage-tailscale:3000";
+                              value = "192.168.1.200,localhost,homepage";
                             }
                             {
                               name = "HOMEPAGE_VAR_GRAFANA_USERNAME";

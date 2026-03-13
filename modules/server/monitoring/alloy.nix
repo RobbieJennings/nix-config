@@ -53,9 +53,6 @@
                     }
                     loki.source.kubernetes "pods" {
                       targets = discovery.kubernetes.pods.targets
-                      labels = {
-                        cluster = "k3s"
-                      }
                       forward_to = [loki.write.default.receiver]
                     }
                     loki.write "default" {
