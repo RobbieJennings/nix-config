@@ -73,7 +73,7 @@
                   host = "192.168.1.203";
                   trustedDomains = [
                     "192.168.1.203"
-                    "nextcloud-nextcloud-tailscale"
+                    "nextcloud"
                   ];
                   existingSecret = {
                     enabled = if (config.secrets.enable && config.secrets.nextcloud.enable) then true else false;
