@@ -54,6 +54,11 @@
                 template = {
                   metadata.labels.app = "radarr";
                   spec = {
+                    securityContext = {
+                      fsGroup = 1000;
+                      runAsUser = 1000;
+                      runAsGroup = 1000;
+                    };
                     initContainers = [
                       {
                         name = "init-radarr";

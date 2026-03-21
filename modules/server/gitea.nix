@@ -57,6 +57,9 @@
               targetNamespace = "gitea";
               createNamespace = true;
               values = {
+                global = {
+                  imageRegistry = "docker.io";
+                };
                 image = {
                   repository = giteaImage.imageName;
                   tag = giteaImage.imageTag;
@@ -204,7 +207,7 @@
                       }
                       {
                         name = "ssh";
-                        port = 2222;
+                        port = 22;
                         targetPort = 2222;
                         protocol = "TCP";
                       }
