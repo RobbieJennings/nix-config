@@ -63,6 +63,7 @@
                 image = {
                   repository = giteaImage.imageName;
                   tag = giteaImage.imageTag;
+                  rootless = false;
                 };
                 gitea = {
                   admin =
