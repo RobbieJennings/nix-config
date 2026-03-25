@@ -83,11 +83,11 @@
                   };
                 };
                 service = {
-                  type = "LoadBalancer";
-                  loadBalancerIP = "192.168.1.203";
+                  type = "ClusterIP";
+                  port = 80;
                   annotations = {
-                    "metallb.io/address-pool" = "default";
-                    "metallb.io/allow-shared-ip" = "nextcloud";
+                    "tailscale.com/expose" = "true";
+                    "tailscale.com/hostname" = "nextcloud";
                   };
                 };
                 persistence = {
@@ -170,11 +170,11 @@
                     tag = collaboraImage.imageTag;
                   };
                   service = {
-                    type = "LoadBalancer";
+                    type = "ClusterIP";
+                    port = 80;
                     annotations = {
-                      "metallb.io/address-pool" = "default";
-                      "metallb.io/loadBalancerIPs" = "192.168.1.203";
-                      "metallb.io/allow-shared-ip" = "nextcloud";
+                      "tailscale.com/expose" = "true";
+                      "tailscale.com/hostname" = "nextcloud-collabora";
                     };
                   };
                   resources = {
@@ -208,15 +208,16 @@
                   apiVersion = "v1";
                   kind = "Service";
                   metadata = {
-                    name = "nextcloud-tailscale";
+                    name = "nextcloud-lb";
                     namespace = "nextcloud";
                     annotations = {
-                      "tailscale.com/expose" = "true";
-                      "tailscale.com/hostname" = "nextcloud";
+                      "metallb.io/address-pool" = "default";
+                      "metallb.io/allow-shared-ip" = "nextcloud";
                     };
                   };
                   spec = {
-                    type = "ClusterIP";
+                    type = "LoadBalancer";
+                    loadBalancerIP = "192.168.1.203";
                     selector = {
                       "app.kubernetes.io/component" = "app";
                       "app.kubernetes.io/instance" = "nextcloud";
@@ -225,7 +226,7 @@
                     ports = [
                       {
                         name = "http";
-                        port = 80;
+                        port = 8080;
                         targetPort = 80;
                         protocol = "TCP";
                       }
