@@ -16,7 +16,7 @@
       };
 
       config = lib.mkIf config.cursor.enable {
-        home.packages = [ pkgs.code-cursor ];
+        home.packages = [ pkgs.unstable.code-cursor ];
         home.file = lib.mkIf config.vscode.enable {
           # Sync Cursor settings from VSCodium
           ".config/Cursor/User/settings.json".source =
