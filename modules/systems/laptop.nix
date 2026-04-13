@@ -5,35 +5,32 @@
   ...
 }:
 {
-  flake.modules = lib.mkMerge [
+  flake.modules.nixos.robbie-laptop = lib.mkMerge [
     (self.factory.desktop-user {
-      moduleName = "robbie-laptop";
       username = "robbie";
       isAdmin = true;
     })
     {
-      nixos.robbie-laptop = {
-        home-manager.users.robbie = {
-          programs.git = {
-            enable = true;
-            settings.user = {
-              name = "robbiejennings";
-              email = "robbie.jennings97@gmail.com";
-            };
+      home-manager.users.robbie = {
+        programs.git = {
+          enable = true;
+          settings.user = {
+            name = "robbiejennings";
+            email = "robbie.jennings97@gmail.com";
           };
-          theme = {
-            image = {
-              url = "https://raw.githubusercontent.com/AngelJumbo/gruvbox-wallpapers/refs/heads/main/wallpapers/photography/forest-2.jpg";
-              hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
-            };
-            base16Scheme = "gruvbox-material-dark-hard";
+        };
+        theme = {
+          image = {
+            url = "https://raw.githubusercontent.com/AngelJumbo/gruvbox-wallpapers/refs/heads/main/wallpapers/photography/forest-2.jpg";
+            hash = "sha256-RqzCCnn4b5kU7EYgaPF19Gr9I5cZrkEdsTu+wGaaMFI=";
           };
-          secrets = {
-            enable = true;
-            vuescan.enable = true;
-            rclone.enable = true;
-            restic.enable = true;
-          };
+          base16Scheme = "gruvbox-material-dark-hard";
+        };
+        secrets = {
+          enable = true;
+          vuescan.enable = true;
+          rclone.enable = true;
+          restic.enable = true;
         };
       };
     }

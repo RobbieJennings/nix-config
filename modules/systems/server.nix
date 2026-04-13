@@ -5,21 +5,18 @@
   ...
 }:
 {
-  flake.modules = lib.mkMerge [
+  flake.modules.nixos.robbie-server = lib.mkMerge [
     (self.factory.server-user {
-      moduleName = "robbie-server";
       username = "robbie";
       isAdmin = true;
     })
     {
-      nixos.robbie-server = {
-        home-manager.users.robbie = {
-          programs.git = {
-            enable = true;
-            settings.user = {
-              name = "robbiejennings";
-              email = "robbie.jennings97@gmail.com";
-            };
+      home-manager.users.robbie = {
+        programs.git = {
+          enable = true;
+          settings.user = {
+            name = "robbiejennings";
+            email = "robbie.jennings97@gmail.com";
           };
         };
       };

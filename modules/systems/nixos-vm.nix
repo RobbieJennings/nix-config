@@ -5,19 +5,16 @@
   ...
 }:
 {
-  flake.modules = lib.mkMerge [
+  flake.modules.nixos.robbie-vm = lib.mkMerge [
     (self.factory.desktop-user {
-      moduleName = "robbie-vm";
       username = "robbie";
       isAdmin = true;
     })
     {
-      nixos.robbie-vm = {
-        home-manager.users.robbie = {
-          programs.git.settings.user = {
-            name = "robbiejennings";
-            email = "robbie.jennings97@gmail.com";
-          };
+      home-manager.users.robbie = {
+        programs.git.settings.user = {
+          name = "robbiejennings";
+          email = "robbie.jennings97@gmail.com";
         };
       };
     }
