@@ -15,13 +15,13 @@
   - 💾 [Impermanence](https://github.com/nix-community/impermanence)
   - 💽 [Disko](https://github.com/nix-community/disko)
   - 🪝 [Git-hooks](https://github.com/cachix/git-hooks.nix)
-  - 🔒 [LUKS disk encryption](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup)
-  - 🪧 [Plymouth boot screen](https://www.freedesktop.org/wiki/Software/Plymouth)
   - 🔃 [Automatic updates](https://github.com/DeterminateSystems/update-flake-lock)
   - 🧹 Garbage collection
   - 📚 Documentation generation
 
 ### Desktop
+  - 🔒 [LUKS disk encryption](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup)
+  - 🪧 [Plymouth boot screen](https://www.freedesktop.org/wiki/Software/Plymouth)
   - 📦 [Flatpak installation](https://github.com/gmodena/nix-flatpak)
   - 🖥️ [KDE Plasma management](https://github.com/nix-community/plasma-manager)
   - 🗔 [Cosmic Desktop management](https://github.com/HeitorAugustoLN/cosmic-manager)
@@ -36,12 +36,14 @@
 ### Server
   - 🌐 [K3S](https://k3s.io)
   - ☸️ [Helm](https://helm.sh)
-  - 🗃️ [Longhorn](https://longhorn.io)
   - ⚖️ [MetalLB](https://metallb.io)
+  - 🗃️ [Longhorn](https://longhorn.io)
+  - 🛢️ [CloudnativePG](https://cloudnative-pg.io)
+  - ⛽ [Valkey](https://valkey.io)
   - 🕸️ [Tailscale](https://tailscale.com)
   - 🏠 [Homepage](https://gethomepage.dev)
   - 📊 [Grafana](https://grafana.com)
-  - 🪣 [Gitea](https://about.gitea.com)
+  - 🪣 [Forgejo](https://forgejo.org)
   - ☁️ [Nextcloud](https://nextcloud.com)
   - 📼 [Jellyfin](https://jellyfin.org)
   - 🏴‍☠️ [Servarr](https://wiki.servarr.com)
