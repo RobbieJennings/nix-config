@@ -37,7 +37,7 @@
           passwords.enable = true;
           k3s.enable = true;
           grafana.enable = true;
-          gitea.enable = true;
+          forgejo.enable = true;
           nextcloud.enable = true;
           immich.enable = true;
           media-server.enable = true;

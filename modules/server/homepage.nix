@@ -156,14 +156,14 @@
                   {
                     Files = [
                       {
-                        Gitea = {
-                          href = "http://gitea/";
+                        Forgejo = {
+                          href = "http://forgejo/";
                           description = "Git Server";
                           widgets = [
                             {
                               type = "gitea";
                               url = "http://192.168.1.204:3000";
-                              key = "{{HOMEPAGE_VAR_GITEA_KEY}}";
+                              key = "{{HOMEPAGE_VAR_FORGEJO_KEY}}";
                             }
                           ];
                         };
@@ -405,10 +405,10 @@
                               };
                             }
                             {
-                              name = "HOMEPAGE_VAR_GITEA_KEY";
+                              name = "HOMEPAGE_VAR_FORGEJO_KEY";
                               valueFrom.secretKeyRef = {
                                 name = "homepage-secrets";
-                                key = "GITEA_KEY";
+                                key = "FORGEJO_KEY";
                               };
                             }
                             {
@@ -626,7 +626,7 @@
                   if config.secrets.nextcloud.enable then config.sops.placeholder."nextcloud/username" else "";
                 NEXTCLOUD_PASSWORD =
                   if config.secrets.nextcloud.enable then config.sops.placeholder."nextcloud/password" else "";
-                GITEA_KEY = if config.secrets.gitea.enable then config.sops.placeholder."gitea/key" else "";
+                FORGEJO_KEY = if config.secrets.forgejo.enable then config.sops.placeholder."forgejo/key" else "";
                 IMMICH_KEY = if config.secrets.immich.enable then config.sops.placeholder."immich/key" else "";
                 JELLYFIN_KEY =
                   if config.secrets.media-server.enable then config.sops.placeholder."jellyfin/key" else "";
