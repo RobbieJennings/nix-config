@@ -225,6 +225,58 @@ boolean
 
 
 
+## forgejo\.enable
+
+
+
+Whether to enable Forgejo Helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/forgejo\.nix](../modules/server/forgejo.nix)
+
+
+
+## forgejo-valkey\.enable
+
+
+
+Whether to enable Valkey helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/forgejo\.nix](../modules/server/forgejo.nix)
+
+
+
 ## fwupd\.enable
 
 
@@ -277,32 +329,6 @@ boolean
 
 
 
-## gitea\.enable
-
-
-
-Whether to enable Gitea Helm chart on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/server/gitea\.nix](../modules/server/gitea.nix)
-
-
-
 ## homepage\.enable
 
 
@@ -334,6 +360,32 @@ boolean
 
 
 Whether to enable Immich helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/immich\.nix](../modules/server/immich.nix)
+
+
+
+## immich-valkey\.enable
+
+
+
+Whether to enable Valkey helm chart on k3s\.
 
 
 
@@ -1005,6 +1057,32 @@ boolean
 
 
 
+## nextcloud-valkey\.enable
+
+
+
+Whether to enable Valkey helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/nextcloud\.nix](../modules/server/nextcloud.nix)
+
+
+
 ## node-feature-discovery\.enable
 
 
@@ -1028,6 +1106,32 @@ boolean
 
 *Declared by:*
  - [modules/server/node-feature-discover\.nix](../modules/server/node-feature-discover.nix)
+
+
+
+## postgres\.enable
+
+
+
+Whether to enable Cloudnative-pg helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/database/postgres\.nix](../modules/server/database/postgres.nix)
 
 
 
@@ -1135,11 +1239,11 @@ boolean
 
 
 
-## secrets\.gitea\.enable
+## secrets\.forgejo\.enable
 
 
 
-Whether to enable Gitea secrets\.
+Whether to enable Forgejo secrets\.
 
 
 
@@ -1157,7 +1261,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/gitea\.nix](../modules/server/gitea.nix)
+ - [modules/server/forgejo\.nix](../modules/server/forgejo.nix)
 
 
 
