@@ -1,8 +1,29 @@
 {
+  self,
   inputs,
   ...
 }:
 {
+  flake.modules.nixos.nextcloud-valkey = self.factory.valkey {
+    namespace = "nextcloud";
+    values = {
+      resources = {
+        requests.cpu = "20m";
+        requests.memory = "64Mi";
+        limits.cpu = "100m";
+        limits.memory = "128Mi";
+      };
+      auth = {
+        enabled = true;
+        usersExistingSecret = "nextcloud-secrets";
+        aclUsers.default = {
+          permissions = "~* &* +@all";
+          passwordKey = "valkey-password";
+        };
+      };
+    };
+  };
+
   flake.modules.nixos.nextcloud =
     {
       config,
@@ -24,20 +45,6 @@
         finalImageTag = "32.0.3";
         arch = "amd64";
       };
-      postgresqlImage = pkgs.dockerTools.pullImage {
-        imageName = "bitnamilegacy/postgresql";
-        imageDigest = "sha256:5cf757a084469da93ca39a294c9ec7c1aaf2d2a5f728001676ece1a9607fa57f";
-        sha256 = "sha256-iNx2E4xnEterjgXd7NUlscLHEmDNVt2y3Mq7Ki98x+Q=";
-        finalImageTag = "17.5.0-debian-12-r3";
-        arch = "amd64";
-      };
-      redisImage = pkgs.dockerTools.pullImage {
-        imageName = "bitnamilegacy/redis";
-        imageDigest = "sha256:25bf63f3caf75af4628c0dfcf39859ad1ac8abe135be85e99699f9637b16dc28";
-        sha256 = "sha256-6jt1aa3gnfFd9CP2XKAhT3WgOTTibv+29BUvkwiE3CQ=";
-        finalImageTag = "8.0.1-debian-12-r1";
-        arch = "amd64";
-      };
       collaboraImage = pkgs.dockerTools.pullImage {
         imageName = "collabora/code";
         imageDigest = "sha256:4585c88c15d681a04495e9881e99974040373089b941d6909f9c9e817553457c";
@@ -47,6 +54,8 @@
       };
     in
     {
+      imports = [ inputs.self.modules.nixos.nextcloud-valkey ];
+
       options = {
         nextcloud.enable = lib.mkEnableOption "nextcloud helm chart on k3s";
         secrets.nextcloud.enable = lib.mkEnableOption "Nextcloud secrets";
@@ -54,11 +63,10 @@
 
       config = lib.mkMerge [
         (lib.mkIf config.nextcloud.enable {
+          nextcloud-valkey.enable = true;
           services.k3s = {
             images = [
               nextcloudImage
-              postgresqlImage
-              redisImage
               collaboraImage
             ];
             autoDeployCharts.nextcloud = chart // {
@@ -76,11 +84,30 @@
                     "nextcloud"
                   ];
                   existingSecret = {
-                    enabled = if (config.secrets.enable && config.secrets.nextcloud.enable) then true else false;
+                    enabled = true;
                     secretName = "nextcloud-secrets";
-                    usernameKey = "username";
-                    passwordKey = "password";
+                    usernameKey = "nextcloud-username";
+                    passwordKey = "nextcloud-password";
                   };
+                  extraEnv = [
+                    {
+                      name = "REDIS_HOST";
+                      value = "nextcloud-valkey";
+                    }
+                    {
+                      name = "REDIS_HOST_PORT";
+                      value = "6379";
+                    }
+                    {
+                      name = "REDIS_HOST_PASSWORD";
+                      valueFrom = {
+                        secretKeyRef = {
+                          name = "nextcloud-secrets";
+                          key = "valkey-password";
+                        };
+                      };
+                    }
+                  ];
                 };
                 service = {
                   type = "ClusterIP";
@@ -100,67 +127,20 @@
                 };
                 resources = {
                   requests.cpu = "200m";
-                  requests.memory = "512Mi";
+                  requests.memory = "1Gi";
                   limits.cpu = "800m";
-                  limits.memory = "1Gi";
+                  limits.memory = "2Gi";
                 };
                 internalDatabase.enabled = false;
                 externalDatabase = {
                   enabled = true;
                   type = "postgresql";
-                  host = "nextcloud-postgresql.nextcloud.svc.cluster.local";
-                };
-                postgresql = {
-                  enabled = true;
-                  image = {
-                    repository = postgresqlImage.imageName;
-                    tag = postgresqlImage.imageTag;
-                  };
-                  primary = {
-                    persistence = {
-                      enabled = true;
-                      size = "8Gi";
-                    };
-                    resources = {
-                      requests.cpu = "100m";
-                      requests.memory = "256Mi";
-                      limits.cpu = "500m";
-                      limits.memory = "512Mi";
-                    };
-                    extraEnvVars = [
-                      {
-                        name = "POSTGRESQL_SHARED_BUFFERS";
-                        value = "128MB";
-                      }
-                      {
-                        name = "POSTGRESQL_EFFECTIVE_CACHE_SIZE";
-                        value = "384MB";
-                      }
-                    ];
-                  };
-                };
-                redis = {
-                  enabled = true;
-                  image = {
-                    repository = redisImage.imageName;
-                    tag = redisImage.imageTag;
-                  };
-                  architecture = "standalone";
-                  master = {
-                    persistence = {
-                      enabled = true;
-                      size = "8Gi";
-                    };
-                    resources = {
-                      requests.cpu = "20m";
-                      requests.memory = "64Mi";
-                      limits.cpu = "100m";
-                      limits.memory = "128Mi";
-                    };
-                    extraFlags = [
-                      "--maxmemory 100mb"
-                      "--maxmemory-policy allkeys-lru"
-                    ];
+                  host = "nextcloud-postgres-rw";
+                  existingSecret = {
+                    enabled = true;
+                    secretName = "nextcloud-secrets";
+                    usernameKey = "username";
+                    passwordKey = "password";
                   };
                 };
                 collabora = {
@@ -179,9 +159,9 @@
                   };
                   resources = {
                     requests.cpu = "200m";
-                    requests.memory = "768Mi";
-                    limits.cpu = "1000m";
-                    limits.memory = "1Gi";
+                    requests.memory = "1Gi";
+                    limits.cpu = "800m";
+                    limits.memory = "2Gi";
                   };
                 };
                 cronjob = {
@@ -204,6 +184,42 @@
                 };
               };
               extraDeploy = [
+                {
+                  apiVersion = "postgresql.cnpg.io/v1";
+                  kind = "Cluster";
+                  metadata = {
+                    namespace = "nextcloud";
+                    name = "nextcloud-postgres";
+                  };
+                  spec = {
+                    instances = 1;
+                    imageCatalogRef = {
+                      apiGroup = "postgresql.cnpg.io";
+                      kind = "ClusterImageCatalog";
+                      name = "postgresql-global";
+                      major = 18;
+                    };
+                    storage.size = "8Gi";
+                    managed.roles = [
+                      {
+                        name = "nextcloud";
+                        passwordSecret.name = "nextcloud-secrets";
+                        login = true;
+                      }
+                    ];
+                    bootstrap.initdb = {
+                      database = "nextcloud";
+                      owner = "nextcloud";
+                      secret.name = "nextcloud-secrets";
+                    };
+                    resources = {
+                      requests.cpu = "100m";
+                      requests.memory = "256Mi";
+                      limits.cpu = "500m";
+                      limits.memory = "512Mi";
+                    };
+                  };
+                }
                 {
                   apiVersion = "v1";
                   kind = "Service";
@@ -242,6 +258,8 @@
             secrets = {
               "nextcloud/username" = { };
               "nextcloud/password" = { };
+              "nextcloud/postgres_password" = { };
+              "nextcloud/valkey_password" = { };
             };
             templates.nextcloudSecrets = {
               content = builtins.toJSON {
@@ -253,8 +271,11 @@
                   namespace = "nextcloud";
                 };
                 stringData = {
-                  username = config.sops.placeholder."nextcloud/username";
-                  password = config.sops.placeholder."nextcloud/password";
+                  nextcloud-username = config.sops.placeholder."nextcloud/username";
+                  nextcloud-password = config.sops.placeholder."nextcloud/password";
+                  username = "nextcloud";
+                  password = config.sops.placeholder."nextcloud/postgres_password";
+                  valkey-password = config.sops.placeholder."nextcloud/valkey_password";
                 };
               };
               path = "/var/lib/rancher/k3s/server/manifests/nextcloud-secret.json";
