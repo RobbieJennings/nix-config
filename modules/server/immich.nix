@@ -1,8 +1,29 @@
 {
+  self,
   inputs,
   ...
 }:
 {
+  flake.modules.nixos.immich-valkey = self.factory.valkey {
+    namespace = "immich";
+    values = {
+      resources = {
+        requests.cpu = "20m";
+        requests.memory = "64Mi";
+        limits.cpu = "100m";
+        limits.memory = "128Mi";
+      };
+      auth = {
+        enabled = true;
+        usersExistingSecret = "immich-secrets";
+        aclUsers.default = {
+          permissions = "~* &* +@all";
+          passwordKey = "valkey-password";
+        };
+      };
+    };
+  };
+
   flake.modules.nixos.immich =
     {
       config,
@@ -11,41 +32,23 @@
       ...
     }:
     let
-      immichChart = {
+      chart = {
         name = "immich";
         repo = "https://immich-app.github.io/immich-charts";
-        version = "0.10.3";
-        hash = "sha256-E9lqIjUe1WVEV8IDrMAbBTJMKj8AzpigJ7fNDCYYo8Y=";
+        version = "0.11.1";
+        hash = "sha256-TiMy4nPuNnF2tb3Y+wwXofYEYqigWswuSo6po6LmnXY=";
       };
-      postgresqlChart = {
-        name = "postgresql";
-        repo = "https://charts.bitnami.com/bitnami";
-        version = "16.7.27";
-        hash = "sha256-19D30DQtVlBPO7L3eGfgtxc/YyLxEma3Ti0O2lM2WQE=";
-      };
-      immichImage = pkgs.dockerTools.pullImage {
+      image = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/immich-app/immich-server";
-        imageDigest = "sha256:aa163d2e1cc2b16a9515dd1fef901e6f5231befad7024f093d7be1f2da14341a";
-        sha256 = "sha256-VRqUD6mVub5qoIL6zt5iy4jk7rBm6Y4ddU/+o724q2g=";
-        finalImageTag = "v2.5.6";
-        arch = "amd64";
-      };
-      postgresqlImage = pkgs.dockerTools.pullImage {
-        imageName = "bitnamilegacy/postgresql";
-        imageDigest = "sha256:926356130b77d5742d8ce605b258d35db9b62f2f8fd1601f9dbaef0c8a710a8d";
-        sha256 = "sha256-cKcahA8r6524qghk9QMYUtG5oGQTKMVme29Lz9lQOGU=";
-        finalImageTag = "17.6.0-debian-12-r4";
-        arch = "amd64";
-      };
-      valkeyImage = pkgs.dockerTools.pullImage {
-        imageName = "bitnamilegacy/valkey";
-        imageDigest = "sha256:4f0191fba7d3ffc38362381fa0ecac3c570dac56621278bcda513b477c8308c4";
-        sha256 = "sha256-8bOuxrEB2dU2Us+N5MnP9tIqLnIDOsw0UA3+wSWlz9M=";
-        finalImageTag = "8.1.3-debian-12-r3";
+        imageDigest = "sha256:0cc1f82953d9598eb9e9dd11cbde1f50fe54f9c46c4506b089e8ad7bfc9d1f0c";
+        sha256 = "sha256-gk2+L9TS/3/icxEOIcS/kj83aFzHO/4KZ0nT0PVG2oQ=";
+        finalImageTag = "v2.6.3";
         arch = "amd64";
       };
     in
     {
+      imports = [ inputs.self.modules.nixos.immich-valkey ];
+
       options = {
         immich.enable = lib.mkEnableOption "Immich helm chart on k3s";
         secrets.immich.enable = lib.mkEnableOption "Immich secrets";
@@ -53,54 +56,49 @@
 
       config = lib.mkMerge [
         (lib.mkIf config.immich.enable {
+          immich-valkey.enable = true;
           services.k3s = {
-            images = [
-              immichImage
-              postgresqlImage
-              valkeyImage
-            ];
+            images = [ image ];
             autoDeployCharts = {
-              immich-postgresql = postgresqlChart // {
-                targetNamespace = "immich";
-                createNamespace = true;
-                values = {
-                  image = {
-                    repository = postgresqlImage.imageName;
-                    tag = postgresqlImage.imageTag;
-                  };
-                  auth = {
-                    postgresPassword = "password";
-                    database = "immich";
-                  };
-                  primary = {
-                    persistence = {
-                      enabled = true;
-                      size = "8Gi";
-                    };
-                    resources = {
-                      requests.cpu = "200m";
-                      requests.memory = "256Mi";
-                      limits.cpu = "1000m";
-                      limits.memory = "1Gi";
-                    };
-                  };
-                };
-              };
-              immich = immichChart // {
+              immich = chart // {
                 targetNamespace = "immich";
                 createNamespace = true;
                 values = {
                   server = {
                     controllers.main.containers.main = {
                       image = {
-                        repository = immichImage.imageName;
-                        tag = immichImage.imageTag;
+                        repository = image.imageName;
+                        tag = image.imageTag;
                       };
                       env = {
-                        DB_HOSTNAME = "immich-postgresql";
-                        DB_USERNAME = "postgres";
-                        DB_PASSWORD = "password";
+                        DB_HOSTNAME = "immich-postgres-rw";
                         DB_DATABASE_NAME = "immich";
+                        DB_USERNAME = {
+                          valueFrom = {
+                            secretKeyRef = {
+                              name = "immich-secrets";
+                              key = "username";
+                            };
+                          };
+                        };
+                        DB_PASSWORD = {
+                          valueFrom = {
+                            secretKeyRef = {
+                              name = "immich-secrets";
+                              key = "password";
+                            };
+                          };
+                        };
+                        REDIS_HOSTNAME = "immich-valkey";
+                        REDIS_PORT = "6379";
+                        REDIS_PASSWORD = {
+                          valueFrom = {
+                            secretKeyRef = {
+                              name = "immich-secrets";
+                              key = "valkey-password";
+                            };
+                          };
+                        };
                       };
                       resources = {
                         requests.cpu = "200m";
@@ -120,33 +118,6 @@
                   };
                   immich.persistence.library.existingClaim = "immich-pvc";
                   machine-learning.enabled = false;
-                  valkey = {
-                    enabled = true;
-                    controllers.main.containers.main = {
-                      image = {
-                        repository = valkeyImage.imageName;
-                        tag = valkeyImage.imageTag;
-                      };
-                      env = {
-                        ALLOW_EMPTY_PASSWORD = "yes";
-                      };
-                      resources = {
-                        requests.cpu = "20m";
-                        requests.memory = "64Mi";
-                        limits.cpu = "100m";
-                        limits.memory = "128Mi";
-                      };
-                      extraFlags = [
-                        "--maxmemory 100mb"
-                        "--maxmemory-policy allkeys-lru"
-                      ];
-                    };
-                    persistence.data = {
-                      enabled = true;
-                      size = "8Gi";
-                      type = "persistentVolumeClaim";
-                    };
-                  };
                 };
                 extraDeploy = [
                   {
@@ -162,6 +133,43 @@
                         requests = {
                           storage = "25Gi";
                         };
+                      };
+                    };
+                  }
+                  {
+                    apiVersion = "postgresql.cnpg.io/v1";
+                    kind = "Cluster";
+                    metadata = {
+                      namespace = "immich";
+                      name = "immich-postgres";
+                    };
+                    spec = {
+                      instances = 1;
+                      imageCatalogRef = {
+                        apiGroup = "postgresql.cnpg.io";
+                        kind = "ClusterImageCatalog";
+                        name = "postgresql-global";
+                        major = 18;
+                      };
+                      storage.size = "8Gi";
+                      managed.roles = [
+                        {
+                          name = "immich";
+                          passwordSecret.name = "immich-secrets";
+                          superuser = true;
+                          login = true;
+                        }
+                      ];
+                      bootstrap.initdb = {
+                        database = "immich";
+                        owner = "immich";
+                        secret.name = "immich-secrets";
+                      };
+                      resources = {
+                        requests.cpu = "200m";
+                        requests.memory = "256Mi";
+                        limits.cpu = "1000m";
+                        limits.memory = "1Gi";
                       };
                     };
                   }
@@ -199,8 +207,31 @@
           };
         })
         (lib.mkIf (config.immich.enable && config.secrets.enable && config.secrets.immich.enable) {
-          sops.secrets = {
-            "immich/key" = { };
+          sops = {
+            secrets = {
+              "immich/key" = { };
+              "immich/postgres_password" = { };
+              "immich/valkey_password" = { };
+            };
+            templates = {
+              immich-secrets = {
+                content = builtins.toJSON {
+                  apiVersion = "v1";
+                  kind = "Secret";
+                  metadata = {
+                    name = "immich-secrets";
+                    namespace = "immich";
+                  };
+                  type = "Opaque";
+                  stringData = {
+                    username = "immich";
+                    password = config.sops.placeholder."immich/postgres_password";
+                    valkey-password = config.sops.placeholder."immich/valkey_password";
+                  };
+                };
+                path = "/var/lib/rancher/k3s/server/manifests/immich-secrets.json";
+              };
+            };
           };
         })
       ];
