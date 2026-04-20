@@ -40,9 +40,9 @@
       };
       image = pkgs.dockerTools.pullImage {
         imageName = "code.forgejo.org/forgejo/forgejo";
-        imageDigest = "sha256:f33e1b5087b7dc3bdbb60ceb0e6f32bf0ce06376328d17c7db86fba62b673f6f";
-        sha256 = "sha256-MgkSonc7zf4dJYVaelT+NIRrol5upkVrGwUYpOnlv00=";
-        finalImageTag = "14.0.4";
+        imageDigest = "sha256:bca6943cdd8a50f5befaf1d654bec32c9a3b6da400d23a77a829bd41f88a7263";
+        sha256 = "sha256-LGR+YFcOnsL0Bt6O/ABxULKTKbNjOoHEUdAJxN49IqI=";
+        finalImageTag = "14.0.4-rootless";
         arch = "amd64";
       };
     in
@@ -67,7 +67,6 @@
                   registry = "code.forgejo.org";
                   repository = "forgejo/forgejo";
                   tag = image.imageTag;
-                  rootless = false;
                 };
                 gitea = {
                   admin.existingSecret = "forgejo-admin-secrets";
