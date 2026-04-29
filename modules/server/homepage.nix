@@ -100,21 +100,8 @@
                   {
                     Infrastructure = [
                       {
-                        Tailscale = {
-                          href = "https://login.tailscale.com/admin/machines";
-                          description = "WireGuard Connections";
-                          widgets = [
-                            {
-                              type = "tailscale";
-                              deviceid = "{{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}";
-                              key = "{{HOMEPAGE_VAR_TAILSCALE_KEY}}";
-                            }
-                          ];
-                        };
-                      }
-                      {
                         Grafana = {
-                          href = "http://grafana/";
+                          href = "http://grafana.monitoring/";
                           description = "Dashboards";
                           widgets = [
                             {
@@ -129,7 +116,7 @@
                       }
                       {
                         Prometheus = {
-                          href = "http://prometheus/";
+                          href = "http://prometheus.monitoring/";
                           description = "Metrics Server";
                           widgets = [
                             {
@@ -141,13 +128,13 @@
                       }
                       {
                         Alloy = {
-                          href = "http://alloy/";
+                          href = "http://alloy.monitoring/";
                           description = "Logging Agent";
                         };
                       }
                       {
                         Longhorn = {
-                          href = "http://longhorn/";
+                          href = "http://longhorn.longhorn-system/";
                           description = "Volume Management";
                         };
                       }
@@ -157,7 +144,7 @@
                     Files = [
                       {
                         Forgejo = {
-                          href = "http://forgejo/";
+                          href = "http://forgejo.forgejo/";
                           description = "Git Server";
                           widgets = [
                             {
@@ -170,7 +157,7 @@
                       }
                       {
                         Nextcloud = {
-                          href = "http://nextcloud/";
+                          href = "http://nextcloud.nextcloud/";
                           description = "Cloud Storage";
                           widgets = [
                             {
@@ -184,7 +171,7 @@
                       }
                       {
                         Immich = {
-                          href = "http://immich/";
+                          href = "http://immich.immich/";
                           description = "Photo & Video Storage";
                           widgets = [
                             {
@@ -202,7 +189,7 @@
                     Media = [
                       {
                         Jellyfin = {
-                          href = "http://jellyfin/";
+                          href = "http://jellyfin.media.homelab/";
                           description = "Media Playback";
                           widgets = [
                             {
@@ -222,7 +209,7 @@
                       }
                       {
                         Transmission = {
-                          href = "http://transmission/";
+                          href = "http://transmission.media.homelab/";
                           description = "Torrent Management";
                           widgets = [
                             {
@@ -234,7 +221,7 @@
                       }
                       {
                         Prowlarr = {
-                          href = "http://prowlarr/";
+                          href = "http://prowlarr.media.homelab/";
                           description = "Indexer Management";
                           widgets = [
                             {
@@ -247,7 +234,7 @@
                       }
                       {
                         Radarr = {
-                          href = "http://radarr/";
+                          href = "http://radarr.media.homelab/";
                           description = "Movie Management";
                           widgets = [
                             {
@@ -260,7 +247,7 @@
                       }
                       {
                         Sonarr = {
-                          href = "http://sonarr/";
+                          href = "http://sonarr.media.homelab/";
                           description = "TV Show Management";
                           widgets = [
                             {
@@ -273,7 +260,7 @@
                       }
                       {
                         Lidarr = {
-                          href = "http://lidarr/";
+                          href = "http://lidarr.media.homelab/";
                           description = "Music Management";
                           widgets = [
                             {
@@ -360,7 +347,7 @@
                           env = [
                             {
                               name = "HOMEPAGE_ALLOWED_HOSTS";
-                              value = "192.168.1.200,localhost,homepage";
+                              value = "192.168.1.200,homepage.homepage";
                             }
                             {
                               name = "HOMEPAGE_VAR_GRAFANA_USERNAME";
@@ -374,20 +361,6 @@
                               valueFrom.secretKeyRef = {
                                 name = "homepage-secrets";
                                 key = "GRAFANA_PASSWORD";
-                              };
-                            }
-                            {
-                              name = "HOMEPAGE_VAR_TAILSCALE_DEVICE_ID";
-                              valueFrom.secretKeyRef = {
-                                name = "homepage-secrets";
-                                key = "TAILSCALE_DEVICE_ID";
-                              };
-                            }
-                            {
-                              name = "HOMEPAGE_VAR_TAILSCALE_KEY";
-                              valueFrom.secretKeyRef = {
-                                name = "homepage-secrets";
-                                key = "TAILSCALE_KEY";
                               };
                             }
                             {
@@ -530,18 +503,12 @@
                           configMap.name = "homepage-bookmarks";
                         }
                       ];
-                      dnsConfig = {
-                        nameservers = [
-                          "1.1.1.1"
-                          "8.8.8.8"
-                        ];
-                        options = [
-                          {
-                            name = "ndots";
-                            value = "0";
-                          }
-                        ];
-                      };
+                      dnsConfig.options = [
+                        {
+                          name = "ndots";
+                          value = "0";
+                        }
+                      ];
                     };
                   };
                 };
@@ -575,12 +542,8 @@
                 apiVersion = "v1";
                 kind = "Service";
                 metadata = {
-                  name = "homepage-tailscale";
+                  name = "homepage";
                   namespace = "homepage";
-                  annotations = {
-                    "tailscale.com/expose" = "true";
-                    "tailscale.com/hostname" = "homepage";
-                  };
                 };
                 spec = {
                   type = "ClusterIP";
@@ -595,6 +558,25 @@
                       protocol = "TCP";
                     }
                   ];
+                };
+              }
+              {
+                apiVersion = "netbird.io/v1alpha1";
+                kind = "NetworkResource";
+                metadata = {
+                  name = "homepage";
+                  namespace = "homepage";
+                };
+                spec = {
+                  networkRouterRef = {
+                    name = "homelab";
+                    namespace = "netbird";
+                  };
+                  serviceRef = {
+                    name = "homepage";
+                    namespace = "homepage";
+                  };
+                  groups = [ { name = "All"; } ];
                 };
               }
             ];
@@ -615,13 +597,6 @@
                   if config.secrets.grafana.enable then config.sops.placeholder."grafana/username" else "";
                 GRAFANA_PASSWORD =
                   if config.secrets.grafana.enable then config.sops.placeholder."grafana/password" else "";
-                TAILSCALE_DEVICE_ID =
-                  if config.secrets.tailscale-operator.enable then
-                    config.sops.placeholder."tailscale/device_id"
-                  else
-                    "";
-                TAILSCALE_KEY =
-                  if config.secrets.tailscale-operator.enable then config.sops.placeholder."tailscale/key" else "";
                 NEXTCLOUD_USERNAME =
                   if config.secrets.nextcloud.enable then config.sops.placeholder."nextcloud/username" else "";
                 NEXTCLOUD_PASSWORD =

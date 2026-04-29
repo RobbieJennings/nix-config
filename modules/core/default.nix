@@ -18,7 +18,6 @@
         inputs.self.modules.nixos.bootloader
         inputs.self.modules.nixos.networking
         inputs.self.modules.nixos.ssh
-        inputs.self.modules.nixos.tailscale
         inputs.self.modules.nixos.netbird
         inputs.self.modules.nixos.docker
         inputs.self.modules.nixos.localisation
@@ -34,7 +33,6 @@
         fwupd.enable = lib.mkDefault true;
         bootloader.enable = lib.mkDefault true;
         ssh.enable = lib.mkDefault true;
-        tailscale.enable = lib.mkDefault true;
         netbird.enable = lib.mkDefault true;
         networking.enable = lib.mkDefault true;
         docker.enable = lib.mkDefault true;

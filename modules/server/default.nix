@@ -25,7 +25,7 @@
         inputs.self.modules.nixos.immich
         inputs.self.modules.nixos.homepage
         inputs.self.modules.nixos.media-server
-        inputs.self.modules.nixos.tailscale-operator
+        inputs.self.modules.nixos.netbird-operator
       ];
 
       config = {
@@ -42,7 +42,7 @@
         immich.enable = lib.mkDefault true;
         homepage.enable = lib.mkDefault true;
         media-server.enable = lib.mkDefault true;
-        tailscale-operator.enable = lib.mkDefault true;
+        netbird-operator.enable = lib.mkDefault true;
       };
     };
 }

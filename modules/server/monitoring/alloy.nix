@@ -63,19 +63,12 @@
                   '';
                 };
               };
+              service.enabled = false;
               resources = {
                 requests.cpu = "20m";
                 requests.memory = "64Mi";
                 limits.cpu = "200m";
                 limits.memory = "256Mi";
-              };
-              service = {
-                type = "LoadBalancer";
-                annotations = {
-                  "metallb.io/address-pool" = "default";
-                  "metallb.io/loadBalancerIPs" = "192.168.1.210";
-                  "metallb.io/allow-shared-ip" = "monitoring";
-                };
               };
             };
             extraDeploy = [
@@ -83,12 +76,35 @@
                 apiVersion = "v1";
                 kind = "Service";
                 metadata = {
-                  name = "alloy-tailscale";
+                  name = "alloy-lb";
                   namespace = "monitoring";
                   annotations = {
-                    "tailscale.com/expose" = "true";
-                    "tailscale.com/hostname" = "alloy";
+                    "metallb.io/address-pool" = "default";
+                    "metallb.io/allow-shared-ip" = "monitoring";
                   };
+                };
+                spec = {
+                  type = "LoadBalancer";
+                  loadBalancerIP = "192.168.1.210";
+                  selector = {
+                    "app.kubernetes.io/name" = "alloy";
+                    "app.kubernetes.io/instance" = "alloy";
+                  };
+                  ports = [
+                    {
+                      name = "http";
+                      port = 12345;
+                      targetPort = 12345;
+                    }
+                  ];
+                };
+              }
+              {
+                apiVersion = "v1";
+                kind = "Service";
+                metadata = {
+                  name = "alloy";
+                  namespace = "monitoring";
                 };
                 spec = {
                   type = "ClusterIP";
@@ -104,6 +120,25 @@
                       protocol = "TCP";
                     }
                   ];
+                };
+              }
+              {
+                apiVersion = "netbird.io/v1alpha1";
+                kind = "NetworkResource";
+                metadata = {
+                  name = "alloy";
+                  namespace = "monitoring";
+                };
+                spec = {
+                  networkRouterRef = {
+                    name = "homelab";
+                    namespace = "netbird";
+                  };
+                  serviceRef = {
+                    name = "alloy";
+                    namespace = "monitoring";
+                  };
+                  groups = [ { name = "All"; } ];
                 };
               }
             ];

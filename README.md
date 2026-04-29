@@ -23,30 +23,30 @@
   - 🔒 [LUKS disk encryption](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup)
   - 🪧 [Plymouth boot screen](https://www.freedesktop.org/wiki/Software/Plymouth)
   - 📦 [Flatpak installation](https://github.com/gmodena/nix-flatpak)
-  - 🖥️ [KDE Plasma management](https://github.com/nix-community/plasma-manager)
-  - 🗔 [Cosmic Desktop management](https://github.com/HeitorAugustoLN/cosmic-manager)
-  - 🖌️ [Stylix Theming](https://github.com/nix-community/stylix)
-  - 🗄️ [Restic backup](https://restic.net)
+  - 🖥️  [KDE Plasma management](https://github.com/nix-community/plasma-manager)
+  - 🗔  [Cosmic Desktop management](https://github.com/HeitorAugustoLN/cosmic-manager)
+  - 🖌️  [Stylix Theming](https://github.com/nix-community/stylix)
+  - 🗄️  [Restic backup](https://restic.net)
   - 🧰 Development tools
   - 🔍 Web browsers
   - 📷 Photo scanning/editing tools
   - 🎮 Game launchers
-  - ⚙️ Utilities
+  - ⚙️  Utilities
 
 ### Server
   - 🌐 [K3S](https://k3s.io)
-  - ☸️ [Helm](https://helm.sh)
-  - ⚖️ [MetalLB](https://metallb.io)
-  - 🗃️ [Longhorn](https://longhorn.io)
-  - 🛢️ [CloudnativePG](https://cloudnative-pg.io)
+  - ☸️  [Helm](https://helm.sh)
+  - ⚖️  [MetalLB](https://metallb.io)
+  - 🗃️  [Longhorn](https://longhorn.io)
+  - 🛢️  [CloudnativePG](https://cloudnative-pg.io)
   - ⛽ [Valkey](https://valkey.io)
-  - 🕸️ [Tailscale](https://tailscale.com)
+  - 🐦 [Netbird](https://netbird.io/)
   - 🏠 [Homepage](https://gethomepage.dev)
   - 📊 [Grafana](https://grafana.com)
   - 🪣 [Forgejo](https://forgejo.org)
-  - ☁️ [Nextcloud](https://nextcloud.com)
+  - ☁️  [Nextcloud](https://nextcloud.com)
   - 📼 [Jellyfin](https://jellyfin.org)
-  - 🏴‍☠️ [Servarr](https://wiki.servarr.com)
+  - 🏴‍☠️  [Servarr](https://wiki.servarr.com)
 
 ## 🛠️ Usage
 

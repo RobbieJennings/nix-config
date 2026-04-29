@@ -38,7 +38,7 @@
             "/var/lib/nixos"
             "/var/lib/systemd/coredump"
             "/var/lib/libvirt"
-            "/var/lib/tailscale"
+            "/var/lib/netbird"
             "/etc/NetworkManager/system-connections"
             "/etc/nixos"
             "/root/.ssh"

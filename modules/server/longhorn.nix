@@ -130,7 +130,7 @@
             targetNamespace = "longhorn-system";
             createNamespace = true;
             values = {
-              longhornUi.replicas = 1;
+              longhornUI.replicas = 1;
               defaultSettings = {
                 defaultReplicaCount = 1;
                 storageMinimalAvailablePercentage = 10;
@@ -209,12 +209,8 @@
                 apiVersion = "v1";
                 kind = "Service";
                 metadata = {
-                  name = "longhorn-tailscale";
+                  name = "longhorn";
                   namespace = "longhorn-system";
-                  annotations = {
-                    "tailscale.com/expose" = "true";
-                    "tailscale.com/hostname" = "longhorn";
-                  };
                 };
                 spec = {
                   type = "ClusterIP";
@@ -231,6 +227,25 @@
                       protocol = "TCP";
                     }
                   ];
+                };
+              }
+              {
+                apiVersion = "netbird.io/v1alpha1";
+                kind = "NetworkResource";
+                metadata = {
+                  name = "longhorn";
+                  namespace = "longhorn-system";
+                };
+                spec = {
+                  networkRouterRef = {
+                    name = "homelab";
+                    namespace = "netbird";
+                  };
+                  serviceRef = {
+                    name = "longhorn";
+                    namespace = "longhorn-system";
+                  };
+                  groups = [ { name = "All"; } ];
                 };
               }
             ];

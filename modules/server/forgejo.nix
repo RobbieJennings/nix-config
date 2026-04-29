@@ -72,8 +72,8 @@
                   admin.existingSecret = "forgejo-admin-secrets";
                   config = {
                     server = {
-                      DOMAIN = "192.168.1.204";
-                      ROOT_URL = "http://192.168.1.204:3000";
+                      DOMAIN = "forgejo.forgejo.homelab";
+                      ROOT_URL = "http://forgejo.forgejo.homelab";
                     };
                     database = {
                       DB_TYPE = "postgres";
@@ -190,12 +190,8 @@
                   apiVersion = "v1";
                   kind = "Service";
                   metadata = {
-                    name = "forgejo-tailscale";
+                    name = "forgejo";
                     namespace = "forgejo";
-                    annotations = {
-                      "tailscale.com/expose" = "true";
-                      "tailscale.com/hostname" = "forgejo";
-                    };
                   };
                   spec = {
                     type = "ClusterIP";
@@ -218,6 +214,25 @@
                         protocol = "TCP";
                       }
                     ];
+                  };
+                }
+                {
+                  apiVersion = "netbird.io/v1alpha1";
+                  kind = "NetworkResource";
+                  metadata = {
+                    name = "forgejo";
+                    namespace = "forgejo";
+                  };
+                  spec = {
+                    networkRouterRef = {
+                      name = "homelab";
+                      namespace = "netbird";
+                    };
+                    serviceRef = {
+                      name = "forgejo";
+                      namespace = "forgejo";
+                    };
+                    groups = [ { name = "All"; } ];
                   };
                 }
               ];

@@ -158,12 +158,8 @@
               apiVersion = "v1";
               kind = "Service";
               metadata = {
-                name = "prowlarr-tailscale";
+                name = "prowlarr";
                 namespace = "media";
-                annotations = {
-                  "tailscale.com/expose" = "true";
-                  "tailscale.com/hostname" = "prowlarr";
-                };
               };
               spec = {
                 type = "ClusterIP";
@@ -178,6 +174,25 @@
                     protocol = "TCP";
                   }
                 ];
+              };
+            }
+            {
+              apiVersion = "netbird.io/v1alpha1";
+              kind = "NetworkResource";
+              metadata = {
+                name = "prowlarr";
+                namespace = "media";
+              };
+              spec = {
+                networkRouterRef = {
+                  name = "homelab";
+                  namespace = "netbird";
+                };
+                serviceRef = {
+                  name = "prowlarr";
+                  namespace = "media";
+                };
+                groups = [ { name = "All"; } ];
               };
             }
           ];

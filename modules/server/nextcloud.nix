@@ -78,10 +78,11 @@
                   tag = nextcloudImage.imageTag;
                 };
                 nextcloud = {
-                  host = "192.168.1.203";
+                  host = "nextcloud.nextcloud";
                   trustedDomains = [
                     "192.168.1.203"
-                    "nextcloud"
+                    "nextcloud.nextcloud"
+                    "nextcloud.nextcloud.homelab"
                   ];
                   existingSecret = {
                     enabled = true;
@@ -112,10 +113,6 @@
                 service = {
                   type = "ClusterIP";
                   port = 80;
-                  annotations = {
-                    "tailscale.com/expose" = "true";
-                    "tailscale.com/hostname" = "nextcloud";
-                  };
                 };
                 persistence = {
                   enabled = true;
@@ -152,10 +149,6 @@
                   service = {
                     type = "ClusterIP";
                     port = 80;
-                    annotations = {
-                      "tailscale.com/expose" = "true";
-                      "tailscale.com/hostname" = "nextcloud-collabora";
-                    };
                   };
                   resources = {
                     requests.cpu = "200m";
@@ -247,6 +240,44 @@
                         protocol = "TCP";
                       }
                     ];
+                  };
+                }
+                {
+                  apiVersion = "netbird.io/v1alpha1";
+                  kind = "NetworkResource";
+                  metadata = {
+                    name = "nextcloud";
+                    namespace = "nextcloud";
+                  };
+                  spec = {
+                    networkRouterRef = {
+                      name = "homelab";
+                      namespace = "netbird";
+                    };
+                    serviceRef = {
+                      name = "nextcloud";
+                      namespace = "nextcloud";
+                    };
+                    groups = [ { name = "All"; } ];
+                  };
+                }
+                {
+                  apiVersion = "netbird.io/v1alpha1";
+                  kind = "NetworkResource";
+                  metadata = {
+                    name = "nextcloud-collabora";
+                    namespace = "nextcloud";
+                  };
+                  spec = {
+                    networkRouterRef = {
+                      name = "homelab";
+                      namespace = "netbird";
+                    };
+                    serviceRef = {
+                      name = "nextcloud-collabora";
+                      namespace = "nextcloud";
+                    };
+                    groups = [ { name = "All"; } ];
                   };
                 }
               ];

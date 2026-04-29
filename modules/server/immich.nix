@@ -177,12 +177,8 @@
                     apiVersion = "v1";
                     kind = "Service";
                     metadata = {
-                      name = "immich-tailscale";
+                      name = "immich";
                       namespace = "immich";
-                      annotations = {
-                        "tailscale.com/expose" = "true";
-                        "tailscale.com/hostname" = "immich";
-                      };
                     };
                     spec = {
                       type = "ClusterIP";
@@ -199,6 +195,25 @@
                           protocol = "TCP";
                         }
                       ];
+                    };
+                  }
+                  {
+                    apiVersion = "netbird.io/v1alpha1";
+                    kind = "NetworkResource";
+                    metadata = {
+                      name = "immich";
+                      namespace = "immich";
+                    };
+                    spec = {
+                      networkRouterRef = {
+                        name = "homelab";
+                        namespace = "netbird";
+                      };
+                      serviceRef = {
+                        name = "immich";
+                        namespace = "immich";
+                      };
+                      groups = [ { name = "All"; } ];
                     };
                   }
                 ];

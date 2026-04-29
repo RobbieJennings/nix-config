@@ -208,12 +208,8 @@
               apiVersion = "v1";
               kind = "Service";
               metadata = {
-                name = "transmission-tailscale";
+                name = "transmission";
                 namespace = "media";
-                annotations = {
-                  "tailscale.com/expose" = "true";
-                  "tailscale.com/hostname" = "transmission";
-                };
               };
               spec = {
                 type = "ClusterIP";
@@ -228,6 +224,25 @@
                     protocol = "TCP";
                   }
                 ];
+              };
+            }
+            {
+              apiVersion = "netbird.io/v1alpha1";
+              kind = "NetworkResource";
+              metadata = {
+                name = "transmission";
+                namespace = "media";
+              };
+              spec = {
+                networkRouterRef = {
+                  name = "homelab";
+                  namespace = "netbird";
+                };
+                serviceRef = {
+                  name = "transmission";
+                  namespace = "media";
+                };
+                groups = [ { name = "All"; } ];
               };
             }
           ];

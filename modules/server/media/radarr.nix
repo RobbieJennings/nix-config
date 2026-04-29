@@ -211,12 +211,8 @@
               apiVersion = "v1";
               kind = "Service";
               metadata = {
-                name = "radarr-tailscale";
+                name = "radarr";
                 namespace = "media";
-                annotations = {
-                  "tailscale.com/expose" = "true";
-                  "tailscale.com/hostname" = "radarr";
-                };
               };
               spec = {
                 type = "ClusterIP";
@@ -231,6 +227,25 @@
                     protocol = "TCP";
                   }
                 ];
+              };
+            }
+            {
+              apiVersion = "netbird.io/v1alpha1";
+              kind = "NetworkResource";
+              metadata = {
+                name = "radarr";
+                namespace = "media";
+              };
+              spec = {
+                networkRouterRef = {
+                  name = "homelab";
+                  namespace = "netbird";
+                };
+                serviceRef = {
+                  name = "radarr";
+                  namespace = "media";
+                };
+                groups = [ { name = "All"; } ];
               };
             }
           ];

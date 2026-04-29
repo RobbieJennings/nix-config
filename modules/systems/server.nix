@@ -41,7 +41,7 @@
           nextcloud.enable = true;
           immich.enable = true;
           media-server.enable = true;
-          tailscale-operator.enable = true;
+          netbird-operator.enable = true;
         };
         impermanence.enable = true;
         environment.persistence."/persist" = {
@@ -52,7 +52,7 @@
             "/var/lib/systemd/coredump"
             "/var/lib/rancher/k3s"
             "/var/lib/longhorn"
-            "/var/lib/tailscale"
+            "/var/lib/netbird"
             "/etc/NetworkManager/system-connections"
             "/etc/nixos"
             "/root/.ssh"
