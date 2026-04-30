@@ -61,10 +61,13 @@
             enabled = true;
             image = {
               repository =
-                (lib.lists.findFirst (x: x.imageName == "collabora/code") null config.services.k3s.images)
-                .imageName;
+                (lib.lists.findSingle (
+                  x: x ? imageName && x.imageName == "collabora/code"
+                ) null null config.services.k3s.images).imageName;
               tag =
-                (lib.lists.findFirst (x: x.imageName == "collabora/code") null config.services.k3s.images).imageTag;
+                (lib.lists.findSingle (
+                  x: x ? imageName && x.imageName == "collabora/code"
+                ) null null config.services.k3s.images).imageTag;
             };
             service = {
               type = "ClusterIP";

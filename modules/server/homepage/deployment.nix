@@ -31,13 +31,13 @@
                     {
                       name = "homepage";
                       image = "${
-                        (lib.lists.findFirst (
-                          x: x.imageName == "ghcr.io/gethomepage/homepage"
-                        ) null config.services.k3s.images).imageName
+                        (lib.lists.findSingle (
+                          x: x ? imageName && x.imageName == "ghcr.io/gethomepage/homepage"
+                        ) null null config.services.k3s.images).imageName
                       }:${
-                        (lib.lists.findFirst (
-                          x: x.imageName == "ghcr.io/gethomepage/homepage"
-                        ) null config.services.k3s.images).imageTag
+                        (lib.lists.findSingle (
+                          x: x ? imageName && x.imageName == "ghcr.io/gethomepage/homepage"
+                        ) null null config.services.k3s.images).imageTag
                       }";
                       ports = [
                         { containerPort = 3000; }
