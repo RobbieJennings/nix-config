@@ -775,7 +775,7 @@ boolean
 
 
 
-Whether to enable transmission manifest on k3s\.
+Whether to enable Transmission deployment on k3s\.
 
 
 
@@ -793,7 +793,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/media/transmission\.nix](../modules/server/media/transmission.nix)
+ - [modules/server/media/transmission/default\.nix](../modules/server/media/transmission/default.nix)
 
 
 
