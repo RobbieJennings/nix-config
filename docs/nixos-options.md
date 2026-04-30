@@ -931,7 +931,7 @@ boolean
 
 
 
-Whether to enable prometheus service on k3s\.
+Whether to enable Prometheus helm chart on k3s\.
 
 
 
@@ -949,7 +949,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/monitoring/prometheus\.nix](../modules/server/monitoring/prometheus.nix)
+ - [modules/server/monitoring/prometheus/default\.nix](../modules/server/monitoring/prometheus/default.nix)
 
 
 
