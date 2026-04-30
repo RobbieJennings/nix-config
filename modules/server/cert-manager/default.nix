@@ -20,7 +20,6 @@
 
       options = {
         cert-manager.enable = lib.mkEnableOption "Cert-manager helm chart on k3s";
-        secrets.cert-manager.enable = lib.mkEnableOption "Cert-manager secrets";
       };
     };
 }
