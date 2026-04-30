@@ -307,7 +307,7 @@ boolean
 
 
 
-Whether to enable homepage helm chart on k3s\.
+Whether to enable Homepage deployment on k3s\.
 
 
 
@@ -645,7 +645,7 @@ boolean
 
 
 
-Whether to enable jellyfin helm chart on k3s\.
+Whether to enable Jellyfin deployment on k3s\.
 
 
 
@@ -663,7 +663,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/media/jellyfin\.nix](../modules/server/media/jellyfin.nix)
+ - [modules/server/media/jellyfin/default\.nix](../modules/server/media/jellyfin/default.nix)
 
 
 

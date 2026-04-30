@@ -74,10 +74,10 @@
             image = {
               registry = "registry.k8s.io";
               repository = "kube-state-metrics/kube-state-metrics";
-                tag =
-                  (lib.lists.findSingle (
-                    x: x ? imageName && x.imageName == "registry.k8s.io/kube-state-metrics/kube-state-metrics"
-                  ) null null config.services.k3s.images).imageTag;
+              tag =
+                (lib.lists.findSingle (
+                  x: x ? imageName && x.imageName == "registry.k8s.io/kube-state-metrics/kube-state-metrics"
+                ) null null config.services.k3s.images).imageTag;
             };
             resources = {
               requests.cpu = "30m";
@@ -90,10 +90,10 @@
             image = {
               registry = "quay.io";
               repository = "prometheus/node-exporter";
-                tag =
-                  (lib.lists.findSingle (
-                    x: x ? imageName && x.imageName == "quay.io/prometheus/node-exporter"
-                  ) null null config.services.k3s.images).imageTag;
+              tag =
+                (lib.lists.findSingle (
+                  x: x ? imageName && x.imageName == "quay.io/prometheus/node-exporter"
+                ) null null config.services.k3s.images).imageTag;
             };
             resources = {
               requests.cpu = "20m";
@@ -106,10 +106,10 @@
             image = {
               registry = "quay.io";
               repository = "prometheus-operator/prometheus-operator";
-                tag =
-                  (lib.lists.findSingle (
-                    x: x ? imageName && x.imageName == "quay.io/prometheus-operator/prometheus-operator"
-                  ) null null config.services.k3s.images).imageTag;
+              tag =
+                (lib.lists.findSingle (
+                  x: x ? imageName && x.imageName == "quay.io/prometheus-operator/prometheus-operator"
+                ) null null config.services.k3s.images).imageTag;
             };
             resources = {
               requests.cpu = "50m";

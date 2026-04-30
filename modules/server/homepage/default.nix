@@ -25,7 +25,7 @@
       ];
 
       options = {
-        homepage.enable = lib.mkEnableOption "homepage helm chart on k3s";
+        homepage.enable = lib.mkEnableOption "Homepage deployment on k3s";
         secrets.homepage.enable = lib.mkEnableOption "Homepage secrets";
       };
     };
