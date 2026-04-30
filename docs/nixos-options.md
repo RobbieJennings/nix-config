@@ -130,7 +130,7 @@ boolean
 
 
 
-Whether to enable cert-manager Helm chart on k3s\.
+Whether to enable Cert-manager helm chart on k3s\.
 
 
 
@@ -148,7 +148,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/cert-manager\.nix](../modules/server/cert-manager.nix)
+ - [modules/server/cert-manager/default\.nix](../modules/server/cert-manager/default.nix)
 
 
 
@@ -229,7 +229,7 @@ boolean
 
 
 
-Whether to enable Forgejo Helm chart on k3s\.
+Whether to enable forgejo helm chart on k3s\.
 
 
 
@@ -247,7 +247,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/forgejo\.nix](../modules/server/forgejo.nix)
+ - [modules/server/forgejo/default\.nix](../modules/server/forgejo/default.nix)
 
 
 
@@ -273,7 +273,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/forgejo\.nix](../modules/server/forgejo.nix)
+ - [modules/server/forgejo/valkey\.nix](../modules/server/forgejo/valkey.nix)
 
 
 
@@ -333,7 +333,7 @@ boolean
 
 
 
-Whether to enable Homepage dashboard on k3s\.
+Whether to enable homepage helm chart on k3s\.
 
 
 
@@ -351,7 +351,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/homepage\.nix](../modules/server/homepage.nix)
+ - [modules/server/homepage/default\.nix](../modules/server/homepage/default.nix)
 
 
 
@@ -377,7 +377,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/immich\.nix](../modules/server/immich.nix)
+ - [modules/server/immich/default\.nix](../modules/server/immich/default.nix)
 
 
 
@@ -403,7 +403,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/immich\.nix](../modules/server/immich.nix)
+ - [modules/server/immich/valkey\.nix](../modules/server/immich/valkey.nix)
 
 
 
@@ -619,7 +619,7 @@ boolean
 
 
 
-Whether to enable longhorn helm chart on k3s\.
+Whether to enable Longhorn helm chart on k3s\.
 
 
 
@@ -637,7 +637,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/longhorn\.nix](../modules/server/longhorn.nix)
+ - [modules/server/longhorn/default\.nix](../modules/server/longhorn/default.nix)
 
 
 
@@ -853,7 +853,7 @@ boolean
 
 
 
-Whether to enable metalLB helm chart on k3s\.
+Whether to enable Metallb helm chart on k3s\.
 
 
 
@@ -871,7 +871,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/metallb\.nix](../modules/server/metallb.nix)
+ - [modules/server/metallb/default\.nix](../modules/server/metallb/default.nix)
 
 
 
@@ -1105,7 +1105,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/nextcloud\.nix](../modules/server/nextcloud.nix)
+ - [modules/server/nextcloud/default\.nix](../modules/server/nextcloud/default.nix)
 
 
 
@@ -1131,7 +1131,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/nextcloud\.nix](../modules/server/nextcloud.nix)
+ - [modules/server/nextcloud/valkey\.nix](../modules/server/nextcloud/valkey.nix)
 
 
 
@@ -1313,7 +1313,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/forgejo\.nix](../modules/server/forgejo.nix)
+ - [modules/server/forgejo/default\.nix](../modules/server/forgejo/default.nix)
 
 
 
@@ -1343,6 +1343,32 @@ boolean
 
 
 
+## secrets\.homepage\.enable
+
+
+
+Whether to enable Homepage secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/homepage/default\.nix](../modules/server/homepage/default.nix)
+
+
+
 ## secrets\.immich\.enable
 
 
@@ -1365,7 +1391,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/immich\.nix](../modules/server/immich.nix)
+ - [modules/server/immich/default\.nix](../modules/server/immich/default.nix)
 
 
 
@@ -1469,7 +1495,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/nextcloud\.nix](../modules/server/nextcloud.nix)
+ - [modules/server/nextcloud/default\.nix](../modules/server/nextcloud/default.nix)
 
 
 
