@@ -1035,7 +1035,7 @@ boolean
 
 
 
-Whether to enable Netbird Kubernetes Operator\.
+Whether to enable Netbird operator helm chart on k3s\.
 
 
 
@@ -1053,7 +1053,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/netbird-operator\.nix](../modules/server/netbird-operator.nix)
+ - [modules/server/netbird-operator/default\.nix](../modules/server/netbird-operator/default.nix)
 
 
 
@@ -1139,7 +1139,7 @@ boolean
 
 
 
-Whether to enable Node Feature Discovery\.
+Whether to enable Node feature discovery helm chart on k3s\.
 
 
 
@@ -1157,7 +1157,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/node-feature-discover\.nix](../modules/server/node-feature-discover.nix)
+ - [modules/server/node-feature-discovery/default\.nix](../modules/server/node-feature-discovery/default.nix)
 
 
 
@@ -1451,7 +1451,7 @@ boolean
 
 
 
-Whether to enable Enable SOPS-managed OAuth secret for Netbird operator\.
+Whether to enable SOPS-managed OAuth secret for Netbird operator\.
 
 
 
@@ -1469,7 +1469,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/netbird-operator\.nix](../modules/server/netbird-operator.nix)
+ - [modules/server/netbird-operator/default\.nix](../modules/server/netbird-operator/default.nix)
 
 
 
