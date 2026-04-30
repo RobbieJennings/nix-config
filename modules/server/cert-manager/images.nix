@@ -1,9 +1,10 @@
 {
+  self,
   inputs,
   ...
 }:
 {
-  flake.modules.nixos.cert-manager =
+  flake.modules.nixos.cert-manager-images =
     {
       config,
       lib,
@@ -11,12 +12,6 @@
       ...
     }:
     let
-      chart = {
-        name = "cert-manager";
-        repo = "https://charts.jetstack.io";
-        version = "v1.19.4";
-        hash = "sha256-0MIC9XuGU+uVf7Wy+UcsGxHPa1Gsxcd35Lgk97Wp6oc=";
-      };
       controllerImage = pkgs.dockerTools.pullImage {
         imageName = "quay.io/jetstack/cert-manager-controller";
         imageDigest = "sha256:9cad8065bbf57815cbcfa813b903dd8822bcd0271f7443192082b54e96a55585";
@@ -54,10 +49,6 @@
       };
     in
     {
-      options = {
-        cert-manager.enable = lib.mkEnableOption "cert-manager Helm chart on k3s";
-      };
-
       config = lib.mkIf config.cert-manager.enable {
         services.k3s = {
           images = [
@@ -67,57 +58,18 @@
             startupapicheckImage
             acmesolverImage
           ];
-          autoDeployCharts.cert-manager = chart // {
-            targetNamespace = "cert-manager";
-            createNamespace = true;
-            values = {
-              installCRDs = true;
-              image = {
-                repository = controllerImage.imageName;
-                tag = controllerImage.imageTag;
-              };
-              resources = {
-                requests.cpu = "20m";
-                requests.memory = "64Mi";
-                limits.cpu = "200m";
-                limits.memory = "128Mi";
-              };
-              webhook = {
-                image = {
-                  repository = webhookImage.imageName;
-                  tag = webhookImage.imageTag;
-                };
-                resources = {
-                  requests.cpu = "20m";
-                  requests.memory = "64Mi";
-                  limits.cpu = "200m";
-                  limits.memory = "128Mi";
-                };
-              };
-              cainjector = {
-                image = {
-                  repository = cainjectorImage.imageName;
-                  tag = cainjectorImage.imageTag;
-                };
-                resources = {
-                  requests.cpu = "10m";
-                  requests.memory = "32Mi";
-                  limits.cpu = "100m";
-                  limits.memory = "64Mi";
-                };
-              };
-              startupapicheck = {
-                image = {
-                  repository = startupapicheckImage.imageName;
-                  tag = startupapicheckImage.imageTag;
-                };
-              };
-              acmesolver = {
-                image = {
-                  repository = acmesolverImage.imageName;
-                  tag = acmesolverImage.imageTag;
-                };
-              };
+          autoDeployCharts.cert-manager.values = {
+            image = {
+              repository = controllerImage.imageName;
+              tag = controllerImage.imageTag;
+            };
+            startupapicheck.image = {
+              repository = startupapicheckImage.imageName;
+              tag = startupapicheckImage.imageTag;
+            };
+            acmesolver.image = {
+              repository = acmesolverImage.imageName;
+              tag = acmesolverImage.imageTag;
             };
           };
         };
