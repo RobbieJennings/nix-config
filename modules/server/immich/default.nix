@@ -27,9 +27,5 @@
         immich.enable = lib.mkEnableOption "Immich helm chart on k3s";
         secrets.immich.enable = lib.mkEnableOption "Immich secrets";
       };
-
-      config = lib.mkIf config.immich.enable {
-        immich-valkey.enable = true;
-      };
     };
 }

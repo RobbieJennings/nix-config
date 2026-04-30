@@ -31,10 +31,7 @@
       };
     in
     {
-      options = {
-        "${namespace}-valkey".enable = lib.mkEnableOption "Valkey helm chart on k3s";
-      };
-      config = lib.mkIf config."${namespace}-valkey".enable {
+      config = {
         services.k3s = {
           images = [ image ];
           autoDeployCharts = {

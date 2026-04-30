@@ -27,9 +27,5 @@
         forgejo.enable = lib.mkEnableOption "forgejo helm chart on k3s";
         secrets.forgejo.enable = lib.mkEnableOption "Forgejo secrets";
       };
-
-      config = lib.mkIf config.forgejo.enable {
-        forgejo-valkey.enable = true;
-      };
     };
 }

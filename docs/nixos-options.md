@@ -251,32 +251,6 @@ boolean
 
 
 
-## forgejo-valkey\.enable
-
-
-
-Whether to enable Valkey helm chart on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/server/forgejo/valkey\.nix](../modules/server/forgejo/valkey.nix)
-
-
-
 ## fwupd\.enable
 
 
@@ -378,32 +352,6 @@ boolean
 
 *Declared by:*
  - [modules/server/immich/default\.nix](../modules/server/immich/default.nix)
-
-
-
-## immich-valkey\.enable
-
-
-
-Whether to enable Valkey helm chart on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/server/immich/valkey\.nix](../modules/server/immich/valkey.nix)
 
 
 
@@ -1106,32 +1054,6 @@ boolean
 
 *Declared by:*
  - [modules/server/nextcloud/default\.nix](../modules/server/nextcloud/default.nix)
-
-
-
-## nextcloud-valkey\.enable
-
-
-
-Whether to enable Valkey helm chart on k3s\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/server/nextcloud/valkey\.nix](../modules/server/nextcloud/valkey.nix)
 
 
 

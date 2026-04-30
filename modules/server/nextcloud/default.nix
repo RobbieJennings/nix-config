@@ -27,9 +27,5 @@
         nextcloud.enable = lib.mkEnableOption "nextcloud helm chart on k3s";
         secrets.nextcloud.enable = lib.mkEnableOption "Nextcloud secrets";
       };
-
-      config = lib.mkIf config.nextcloud.enable {
-        nextcloud-valkey.enable = true;
-      };
     };
 }
