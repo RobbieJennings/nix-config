@@ -853,7 +853,7 @@ boolean
 
 
 
-Whether to enable alloy service on k3s\.
+Whether to enable Alloy helm chart on k3s\.
 
 
 
@@ -871,7 +871,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/monitoring/alloy\.nix](../modules/server/monitoring/alloy.nix)
+ - [modules/server/monitoring/alloy/default\.nix](../modules/server/monitoring/alloy/default.nix)
 
 
 
@@ -879,7 +879,7 @@ boolean
 
 
 
-Whether to enable prometheus service on k3s\.
+Whether to enable Grafana helm chart on k3s\.
 
 
 
@@ -897,7 +897,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/monitoring/grafana\.nix](../modules/server/monitoring/grafana.nix)
+ - [modules/server/monitoring/grafana/default\.nix](../modules/server/monitoring/grafana/default.nix)
 
 
 
@@ -1243,7 +1243,7 @@ boolean
 
 
 
-Whether to enable grafana secrets\.
+Whether to enable Grafana secrets\.
 
 
 
@@ -1261,7 +1261,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/monitoring/grafana\.nix](../modules/server/monitoring/grafana.nix)
+ - [modules/server/monitoring/grafana/default\.nix](../modules/server/monitoring/grafana/default.nix)
 
 
 
