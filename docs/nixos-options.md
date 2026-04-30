@@ -905,7 +905,7 @@ boolean
 
 
 
-Whether to enable loki service on k3s\.
+Whether to enable Loki helm chart on k3s\.
 
 
 
@@ -923,7 +923,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/monitoring/loki\.nix](../modules/server/monitoring/loki.nix)
+ - [modules/server/monitoring/loki/default\.nix](../modules/server/monitoring/loki/default.nix)
 
 
 
