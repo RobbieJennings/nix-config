@@ -619,7 +619,7 @@ boolean
 
 
 
-Whether to enable FlareSolverr for Prowlarr\.
+Whether to enable Flaresolverr deployment on k3s\.
 
 
 
@@ -637,7 +637,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/media/flaresolverr\.nix](../modules/server/media/flaresolverr.nix)
+ - [modules/server/media/flaresolverr/default\.nix](../modules/server/media/flaresolverr/default.nix)
 
 
 
