@@ -24,10 +24,13 @@
           webhook = {
             image = {
               repository =
-                (lib.lists.findFirst (x: x.imageName == "quay.io/jetstack/cert-manager-webhook") null config.services.k3s.images)
-                .imageName;
+                (lib.lists.findFirst (
+                  x: x.imageName == "quay.io/jetstack/cert-manager-webhook"
+                ) null config.services.k3s.images).imageName;
               tag =
-                (lib.lists.findFirst (x: x.imageName == "quay.io/jetstack/cert-manager-webhook") null config.services.k3s.images).imageTag;
+                (lib.lists.findFirst (
+                  x: x.imageName == "quay.io/jetstack/cert-manager-webhook"
+                ) null config.services.k3s.images).imageTag;
             };
             resources = {
               requests.cpu = "20m";
@@ -39,10 +42,13 @@
           cainjector = {
             image = {
               repository =
-                (lib.lists.findFirst (x: x.imageName == "quay.io/jetstack/cert-manager-cainjector") null config.services.k3s.images)
-                .imageName;
+                (lib.lists.findFirst (
+                  x: x.imageName == "quay.io/jetstack/cert-manager-cainjector"
+                ) null config.services.k3s.images).imageName;
               tag =
-                (lib.lists.findFirst (x: x.imageName == "quay.io/jetstack/cert-manager-cainjector") null config.services.k3s.images).imageTag;
+                (lib.lists.findFirst (
+                  x: x.imageName == "quay.io/jetstack/cert-manager-cainjector"
+                ) null config.services.k3s.images).imageTag;
             };
             resources = {
               requests.cpu = "10m";

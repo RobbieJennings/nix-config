@@ -18,10 +18,13 @@
           server.controllers.main.containers.main = {
             image = {
               repository =
-                (lib.lists.findFirst (x: x.imageName == "ghcr.io/immich-app/immich-server") null config.services.k3s.images)
-                .imageName;
+                (lib.lists.findFirst (
+                  x: x.imageName == "ghcr.io/immich-app/immich-server"
+                ) null config.services.k3s.images).imageName;
               tag =
-                (lib.lists.findFirst (x: x.imageName == "ghcr.io/immich-app/immich-server") null config.services.k3s.images).imageTag;
+                (lib.lists.findFirst (
+                  x: x.imageName == "ghcr.io/immich-app/immich-server"
+                ) null config.services.k3s.images).imageTag;
             };
             env = {
               DB_HOSTNAME = "immich-postgres-rw";
