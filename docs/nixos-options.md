@@ -697,7 +697,7 @@ boolean
 
 
 
-Whether to enable prowlarr manifest on k3s\.
+Whether to enable Prowlarr deployment on k3s\.
 
 
 
@@ -715,7 +715,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/media/prowlarr\.nix](../modules/server/media/prowlarr.nix)
+ - [modules/server/media/prowlarr/default\.nix](../modules/server/media/prowlarr/default.nix)
 
 
 
