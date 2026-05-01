@@ -749,7 +749,7 @@ boolean
 
 
 
-Whether to enable sonarr manifest on k3s\.
+Whether to enable Sonarr deployment on k3s\.
 
 
 
@@ -767,7 +767,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/media/sonarr\.nix](../modules/server/media/sonarr.nix)
+ - [modules/server/media/sonarr/default\.nix](../modules/server/media/sonarr/default.nix)
 
 
 
