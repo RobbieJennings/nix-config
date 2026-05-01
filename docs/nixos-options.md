@@ -671,7 +671,7 @@ boolean
 
 
 
-Whether to enable lidarr manifest on k3s\.
+Whether to enable Lidarr deployment on k3s\.
 
 
 
@@ -689,7 +689,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/media/lidarr\.nix](../modules/server/media/lidarr.nix)
+ - [modules/server/media/lidarr/default\.nix](../modules/server/media/lidarr/default.nix)
 
 
 
