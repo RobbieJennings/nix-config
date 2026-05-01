@@ -723,7 +723,7 @@ boolean
 
 
 
-Whether to enable radarr manifest on k3s\.
+Whether to enable Radarr deployment on k3s\.
 
 
 
@@ -741,7 +741,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [modules/server/media/radarr\.nix](../modules/server/media/radarr.nix)
+ - [modules/server/media/radarr/default\.nix](../modules/server/media/radarr/default.nix)
 
 
 
