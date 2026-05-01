@@ -31,7 +31,7 @@
                       widgets = [
                         {
                           type = "grafana";
-                          url = "http://192.168.1.210";
+                          url = "http://192.168.1.210:3000";
                           alerts = "alertmanager";
                           username = "{{HOMEPAGE_VAR_GRAFANA_USERNAME}}";
                           password = "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}";
