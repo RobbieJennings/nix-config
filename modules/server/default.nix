@@ -24,6 +24,7 @@
         inputs.self.modules.nixos.forgejo
         inputs.self.modules.nixos.immich
         inputs.self.modules.nixos.homepage
+        inputs.self.modules.nixos.blog
         inputs.self.modules.nixos.media-server
         inputs.self.modules.nixos.netbird-operator
       ];
@@ -41,6 +42,7 @@
         forgejo.enable = lib.mkDefault true;
         immich.enable = lib.mkDefault true;
         homepage.enable = lib.mkDefault true;
+        blog.enable = lib.mkDefault true;
         media-server.enable = lib.mkDefault true;
         netbird-operator.enable = lib.mkDefault true;
       };

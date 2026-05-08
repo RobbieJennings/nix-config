@@ -68,6 +68,43 @@
         "type": "github"
       }
     },
+    "blog": {
+      "inputs": {
+        "blowfish": "blowfish",
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778238511,
+        "narHash": "sha256-L/dxVOmuTvHbTxLb2RnC8qi7RYAPsAKJpptYnaL/VGY=",
+        "owner": "robbiejennings",
+        "repo": "robbiejennings.github.io",
+        "rev": "e03816ec4412c3d73244cbe061bf3575f13d9749",
+        "type": "github"
+      },
+      "original": {
+        "owner": "robbiejennings",
+        "repo": "robbiejennings.github.io",
+        "type": "github"
+      }
+    },
+    "blowfish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776118157,
+        "narHash": "sha256-Ke1uRYETXVq/htV5U11vJwuPeNdxWWWO5o+BJHrVorg=",
+        "owner": "nunocoracao",
+        "repo": "blowfish",
+        "rev": "da8ca782aab44c54a61be25a71281348247c39f2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nunocoracao",
+        "repo": "blowfish",
+        "type": "github"
+      }
+    },
     "cosmic-manager": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -503,6 +540,7 @@
     },
     "root": {
       "inputs": {
+        "blog": "blog",
         "cosmic-manager": "cosmic-manager",
         "disko": "disko",
         "flake-parts": "flake-parts_2",
