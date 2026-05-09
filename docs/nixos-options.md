@@ -48,6 +48,32 @@ boolean
 
 
 
+## blog\.enable
+
+
+
+Whether to enable Blog deployment on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/blog/default\.nix](../modules/server/blog/default.nix)
+
+
+
 ## bluetooth\.enable
 
 
