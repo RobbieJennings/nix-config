@@ -71,6 +71,11 @@
       url = "github:robbiejennings/robbiejennings.github.io";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    vuescan-source = {
+      url = "https://www.hamrick.com/files/vuex6498.tgz";
+      flake = false;
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);

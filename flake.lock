@@ -554,7 +554,8 @@
         "plasma-manager": "plasma-manager",
         "pre-commit-hooks": "pre-commit-hooks",
         "sops-nix": "sops-nix",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "vuescan-source": "vuescan-source"
       }
     },
     "sops-nix": {
@@ -706,6 +707,19 @@
         "owner": "tinted-theming",
         "repo": "base16-zed",
         "type": "github"
+      }
+    },
+    "vuescan-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778323247,
+        "narHash": "sha256-2l7H8psmpsyOlTtKXK9w/8ZFRHrGvbKMmRf7JQsR8CQ=",
+        "type": "tarball",
+        "url": "https://www.hamrick.com/files/vuex6498.tgz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://www.hamrick.com/files/vuex6498.tgz"
       }
     }
   },

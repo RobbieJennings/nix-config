@@ -11,7 +11,7 @@
   };
 
   flake.overlays.additional-packages = final: prev: {
-    vuescan = final.callPackage ../../packages/vuescan.nix { };
+    vuescan = final.callPackage ../../packages/vuescan.nix { src = inputs.vuescan-source; };
     epson-v550-plugin = final.callPackage ../../packages/epson-v550-plugin.nix { };
     cosmic-ext-applet-clipboard-manager =
       final.callPackage ../../packages/cosmic-ext-applet-clipboard-manager.nix

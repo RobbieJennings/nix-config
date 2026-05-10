@@ -1,4 +1,5 @@
 {
+  src,
   lib,
   stdenv,
   fetchurl,
@@ -36,10 +37,7 @@ in
 stdenv.mkDerivation rec {
   name = "${pname}-${version}";
 
-  src = fetchurl {
-    url = "https://www.hamrick.com/files/vuex6498.tgz";
-    sha256 = "sha256-U5Yw1hZUZGIhC38gpjMYtFVwb+TAFDd+0bw5nFZiBmM=";
-  };
+  inherit src;
 
   nativeBuildInputs = [
     autoPatchelfHook
