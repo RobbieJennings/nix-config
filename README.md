@@ -73,7 +73,7 @@ With SSH keys and secrets in place, setting `secrets.enable=true` in a configura
 Setting `ìmpermenance.enable = true` in a system configuration will cause the deletion of all files outside the nix store at boot time to ensure a clean environment on every startup. To persist files between boots add their paths to the persistence config option.
 
 ### Adding Git Hooks
-To add git hooks to your development environment run `just hooks` to enter the default development shell for this project which will automatically add formatting and static code analysis checks. This shell can be exited straight away.
+To add git hooks to your development environment run `just hooks` to enter the default development shell for this project which will automatically add formatting and static code analysis checks. Once hooks are installed, the nix shell will be closed automatically.
 
 ### Generating Options Documentation
 To generate markdown documentation of all nixos and home-manager module options in this project run `just docs`. This will output `home-manager-options.md` and `nixos-options.md` into the ``docs/`` directory.
