@@ -24,6 +24,7 @@
               golang.go
               bbenoist.nix
               skellock.just
+              streetsidesoftware.code-spell-checker
             ];
             userSettings = {
               terminal.integrated.fontFamily = "JetBrainsMono Nerd Font Mono";
