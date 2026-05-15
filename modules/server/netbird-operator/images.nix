@@ -13,17 +13,17 @@
     }:
     let
       operatorImage = pkgs.dockerTools.pullImage {
-        imageName = "netbirdio/kubernetes-operator";
-        imageDigest = "sha256:57740157b4d7c0ce1356f6c1c3cc0f4c6573600eadbee642334b3070fb51899a";
-        sha256 = "sha256-bnpB50R8k6POBq+IuZ9UpA0qdw6qhEmIoQXx9EzYrbY=";
-        finalImageTag = "0.3.1";
+        imageName = "ghcr.io/netbirdio/netbird-operator";
+        imageDigest = "sha256:0f89a7385eadfde8a47adbfa0ee7913e8d0b938293e08615ca0aa1deab91fcb4";
+        hash = "sha256-DYq4Gb7aGoH0L915fCf9f+gP17CZHfjbq8kR21/kuc4=";
+        finalImageTag = "v0.4.1";
         arch = "amd64";
       };
       routerImage = pkgs.dockerTools.pullImage {
-        imageName = "netbirdio/netbird";
-        imageDigest = "sha256:b1487a94f432aa706275ebbbbdff3605bf927b056d63855f3d43966cb68c64dc";
-        sha256 = "sha256-fMR/IP3PM/fQfYkl+IeoTWkp++oFY9NGu7MP/qb29W8=";
-        finalImageTag = "0.70.0-rootless";
+        imageName = "ghcr.io/netbirdio/netbird";
+        imageDigest = "sha256:4c37fb63f33531fc0c5eec272839b0e4d290c595a0b15bf5fd9a288df1890392";
+        hash = "sha256-TDBO4bjEhbcj01z1ZdoSjfPS226LmC3bxOyyusFwh2M=";
+        finalImageTag = "0.71.0-rootless";
         arch = "amd64";
       };
     in

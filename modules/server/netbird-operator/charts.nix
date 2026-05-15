@@ -13,10 +13,10 @@
     }:
     let
       netbirdOperatorChart = {
-        name = "kubernetes-operator";
-        repo = "https://netbirdio.github.io/helms";
-        version = "0.3.1";
-        hash = "sha256-MWO1YYzbXxT+OCmjAeGchsp1bl/Dw4D0TQKXHlwIvw0=";
+        name = "netbird-operator";
+        repo = "oci://ghcr.io/netbirdio/helm-charts/netbird-operator";
+        version = "0.4.1";
+        hash = "sha256-gRdZViio1QZYNlaEEKk/36F0wc3MnMgtTZE2HTIx4qo=";
       };
     in
     {
