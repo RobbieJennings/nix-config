@@ -14,14 +14,14 @@
       chart = {
         name = "cloudnative-pg";
         repo = "https://cloudnative-pg.github.io/charts";
-        version = "0.28.0";
-        hash = "sha256-gdN4lPNgbfm9kcVRkFP0GnnoM9KKyiUv+zkpTLnLGa4=";
+        version = "0.28.2";
+        hash = "sha256-Q8gCniyIUnz96N0Z2I/RIPZ1ZfV4iyE6N95D7pb2TmQ=";
       };
       image = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/cloudnative-pg/cloudnative-pg";
-        imageDigest = "sha256:68074486205a33ed41928761e22ad48278c690feebe8316727a1c6b3380f9e5e";
-        sha256 = "sha256-UWieKoPlh4RvK73QJcOC9+76kYzKruSsh5+uZZELVnU=";
-        finalImageTag = "1.29.0";
+        imageDigest = "sha256:0dfff19ba7b52ca25851a1010028b6940fff2e233290465af1cfb08a5f3f4661";
+        hash = "sha256-zt741Ql1ILjDLNQn8XzmTQmds4407P8h9xtlArL+fmA=";
+        finalImageTag = "1.29.1";
         arch = "amd64";
       };
       postgresImage = pkgs.dockerTools.pullImage {
