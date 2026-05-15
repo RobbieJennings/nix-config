@@ -15,8 +15,8 @@
       forgejoChart = {
         name = "forgejo";
         repo = "oci://code.forgejo.org/forgejo-helm/forgejo";
-        version = "16.2.2";
-        hash = "sha256-l8sEgEmCItMQO1be7wzTcQ/rsIIJK4tG7+jxItrAgo8=";
+        version = "17.1.0";
+        hash = "sha256-lim/fR/JtAdVq06wjIElsfGk8KDcMrhFJwv8EOBUkps=";
       };
     in
     {
