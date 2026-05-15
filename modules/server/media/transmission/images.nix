@@ -14,9 +14,9 @@
     let
       transmissionImage = pkgs.dockerTools.pullImage {
         imageName = "linuxserver/transmission";
-        imageDigest = "sha256:978b9e0b06eda2cfed79c861fc8ca440b8b29e45dc9dc2522daa67c3818a0d88";
-        sha256 = "sha256-uQWuUyhumbEmxTgYzhWtLjg6z+67qQqlRZ2W134ZHbA=";
-        finalImageTag = "4.0.6";
+        imageDigest = "sha256:62a88fbc210fc62d867eab9c67a0f5474db7257013ce598173a9efc1043e97b8";
+        hash = "sha256-GxWK3rrGfhAE7TSrYZucMMkm8fpkyyLOp6eBFoJ+5JA=";
+        finalImageTag = "4.1.1";
         arch = "amd64";
       };
     in
