@@ -14,16 +14,16 @@
     let
       lokiImage = pkgs.dockerTools.pullImage {
         imageName = "grafana/loki";
-        imageDigest = "sha256:146a6add37403d7f74aa17f52a849de9babf24f92890613cacf346e12a969efc";
-        sha256 = "sha256-Wk3gOMI3ev2iminSM/UO3Dj8Do2TzMbT2VdX/FJ+1Gg=";
-        finalImageTag = "3.6.5";
+        imageDigest = "sha256:191d4fdfb7264f16989f0a57f320872620a5a7c2ceeec6229212c4190ec49b86";
+        hash = "sha256-Vp6LlgV8NjQh9EwL4EXC/bAv6mrdjD2AbEXvv+X+Xrc=";
+        finalImageTag = "3.7.2";
         arch = "amd64";
       };
       lokiCanaryImage = pkgs.dockerTools.pullImage {
         imageName = "grafana/loki-canary";
-        imageDigest = "sha256:76ae2f73a7dbc71a66bb774315c1c0cb58176536127d9ac5364ce7e4405211cd";
-        sha256 = "sha256-jbrnGJ5CKUPHSkpfXBFbLh6kYkwQmEZj/wvk/+KyKMI=";
-        finalImageTag = "3.6.5";
+        imageDigest = "sha256:93751140d6c5cdfb3b07587b10ff262861c9b86c0f2935a418b12e0407cf0d0f";
+        hash = "sha256-I8MAuw5hfKc0o7bGLINYY2SVXAxFeaF9ee0gIJc3Q1g=";
+        finalImageTag = "3.7.2";
         arch = "amd64";
       };
     in
