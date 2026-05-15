@@ -14,79 +14,79 @@
     let
       csiAttacherImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/csi-attacher";
-        imageDigest = "sha256:af29125d83075b95894e95862dde03908b1970858f1d6399917305b92d2713a6";
-        sha256 = "sha256-fSEQ6iUnr7qDdPI59lZIb3mExbRM+6nTV9HY9dXOYp8=";
-        finalImageTag = "v4.10.0-20251030";
+        imageDigest = "sha256:fe417c28a6b86f8e7e5d49fc223e22e9ab457f894d2c4a321932d136dc2c2530";
+        hash = "sha256-+defbWikOWKmZvwOX8vAy5cbwQa6EDiJOnfOLe4fzuo=";
+        finalImageTag = "v4.11.0-20260428";
         arch = "amd64";
       };
       csiNodeDriverRegistrarImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/csi-node-driver-registrar";
-        imageDigest = "sha256:cc125aa681e8ff41ef97bf72b8c16cafffa84f8493ecbcf606e5463f90e9cbd3";
-        sha256 = "sha256-FcgRdmuQc/E4tOwJfIy98KS682EC1QnXAVIHiFDz0a0=";
-        finalImageTag = "v2.15.0-20251030";
+        imageDigest = "sha256:e82a8c8f800d7fbb3c1edf3f90b557768091821a44d52280093394f7918ccb68";
+        hash = "sha256-tcltO1AEnHotTxyJ+N7FbzvBS2U1DgOrikGBB8lOA2k=";
+        finalImageTag = "v2.16.0-20260428";
         arch = "amd64";
       };
       csiProvisionerImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/csi-provisioner";
-        imageDigest = "sha256:fe31c68584e80a2af9ae14e0682b3cea076218a0756ae7add0a421c21486a4d0";
-        sha256 = "sha256-vZ1ifQSUC0uswdGjueNU4HciIULTWvriNaO6gfeoDJ4=";
-        finalImageTag = "v5.3.0-20251030";
+        imageDigest = "sha256:9e519a21a77c060104716e1f98222bb46ab617778a3bfcd861c87119a8256764";
+        hash = "sha256-nUkForHWNHisq1cMNTjzJ3wuy7dmWBHSi/H2Zaa6ewA=";
+        finalImageTag = "v5.3.0-20260428";
         arch = "amd64";
       };
       csiResizerImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/csi-resizer";
-        imageDigest = "sha256:748b61cb91ba4cc4bc35ba38bdac73c130602262458f388b0116eb96a4690e94";
-        sha256 = "sha256-SxgDbSseKIRfN3tZufyvMXSxHy9EJf6x6jmZttieLsc=";
-        finalImageTag = "v1.14.0-20251030";
+        imageDigest = "sha256:41cb674d1154e798aa2c20f53f72ee2a5597f1369bcad5878d1708aee47f6663";
+        hash = "sha256-BPXAG3NIacqmf3f8V4kjWZIfYw3Becdn8oCuNStGulE=";
+        finalImageTag = "v2.1.0-20260428";
         arch = "amd64";
       };
       csiSnapshotterImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/csi-snapshotter";
-        imageDigest = "sha256:2cc2f9e653c2b397e8eefffbfb4ccf8eabc5f7d84e1f875d42608484a66c307f";
-        sha256 = "sha256-N7zYMfgAaOC6f0g/s5+WyL/UrZKRc3LBXLC2DP1lxdQ=";
-        finalImageTag = "v8.4.0-20251030";
+        imageDigest = "sha256:1975fac3890f4e08b98792881cb597502112ce0eeeaaef383e52458c96db94c5";
+        hash = "sha256-tDLxZZUsFzerg1q0ofOD5IrdtxH2ywFFjJ3u/rG79xc=";
+        finalImageTag = "v8.5.0-20260428";
         arch = "amd64";
       };
       csiLivenessProbeImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/livenessprobe";
-        imageDigest = "sha256:7aed397ffdcb125374fa4dd44d95251598e9e97940bc5b84187b3cd3ffd655fd";
-        sha256 = "sha256-LMBH+hmOhRVoRyKneWb7kWgzEy3rdo/9aqeuhUreW9g=";
-        finalImageTag = "v2.17.0-20251030";
+        imageDigest = "sha256:eae162f7e70fb981f90d9206f299dddaf590c0c896cfb67acceca12cef526a44";
+        hash = "sha256-qZqaIl3LqLd0og1DEM5KwKh5P0lMlRZyUDIhyrFJ8L8=";
+        finalImageTag = "v2.18.0-20260428";
         arch = "amd64";
       };
       longhornEngineImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/longhorn-engine";
-        imageDigest = "sha256:b6b30ace865932a686afde56757213d6c86834645443f3af1528a93b7ddf52f4";
-        sha256 = "sha256-ussctYityuRM7DmqtKKGorj22SkcVHvtc3OP03A3xF8=";
-        finalImageTag = "v1.10.1";
+        imageDigest = "sha256:7482e0437fbf475e1e32696fab22f47bf99b1ef8d067ffce9e34028347722628";
+        hash = "sha256-3ceS6YUy/h0W1Ofi0ZT9lafGf3MRWr6JZ1H/MqgM8t0=";
+        finalImageTag = "v1.11.2";
         arch = "amd64";
       };
       longhornInstanceManagerImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/longhorn-instance-manager";
-        imageDigest = "sha256:84e0a5c1d67599a445f5b4fa853152ff53f6b1bd42a7cf7c01f4152cf60782af";
-        sha256 = "sha256-+6DObQfiNghYFuMfERjjToOOkN1ZOGGTt4DWBF9c4GU=";
-        finalImageTag = "v1.10.1";
+        imageDigest = "sha256:16dac125ef30bd3a375bc8ff7d10636ea0302d22d208c0cfb1be37ebb93ca30b";
+        hash = "sha256-gElWLr5Mk6ZPkUgsIDNHvuS53WXTC9Rn2YMUKdmQydI=";
+        finalImageTag = "v1.11.2";
         arch = "amd64";
       };
       longhornManagerImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/longhorn-manager";
-        imageDigest = "sha256:afda26c16e7ab106f94dbc11da1bc91f410487d2e66609ebd126f0d908f7243a";
-        sha256 = "sha256-BP01Yxeaqq256XNXgctc2NWSdONVNkmJlS+e6izTCIU=";
-        finalImageTag = "v1.10.1";
+        imageDigest = "sha256:0f80ca11ac4eb7522f4e6e801a7afc9909ea8d3041575f3d029964c46590f096";
+        hash = "sha256-w2BvuR0oPN9H1fY3DYGd+5+pj0ECOmoEfuAMOnW7vjo=";
+        finalImageTag = "v1.11.2";
         arch = "amd64";
       };
       longhornShareManagerImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/longhorn-share-manager";
-        imageDigest = "sha256:1edc95ae8f9e9699f9b082bf0eac82b338b2f120462424201957cb6287b2e3e9";
-        sha256 = "sha256-3CJxq42YuXusgcWdLuzgTrsAgivlRM5M+5WsxpHrTDU=";
-        finalImageTag = "v1.10.1";
+        imageDigest = "sha256:c11559e998ea982e6bac1637d66cc2aaab662a6b546709f2e54e2bfa50ffb0c3";
+        hash = "sha256-1JByktvTg0MWqF4qGn74zmfX/az/GjMux0RrYxMRIE8=";
+        finalImageTag = "v1.11.2";
         arch = "amd64";
       };
       longhornUiImage = pkgs.dockerTools.pullImage {
         imageName = "longhornio/longhorn-ui";
-        imageDigest = "sha256:62fd171f4fbed01ebb51653674c68ea1c531aa562dab23cb029033dffd6bccc6";
-        sha256 = "sha256-zzAyKsmAQb/aBE157lg0NxCp7jzHmtUwZI1cg0CS/rs=";
-        finalImageTag = "v1.10.1";
+        imageDigest = "sha256:885bc78f99f31da0d9b0fd8f533a53558a3aa81f9719c62e0d3c69ed8456d5b7";
+        hash = "sha256-z8/YJtkoVM2CKnoO1yoJdl+OfKQWuiw8VNbipj2ZOUs=";
+        finalImageTag = "v1.11.2";
         arch = "amd64";
       };
     in
