@@ -15,8 +15,8 @@
       certManagerChart = {
         name = "cert-manager";
         repo = "https://charts.jetstack.io";
-        version = "v1.19.4";
-        hash = "sha256-0MIC9XuGU+uVf7Wy+UcsGxHPa1Gsxcd35Lgk97Wp6oc=";
+        version = "v1.20.2";
+        hash = "sha256-0qUL1EoJ2DjCV2qPPfyhUkWXxzk8+Ngqs+yKRlue63k=";
       };
     in
     {
