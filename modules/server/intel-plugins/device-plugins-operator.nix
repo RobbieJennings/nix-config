@@ -20,7 +20,7 @@
       image = pkgs.dockerTools.pullImage {
         imageName = "intel/intel-deviceplugin-operator";
         imageDigest = "sha256:d7eeac081bd17e58d8d4d542f3cb33d67cc1bdab314b09ad591e8eacb51dd5ec";
-        sha256 = "sha256-EB6MNtzNF2KAX5Ub6do2bz1/8Vv+lddclXPmZy85TCA=";
+        hash = "sha256-EB6MNtzNF2KAX5Ub6do2bz1/8Vv+lddclXPmZy85TCA=";
         finalImageTag = "0.35.0";
         arch = "amd64";
       };
