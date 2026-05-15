@@ -14,16 +14,16 @@
     let
       controllerImage = pkgs.dockerTools.pullImage {
         imageName = "quay.io/metallb/controller";
-        imageDigest = "sha256:417cdb6d6f9f2c410cceb84047d3a4da3bfb78b5ddfa30f4cf35ea5c667e8c2e";
-        sha256 = "sha256-AzOCFyOAeLsFw7ESAg8iYygzH4ygxgNQcJ5rpajbnio=";
-        finalImageTag = "v0.15.2";
+        imageDigest = "sha256:6698ccc54c380913816ed1fd0758637ec87dd79da419c4ab170a2c26c158ab89";
+        hash = "sha256-j71loxJPSdOfqSGX3b5/4X7OtwhQlslAsSGnhpDlcZ8=";
+        finalImageTag = "v0.15.3";
         arch = "amd64";
       };
       speakerImage = pkgs.dockerTools.pullImage {
         imageName = "quay.io/metallb/speaker";
-        imageDigest = "sha256:260c9406f957c0830d4e6cd2e9ac8c05e51ac959dd2462c4c2269ac43076665a";
-        sha256 = "sha256-gdy9zFJjY9wTYKuF7j5NW16V6oPWdFwEji+Nvt5Qr7Y=";
-        finalImageTag = "v0.15.2";
+        imageDigest = "sha256:c6a5b25b2e1fba610a57b2db4bb8141d7c133569d561a8cc29e38ca5113efbc4";
+        hash = "sha256-t2epMeOG1rfWG3juOMfEhb9bfzksvQ0SuwOLJKB1ob4=";
+        finalImageTag = "v0.15.3";
         arch = "amd64";
       };
     in
