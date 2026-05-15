@@ -14,9 +14,9 @@
     let
       radarrImage = pkgs.dockerTools.pullImage {
         imageName = "linuxserver/radarr";
-        imageDigest = "sha256:e26fbfd3782520c0bb820666f041ca056acfe187a8b95214ee1f47512cc05a29";
-        sha256 = "sha256-64z/xPzOPu5ow5dgKLPGY7D2P9fikhhSkXu3GPqr7WM=";
-        finalImageTag = "6.0.4";
+        imageDigest = "sha256:15417a594ebda4c660a9fa9748e7199d33e2d17b31bbc5ad7ba2e86f0b414763";
+        hash = "sha256-wMaIcEAlEDGMwUNc+UdVRu49M2T/+nqaIZ4DvWcF74k=";
+        finalImageTag = "6.1.1";
         arch = "amd64";
       };
     in
