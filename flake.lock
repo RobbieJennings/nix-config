@@ -71,16 +71,17 @@
     "blog": {
       "inputs": {
         "blowfish": "blowfish",
+        "nix-config": "nix-config",
         "nixpkgs": [
           "nixpkgs-unstable"
         ]
       },
       "locked": {
-        "lastModified": 1778324579,
-        "narHash": "sha256-TakKOq+BVzrTL2aKa15cbolypG5i3r8HXPnz/K3FLF4=",
+        "lastModified": 1778884648,
+        "narHash": "sha256-FiRtiPmAPVe702adk4CLFvmZBOQhm0yjK1eA3NsExSQ=",
         "owner": "robbiejennings",
         "repo": "robbiejennings.github.io",
-        "rev": "972e2159ea3951a438d5bf762d7e4027cbab8b24",
+        "rev": "4fdf04dbc9323ae97ef56a53a127c502e6210126",
         "type": "github"
       },
       "original": {
@@ -92,11 +93,11 @@
     "blowfish": {
       "flake": false,
       "locked": {
-        "lastModified": 1776118157,
-        "narHash": "sha256-Ke1uRYETXVq/htV5U11vJwuPeNdxWWWO5o+BJHrVorg=",
+        "lastModified": 1778711236,
+        "narHash": "sha256-mf00ZdWC9hZj+JOyeJcGFILXkYwjIQegLYc+ACSx1H0=",
         "owner": "nunocoracao",
         "repo": "blowfish",
-        "rev": "da8ca782aab44c54a61be25a71281348247c39f2",
+        "rev": "e9699d8c5da9a64a105eb8401fd2cf79c6015c6f",
         "type": "github"
       },
       "original": {
@@ -370,6 +371,22 @@
       "original": {
         "owner": "vic",
         "repo": "import-tree",
+        "type": "github"
+      }
+    },
+    "nix-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778878096,
+        "narHash": "sha256-+NaYUGX98cBIUzqIxvKjPgd/+QXcJJYNzvaN0eaT8n0=",
+        "owner": "robbiejennings",
+        "repo": "nix-config",
+        "rev": "6dbb940da5670810160cd897130d39389f492555",
+        "type": "github"
+      },
+      "original": {
+        "owner": "robbiejennings",
+        "repo": "nix-config",
         "type": "github"
       }
     },
