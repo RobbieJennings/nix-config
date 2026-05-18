@@ -49,8 +49,8 @@
   - 🏴‍☠️ [Servarr](https://wiki.servarr.com)
 
 ## 🕮 Documentation
-[NixOS docs](https://robbiejennings.com/docs/nixos/01-introduction)\
-[Kubernetes docs](https://robbiejennings.com/docs/kubernetes/01-introduction)
+[NixOS docs](https://www.robbiejennings.com/docs/nixos/01-introduction)\
+[Kubernetes docs](https://www.robbiejennings.com/docs/kubernetes/01-introduction)
 
 ## 🛠️ Usage
 
