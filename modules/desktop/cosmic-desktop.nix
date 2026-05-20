@@ -41,7 +41,6 @@
         home-manager.sharedModules = [
           {
             imports = [ inputs.self.modules.homeManager.cosmic-manager ];
-            stylix.targets.gtk.enable = lib.mkForce false;
           }
         ];
 

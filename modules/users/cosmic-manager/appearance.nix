@@ -157,7 +157,7 @@
               };
             };
             toolkit = {
-              apply_theme_global = true;
+              apply_theme_global = false;
               interface_font = {
                 family = config.theme.fonts.interface.name;
                 stretch = cosmicLib.cosmic.mkRON "enum" "Normal";
