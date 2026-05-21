@@ -13,6 +13,7 @@
     {
       imports = [
         inputs.self.modules.nixos.k3s
+        inputs.self.modules.nixos.resource-profiles
         inputs.self.modules.nixos.metallb
         inputs.self.modules.nixos.longhorn
         inputs.self.modules.nixos.postgres

@@ -52,12 +52,7 @@
                   repository = image.imageName;
                   tag = image.imageTag;
                 };
-                resources = {
-                  requests.cpu = "100m";
-                  requests.memory = "128Mi";
-                  limits.cpu = "200m";
-                  limits.memory = "256Mi";
-                };
+                resources = config.server.resources.profiles.infraLarge;
               };
               extraDeploy = [
                 {

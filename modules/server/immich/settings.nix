@@ -56,12 +56,7 @@
                 };
               };
             };
-            resources = {
-              requests.cpu = "200m";
-              requests.memory = "256Mi";
-              limits.cpu = "1500m";
-              limits.memory = "1Gi";
-            };
+            resources = config.server.resources.profiles.appLarge;
           };
         };
       };

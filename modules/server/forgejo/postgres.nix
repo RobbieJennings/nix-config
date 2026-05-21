@@ -42,12 +42,7 @@
                 owner = "forgejo";
                 secret.name = "forgejo-secrets";
               };
-              resources = {
-                requests.cpu = "50m";
-                requests.memory = "256Mi";
-                limits.cpu = "300m";
-                limits.memory = "512Mi";
-              };
+              resources = config.server.resources.profiles.dbSmall;
             };
           }
         ];

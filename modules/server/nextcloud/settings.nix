@@ -51,12 +51,7 @@
             type = "ClusterIP";
             port = 80;
           };
-          resources = {
-            requests.cpu = "200m";
-            requests.memory = "1Gi";
-            limits.cpu = "800m";
-            limits.memory = "2Gi";
-          };
+          resources = config.server.resources.profiles.appLarge;
           collabora = {
             enabled = true;
             image = {
@@ -73,22 +68,12 @@
               type = "ClusterIP";
               port = 80;
             };
-            resources = {
-              requests.cpu = "200m";
-              requests.memory = "1Gi";
-              limits.cpu = "800m";
-              limits.memory = "2Gi";
-            };
+            resources = config.server.resources.profiles.appLarge;
           };
           cronjob = {
             enabled = true;
             type = "sidecar";
-            resources = {
-              requests.cpu = "50m";
-              requests.memory = "128Mi";
-              limits.cpu = "300m";
-              limits.memory = "256Mi";
-            };
+            resources = config.server.resources.profiles.appMini;
           };
           livenessProbe = {
             initialDelaySeconds = 300;

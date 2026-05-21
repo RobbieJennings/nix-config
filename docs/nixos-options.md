@@ -1473,6 +1473,141 @@ boolean
 
 
 
+## server\.resources\.profiles
+
+
+
+Kubernetes resource profiles
+
+
+
+*Type:*
+attribute set
+
+
+
+*Default:*
+
+```
+{
+  appLarge = {
+    limits = {
+      cpu = "2000m";
+      memory = "2Gi";
+    };
+    requests = {
+      cpu = "400m";
+      memory = "1Gi";
+    };
+  };
+  appMedium = {
+    limits = {
+      cpu = "1000m";
+      memory = "1Gi";
+    };
+    requests = {
+      cpu = "200m";
+      memory = "512Mi";
+    };
+  };
+  appMini = {
+    limits = {
+      cpu = "250m";
+      memory = "256Mi";
+    };
+    requests = {
+      cpu = "50m";
+      memory = "128Mi";
+    };
+  };
+  appSmall = {
+    limits = {
+      cpu = "500m";
+      memory = "512Mi";
+    };
+    requests = {
+      cpu = "100m";
+      memory = "256Mi";
+    };
+  };
+  cache = {
+    limits = {
+      cpu = "100m";
+      memory = "128Mi";
+    };
+    requests = {
+      cpu = "20m";
+      memory = "64Mi";
+    };
+  };
+  dbMedium = {
+    limits = {
+      cpu = "1000m";
+      memory = "1Gi";
+    };
+    requests = {
+      cpu = "200m";
+      memory = "512Mi";
+    };
+  };
+  dbSmall = {
+    limits = {
+      cpu = "500m";
+      memory = "512Mi";
+    };
+    requests = {
+      cpu = "100m";
+      memory = "256Mi";
+    };
+  };
+  infraLarge = {
+    limits = {
+      cpu = "250m";
+      memory = "256Mi";
+    };
+    requests = {
+      cpu = "100m";
+      memory = "128Mi";
+    };
+  };
+  infraMedium = {
+    limits = {
+      cpu = "200m";
+      memory = "192Mi";
+    };
+    requests = {
+      cpu = "50m";
+      memory = "64Mi";
+    };
+  };
+  infraMini = {
+    limits = {
+      cpu = "100m";
+      memory = "64Mi";
+    };
+    requests = {
+      cpu = "10m";
+      memory = "32Mi";
+    };
+  };
+  infraSmall = {
+    limits = {
+      cpu = "150m";
+      memory = "128Mi";
+    };
+    requests = {
+      cpu = "20m";
+      memory = "48Mi";
+    };
+  };
+}
+```
+
+*Declared by:*
+ - [modules/server/resource-profiles\.nix](../modules/server/resource-profiles.nix)
+
+
+
 ## ssh\.enable
 
 

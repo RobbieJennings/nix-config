@@ -43,12 +43,7 @@
                 owner = "immich";
                 secret.name = "immich-secrets";
               };
-              resources = {
-                requests.cpu = "200m";
-                requests.memory = "256Mi";
-                limits.cpu = "1000m";
-                limits.memory = "1Gi";
-              };
+              resources = config.server.resources.profiles.dbMedium;
             };
           }
         ];

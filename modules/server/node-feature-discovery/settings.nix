@@ -15,28 +15,13 @@
       config = lib.mkIf config.node-feature-discovery.enable {
         services.k3s.autoDeployCharts.node-feature-discovery.values = {
           master = {
-            resources = {
-              requests.cpu = "10m";
-              requests.memory = "32Mi";
-              limits.cpu = "100m";
-              limits.memory = "64Mi";
-            };
+            resources = config.server.resources.profiles.infraMini;
           };
           worker = {
-            resources = {
-              requests.cpu = "10m";
-              requests.memory = "32Mi";
-              limits.cpu = "100m";
-              limits.memory = "64Mi";
-            };
+            resources = config.server.resources.profiles.infraMini;
           };
           gc = {
-            resources = {
-              requests.cpu = "5m";
-              requests.memory = "16Mi";
-              limits.cpu = "50m";
-              limits.memory = "32Mi";
-            };
+            resources = config.server.resources.profiles.infraMini;
           };
         };
       };

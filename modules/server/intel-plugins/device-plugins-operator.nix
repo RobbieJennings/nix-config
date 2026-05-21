@@ -43,12 +43,7 @@
                   tag = image.imageTag;
                 };
               };
-              resources = {
-                requests.cpu = "20m";
-                requests.memory = "64Mi";
-                limits.cpu = "200m";
-                limits.memory = "128Mi";
-              };
+              resources = config.server.resources.profiles.infraMedium;
             };
           };
         };

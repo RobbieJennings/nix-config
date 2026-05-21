@@ -34,12 +34,7 @@
                   };
                 };
               };
-              resources = {
-                requests.cpu = "100m";
-                requests.memory = "384Mi";
-                limits.cpu = "500m";
-                limits.memory = "768Mi";
-              };
+              resources = config.server.resources.profiles.appSmall;
             };
             service.enabled = false;
           };
@@ -62,12 +57,7 @@
                   };
                 };
               };
-              resources = {
-                requests.cpu = "50m";
-                requests.memory = "128Mi";
-                limits.cpu = "200m";
-                limits.memory = "256Mi";
-              };
+              resources = config.server.resources.profiles.appMini;
             };
           };
           kube-state-metrics = {
@@ -79,12 +69,7 @@
                   x: x ? imageName && x.imageName == "registry.k8s.io/kube-state-metrics/kube-state-metrics"
                 ) null null config.services.k3s.images).imageTag;
             };
-            resources = {
-              requests.cpu = "30m";
-              requests.memory = "64Mi";
-              limits.cpu = "150m";
-              limits.memory = "128Mi";
-            };
+            resources = config.server.resources.profiles.infraSmall;
           };
           prometheus-node-exporter = {
             image = {
@@ -95,12 +80,7 @@
                   x: x ? imageName && x.imageName == "quay.io/prometheus/node-exporter"
                 ) null null config.services.k3s.images).imageTag;
             };
-            resources = {
-              requests.cpu = "20m";
-              requests.memory = "32Mi";
-              limits.cpu = "100m";
-              limits.memory = "64Mi";
-            };
+            resources = config.server.resources.profiles.infraMini;
           };
           prometheusOperator = {
             image = {
@@ -111,12 +91,7 @@
                   x: x ? imageName && x.imageName == "quay.io/prometheus-operator/prometheus-operator"
                 ) null null config.services.k3s.images).imageTag;
             };
-            resources = {
-              requests.cpu = "50m";
-              requests.memory = "128Mi";
-              limits.cpu = "300m";
-              limits.memory = "256Mi";
-            };
+            resources = config.server.resources.profiles.infraLarge;
             prometheusConfigReloader = {
               image = {
                 registry = "quay.io";

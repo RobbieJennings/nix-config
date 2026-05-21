@@ -24,12 +24,7 @@
               }
             else
               { };
-          resources = {
-            requests.cpu = "100m";
-            requests.memory = "128Mi";
-            limits.cpu = "500m";
-            limits.memory = "512Mi";
-          };
+          resources = config.server.resources.profiles.appSmall;
           datasources = {
             "datasources.yaml" = {
               apiVersion = 1;

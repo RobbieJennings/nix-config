@@ -74,12 +74,7 @@
                         timeoutSeconds = 2;
                         failureThreshold = 3;
                       };
-                      resources = {
-                        requests.cpu = "20m";
-                        requests.memory = "32Mi";
-                        limits.cpu = "100m";
-                        limits.memory = "128Mi";
-                      };
+                      resources = config.server.resources.profiles.appMini;
                     }
                   ];
                 };

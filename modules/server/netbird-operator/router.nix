@@ -32,12 +32,7 @@
                       value = "0";
                     }
                   ];
-                  resources = {
-                    requests.cpu = "100m";
-                    requests.memory = "128Mi";
-                    limits.cpu = "250m";
-                    limits.memory = "256Mi";
-                  };
+                  resources = config.server.resources.profiles.infraLarge;
                 };
               };
             };

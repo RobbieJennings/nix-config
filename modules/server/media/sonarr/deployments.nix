@@ -95,12 +95,7 @@
                           value = "1000";
                         }
                       ];
-                      resources = {
-                        requests.cpu = "100m";
-                        requests.memory = "256Mi";
-                        limits.cpu = "500m";
-                        limits.memory = "512Mi";
-                      };
+                      resources = config.server.resources.profiles.appSmall;
                       startupProbe = {
                         httpGet = {
                           path = "/";

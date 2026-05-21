@@ -58,17 +58,9 @@
                           value = "1000";
                         }
                       ];
-                      resources = {
-                        requests = {
-                          cpu = "100m";
-                          memory = "256Mi";
-                          "gpu.intel.com/i915" = 1;
-                        };
-                        limits = {
-                          cpu = "1500m";
-                          memory = "512Mi";
-                          "gpu.intel.com/i915" = 1;
-                        };
+                      resources = config.server.resources.profiles.appMedium // {
+                        requests."gpu.intel.com/i915" = 1;
+                        limits."gpu.intel.com/i915" = 1;
                       };
                       startupProbe = {
                         httpGet = {

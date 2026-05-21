@@ -39,10 +39,12 @@
               targetNamespace = namespace;
               createNamespace = true;
               values = values // {
-                image = {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
+                image =
+                  values.image or {
+                    repository = image.imageName;
+                    tag = image.imageTag;
+                  };
+                resources = values.resources or config.server.resources.profiles.cache;
               };
             };
           };

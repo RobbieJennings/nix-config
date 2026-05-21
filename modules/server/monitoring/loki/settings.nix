@@ -78,12 +78,7 @@
               storageClassName = "longhorn";
               size = "10Gi";
             };
-            resources = {
-              requests.cpu = "50m";
-              requests.memory = "256Mi";
-              limits.cpu = "300m";
-              limits.memory = "512Mi";
-            };
+            resources = config.server.resources.profiles.appSmall;
           };
           loki-canary = {
             image = {
@@ -96,12 +91,7 @@
                   x: x ? imageName && x.imageName == "grafana/loki-canary"
                 ) null null config.services.k3s.images).imageTag;
             };
-            resources = {
-              requests.cpu = "5m";
-              requests.memory = "16Mi";
-              limits.cpu = "50m";
-              limits.memory = "64Mi";
-            };
+            resources = config.server.resources.profiles.appMini;
           };
         };
       };

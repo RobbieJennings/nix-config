@@ -36,12 +36,7 @@
               '';
             };
           };
-          resources = {
-            requests.cpu = "20m";
-            requests.memory = "64Mi";
-            limits.cpu = "200m";
-            limits.memory = "256Mi";
-          };
+          resources = config.server.resources.profiles.appMini;
         };
       };
     };

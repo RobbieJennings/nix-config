@@ -83,12 +83,7 @@
                         timeoutSeconds = 2;
                         failureThreshold = 3;
                       };
-                      resources = {
-                        requests.cpu = "100m";
-                        requests.memory = "256Mi";
-                        limits.cpu = "500m";
-                        limits.memory = "512Mi";
-                      };
+                      resources = config.server.resources.profiles.appSmall;
                     }
                   ];
                   dnsConfig.options = [

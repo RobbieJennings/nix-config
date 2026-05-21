@@ -60,12 +60,7 @@
                           value = "1000";
                         }
                       ];
-                      resources = {
-                        requests.cpu = "50m";
-                        requests.memory = "128Mi";
-                        limits.cpu = "300m";
-                        limits.memory = "256Mi";
-                      };
+                      resources = config.server.resources.profiles.appSmall;
                       startupProbe = {
                         httpGet = {
                           path = "/transmission/web/";
