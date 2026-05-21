@@ -14,9 +14,9 @@
     {
       config = lib.mkIf config.media-server.enable {
         system.activationScripts.createMediaDirs = ''
-          mkdir -p /media-server/media /media-server/downloads
-          chown -R 1000:1000 /media-server/media /media-server/downloads
-          chmod -R 775 /media-server/media /media-server/downloads
+          mkdir -p /storage/media /storage/downloads
+          chown -R 1000:1000 /storage/media /storage/downloads
+          chmod -R 775 /storage/media /storage/downloads
         '';
         services.k3s.manifests.media.content = [
           {
@@ -26,12 +26,12 @@
               name = "media-pv";
             };
             spec = {
-              capacity.storage = "25Gi";
+              capacity.storage = "100Gi";
               accessModes = [ "ReadWriteMany" ];
               persistentVolumeReclaimPolicy = "Retain";
               storageClassName = "media";
               hostPath = {
-                path = "/media-server/media";
+                path = "/storage/media";
                 type = "DirectoryOrCreate";
               };
             };
@@ -56,12 +56,12 @@
               name = "downloads-pv";
             };
             spec = {
-              capacity.storage = "25Gi";
+              capacity.storage = "100Gi";
               accessModes = [ "ReadWriteMany" ];
               persistentVolumeReclaimPolicy = "Retain";
               storageClassName = "downloads";
               hostPath = {
-                path = "/media-server/downloads";
+                path = "/storage/downloads";
                 type = "DirectoryOrCreate";
               };
             };
