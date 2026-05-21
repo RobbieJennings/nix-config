@@ -32,7 +32,7 @@
                       value = "0";
                     }
                   ];
-                  resources = config.server.resources.profiles.infraLarge;
+                  resources = config.server.resources.profiles.appSmall;
                 };
               };
             };
