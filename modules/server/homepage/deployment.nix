@@ -146,6 +146,11 @@
                           mountPath = "/app/config/bookmarks.yaml";
                           subPath = "bookmarks.yaml";
                         }
+                        {
+                          name = "storage";
+                          mountPath = "/storage";
+                          readOnly = true;
+                        }
                       ];
                       startupProbe = {
                         httpGet = {
@@ -194,6 +199,13 @@
                     {
                       name = "bookmarks";
                       configMap.name = "homepage-bookmarks";
+                    }
+                    {
+                      name = "storage";
+                      hostPath = {
+                        path = "/storage";
+                        type = "Directory";
+                      };
                     }
                   ];
                   dnsConfig.options = [

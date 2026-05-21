@@ -24,7 +24,7 @@
             data."widgets.yaml" = builtins.toJSON [
               {
                 resources = {
-                  label = "System";
+                  label = "system";
                   uptime = true;
                   cputemp = true;
                   cpu = true;
@@ -34,12 +34,19 @@
                 };
               }
               {
+                resources = {
+                  label = "storage";
+                  disk = "/storage";
+                  expanded = true;
+                };
+              }
+              {
                 longhorn = {
                   url = "http://192.168.1.201";
                   expanded = true;
-                  total = true;
                   labels = true;
                   nodes = true;
+                  total = false;
                 };
               }
               {
