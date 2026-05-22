@@ -24,7 +24,7 @@
   - 🪧 [Plymouth boot screen](https://www.freedesktop.org/wiki/Software/Plymouth)
   - 📦 [Flatpak installation](https://github.com/gmodena/nix-flatpak)
   - 🖥️ [KDE Plasma management](https://github.com/nix-community/plasma-manager)
-  - 🗔 [Cosmic Desktop management](https://github.com/HeitorAugustoLN/cosmic-manager)
+  - 🖥️ [Cosmic Desktop management](https://github.com/HeitorAugustoLN/cosmic-manager)
   - 🖌️ [Stylix Theming](https://github.com/nix-community/stylix)
   - 🗄️ [Restic backup](https://restic.net)
   - 🧰 Development tools
@@ -48,7 +48,7 @@
   - 📼 [Jellyfin](https://jellyfin.org)
   - 🏴‍☠️ [Servarr](https://wiki.servarr.com)
 
-## 🕮 Documentation
+## 📑 Documentation
 [NixOS docs](https://www.robbiejennings.com/docs/nixos/01-introduction)\
 [Kubernetes docs](https://www.robbiejennings.com/docs/kubernetes/01-introduction)
 
