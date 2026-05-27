@@ -24,8 +24,6 @@
         (lib.mkIf (config.rclone.enable && config.secrets.enable && config.secrets.rclone.enable) {
           sops = {
             secrets = {
-              "restic/repository" = { };
-              "restic/password" = { };
               "rclone/client_id" = { };
               "rclone/client_secret" = { };
               "rclone/access_token" = { };
