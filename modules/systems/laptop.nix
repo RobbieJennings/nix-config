@@ -28,9 +28,8 @@
         };
         secrets = {
           enable = true;
-          vuescan.enable = true;
-          rclone.enable = true;
           restic.enable = true;
+          vuescan.enable = true;
         };
       };
     }

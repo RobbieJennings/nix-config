@@ -802,32 +802,6 @@ boolean
 
 
 
-## rclone\.enable
-
-
-
-Whether to enable rclone google drive remote\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/users/backup/rclone\.nix](../modules/users/backup/rclone.nix)
-
-
-
 ## restic\.enable
 
 
@@ -877,32 +851,6 @@ boolean
 
 *Declared by:*
  - [modules/core/secrets\.nix](../modules/core/secrets.nix)
-
-
-
-## secrets\.rclone\.enable
-
-
-
-Whether to enable rclone google drive secrets\.
-
-
-
-*Type:*
-boolean
-
-
-
-*Default:*
-` false `
-
-
-
-*Example:*
-` true `
-
-*Declared by:*
- - [modules/users/backup/rclone\.nix](../modules/users/backup/rclone.nix)
 
 
 
