@@ -36,6 +36,7 @@
           enable = true;
           passwords.enable = true;
           k3s.enable = true;
+          longhorn.enable = true;
           grafana.enable = true;
           forgejo.enable = true;
           nextcloud.enable = true;

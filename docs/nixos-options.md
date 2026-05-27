@@ -619,7 +619,7 @@ boolean
 
 
 
-Whether to enable Longhorn helm chart on k3s\.
+Whether to enable longhorn helm chart on k3s\.
 
 
 
@@ -1392,6 +1392,32 @@ boolean
 
 *Declared by:*
  - [modules/server/k3s\.nix](../modules/server/k3s.nix)
+
+
+
+## secrets\.longhorn\.enable
+
+
+
+Whether to enable longhorn backup credentials secret\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/longhorn/default\.nix](../modules/server/longhorn/default.nix)
 
 
 

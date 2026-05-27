@@ -30,6 +30,10 @@
             defaultClassReplicaCount = 1;
             reclaimPolicy = "Retain";
           };
+          defaultBackupStore = {
+            backupTarget = "s3://longhorn-bucket@garage/";
+            backupTargetCredentialSecret = "longhorn-backup-secret";
+          };
         };
       };
     };

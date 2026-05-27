@@ -17,10 +17,12 @@
         inputs.self.modules.nixos.longhorn-images
         inputs.self.modules.nixos.longhorn-settings
         inputs.self.modules.nixos.longhorn-services
+        inputs.self.modules.nixos.longhorn-secrets
       ];
 
       options = {
-        longhorn.enable = lib.mkEnableOption "Longhorn helm chart on k3s";
+        longhorn.enable = lib.mkEnableOption "longhorn helm chart on k3s";
+        secrets.longhorn.enable = lib.mkEnableOption "longhorn backup credentials secret";
       };
 
       config = lib.mkIf config.longhorn.enable {
