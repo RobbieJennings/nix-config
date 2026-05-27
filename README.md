@@ -38,6 +38,7 @@
   - ☸️ [Helm](https://helm.sh)
   - ⚖️ [MetalLB](https://metallb.io)
   - 🗃️ [Longhorn](https://longhorn.io)
+  - 📦 [Garage](https://garagehq.deuxfleurs.fr)
   - 🛢️ [CloudnativePG](https://cloudnative-pg.io)
   - ⛽ [Valkey](https://valkey.io)
   - 🐦 [Netbird](https://netbird.io/)
