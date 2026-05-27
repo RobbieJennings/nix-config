@@ -303,6 +303,32 @@ boolean
 
 
 
+## garage\.enable
+
+
+
+Whether to enable garage helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [modules/server/garage/default\.nix](../modules/server/garage/default.nix)
+
+
+
 ## garbage-collection\.enable
 
 

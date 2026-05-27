@@ -16,6 +16,7 @@
         inputs.self.modules.nixos.resource-profiles
         inputs.self.modules.nixos.metallb
         inputs.self.modules.nixos.longhorn
+        inputs.self.modules.nixos.garage
         inputs.self.modules.nixos.postgres
         inputs.self.modules.nixos.node-feature-discovery
         inputs.self.modules.nixos.cert-manager
@@ -34,6 +35,7 @@
         k3s.enable = lib.mkDefault true;
         metallb.enable = lib.mkDefault true;
         longhorn.enable = lib.mkDefault true;
+        garage.enable = lib.mkDefault true;
         postgres.enable = lib.mkDefault true;
         node-feature-discovery.enable = lib.mkDefault true;
         cert-manager.enable = lib.mkDefault true;
