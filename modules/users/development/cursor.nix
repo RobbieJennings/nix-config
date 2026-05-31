@@ -16,17 +16,9 @@
       };
 
       config = lib.mkIf config.cursor.enable {
-        home.packages = [ pkgs.unstable.code-cursor ];
-        home.file = lib.mkIf config.vscode.enable {
-          # Sync Cursor settings from VSCodium
-          ".config/Cursor/User/settings.json".source =
-            config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/VSCodium/User/settings.json";
-          # Sync Cursor keybindings from VSCodium
-          ".config/Cursor/User/keybindings.json".source =
-            config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/VSCodium/User/keybindings.json";
-          # Sync Cursor extensions from VSCodium
-          ".cursor/extensions".source =
-            config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.vscode-oss/extensions";
+        programs.cursor = {
+          enable = true;
+          profiles = config.programs.vscode.profiles;
         };
       };
     };

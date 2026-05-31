@@ -36,50 +36,13 @@
                     "applications:org.kde.discover.desktop"
                   ]
                   ++ (if config.brave.enable then [ "applications:com.brave.Browser.desktop" ] else [ ])
-                  ++ (if config.vscode.enable then [ "applications:codium-url-handler.desktop" ] else [ ]);
+                  ++ (if config.cursor.enable then [ "applications:cursor.desktop" ] else [ ]);
                 };
               }
               "org.kde.plasma.marginsseparator"
               "org.kde.plasma.systemmonitor.net"
               "org.kde.plasma.systemmonitor.cpucore"
-              {
-                systemMonitor = {
-                  title = "MEMORY USAGE";
-                  displayStyle = "org.kde.ksysguard.horizontalbars";
-                  sensors = [
-                    {
-                      name = "memory/physical/usedPercent";
-                      color = "180 190 254";
-                      label = "RAM USAGE";
-                    }
-                    {
-                      name = "memory/swap/usedPercent";
-                      color = "180 190 254";
-                      label = "SWAP USAGE";
-                    }
-                  ];
-                  totalSensors = [
-                    "memory/physical/userPercent"
-                    "memory/swap/usedPercent"
-                  ];
-                };
-              }
-              {
-                systemMonitor = {
-                  title = "CPU TEMP";
-                  displayStyle = "org.kde.ksysguard.piechart";
-                  sensors = [
-                    {
-                      name = "cpu/all/averageTemperature";
-                      color = "180 190 254";
-                      label = "CPU TEMP";
-                    }
-                  ];
-                  totalSensors = [ "cpu/all/averageTemperature" ];
-                  range.from = 0;
-                  range.to = 100;
-                };
-              }
+              "org.kde.plasma.systemmonitor.memory"
               {
                 systemTray.items = {
                   shown = [

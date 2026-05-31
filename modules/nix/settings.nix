@@ -37,22 +37,26 @@
       };
 
       home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        backupFileExtension = "backup";
         sharedModules = [
           {
             imports = [
               inputs.sops-nix.homeManagerModules.sops
               inputs.stylix.homeModules.stylix
             ];
-            home.stateVersion = "25.11";
+            home.stateVersion = "26.05";
+            nixpkgs = {
+              config.allowUnfree = true;
+              overlays = [
+                self.overlays.unstable-packages
+                self.overlays.additional-packages
+              ];
+            };
           }
         ];
       };
 
       stylix.homeManagerIntegration.autoImport = false;
       users.mutableUsers = false;
-      system.stateVersion = "25.11";
+      system.stateVersion = "26.05";
     };
 }

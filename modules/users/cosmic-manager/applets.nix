@@ -38,7 +38,7 @@
             "com.system76.cosmicStore"
           ]
           ++ (if config.brave.enable then [ "Brave-browser" ] else [ ])
-          ++ (if config.vscode.enable then [ "codium-url-handler" ] else [ ]);
+          ++ (if config.cursor.enable then [ "cursor" ] else [ ]);
         };
       };
     };

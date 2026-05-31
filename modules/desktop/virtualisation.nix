@@ -16,8 +16,13 @@
       };
 
       config = lib.mkIf config.virtualisation.enable {
-        virtualisation.libvirtd.enable = true;
         programs.virt-manager.enable = true;
+        virtualisation.libvirtd.enable = true;
+        fileSystems."/var/lib/libvirt/secrets" = {
+          device = "tmpfs";
+          fsType = "tmpfs";
+          options = [ "mode=0700" ];
+        };
       };
     };
 }

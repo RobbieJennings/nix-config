@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixos-25.11";
+      url = "github:NixOS/nixpkgs/nixos-26.05";
     };
 
     nixpkgs-unstable = {
@@ -12,7 +12,7 @@
 
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
     };
 
     flake-parts = {
@@ -47,7 +47,7 @@
     };
 
     stylix = {
-      url = "github:nix-community/stylix/release-25.11";
+      url = "github:nix-community/stylix/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
