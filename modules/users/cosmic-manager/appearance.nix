@@ -46,10 +46,10 @@
           wayland.desktopManager.cosmic.appearance = {
             theme = {
               dark = {
-                active_hint = 2;
+                active_hint = 4;
                 gaps = cosmicLib.cosmic.mkRON "tuple" [
-                  0
-                  4
+                  2
+                  6
                 ];
                 corner_radii = {
                   radius_0 = cosmicLib.cosmic.mkRON "tuple" [
@@ -59,10 +59,10 @@
                     0.0
                   ];
                   radius_xs = cosmicLib.cosmic.mkRON "tuple" [
-                    2.0
-                    2.0
-                    2.0
-                    2.0
+                    4.0
+                    4.0
+                    4.0
+                    4.0
                   ];
                   radius_s = cosmicLib.cosmic.mkRON "tuple" [
                     8.0
@@ -71,22 +71,22 @@
                     8.0
                   ];
                   radius_m = cosmicLib.cosmic.mkRON "tuple" [
-                    8.0
-                    8.0
-                    8.0
-                    8.0
+                    16.0
+                    16.0
+                    16.0
+                    16.0
                   ];
                   radius_l = cosmicLib.cosmic.mkRON "tuple" [
-                    8.0
-                    8.0
-                    8.0
-                    8.0
+                    32.0
+                    32.0
+                    32.0
+                    32.0
                   ];
                   radius_xl = cosmicLib.cosmic.mkRON "tuple" [
-                    8.0
-                    8.0
-                    8.0
-                    8.0
+                    160.0
+                    160.0
+                    160.0
+                    160.0
                   ];
                 };
               };
