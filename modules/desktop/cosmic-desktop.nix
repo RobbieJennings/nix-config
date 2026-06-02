@@ -23,7 +23,6 @@
           pkgs.seahorse # key management
           pkgs.file-roller # archive management
           pkgs.loupe # image viewer
-          pkgs.papers # document viewer
           pkgs.simple-scan # document scanner
           pkgs.system-config-printer # printer setup
           pkgs.snapshot # camera
