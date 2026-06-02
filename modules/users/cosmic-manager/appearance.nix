@@ -48,7 +48,7 @@
               dark = {
                 active_hint = 4;
                 gaps = cosmicLib.cosmic.mkRON "tuple" [
-                  2
+                  3
                   6
                 ];
                 corner_radii = {
