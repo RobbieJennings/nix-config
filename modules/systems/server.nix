@@ -38,6 +38,8 @@
           k3s.enable = true;
           longhorn.enable = true;
           grafana.enable = true;
+          prometheus.enable = true;
+          loki.enable = true;
           forgejo.enable = true;
           nextcloud.enable = true;
           immich.enable = true;

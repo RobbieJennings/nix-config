@@ -54,6 +54,13 @@
         finalImageTag = "v0.90.1";
         arch = "amd64";
       };
+      thanosImage = pkgs.dockerTools.pullImage {
+        imageName = "quay.io/thanos/thanos";
+        imageDigest = "sha256:cf3e9b292e4302ad4a4955b56379703aea39516607d382a57604a3d003c35d10";
+        hash = "sha256-Xi5HJ76pqjw5f3xwfa2u4+9I9OYgHkKqkOr4orB0sao=";
+        finalImageTag = "v0.41.0";
+        arch = "amd64";
+      };
     in
     {
       config = lib.mkIf config.monitoring.prometheus.enable {
@@ -65,6 +72,7 @@
             kubeStateMetricsImage
             prometheusOperatorImage
             prometheusConfigReloaderImage
+            thanosImage
           ];
         };
       };

@@ -10,12 +10,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/editing/audacity\.nix](../modules/users/editing/audacity.nix)
@@ -36,12 +42,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/web/brave\.nix](../modules/users/web/brave.nix)
@@ -62,12 +74,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/utilities/calibre\.nix](../modules/users/utilities/calibre.nix)
@@ -88,12 +106,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/web/chrome\.nix](../modules/users/web/chrome.nix)
@@ -114,12 +138,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/cosmic-manager/default\.nix](../modules/users/cosmic-manager/default.nix)
@@ -140,12 +170,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/cosmic-manager/appearance\.nix](../modules/users/cosmic-manager/appearance.nix)
@@ -166,12 +202,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/cosmic-manager/applets\.nix](../modules/users/cosmic-manager/applets.nix)
@@ -192,12 +234,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/cosmic-manager/compositor\.nix](../modules/users/cosmic-manager/compositor.nix)
@@ -218,12 +266,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/cosmic-manager/panels\.nix](../modules/users/cosmic-manager/panels.nix)
@@ -244,12 +298,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/cosmic-manager/shortcuts\.nix](../modules/users/cosmic-manager/shortcuts.nix)
@@ -270,12 +330,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/cosmic-manager/wallpapers\.nix](../modules/users/cosmic-manager/wallpapers.nix)
@@ -296,12 +362,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/development/cursor\.nix](../modules/users/development/cursor.nix)
@@ -322,12 +394,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/editing/darktable\.nix](../modules/users/editing/darktable.nix)
@@ -348,12 +426,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/web/firefox\.nix](../modules/users/web/firefox.nix)
@@ -374,12 +458,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/editing/gimp\.nix](../modules/users/editing/gimp.nix)
@@ -400,12 +490,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/gaming/heroic\.nix](../modules/users/gaming/heroic.nix)
@@ -426,12 +522,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/editing/kdenlive\.nix](../modules/users/editing/kdenlive.nix)
@@ -452,12 +554,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/utilities/kolourpaint\.nix](../modules/users/utilities/kolourpaint.nix)
@@ -478,12 +586,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/editing/krita\.nix](../modules/users/editing/krita.nix)
@@ -504,12 +618,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/gaming/lutris\.nix](../modules/users/gaming/lutris.nix)
@@ -530,12 +650,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/development/neovim\.nix](../modules/users/development/neovim.nix)
@@ -556,12 +682,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/utilities/obs\.nix](../modules/users/utilities/obs.nix)
@@ -582,12 +714,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/utilities/obsidian\.nix](../modules/users/utilities/obsidian.nix)
@@ -608,12 +746,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/utilities/office\.nix](../modules/users/utilities/office.nix)
@@ -634,12 +778,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/development/oh-my-posh\.nix](../modules/users/development/oh-my-posh.nix)
@@ -660,12 +810,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/plasma-manager/default\.nix](../modules/users/plasma-manager/default.nix)
@@ -686,12 +842,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/plasma-manager/input\.nix](../modules/users/plasma-manager/input.nix)
@@ -712,12 +874,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/plasma-manager/look-and-feel\.nix](../modules/users/plasma-manager/look-and-feel.nix)
@@ -738,12 +906,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/plasma-manager/panels\.nix](../modules/users/plasma-manager/panels.nix)
@@ -764,12 +938,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/gaming/prism\.nix](../modules/users/gaming/prism.nix)
@@ -790,12 +970,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/web/qbittorrent\.nix](../modules/users/web/qbittorrent.nix)
@@ -816,12 +1002,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/backup/restic\.nix](../modules/users/backup/restic.nix)
@@ -842,12 +1034,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/secrets\.nix](../modules/core/secrets.nix)
@@ -868,12 +1066,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/backup/restic\.nix](../modules/users/backup/restic.nix)
@@ -894,12 +1098,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/editing/vuescan\.nix](../modules/users/editing/vuescan.nix)
@@ -920,12 +1130,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/utilities/spotify\.nix](../modules/users/utilities/spotify.nix)
@@ -946,12 +1162,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -972,12 +1194,18 @@ string
 
 
 *Default:*
-` "default-dark" `
+
+```nix
+"default-dark"
+```
 
 
 
 *Example:*
-` "catppuccin-mocha" `
+
+```nix
+"catppuccin-mocha"
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -998,7 +1226,10 @@ submodule
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -1019,7 +1250,10 @@ submodule
 
 
 *Default:*
-` Noto Color Emoji `
+
+```nix
+Noto Color Emoji
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -1072,7 +1306,10 @@ submodule
 
 
 *Default:*
-` Inter `
+
+```nix
+Inter
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -1125,7 +1362,10 @@ submodule
 
 
 *Default:*
-` JetBrainsMono Nerd Font Mono `
+
+```nix
+JetBrainsMono Nerd Font Mono
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -1179,7 +1419,7 @@ submodule
 
 *Default:*
 
-```
+```nix
 {
   hash = "sha256-JaLHdBxwrphKVherDVe5fgh+3zqUtpcwuNbjwrBlAok=";
   url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/wallpapers/nix-wallpaper-simple-dark-gray.png";
@@ -1237,7 +1477,10 @@ one of “light”, “dark”
 
 
 *Default:*
-` "dark" `
+
+```nix
+"dark"
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -1258,12 +1501,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/web/thunderbird\.nix](../modules/users/web/thunderbird.nix)
@@ -1284,12 +1533,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/utilities/vlc\.nix](../modules/users/utilities/vlc.nix)
@@ -1310,12 +1565,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/development/vscode\.nix](../modules/users/development/vscode.nix)
@@ -1336,12 +1597,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/users/editing/vuescan\.nix](../modules/users/editing/vuescan.nix)

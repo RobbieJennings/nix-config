@@ -42,6 +42,12 @@
                   x: x ? imageName && x.imageName == "grafana/loki"
                 ) null null config.services.k3s.images).imageTag;
             };
+            extraArgs = [ "-config.expand-env=true" ];
+            extraEnvFrom = [
+              {
+                secretRef.name = "loki-secrets";
+              }
+            ];
             auth_enabled = false;
             commonConfig.replication_factor = 1;
             schemaConfig = {
@@ -49,7 +55,7 @@
                 {
                   from = "2024-01-01";
                   store = "tsdb";
-                  object_store = "filesystem";
+                  object_store = "s3";
                   schema = "v13";
                   index = {
                     prefix = "index_";
@@ -67,10 +73,17 @@
               volume_enabled = true;
             };
             storage = {
-              type = "filesystem";
-              filesystem = {
-                chunks_directory = "/var/loki/chunks";
-                rules_directory = "/var/loki/rules";
+              bucketNames = {
+                chunks = "loki-chunks-bucket";
+                ruler = "loki-ruler-bucket";
+              };
+              type = "s3";
+              s3 = {
+                endpoint = "\${AWS_ENDPOINT}";
+                accessKeyId = "\${AWS_ACCESS_KEY_ID}";
+                secretAccessKey = "\${AWS_SECRET_ACCESS_KEY}";
+                region = "garage";
+                s3ForcePathStyle = true;
               };
             };
             persistence = {

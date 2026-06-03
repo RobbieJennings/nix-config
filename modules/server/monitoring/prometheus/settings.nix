@@ -34,9 +34,22 @@
                   };
                 };
               };
+              thanos = {
+                image = "quay.io/thanos/thanos:${
+                  (lib.lists.findSingle (
+                    x: x ? imageName && x.imageName == "quay.io/thanos/thanos"
+                  ) null null config.services.k3s.images).imageTag
+                }";
+                objectStorageConfig.existingSecret = {
+                  name = "prometheus-thanos-secrets";
+                  key = "thanos-config";
+                };
+              };
               resources = config.server.resources.profiles.appSmall;
             };
             service.enabled = false;
+            thanosService.enabled = true;
+            thanosServiceMonitor.enabled = true;
           };
           alertmanager = {
             alertmanagerSpec = {

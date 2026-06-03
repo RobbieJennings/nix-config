@@ -10,12 +10,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/desktop/audio\.nix](../modules/desktop/audio.nix)
@@ -36,12 +42,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/auto-upgrade\.nix](../modules/core/auto-upgrade.nix)
@@ -62,12 +74,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/blog/default\.nix](../modules/server/blog/default.nix)
@@ -88,12 +106,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/desktop/bluetooth\.nix](../modules/desktop/bluetooth.nix)
@@ -114,12 +138,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/bootloader\.nix](../modules/core/bootloader.nix)
@@ -140,12 +170,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/bootloader\.nix](../modules/core/bootloader.nix)
@@ -166,12 +202,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/cert-manager/default\.nix](../modules/server/cert-manager/default.nix)
@@ -192,12 +234,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/desktop/cosmic-desktop\.nix](../modules/desktop/cosmic-desktop.nix)
@@ -218,7 +266,10 @@ one of “plasma”, “cosmic”
 
 
 *Default:*
-` "plasma" `
+
+```nix
+"plasma"
+```
 
 *Declared by:*
  - [modules/desktop/default\.nix](../modules/desktop/default.nix)
@@ -239,12 +290,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/docker\.nix](../modules/core/docker.nix)
@@ -265,12 +322,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/forgejo/default\.nix](../modules/server/forgejo/default.nix)
@@ -291,12 +354,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/fwupd\.nix](../modules/core/fwupd.nix)
@@ -317,12 +386,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/garage/default\.nix](../modules/server/garage/default.nix)
@@ -343,12 +418,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/garbage-collection\.nix](../modules/core/garbage-collection.nix)
@@ -369,12 +450,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/homepage/default\.nix](../modules/server/homepage/default.nix)
@@ -395,12 +482,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/immich/default\.nix](../modules/server/immich/default.nix)
@@ -421,12 +514,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/impermanence\.nix](../modules/core/impermanence.nix)
@@ -447,12 +546,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/intel-plugins/default\.nix](../modules/server/intel-plugins/default.nix)
@@ -473,12 +578,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/intel-plugins/gpu-device-plugin\.nix](../modules/server/intel-plugins/gpu-device-plugin.nix)
@@ -499,12 +610,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/intel-plugins/device-plugins-operator\.nix](../modules/server/intel-plugins/device-plugins-operator.nix)
@@ -525,12 +642,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/k3s\.nix](../modules/server/k3s.nix)
@@ -551,12 +674,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/desktop/kde-connect\.nix](../modules/desktop/kde-connect.nix)
@@ -577,12 +706,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/desktop/kde-plasma\.nix](../modules/desktop/kde-plasma.nix)
@@ -603,12 +738,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/localisation\.nix](../modules/core/localisation.nix)
@@ -629,12 +770,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/longhorn/default\.nix](../modules/server/longhorn/default.nix)
@@ -655,12 +802,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/media/default\.nix](../modules/server/media/default.nix)
@@ -681,12 +834,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/media/flaresolverr/default\.nix](../modules/server/media/flaresolverr/default.nix)
@@ -707,12 +866,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/media/jellyfin/default\.nix](../modules/server/media/jellyfin/default.nix)
@@ -733,12 +898,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/media/lidarr/default\.nix](../modules/server/media/lidarr/default.nix)
@@ -759,12 +930,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/media/prowlarr/default\.nix](../modules/server/media/prowlarr/default.nix)
@@ -785,12 +962,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/media/radarr/default\.nix](../modules/server/media/radarr/default.nix)
@@ -811,12 +994,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/media/sonarr/default\.nix](../modules/server/media/sonarr/default.nix)
@@ -837,12 +1026,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/media/transmission/default\.nix](../modules/server/media/transmission/default.nix)
@@ -863,12 +1058,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/metallb/default\.nix](../modules/server/metallb/default.nix)
@@ -889,12 +1090,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/monitoring/default\.nix](../modules/server/monitoring/default.nix)
@@ -915,12 +1122,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/monitoring/alloy/default\.nix](../modules/server/monitoring/alloy/default.nix)
@@ -941,12 +1154,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/monitoring/grafana/default\.nix](../modules/server/monitoring/grafana/default.nix)
@@ -967,12 +1186,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/monitoring/loki/default\.nix](../modules/server/monitoring/loki/default.nix)
@@ -993,12 +1218,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/monitoring/prometheus/default\.nix](../modules/server/monitoring/prometheus/default.nix)
@@ -1019,12 +1250,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/netbird\.nix](../modules/core/netbird.nix)
@@ -1045,12 +1282,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/netbird-operator/default\.nix](../modules/server/netbird-operator/default.nix)
@@ -1071,12 +1314,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/networking\.nix](../modules/core/networking.nix)
@@ -1097,12 +1346,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/nextcloud/default\.nix](../modules/server/nextcloud/default.nix)
@@ -1123,12 +1378,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/node-feature-discovery/default\.nix](../modules/server/node-feature-discovery/default.nix)
@@ -1149,12 +1410,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/database/postgres\.nix](../modules/server/database/postgres.nix)
@@ -1175,12 +1442,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/desktop/printing\.nix](../modules/desktop/printing.nix)
@@ -1201,12 +1474,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/desktop/qmk\.nix](../modules/desktop/qmk.nix)
@@ -1227,12 +1506,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/desktop/scanning\.nix](../modules/desktop/scanning.nix)
@@ -1253,12 +1538,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/secrets\.nix](../modules/core/secrets.nix)
@@ -1279,12 +1570,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/forgejo/default\.nix](../modules/server/forgejo/default.nix)
@@ -1305,12 +1602,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/monitoring/grafana/default\.nix](../modules/server/monitoring/grafana/default.nix)
@@ -1331,12 +1634,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/homepage/default\.nix](../modules/server/homepage/default.nix)
@@ -1357,12 +1666,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/immich/default\.nix](../modules/server/immich/default.nix)
@@ -1383,15 +1698,53 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/k3s\.nix](../modules/server/k3s.nix)
+
+
+
+## secrets\.loki\.enable
+
+
+
+Whether to enable Loki secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/monitoring/loki/default\.nix](../modules/server/monitoring/loki/default.nix)
 
 
 
@@ -1409,12 +1762,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/longhorn/default\.nix](../modules/server/longhorn/default.nix)
@@ -1435,12 +1794,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/media/default\.nix](../modules/server/media/default.nix)
@@ -1461,12 +1826,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/netbird-operator/default\.nix](../modules/server/netbird-operator/default.nix)
@@ -1487,12 +1858,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/server/nextcloud/default\.nix](../modules/server/nextcloud/default.nix)
@@ -1513,15 +1890,53 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/secrets\.nix](../modules/core/secrets.nix)
+
+
+
+## secrets\.prometheus\.enable
+
+
+
+Whether to enable Prometheus secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/monitoring/prometheus/default\.nix](../modules/server/monitoring/prometheus/default.nix)
 
 
 
@@ -1540,7 +1955,7 @@ attribute set
 
 *Default:*
 
-```
+```nix
 {
   appLarge = {
     limits = {
@@ -1674,12 +2089,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/ssh\.nix](../modules/core/ssh.nix)
@@ -1700,12 +2121,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/desktop/steam\.nix](../modules/desktop/steam.nix)
@@ -1726,12 +2153,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -1752,12 +2185,18 @@ string
 
 
 *Default:*
-` "default-dark" `
+
+```nix
+"default-dark"
+```
 
 
 
 *Example:*
-` "catppuccin-mocha" `
+
+```nix
+"catppuccin-mocha"
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -1778,7 +2217,10 @@ submodule
 
 
 *Default:*
-` { } `
+
+```nix
+{ }
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -1799,7 +2241,10 @@ submodule
 
 
 *Default:*
-` Noto Color Emoji `
+
+```nix
+Noto Color Emoji
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -1852,7 +2297,10 @@ submodule
 
 
 *Default:*
-` Inter `
+
+```nix
+Inter
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -1905,7 +2353,10 @@ submodule
 
 
 *Default:*
-` JetBrainsMono Nerd Font Mono `
+
+```nix
+JetBrainsMono Nerd Font Mono
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -1959,7 +2410,7 @@ submodule
 
 *Default:*
 
-```
+```nix
 {
   hash = "sha256-JaLHdBxwrphKVherDVe5fgh+3zqUtpcwuNbjwrBlAok=";
   url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/refs/heads/master/wallpapers/nix-wallpaper-simple-dark-gray.png";
@@ -2017,7 +2468,10 @@ one of “light”, “dark”
 
 
 *Default:*
-` "dark" `
+
+```nix
+"dark"
+```
 
 *Declared by:*
  - [modules/core/theme\.nix](../modules/core/theme.nix)
@@ -2038,12 +2492,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/desktop/virtualisation\.nix](../modules/desktop/virtualisation.nix)
@@ -2064,12 +2524,18 @@ boolean
 
 
 *Default:*
-` false `
+
+```nix
+false
+```
 
 
 
 *Example:*
-` true `
+
+```nix
+true
+```
 
 *Declared by:*
  - [modules/core/zsh\.nix](../modules/core/zsh.nix)
