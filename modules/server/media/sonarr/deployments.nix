@@ -147,11 +147,11 @@
                     }
                     {
                       name = "media";
-                      persistentVolumeClaim.claimName = "media";
+                      persistentVolumeClaim.claimName = "media-pvc";
                     }
                     {
                       name = "downloads";
-                      persistentVolumeClaim.claimName = "downloads";
+                      persistentVolumeClaim.claimName = "downloads-pvc";
                     }
                   ];
                   dnsConfig.options = [

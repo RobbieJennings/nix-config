@@ -36,6 +36,10 @@
                 accessModes = [ "ReadWriteOnce" ];
                 persistentVolumeReclaimPolicy = "Retain";
                 storageClassName = "";
+                claimRef = {
+                  namespace = "garage";
+                  name = "meta-garage-0";
+                };
                 hostPath = {
                   path = "/storage/garage/meta";
                   type = "DirectoryOrCreate";
@@ -53,6 +57,10 @@
                 accessModes = [ "ReadWriteOnce" ];
                 persistentVolumeReclaimPolicy = "Retain";
                 storageClassName = "";
+                claimRef = {
+                  namespace = "garage";
+                  name = "data-garage-0";
+                };
                 hostPath = {
                   path = "/storage/garage/data";
                   type = "DirectoryOrCreate";

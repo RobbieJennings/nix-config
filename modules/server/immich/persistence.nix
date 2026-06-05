@@ -31,6 +31,10 @@
                 capacity.storage = "100Gi";
                 accessModes = [ "ReadWriteOnce" ];
                 persistentVolumeReclaimPolicy = "Retain";
+                claimRef = {
+                  namespace = "immich";
+                  name = "immich-pvc";
+                };
                 hostPath = {
                   path = "/storage/immich";
                   type = "DirectoryOrCreate";

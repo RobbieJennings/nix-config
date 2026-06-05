@@ -110,7 +110,7 @@
                     }
                     {
                       name = "media";
-                      persistentVolumeClaim.claimName = "media";
+                      persistentVolumeClaim.claimName = "media-pvc";
                     }
                   ];
                   dnsConfig.options = [

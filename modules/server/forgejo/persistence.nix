@@ -22,7 +22,7 @@
           values.persistence = {
             enabled = true;
             create = false;
-            claimName = "forgejo";
+            claimName = "forgejo-pvc";
           };
           extraDeploy = [
             {
@@ -35,6 +35,10 @@
                 capacity.storage = "100Gi";
                 accessModes = [ "ReadWriteOnce" ];
                 persistentVolumeReclaimPolicy = "Retain";
+                claimRef = {
+                  namespace = "forgejo";
+                  name = "forgejo-pvc";
+                };
                 hostPath = {
                   path = "/storage/forgejo";
                   type = "DirectoryOrCreate";
@@ -45,7 +49,7 @@
               apiVersion = "v1";
               kind = "PersistentVolumeClaim";
               metadata = {
-                name = "forgejo";
+                name = "forgejo-pvc";
                 namespace = "forgejo";
               };
               spec = {

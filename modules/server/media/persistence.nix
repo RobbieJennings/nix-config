@@ -29,6 +29,10 @@
               capacity.storage = "100Gi";
               accessModes = [ "ReadWriteMany" ];
               persistentVolumeReclaimPolicy = "Retain";
+              claimRef = {
+                namespace = "media";
+                name = "media-pvc";
+              };
               hostPath = {
                 path = "/storage/media";
                 type = "DirectoryOrCreate";
@@ -39,7 +43,7 @@
             apiVersion = "v1";
             kind = "PersistentVolumeClaim";
             metadata = {
-              name = "media";
+              name = "media-pvc";
               namespace = "media";
             };
             spec = {
@@ -59,6 +63,10 @@
               capacity.storage = "100Gi";
               accessModes = [ "ReadWriteMany" ];
               persistentVolumeReclaimPolicy = "Retain";
+              claimRef = {
+                namespace = "media";
+                name = "downloads-pvc";
+              };
               hostPath = {
                 path = "/storage/downloads";
                 type = "DirectoryOrCreate";
@@ -69,7 +77,7 @@
             apiVersion = "v1";
             kind = "PersistentVolumeClaim";
             metadata = {
-              name = "downloads";
+              name = "downloads-pvc";
               namespace = "media";
             };
             spec = {

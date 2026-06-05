@@ -116,7 +116,7 @@
                     }
                     {
                       name = "downloads";
-                      persistentVolumeClaim.claimName = "downloads";
+                      persistentVolumeClaim.claimName = "downloads-pvc";
                     }
                   ];
                   dnsConfig.options = [
