@@ -93,12 +93,6 @@
                       persistentVolumeClaim.claimName = "prowlarr-config";
                     }
                   ];
-                  dnsConfig.options = [
-                    {
-                      name = "ndots";
-                      value = "0";
-                    }
-                  ];
                 };
               };
             };

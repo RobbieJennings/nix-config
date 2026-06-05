@@ -119,12 +119,6 @@
                       persistentVolumeClaim.claimName = "downloads-pvc";
                     }
                   ];
-                  dnsConfig.options = [
-                    {
-                      name = "ndots";
-                      value = "0";
-                    }
-                  ];
                 };
               };
             };

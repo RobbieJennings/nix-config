@@ -113,12 +113,6 @@
                       persistentVolumeClaim.claimName = "media-pvc";
                     }
                   ];
-                  dnsConfig.options = [
-                    {
-                      name = "ndots";
-                      value = "0";
-                    }
-                  ];
                 };
               };
             };

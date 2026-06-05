@@ -86,12 +86,6 @@
                       resources = config.server.resources.profiles.appSmall;
                     }
                   ];
-                  dnsConfig.options = [
-                    {
-                      name = "ndots";
-                      value = "0";
-                    }
-                  ];
                 };
               };
             };

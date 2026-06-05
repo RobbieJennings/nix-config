@@ -25,14 +25,6 @@
               dnsZoneRef.name = "homelab";
               workloadOverride = {
                 replicas = 1;
-                podTemplate.spec = {
-                  dnsConfig.options = [
-                    {
-                      name = "ndots";
-                      value = "0";
-                    }
-                  ];
-                };
               };
             };
           }
