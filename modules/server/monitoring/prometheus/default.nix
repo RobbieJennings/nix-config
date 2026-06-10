@@ -16,6 +16,7 @@
         inputs.self.modules.nixos.prometheus-charts
         inputs.self.modules.nixos.prometheus-images
         inputs.self.modules.nixos.prometheus-settings
+        inputs.self.modules.nixos.prometheus-persistence
         inputs.self.modules.nixos.prometheus-services
         inputs.self.modules.nixos.prometheus-secrets
       ];

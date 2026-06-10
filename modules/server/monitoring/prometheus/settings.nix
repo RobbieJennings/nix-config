@@ -29,8 +29,9 @@
               storageSpec = {
                 volumeClaimTemplate = {
                   spec = {
-                    storageClassName = "longhorn";
                     resources.requests.storage = "10Gi";
+                    accessModes = [ "ReadWriteOnce" ];
+                    volumeName = "prometheus-pv";
                   };
                 };
               };
@@ -65,8 +66,9 @@
               storage = {
                 volumeClaimTemplate = {
                   spec = {
-                    storageClassName = "longhorn";
-                    resources.requests.storage = "5Gi";
+                    resources.requests.storage = "10Gi";
+                    accessModes = [ "ReadWriteOnce" ];
+                    volumeName = "alertmanager-pv";
                   };
                 };
               };

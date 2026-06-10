@@ -31,13 +31,13 @@
                 capacity.storage = "100Gi";
                 accessModes = [ "ReadWriteOnce" ];
                 persistentVolumeReclaimPolicy = "Retain";
-                claimRef = {
-                  namespace = "immich";
-                  name = "immich-pvc";
-                };
                 hostPath = {
                   path = "/storage/immich";
                   type = "DirectoryOrCreate";
+                };
+                claimRef = {
+                  namespace = "immich";
+                  name = "immich-pvc";
                 };
               };
             }
@@ -52,7 +52,28 @@
                 volumeName = "immich-pv";
                 resources.requests.storage = "25Gi";
                 accessModes = [ "ReadWriteOnce" ];
-                storageClassName = "";
+              };
+            }
+            {
+              apiVersion = "v1";
+              kind = "PersistentVolume";
+              metadata = {
+                name = "immich-pg-pv";
+              };
+              spec = {
+                capacity.storage = "8Gi";
+                volumeMode = "Filesystem";
+                accessModes = [ "ReadWriteOnce" ];
+                persistentVolumeReclaimPolicy = "Retain";
+                csi = {
+                  driver = "driver.longhorn.io";
+                  volumeHandle = "immich-pg";
+                  fsType = "ext4";
+                };
+                claimRef = {
+                  namespace = "immich";
+                  name = "immich-postgres-1";
+                };
               };
             }
           ];

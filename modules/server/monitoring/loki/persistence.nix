@@ -4,7 +4,7 @@
   ...
 }:
 {
-  flake.modules.nixos.grafana-persistence =
+  flake.modules.nixos.loki-persistence =
     {
       config,
       lib,
@@ -12,20 +12,14 @@
       ...
     }:
     {
-      config = lib.mkIf config.monitoring.grafana.enable {
-        services.k3s.autoDeployCharts.grafana = {
-          values = {
-            persistence = {
-              enabled = true;
-              existingClaim = "grafana-pvc";
-            };
-          };
+      config = lib.mkIf config.monitoring.loki.enable {
+        services.k3s.autoDeployCharts.loki = {
           extraDeploy = [
             {
               apiVersion = "v1";
               kind = "PersistentVolume";
               metadata = {
-                name = "grafana-pv";
+                name = "loki-pv";
               };
               spec = {
                 capacity.storage = "10Gi";
@@ -34,12 +28,12 @@
                 persistentVolumeReclaimPolicy = "Retain";
                 csi = {
                   driver = "driver.longhorn.io";
-                  volumeHandle = "grafana";
+                  volumeHandle = "loki";
                   fsType = "ext4";
                 };
                 claimRef = {
                   namespace = "monitoring";
-                  name = "grafana-pvc";
+                  name = "loki-pvc";
                 };
               };
             }
@@ -47,13 +41,13 @@
               apiVersion = "v1";
               kind = "PersistentVolumeClaim";
               metadata = {
-                name = "grafana-pvc";
+                name = "loki-pvc";
                 namespace = "monitoring";
               };
               spec = {
                 resources.requests.storage = "10Gi";
                 accessModes = [ "ReadWriteOnce" ];
-                volumeName = "grafana-pv";
+                volumeName = "loki-pv";
               };
             }
           ];

@@ -106,7 +106,7 @@
                   volumes = [
                     {
                       name = "config";
-                      persistentVolumeClaim.claimName = "jellyfin-config";
+                      persistentVolumeClaim.claimName = "jellyfin-pvc";
                     }
                     {
                       name = "media";

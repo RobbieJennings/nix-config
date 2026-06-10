@@ -16,15 +16,37 @@
         services.k3s.manifests.jellyfin.content = [
           {
             apiVersion = "v1";
+            kind = "PersistentVolume";
+            metadata = {
+              name = "jellyfin-pv";
+            };
+            spec = {
+              capacity.storage = "5Gi";
+              volumeMode = "Filesystem";
+              accessModes = [ "ReadWriteOnce" ];
+              persistentVolumeReclaimPolicy = "Retain";
+              csi = {
+                driver = "driver.longhorn.io";
+                volumeHandle = "jellyfin";
+                fsType = "ext4";
+              };
+              claimRef = {
+                namespace = "media";
+                name = "jellyfin-pvc";
+              };
+            };
+          }
+          {
+            apiVersion = "v1";
             kind = "PersistentVolumeClaim";
             metadata = {
-              name = "jellyfin-config";
+              name = "jellyfin-pvc";
               namespace = "media";
             };
             spec = {
-              accessModes = [ "ReadWriteOnce" ];
-              storageClassName = "longhorn";
               resources.requests.storage = "5Gi";
+              accessModes = [ "ReadWriteOnce" ];
+              volumeName = "jellyfin-pv";
             };
           }
         ];

@@ -29,13 +29,13 @@
               capacity.storage = "100Gi";
               accessModes = [ "ReadWriteMany" ];
               persistentVolumeReclaimPolicy = "Retain";
-              claimRef = {
-                namespace = "media";
-                name = "media-pvc";
-              };
               hostPath = {
                 path = "/storage/media";
                 type = "DirectoryOrCreate";
+              };
+              claimRef = {
+                namespace = "media";
+                name = "media-pvc";
               };
             };
           }
@@ -50,7 +50,6 @@
               volumeName = "media-pv";
               resources.requests.storage = "25Gi";
               accessModes = [ "ReadWriteMany" ];
-              storageClassName = "";
             };
           }
           {
@@ -63,13 +62,13 @@
               capacity.storage = "100Gi";
               accessModes = [ "ReadWriteMany" ];
               persistentVolumeReclaimPolicy = "Retain";
-              claimRef = {
-                namespace = "media";
-                name = "downloads-pvc";
-              };
               hostPath = {
                 path = "/storage/downloads";
                 type = "DirectoryOrCreate";
+              };
+              claimRef = {
+                namespace = "media";
+                name = "downloads-pvc";
               };
             };
           }
@@ -84,7 +83,6 @@
               volumeName = "downloads-pv";
               resources.requests.storage = "25Gi";
               accessModes = [ "ReadWriteMany" ];
-              storageClassName = "";
             };
           }
         ];

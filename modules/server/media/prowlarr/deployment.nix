@@ -90,7 +90,7 @@
                   volumes = [
                     {
                       name = "config";
-                      persistentVolumeClaim.claimName = "prowlarr-config";
+                      persistentVolumeClaim.claimName = "prowlarr-pvc";
                     }
                   ];
                 };

@@ -22,8 +22,7 @@
           values = {
             persistence = {
               enabled = true;
-              size = "8Gi";
-              storageClass = "longhorn";
+              existingClaim = "nextcloud-pvc";
               nextcloudData = {
                 enabled = true;
                 existingClaim = "nextcloud-data-pvc";
@@ -35,19 +34,54 @@
               apiVersion = "v1";
               kind = "PersistentVolume";
               metadata = {
+                name = "nextcloud-pv";
+              };
+              spec = {
+                capacity.storage = "8Gi";
+                volumeMode = "Filesystem";
+                accessModes = [ "ReadWriteOnce" ];
+                persistentVolumeReclaimPolicy = "Retain";
+                csi = {
+                  driver = "driver.longhorn.io";
+                  volumeHandle = "nextcloud";
+                  fsType = "ext4";
+                };
+                claimRef = {
+                  namespace = "nextcloud";
+                  name = "nextcloud-pvc";
+                };
+              };
+            }
+            {
+              apiVersion = "v1";
+              kind = "PersistentVolumeClaim";
+              metadata = {
+                name = "nextcloud-pvc";
+                namespace = "nextcloud";
+              };
+              spec = {
+                resources.requests.storage = "8Gi";
+                accessModes = [ "ReadWriteOnce" ];
+                volumeName = "nextcloud-pv";
+              };
+            }
+            {
+              apiVersion = "v1";
+              kind = "PersistentVolume";
+              metadata = {
                 name = "nextcloud-data-pv";
               };
               spec = {
                 capacity.storage = "100Gi";
                 accessModes = [ "ReadWriteOnce" ];
                 persistentVolumeReclaimPolicy = "Retain";
-                claimRef = {
-                  namespace = "nextcloud";
-                  name = "nextcloud-data-pvc";
-                };
                 hostPath = {
                   path = "/storage/nextcloud";
                   type = "DirectoryOrCreate";
+                };
+                claimRef = {
+                  namespace = "nextcloud";
+                  name = "nextcloud-data-pvc";
                 };
               };
             }
@@ -62,7 +96,28 @@
                 volumeName = "nextcloud-data-pv";
                 resources.requests.storage = "25Gi";
                 accessModes = [ "ReadWriteOnce" ];
-                storageClassName = "";
+              };
+            }
+            {
+              apiVersion = "v1";
+              kind = "PersistentVolume";
+              metadata = {
+                name = "nextcloud-pg-pv";
+              };
+              spec = {
+                capacity.storage = "8Gi";
+                volumeMode = "Filesystem";
+                accessModes = [ "ReadWriteOnce" ];
+                persistentVolumeReclaimPolicy = "Retain";
+                csi = {
+                  driver = "driver.longhorn.io";
+                  volumeHandle = "nextcloud-pg";
+                  fsType = "ext4";
+                };
+                claimRef = {
+                  namespace = "nextcloud";
+                  name = "nextcloud-postgres-1";
+                };
               };
             }
           ];

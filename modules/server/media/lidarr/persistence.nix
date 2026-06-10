@@ -16,15 +16,37 @@
         services.k3s.manifests.lidarr.content = [
           {
             apiVersion = "v1";
+            kind = "PersistentVolume";
+            metadata = {
+              name = "lidarr-pv";
+            };
+            spec = {
+              capacity.storage = "5Gi";
+              volumeMode = "Filesystem";
+              accessModes = [ "ReadWriteOnce" ];
+              persistentVolumeReclaimPolicy = "Retain";
+              csi = {
+                driver = "driver.longhorn.io";
+                volumeHandle = "lidarr";
+                fsType = "ext4";
+              };
+              claimRef = {
+                namespace = "media";
+                name = "lidarr-pvc";
+              };
+            };
+          }
+          {
+            apiVersion = "v1";
             kind = "PersistentVolumeClaim";
             metadata = {
-              name = "lidarr-config";
+              name = "lidarr-pvc";
               namespace = "media";
             };
             spec = {
-              accessModes = [ "ReadWriteOnce" ];
-              storageClassName = "longhorn";
               resources.requests.storage = "5Gi";
+              accessModes = [ "ReadWriteOnce" ];
+              volumeName = "lidarr-pv";
             };
           }
         ];

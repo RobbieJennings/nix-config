@@ -143,7 +143,7 @@
                   volumes = [
                     {
                       name = "config";
-                      persistentVolumeClaim.claimName = "radarr-config";
+                      persistentVolumeClaim.claimName = "radarr-pvc";
                     }
                     {
                       name = "media";

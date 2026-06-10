@@ -108,11 +108,11 @@
                   volumes = [
                     {
                       name = "config";
-                      persistentVolumeClaim.claimName = "transmission-config";
+                      persistentVolumeClaim.claimName = "transmission-pvc";
                     }
                     {
                       name = "watch";
-                      persistentVolumeClaim.claimName = "transmission-watch";
+                      persistentVolumeClaim.claimName = "transmission-watch-pvc";
                     }
                     {
                       name = "downloads";

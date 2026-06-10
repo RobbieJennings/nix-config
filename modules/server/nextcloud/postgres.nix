@@ -44,7 +44,13 @@
                   name = "postgresql-global";
                   major = 18;
                 };
-                storage.size = "8Gi";
+                storage = {
+                  pvcTemplate = {
+                    resources.requests.storage = "8Gi";
+                    accessModes = [ "ReadWriteOnce" ];
+                    volumeName = "nextcloud-pg-pv";
+                  };
+                };
                 managed.roles = [
                   {
                     name = "nextcloud";

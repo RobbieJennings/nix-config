@@ -143,7 +143,7 @@
                   volumes = [
                     {
                       name = "config";
-                      persistentVolumeClaim.claimName = "lidarr-config";
+                      persistentVolumeClaim.claimName = "lidarr-pvc";
                     }
                     {
                       name = "media";

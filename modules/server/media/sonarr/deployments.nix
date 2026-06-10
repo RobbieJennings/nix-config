@@ -143,7 +143,7 @@
                   volumes = [
                     {
                       name = "config";
-                      persistentVolumeClaim.claimName = "sonarr-config";
+                      persistentVolumeClaim.claimName = "sonarr-pvc";
                     }
                     {
                       name = "media";

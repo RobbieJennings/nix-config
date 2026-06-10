@@ -35,14 +35,13 @@
                 capacity.storage = "10Gi";
                 accessModes = [ "ReadWriteOnce" ];
                 persistentVolumeReclaimPolicy = "Retain";
-                storageClassName = "";
-                claimRef = {
-                  namespace = "garage";
-                  name = "meta-garage-0";
-                };
                 hostPath = {
                   path = "/storage/garage/meta";
                   type = "DirectoryOrCreate";
+                };
+                claimRef = {
+                  namespace = "garage";
+                  name = "meta-garage-0";
                 };
               };
             }
@@ -56,14 +55,13 @@
                 capacity.storage = "100Gi";
                 accessModes = [ "ReadWriteOnce" ];
                 persistentVolumeReclaimPolicy = "Retain";
-                storageClassName = "";
-                claimRef = {
-                  namespace = "garage";
-                  name = "data-garage-0";
-                };
                 hostPath = {
                   path = "/storage/garage/data";
                   type = "DirectoryOrCreate";
+                };
+                claimRef = {
+                  namespace = "garage";
+                  name = "data-garage-0";
                 };
               };
             }

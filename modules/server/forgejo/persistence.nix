@@ -35,13 +35,13 @@
                 capacity.storage = "100Gi";
                 accessModes = [ "ReadWriteOnce" ];
                 persistentVolumeReclaimPolicy = "Retain";
-                claimRef = {
-                  namespace = "forgejo";
-                  name = "forgejo-pvc";
-                };
                 hostPath = {
                   path = "/storage/forgejo";
                   type = "DirectoryOrCreate";
+                };
+                claimRef = {
+                  namespace = "forgejo";
+                  name = "forgejo-pvc";
                 };
               };
             }
@@ -56,7 +56,28 @@
                 volumeName = "forgejo-pv";
                 resources.requests.storage = "25Gi";
                 accessModes = [ "ReadWriteOnce" ];
-                storageClassName = "";
+              };
+            }
+            {
+              apiVersion = "v1";
+              kind = "PersistentVolume";
+              metadata = {
+                name = "forgejo-pg-pv";
+              };
+              spec = {
+                capacity.storage = "8Gi";
+                volumeMode = "Filesystem";
+                accessModes = [ "ReadWriteOnce" ];
+                persistentVolumeReclaimPolicy = "Retain";
+                csi = {
+                  driver = "driver.longhorn.io";
+                  volumeHandle = "forgejo-pg";
+                  fsType = "ext4";
+                };
+                claimRef = {
+                  namespace = "forgejo";
+                  name = "forgejo-postgres-1";
+                };
               };
             }
           ];

@@ -29,7 +29,13 @@
                 name = "postgresql-global";
                 major = 18;
               };
-              storage.size = "8Gi";
+              storage = {
+                pvcTemplate = {
+                  resources.requests.storage = "8Gi";
+                  accessModes = [ "ReadWriteOnce" ];
+                  volumeName = "forgejo-pg-pv";
+                };
+              };
               managed.roles = [
                 {
                   name = "forgejo";

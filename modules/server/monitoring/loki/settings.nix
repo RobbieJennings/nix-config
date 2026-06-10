@@ -21,17 +21,6 @@
           chunksCache.enabled = false;
           resultsCache.enabled = false;
           singleBinary = {
-            replicas = 1;
-            service = {
-              type = "LoadBalancer";
-              annotations = {
-                "metallb.io/address-pool" = "default";
-                "metallb.io/loadBalancerIPs" = "192.168.1.210";
-                "metallb.io/allow-shared-ip" = "monitoring";
-              };
-            };
-          };
-          loki = {
             image = {
               repository =
                 (lib.lists.findSingle (
@@ -42,6 +31,22 @@
                   x: x ? imageName && x.imageName == "grafana/loki"
                 ) null null config.services.k3s.images).imageTag;
             };
+            replicas = 1;
+            service = {
+              type = "LoadBalancer";
+              annotations = {
+                "metallb.io/address-pool" = "default";
+                "metallb.io/loadBalancerIPs" = "192.168.1.210";
+                "metallb.io/allow-shared-ip" = "monitoring";
+              };
+            };
+            persistence = {
+              enabled = false;
+              dataVolumeParameters.persistentVolumeClaim.claimName = "loki-pvc";
+            };
+            resources = config.server.resources.profiles.appSmall;
+          };
+          loki = {
             extraArgs = [ "-config.expand-env=true" ];
             extraEnvFrom = [
               {
@@ -86,12 +91,6 @@
                 s3ForcePathStyle = true;
               };
             };
-            persistence = {
-              enabled = true;
-              storageClassName = "longhorn";
-              size = "10Gi";
-            };
-            resources = config.server.resources.profiles.appSmall;
           };
           loki-canary = {
             image = {
