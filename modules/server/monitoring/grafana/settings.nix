@@ -24,6 +24,10 @@
               }
             else
               { };
+          persistence = {
+            enabled = true;
+            existingClaim = "grafana-pvc";
+          };
           resources = config.server.resources.profiles.appSmall;
           datasources = {
             "datasources.yaml" = {

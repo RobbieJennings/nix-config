@@ -51,6 +51,14 @@
             type = "ClusterIP";
             port = 80;
           };
+          persistence = {
+            enabled = true;
+            existingClaim = "nextcloud-pvc";
+            nextcloudData = {
+              enabled = true;
+              existingClaim = "nextcloud-data-pvc";
+            };
+          };
           resources = config.server.resources.profiles.appLarge;
           collabora = {
             enabled = true;

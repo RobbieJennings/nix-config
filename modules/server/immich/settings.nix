@@ -58,6 +58,7 @@
             };
             resources = config.server.resources.profiles.appLarge;
           };
+          immich.persistence.library.existingClaim = "immich-pvc";
         };
       };
     };

@@ -16,6 +16,11 @@
         services.k3s.autoDeployCharts.garage.values = {
           garage.replicationFactor = 1;
           deployment.replicaCount = 1;
+          persistence = {
+            enabled = true;
+            meta.storageClass = "";
+            data.storageClass = "";
+          };
           resources = config.server.resources.profiles.appSmall;
         };
       };

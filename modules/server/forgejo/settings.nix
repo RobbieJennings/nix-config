@@ -66,6 +66,11 @@
               }
             ];
           };
+          persistence = {
+            enabled = true;
+            create = false;
+            claimName = "forgejo-pvc";
+          };
           resources = config.server.resources.profiles.appSmall;
         };
       };
