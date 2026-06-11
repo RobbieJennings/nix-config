@@ -75,10 +75,7 @@
                 name = "homelab";
                 namespace = "netbird";
               };
-              serviceRef = {
-                name = "prowlarr";
-                namespace = "media";
-              };
+              serviceRef.name = "prowlarr";
               groups = [ { name = "All"; } ];
             };
           }

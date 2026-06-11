@@ -13,80 +13,74 @@
     }:
     {
       config = lib.mkIf config.monitoring.alloy.enable {
-        services.k3s.autoDeployCharts.alloy = {
-          values.service.enabled = false;
-          extraDeploy = [
-            {
-              apiVersion = "v1";
-              kind = "Service";
-              metadata = {
-                name = "alloy-lb";
-                namespace = "monitoring";
-                annotations = {
-                  "metallb.io/address-pool" = "default";
-                  "metallb.io/allow-shared-ip" = "monitoring";
-                };
+        services.k3s.autoDeployCharts.alloy.extraDeploy = [
+          {
+            apiVersion = "v1";
+            kind = "Service";
+            metadata = {
+              name = "alloy-lb";
+              namespace = "monitoring";
+              annotations = {
+                "metallb.io/address-pool" = "default";
+                "metallb.io/allow-shared-ip" = "monitoring";
               };
-              spec = {
-                type = "LoadBalancer";
-                loadBalancerIP = "192.168.1.210";
-                selector = {
-                  "app.kubernetes.io/name" = "alloy";
-                  "app.kubernetes.io/instance" = "alloy";
-                };
-                ports = [
-                  {
-                    name = "http";
-                    port = 12345;
-                    targetPort = 12345;
-                  }
-                ];
+            };
+            spec = {
+              type = "LoadBalancer";
+              loadBalancerIP = "192.168.1.210";
+              selector = {
+                "app.kubernetes.io/name" = "alloy";
+                "app.kubernetes.io/instance" = "alloy";
               };
-            }
-            {
-              apiVersion = "v1";
-              kind = "Service";
-              metadata = {
-                name = "alloy";
-                namespace = "monitoring";
+              ports = [
+                {
+                  name = "http";
+                  port = 12345;
+                  targetPort = 12345;
+                }
+              ];
+            };
+          }
+          {
+            apiVersion = "v1";
+            kind = "Service";
+            metadata = {
+              name = "alloy";
+              namespace = "monitoring";
+            };
+            spec = {
+              type = "ClusterIP";
+              selector = {
+                "app.kubernetes.io/name" = "alloy";
+                "app.kubernetes.io/instance" = "alloy";
               };
-              spec = {
-                type = "ClusterIP";
-                selector = {
-                  "app.kubernetes.io/name" = "alloy";
-                  "app.kubernetes.io/instance" = "alloy";
-                };
-                ports = [
-                  {
-                    name = "http";
-                    port = 80;
-                    targetPort = 12345;
-                    protocol = "TCP";
-                  }
-                ];
+              ports = [
+                {
+                  name = "http";
+                  port = 80;
+                  targetPort = 12345;
+                  protocol = "TCP";
+                }
+              ];
+            };
+          }
+          {
+            apiVersion = "netbird.io/v1alpha1";
+            kind = "NetworkResource";
+            metadata = {
+              name = "alloy";
+              namespace = "monitoring";
+            };
+            spec = {
+              networkRouterRef = {
+                name = "homelab";
+                namespace = "netbird";
               };
-            }
-            {
-              apiVersion = "netbird.io/v1alpha1";
-              kind = "NetworkResource";
-              metadata = {
-                name = "alloy";
-                namespace = "monitoring";
-              };
-              spec = {
-                networkRouterRef = {
-                  name = "homelab";
-                  namespace = "netbird";
-                };
-                serviceRef = {
-                  name = "alloy";
-                  namespace = "monitoring";
-                };
-                groups = [ { name = "All"; } ];
-              };
-            }
-          ];
-        };
+              serviceRef.name = "alloy";
+              groups = [ { name = "All"; } ];
+            };
+          }
+        ];
       };
     };
 }

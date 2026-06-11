@@ -55,10 +55,7 @@
                 name = "homelab";
                 namespace = "netbird";
               };
-              serviceRef = {
-                name = "nextcloud";
-                namespace = "nextcloud";
-              };
+              serviceRef.name = "nextcloud";
               groups = [ { name = "All"; } ];
             };
           }
@@ -74,10 +71,7 @@
                 name = "homelab";
                 namespace = "netbird";
               };
-              serviceRef = {
-                name = "nextcloud-collabora";
-                namespace = "nextcloud";
-              };
+              serviceRef.name = "nextcloud-collabora";
               groups = [ { name = "All"; } ];
             };
           }

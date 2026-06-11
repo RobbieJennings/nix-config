@@ -14,6 +14,7 @@
     {
       config = lib.mkIf config.monitoring.alloy.enable {
         services.k3s.autoDeployCharts.alloy.values = {
+          service.enabled = false;
           alloy = {
             configMap = {
               create = true;

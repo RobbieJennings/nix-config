@@ -13,61 +13,73 @@
     }:
     {
       config = lib.mkIf config.immich.enable {
-        services.k3s.autoDeployCharts.immich = {
-          values.service.main = {
-            type = "LoadBalancer";
-            annotations = {
-              "metallb.io/address-pool" = "default";
-              "metallb.io/allow-shared-ip" = "immich";
-              "metallb.io/loadBalancerIPs" = "192.168.1.205";
+        services.k3s.autoDeployCharts.immich.extraDeploy = [
+          {
+            apiVersion = "v1";
+            kind = "Service";
+            metadata = {
+              name = "immich-lb";
+              namespace = "immich";
             };
-          };
-          extraDeploy = [
-            {
-              apiVersion = "v1";
-              kind = "Service";
-              metadata = {
-                name = "immich";
-                namespace = "immich";
+            spec = {
+              type = "LoadBalancer";
+              loadBalancerIP = "192.168.1.205";
+              selector = {
+                "app.kubernetes.io/controller" = "main";
+                "app.kubernetes.io/instance" = "immich";
+                "app.kubernetes.io/name" = "server";
               };
-              spec = {
-                type = "ClusterIP";
-                selector = {
-                  "app.kubernetes.io/controller" = "main";
-                  "app.kubernetes.io/instance" = "immich";
-                  "app.kubernetes.io/name" = "server";
-                };
-                ports = [
-                  {
-                    name = "http";
-                    port = 80;
-                    targetPort = 2283;
-                    protocol = "TCP";
-                  }
-                ];
+              ports = [
+                {
+                  name = "http";
+                  port = 2283;
+                  targetPort = 2283;
+                  protocol = "TCP";
+                }
+              ];
+            };
+          }
+          {
+            apiVersion = "v1";
+            kind = "Service";
+            metadata = {
+              name = "immich";
+              namespace = "immich";
+            };
+            spec = {
+              type = "ClusterIP";
+              selector = {
+                "app.kubernetes.io/controller" = "main";
+                "app.kubernetes.io/instance" = "immich";
+                "app.kubernetes.io/name" = "server";
               };
-            }
-            {
-              apiVersion = "netbird.io/v1alpha1";
-              kind = "NetworkResource";
-              metadata = {
-                name = "immich";
-                namespace = "immich";
+              ports = [
+                {
+                  name = "http";
+                  port = 80;
+                  targetPort = 2283;
+                  protocol = "TCP";
+                }
+              ];
+            };
+          }
+          {
+            apiVersion = "netbird.io/v1alpha1";
+            kind = "NetworkResource";
+            metadata = {
+              name = "immich";
+              namespace = "immich";
+            };
+            spec = {
+              networkRouterRef = {
+                name = "homelab";
+                namespace = "netbird";
               };
-              spec = {
-                networkRouterRef = {
-                  name = "homelab";
-                  namespace = "netbird";
-                };
-                serviceRef = {
-                  name = "immich";
-                  namespace = "immich";
-                };
-                groups = [ { name = "All"; } ];
-              };
-            }
-          ];
-        };
+              serviceRef.name = "immich";
+              groups = [ { name = "All"; } ];
+            };
+          }
+        ];
       };
     };
 }

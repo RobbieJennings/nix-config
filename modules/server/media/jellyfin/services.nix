@@ -75,10 +75,7 @@
                 name = "homelab";
                 namespace = "netbird";
               };
-              serviceRef = {
-                name = "jellyfin";
-                namespace = "media";
-              };
+              serviceRef.name = "jellyfin";
               groups = [ { name = "All"; } ];
             };
           }

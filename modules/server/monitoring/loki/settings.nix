@@ -32,14 +32,6 @@
                 ) null null config.services.k3s.images).imageTag;
             };
             replicas = 1;
-            service = {
-              type = "LoadBalancer";
-              annotations = {
-                "metallb.io/address-pool" = "default";
-                "metallb.io/loadBalancerIPs" = "192.168.1.210";
-                "metallb.io/allow-shared-ip" = "monitoring";
-              };
-            };
             persistence = {
               enabled = false;
               dataVolumeParameters.persistentVolumeClaim.claimName = "loki-pvc";

@@ -16,6 +16,7 @@
         inputs.self.modules.nixos.loki-charts
         inputs.self.modules.nixos.loki-images
         inputs.self.modules.nixos.loki-settings
+        inputs.self.modules.nixos.loki-services
         inputs.self.modules.nixos.loki-persistence
         inputs.self.modules.nixos.loki-secrets
       ];

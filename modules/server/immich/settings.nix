@@ -15,6 +15,7 @@
       config = lib.mkIf config.immich.enable {
         services.k3s.autoDeployCharts.immich.values = {
           machine-learning.enabled = false;
+          service.main.enabled = false;
           server.controllers.main.containers.main = {
             image = {
               repository =

@@ -73,10 +73,7 @@
                 name = "homelab";
                 namespace = "netbird";
               };
-              serviceRef = {
-                name = "homepage";
-                namespace = "homepage";
-              };
+              serviceRef.name = "homepage";
               groups = [ { name = "All"; } ];
             };
           }
