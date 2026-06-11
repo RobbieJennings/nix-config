@@ -35,7 +35,7 @@
               ports = [
                 {
                   name = "http";
-                  port = 80;
+                  port = 3000;
                   targetPort = 3000;
                   protocol = "TCP";
                 }
