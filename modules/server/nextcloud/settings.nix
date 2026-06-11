@@ -60,6 +60,18 @@
             };
           };
           resources = config.server.resources.profiles.appLarge;
+          internalDatabase.enabled = false;
+          externalDatabase = {
+            enabled = true;
+            type = "postgresql";
+            host = "nextcloud-postgres-rw";
+            existingSecret = {
+              enabled = true;
+              secretName = "nextcloud-secrets";
+              usernameKey = "username";
+              passwordKey = "password";
+            };
+          };
           collabora = {
             enabled = true;
             image = {

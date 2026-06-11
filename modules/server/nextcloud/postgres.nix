@@ -13,61 +13,45 @@
     }:
     {
       config = lib.mkIf config.nextcloud.enable {
-        services.k3s.autoDeployCharts.nextcloud = {
-          values = {
-            internalDatabase.enabled = false;
-            externalDatabase = {
-              enabled = true;
-              type = "postgresql";
-              host = "nextcloud-postgres-rw";
-              existingSecret = {
-                enabled = true;
-                secretName = "nextcloud-secrets";
-                usernameKey = "username";
-                passwordKey = "password";
-              };
+        services.k3s.autoDeployCharts.nextcloud.extraDeploy = [
+          {
+            apiVersion = "postgresql.cnpg.io/v1";
+            kind = "Cluster";
+            metadata = {
+              namespace = "nextcloud";
+              name = "nextcloud-postgres";
             };
-          };
-          extraDeploy = [
-            {
-              apiVersion = "postgresql.cnpg.io/v1";
-              kind = "Cluster";
-              metadata = {
-                namespace = "nextcloud";
-                name = "nextcloud-postgres";
+            spec = {
+              instances = 1;
+              imageCatalogRef = {
+                apiGroup = "postgresql.cnpg.io";
+                kind = "ClusterImageCatalog";
+                name = "postgresql-global";
+                major = 18;
               };
-              spec = {
-                instances = 1;
-                imageCatalogRef = {
-                  apiGroup = "postgresql.cnpg.io";
-                  kind = "ClusterImageCatalog";
-                  name = "postgresql-global";
-                  major = 18;
+              storage = {
+                pvcTemplate = {
+                  resources.requests.storage = "8Gi";
+                  accessModes = [ "ReadWriteOnce" ];
+                  volumeName = "nextcloud-pg-pv";
                 };
-                storage = {
-                  pvcTemplate = {
-                    resources.requests.storage = "8Gi";
-                    accessModes = [ "ReadWriteOnce" ];
-                    volumeName = "nextcloud-pg-pv";
-                  };
-                };
-                managed.roles = [
-                  {
-                    name = "nextcloud";
-                    passwordSecret.name = "nextcloud-secrets";
-                    login = true;
-                  }
-                ];
-                bootstrap.initdb = {
-                  database = "nextcloud";
-                  owner = "nextcloud";
-                  secret.name = "nextcloud-secrets";
-                };
-                resources = config.server.resources.profiles.dbMedium;
               };
-            }
-          ];
-        };
+              managed.roles = [
+                {
+                  name = "nextcloud";
+                  passwordSecret.name = "nextcloud-secrets";
+                  login = true;
+                }
+              ];
+              bootstrap.initdb = {
+                database = "nextcloud";
+                owner = "nextcloud";
+                secret.name = "nextcloud-secrets";
+              };
+              resources = config.server.resources.profiles.dbMedium;
+            };
+          }
+        ];
       };
     };
 }
