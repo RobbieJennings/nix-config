@@ -22,16 +22,7 @@
     in
     {
       config = lib.mkIf config.forgejo.enable {
-        services.k3s = {
-          images = [ forgejoImage ];
-          autoDeployCharts.forgejo.values = {
-            image = {
-              registry = "code.forgejo.org";
-              repository = "forgejo/forgejo";
-              tag = forgejoImage.imageTag;
-            };
-          };
-        };
+        services.k3s.images = [ forgejoImage ];
       };
     };
 }

@@ -16,30 +16,50 @@
         services.k3s.autoDeployCharts.cert-manager.values = {
           installCRDs = true;
           resources = config.server.resources.profiles.infraMedium;
-          webhook = {
-            image = {
-              repository =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "quay.io/jetstack/cert-manager-webhook"
-                ) null null config.services.k3s.images).imageName;
-              tag =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "quay.io/jetstack/cert-manager-webhook"
-                ) null null config.services.k3s.images).imageTag;
+          image =
+            let
+              image = inputs.self.lib.findImageByName "quay.io/jetstack/cert-manager-controller" config.services.k3s.images;
+            in
+            {
+              repository = image.imageName;
+              tag = image.imageTag;
             };
+          startupapicheck.image =
+            let
+              image = inputs.self.lib.findImageByName "quay.io/jetstack/cert-manager-startupapicheck" config.services.k3s.images;
+            in
+            {
+              repository = image.imageName;
+              tag = image.imageTag;
+            };
+          acmesolver.image =
+            let
+              image = inputs.self.lib.findImageByName "quay.io/jetstack/cert-manager-acmesolver" config.services.k3s.images;
+            in
+            {
+              repository = image.imageName;
+              tag = image.imageTag;
+            };
+          webhook = {
+            image =
+              let
+                image = inputs.self.lib.findImageByName "quay.io/jetstack/cert-manager-webhook" config.services.k3s.images;
+              in
+              {
+                repository = image.imageName;
+                tag = image.imageTag;
+              };
             resources = config.server.resources.profiles.infraMedium;
           };
           cainjector = {
-            image = {
-              repository =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "quay.io/jetstack/cert-manager-cainjector"
-                ) null null config.services.k3s.images).imageName;
-              tag =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "quay.io/jetstack/cert-manager-cainjector"
-                ) null null config.services.k3s.images).imageTag;
-            };
+            image =
+              let
+                image = inputs.self.lib.findImageByName "quay.io/jetstack/cert-manager-cainjector" config.services.k3s.images;
+              in
+              {
+                repository = image.imageName;
+                tag = image.imageTag;
+              };
             resources = config.server.resources.profiles.infraMini;
           };
         };

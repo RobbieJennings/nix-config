@@ -30,15 +30,11 @@
                   containers = [
                     {
                       name = "transmission";
-                      image = "${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/transmission"
-                        ) null null config.services.k3s.images).imageName
-                      }:${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/transmission"
-                        ) null null config.services.k3s.images).imageTag
-                      }";
+                      image =
+                        let
+                          image = inputs.self.lib.findImageByName "linuxserver/transmission" config.services.k3s.images;
+                        in
+                        "${image.imageName}:${image.imageTag}";
                       ports = [
                         { containerPort = 9091; }
                         {

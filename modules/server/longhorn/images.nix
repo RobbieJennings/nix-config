@@ -92,73 +92,19 @@
     in
     {
       config = lib.mkIf config.longhorn.enable {
-        services.k3s = {
-          images = [
-            csiAttacherImage
-            csiNodeDriverRegistrarImage
-            csiProvisionerImage
-            csiResizerImage
-            csiSnapshotterImage
-            csiLivenessProbeImage
-            longhornEngineImage
-            longhornInstanceManagerImage
-            longhornManagerImage
-            longhornShareManagerImage
-            longhornUiImage
-          ];
-          autoDeployCharts.longhorn.values = {
-            image = {
-              csi = {
-                attacher = {
-                  repository = csiAttacherImage.imageName;
-                  tag = csiAttacherImage.imageTag;
-                };
-                nodeDriverRegistrar = {
-                  repository = csiNodeDriverRegistrarImage.imageName;
-                  tag = csiNodeDriverRegistrarImage.imageTag;
-                };
-                provisioner = {
-                  repository = csiProvisionerImage.imageName;
-                  tag = csiProvisionerImage.imageTag;
-                };
-                resizer = {
-                  repository = csiResizerImage.imageName;
-                  tag = csiResizerImage.imageTag;
-                };
-                snapshotter = {
-                  repository = csiSnapshotterImage.imageName;
-                  tag = csiSnapshotterImage.imageTag;
-                };
-                livenessProbe = {
-                  repository = csiLivenessProbeImage.imageName;
-                  tag = csiLivenessProbeImage.imageTag;
-                };
-              };
-              longhorn = {
-                engine = {
-                  repository = longhornEngineImage.imageName;
-                  tag = longhornEngineImage.imageTag;
-                };
-                instanceManager = {
-                  repository = longhornInstanceManagerImage.imageName;
-                  tag = longhornInstanceManagerImage.imageTag;
-                };
-                manager = {
-                  repository = longhornManagerImage.imageName;
-                  tag = longhornManagerImage.imageTag;
-                };
-                shareManager = {
-                  repository = longhornShareManagerImage.imageName;
-                  tag = longhornShareManagerImage.imageTag;
-                };
-                ui = {
-                  repository = longhornUiImage.imageName;
-                  tag = longhornUiImage.imageTag;
-                };
-              };
-            };
-          };
-        };
+        services.k3s.images = [
+          csiAttacherImage
+          csiNodeDriverRegistrarImage
+          csiProvisionerImage
+          csiResizerImage
+          csiSnapshotterImage
+          csiLivenessProbeImage
+          longhornEngineImage
+          longhornInstanceManagerImage
+          longhornManagerImage
+          longhornShareManagerImage
+          longhornUiImage
+        ];
       };
     };
 }

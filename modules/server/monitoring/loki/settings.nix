@@ -21,16 +21,14 @@
           chunksCache.enabled = false;
           resultsCache.enabled = false;
           singleBinary = {
-            image = {
-              repository =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "grafana/loki"
-                ) null null config.services.k3s.images).imageName;
-              tag =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "grafana/loki"
-                ) null null config.services.k3s.images).imageTag;
-            };
+            image =
+              let
+                image = inputs.self.lib.findImageByName "grafana/loki" config.services.k3s.images;
+              in
+              {
+                repository = image.imageName;
+                tag = image.imageTag;
+              };
             replicas = 1;
             persistence = {
               enabled = false;
@@ -85,16 +83,14 @@
             };
           };
           loki-canary = {
-            image = {
-              repository =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "grafana/loki-canary"
-                ) null null config.services.k3s.images).imageName;
-              tag =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "grafana/loki-canary"
-                ) null null config.services.k3s.images).imageTag;
-            };
+            image =
+              let
+                image = inputs.self.lib.findImageByName "grafana/loki-canary" config.services.k3s.images;
+              in
+              {
+                repository = image.imageName;
+                tag = image.imageTag;
+              };
             resources = config.server.resources.profiles.appMini;
           };
         };

@@ -14,6 +14,14 @@
     {
       config = lib.mkIf config.monitoring.grafana.enable {
         services.k3s.autoDeployCharts.grafana.values = {
+          image =
+            let
+              image = inputs.self.lib.findImageByName "grafana/grafana" config.services.k3s.images;
+            in
+            {
+              repository = image.imageName;
+              tag = image.imageTag;
+            };
           replicas = 1;
           adminUser = "admin";
           adminPassword = "changeme";

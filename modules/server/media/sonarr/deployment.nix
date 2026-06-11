@@ -35,15 +35,11 @@
                   initContainers = [
                     {
                       name = "init-sonarr";
-                      image = "${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/sonarr"
-                        ) null null config.services.k3s.images).imageName
-                      }:${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/sonarr"
-                        ) null null config.services.k3s.images).imageTag
-                      }";
+                      image =
+                        let
+                          image = inputs.self.lib.findImageByName "linuxserver/sonarr" config.services.k3s.images;
+                        in
+                        "${image.imageName}:${image.imageTag}";
                       command = [
                         "sh"
                         "-c"
@@ -75,15 +71,11 @@
                   containers = [
                     {
                       name = "sonarr";
-                      image = "${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/sonarr"
-                        ) null null config.services.k3s.images).imageName
-                      }:${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/sonarr"
-                        ) null null config.services.k3s.images).imageTag
-                      }";
+                      image =
+                        let
+                          image = inputs.self.lib.findImageByName "linuxserver/sonarr" config.services.k3s.images;
+                        in
+                        "${image.imageName}:${image.imageTag}";
                       ports = [ { containerPort = 8989; } ];
                       env = [
                         {

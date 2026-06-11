@@ -22,15 +22,7 @@
     in
     {
       config = lib.mkIf config.monitoring.alloy.enable {
-        services.k3s = {
-          images = [ alloyImage ];
-          autoDeployCharts.alloy.values = {
-            image = {
-              repository = alloyImage.imageName;
-              tag = alloyImage.imageTag;
-            };
-          };
-        };
+        services.k3s.images = [ alloyImage ];
       };
     };
 }

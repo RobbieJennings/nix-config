@@ -29,18 +29,10 @@
     in
     {
       config = lib.mkIf config.nextcloud.enable {
-        services.k3s = {
-          images = [
-            nextcloudImage
-            collaboraImage
-          ];
-          autoDeployCharts.nextcloud.values = {
-            image = {
-              repository = nextcloudImage.imageName;
-              tag = nextcloudImage.imageTag;
-            };
-          };
-        };
+        services.k3s.images = [
+          nextcloudImage
+          collaboraImage
+        ];
       };
     };
 }

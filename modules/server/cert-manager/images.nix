@@ -50,29 +50,13 @@
     in
     {
       config = lib.mkIf config.cert-manager.enable {
-        services.k3s = {
-          images = [
-            controllerImage
-            webhookImage
-            cainjectorImage
-            startupapicheckImage
-            acmesolverImage
-          ];
-          autoDeployCharts.cert-manager.values = {
-            image = {
-              repository = controllerImage.imageName;
-              tag = controllerImage.imageTag;
-            };
-            startupapicheck.image = {
-              repository = startupapicheckImage.imageName;
-              tag = startupapicheckImage.imageTag;
-            };
-            acmesolver.image = {
-              repository = acmesolverImage.imageName;
-              tag = acmesolverImage.imageTag;
-            };
-          };
-        };
+        services.k3s.images = [
+          controllerImage
+          webhookImage
+          cainjectorImage
+          startupapicheckImage
+          acmesolverImage
+        ];
       };
     };
 }

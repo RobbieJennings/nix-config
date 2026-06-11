@@ -30,15 +30,11 @@
                   containers = [
                     {
                       name = "prowlarr";
-                      image = "${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/prowlarr"
-                        ) null null config.services.k3s.images).imageName
-                      }:${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/prowlarr"
-                        ) null null config.services.k3s.images).imageTag
-                      }";
+                      image =
+                        let
+                          image = inputs.self.lib.findImageByName "linuxserver/prowlarr" config.services.k3s.images;
+                        in
+                        "${image.imageName}:${image.imageTag}";
                       ports = [ { containerPort = 9696; } ];
                       env = [
                         {

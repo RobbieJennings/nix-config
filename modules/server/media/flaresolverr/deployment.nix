@@ -35,15 +35,11 @@
                   containers = [
                     {
                       name = "flaresolverr";
-                      image = "${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "flaresolverr/flaresolverr"
-                        ) null null config.services.k3s.images).imageName
-                      }:${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "flaresolverr/flaresolverr"
-                        ) null null config.services.k3s.images).imageTag
-                      }";
+                      image =
+                        let
+                          image = inputs.self.lib.findImageByName "flaresolverr/flaresolverr" config.services.k3s.images;
+                        in
+                        "${image.imageName}:${image.imageTag}";
                       env = [
                         {
                           name = "LOG_LEVEL";

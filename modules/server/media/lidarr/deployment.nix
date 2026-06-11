@@ -35,15 +35,11 @@
                   initContainers = [
                     {
                       name = "init-lidarr";
-                      image = "${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/lidarr"
-                        ) null null config.services.k3s.images).imageName
-                      }:${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/lidarr"
-                        ) null null config.services.k3s.images).imageTag
-                      }";
+                      image =
+                        let
+                          image = inputs.self.lib.findImageByName "linuxserver/lidarr" config.services.k3s.images;
+                        in
+                        "${image.imageName}:${image.imageTag}";
                       command = [
                         "sh"
                         "-c"
@@ -75,15 +71,11 @@
                   containers = [
                     {
                       name = "lidarr";
-                      image = "${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/lidarr"
-                        ) null null config.services.k3s.images).imageName
-                      }:${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/lidarr"
-                        ) null null config.services.k3s.images).imageTag
-                      }";
+                      image =
+                        let
+                          image = inputs.self.lib.findImageByName "linuxserver/lidarr" config.services.k3s.images;
+                        in
+                        "${image.imageName}:${image.imageTag}";
                       ports = [ { containerPort = 8686; } ];
                       env = [
                         {

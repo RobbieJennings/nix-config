@@ -17,16 +17,14 @@
           machine-learning.enabled = false;
           service.main.enabled = false;
           server.controllers.main.containers.main = {
-            image = {
-              repository =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "ghcr.io/immich-app/immich-server"
-                ) null null config.services.k3s.images).imageName;
-              tag =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "ghcr.io/immich-app/immich-server"
-                ) null null config.services.k3s.images).imageTag;
-            };
+            image =
+              let
+                image = inputs.self.lib.findImageByName "ghcr.io/immich-app/immich-server" config.services.k3s.images;
+              in
+              {
+                repository = image.imageName;
+                tag = image.imageTag;
+              };
             env = {
               DB_HOSTNAME = "immich-postgres-rw";
               DB_DATABASE_NAME = "immich";

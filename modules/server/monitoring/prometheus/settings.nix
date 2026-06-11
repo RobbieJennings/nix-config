@@ -18,14 +18,14 @@
           prometheus = {
             prometheusSpec = {
               replicas = 1;
-              image = {
-                registry = "quay.io";
-                repository = "prometheus/prometheus";
-                tag =
-                  (lib.lists.findSingle (
-                    x: x ? imageName && x.imageName == "quay.io/prometheus/prometheus"
-                  ) null null config.services.k3s.images).imageTag;
-              };
+              image =
+                let
+                  image = inputs.self.lib.findImageByName "quay.io/prometheus/prometheus" config.services.k3s.images;
+                in
+                {
+                  repository = image.imageName;
+                  tag = image.imageTag;
+                };
               storageSpec = {
                 volumeClaimTemplate = {
                   spec = {
@@ -36,11 +36,11 @@
                 };
               };
               thanos = {
-                image = "quay.io/thanos/thanos:${
-                  (lib.lists.findSingle (
-                    x: x ? imageName && x.imageName == "quay.io/thanos/thanos"
-                  ) null null config.services.k3s.images).imageTag
-                }";
+                image =
+                  let
+                    image = inputs.self.lib.findImageByName "quay.io/thanos/thanos" config.services.k3s.images;
+                  in
+                  "${image.imageName}:${image.imageTag}";
                 objectStorageConfig.existingSecret = {
                   name = "prometheus-thanos-secrets";
                   key = "thanos-config";
@@ -55,14 +55,14 @@
           alertmanager = {
             alertmanagerSpec = {
               replicas = 1;
-              image = {
-                registry = "quay.io";
-                repository = "prometheus/alertmanager";
-                tag =
-                  (lib.lists.findSingle (
-                    x: x ? imageName && x.imageName == "quay.io/prometheus/alertmanager"
-                  ) null null config.services.k3s.images).imageTag;
-              };
+              image =
+                let
+                  image = inputs.self.lib.findImageByName "quay.io/prometheus/alertmanager" config.services.k3s.images;
+                in
+                {
+                  repository = image.imageName;
+                  tag = image.imageTag;
+                };
               storage = {
                 volumeClaimTemplate = {
                   spec = {
@@ -76,46 +76,46 @@
             };
           };
           kube-state-metrics = {
-            image = {
-              registry = "registry.k8s.io";
-              repository = "kube-state-metrics/kube-state-metrics";
-              tag =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "registry.k8s.io/kube-state-metrics/kube-state-metrics"
-                ) null null config.services.k3s.images).imageTag;
-            };
+            image =
+              let
+                image = inputs.self.lib.findImageByName "registry.k8s.io/kube-state-metrics/kube-state-metrics" config.services.k3s.images;
+              in
+              {
+                repository = image.imageName;
+                tag = image.imageTag;
+              };
             resources = config.server.resources.profiles.infraSmall;
           };
           prometheus-node-exporter = {
-            image = {
-              registry = "quay.io";
-              repository = "prometheus/node-exporter";
-              tag =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "quay.io/prometheus/node-exporter"
-                ) null null config.services.k3s.images).imageTag;
-            };
+            image =
+              let
+                image = inputs.self.lib.findImageByName "quay.io/prometheus/node-exporter" config.services.k3s.images;
+              in
+              {
+                repository = image.imageName;
+                tag = image.imageTag;
+              };
             resources = config.server.resources.profiles.infraMini;
           };
           prometheusOperator = {
-            image = {
-              registry = "quay.io";
-              repository = "prometheus-operator/prometheus-operator";
-              tag =
-                (lib.lists.findSingle (
-                  x: x ? imageName && x.imageName == "quay.io/prometheus-operator/prometheus-operator"
-                ) null null config.services.k3s.images).imageTag;
-            };
+            image =
+              let
+                image = inputs.self.lib.findImageByName "quay.io/prometheus-operator/prometheus-operator" config.services.k3s.images;
+              in
+              {
+                repository = image.imageName;
+                tag = image.imageTag;
+              };
             resources = config.server.resources.profiles.infraLarge;
             prometheusConfigReloader = {
-              image = {
-                registry = "quay.io";
-                repository = "prometheus-operator/prometheus-config-reloader";
-                tag =
-                  (lib.lists.findSingle (
-                    x: x ? imageName && x.imageName == "quay.io/prometheus-operator/prometheus-config-reloader"
-                  ) null null config.services.k3s.images).imageTag;
-              };
+              image =
+                let
+                  image = inputs.self.lib.findImageByName "quay.io/prometheus-operator/prometheus-config-reloader" config.services.k3s.images;
+                in
+                {
+                  repository = image.imageName;
+                  tag = image.imageTag;
+                };
             };
           };
         };

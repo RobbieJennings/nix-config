@@ -30,15 +30,11 @@
                   containers = [
                     {
                       name = "homepage";
-                      image = "${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "ghcr.io/gethomepage/homepage"
-                        ) null null config.services.k3s.images).imageName
-                      }:${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "ghcr.io/gethomepage/homepage"
-                        ) null null config.services.k3s.images).imageTag
-                      }";
+                      image =
+                        let
+                          image = inputs.self.lib.findImageByName "ghcr.io/gethomepage/homepage" config.services.k3s.images;
+                        in
+                        "${image.imageName}:${image.imageTag}";
                       ports = [
                         { containerPort = 3000; }
                       ];

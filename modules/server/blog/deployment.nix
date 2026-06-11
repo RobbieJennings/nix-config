@@ -35,15 +35,11 @@
                   containers = [
                     {
                       name = "blog";
-                      image = "${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "blog"
-                        ) null null config.services.k3s.images).imageName
-                      }:${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "blog"
-                        ) null null config.services.k3s.images).imageTag
-                      }";
+                      image =
+                        let
+                          image = inputs.self.lib.findImageByName "blog" config.services.k3s.images;
+                        in
+                        "${image.imageName}:${image.imageTag}";
                       imagePullPolicy = "Never";
                       ports = [ { containerPort = 8080; } ];
                       startupProbe = {

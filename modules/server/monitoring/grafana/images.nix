@@ -22,15 +22,7 @@
     in
     {
       config = lib.mkIf config.monitoring.grafana.enable {
-        services.k3s = {
-          images = [ grafanaImage ];
-          autoDeployCharts.grafana.values = {
-            image = {
-              repository = grafanaImage.imageName;
-              tag = grafanaImage.imageTag;
-            };
-          };
-        };
+        services.k3s.images = [ grafanaImage ];
       };
     };
 }

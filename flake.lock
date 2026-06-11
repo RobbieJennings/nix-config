@@ -725,8 +725,8 @@
     "vuescan-source": {
       "flake": false,
       "locked": {
-        "lastModified": 1780746681,
-        "narHash": "sha256-4n6a/JnyEplUFyaK526QiAd2BLjGuwTuZAMWsuckoAQ=",
+        "lastModified": 1781177361,
+        "narHash": "sha256-vUoqgh8zxL7Htm8qHyd74T0tiBRPNLjAcmlEbl9z/wI=",
         "type": "tarball",
         "url": "https://www.hamrick.com/files/vuex6498.tgz"
       },

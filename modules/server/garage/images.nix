@@ -22,15 +22,7 @@
     in
     {
       config = lib.mkIf config.garage.enable {
-        services.k3s = {
-          images = [ image ];
-          autoDeployCharts.garage.values = {
-            image = {
-              repository = image.imageName;
-              tag = image.imageTag;
-            };
-          };
-        };
+        services.k3s.images = [ image ];
       };
     };
 }

@@ -29,19 +29,10 @@
     in
     {
       config = lib.mkIf config.netbird-operator.enable {
-        services.k3s = {
-          images = [
-            operatorImage
-            routerImage
-          ];
-          autoDeployCharts.netbird-operator.values = {
-            operator.image = {
-              repository = operatorImage.imageName;
-              tag = operatorImage.imageTag;
-            };
-            routingClientImage = "${routerImage.imageName}:${routerImage.imageTag}";
-          };
-        };
+        services.k3s.images = [
+          operatorImage
+          routerImage
+        ];
       };
     };
 }

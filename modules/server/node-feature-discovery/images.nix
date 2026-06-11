@@ -22,15 +22,7 @@
     in
     {
       config = lib.mkIf config.node-feature-discovery.enable {
-        services.k3s = {
-          images = [ nodeFeatureDiscoveryImage ];
-          autoDeployCharts.node-feature-discovery.values = {
-            image = {
-              repository = nodeFeatureDiscoveryImage.imageName;
-              tag = nodeFeatureDiscoveryImage.imageTag;
-            };
-          };
-        };
+        services.k3s.images = [ nodeFeatureDiscoveryImage ];
       };
     };
 }

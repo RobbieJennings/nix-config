@@ -30,15 +30,11 @@
                   containers = [
                     {
                       name = "jellyfin";
-                      image = "${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/jellyfin"
-                        ) null null config.services.k3s.images).imageName
-                      }:${
-                        (lib.lists.findSingle (
-                          x: x ? imageName && x.imageName == "linuxserver/jellyfin"
-                        ) null null config.services.k3s.images).imageTag
-                      }";
+                      image =
+                        let
+                          image = inputs.self.lib.findImageByName "linuxserver/jellyfin" config.services.k3s.images;
+                        in
+                        "${image.imageName}:${image.imageTag}";
                       ports = [
                         { containerPort = 8096; }
                         { containerPort = 1900; }

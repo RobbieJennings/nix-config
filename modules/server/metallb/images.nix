@@ -29,22 +29,10 @@
     in
     {
       config = lib.mkIf config.metallb.enable {
-        services.k3s = {
-          images = [
-            controllerImage
-            speakerImage
-          ];
-          autoDeployCharts.metallb.values = {
-            controller.image = {
-              repository = controllerImage.imageName;
-              tag = controllerImage.imageTag;
-            };
-            speaker.image = {
-              repository = speakerImage.imageName;
-              tag = speakerImage.imageTag;
-            };
-          };
-        };
+        services.k3s.images = [
+          controllerImage
+          speakerImage
+        ];
       };
     };
 }
