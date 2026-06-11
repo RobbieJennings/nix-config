@@ -12,6 +12,6 @@
   config.flake.lib = {
     findImageByName =
       imageName: imageList:
-      (lib.lists.findSingle (x: x ? imageName && x.imageName == imageName) null null imageList);
+      lib.lists.findSingle (x: x ? imageName && x.imageName == imageName) null null imageList;
   };
 }
