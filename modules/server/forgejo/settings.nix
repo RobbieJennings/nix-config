@@ -19,7 +19,8 @@
               image = inputs.self.lib.findImageByName "code.forgejo.org/forgejo/forgejo" config.services.k3s.images;
             in
             {
-              repository = image.imageName;
+              registry = "code.forgejo.org";
+              repository = "forgejo/forgejo";
               tag = image.imageTag;
             };
           gitea = {

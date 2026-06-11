@@ -23,7 +23,8 @@
                   image = inputs.self.lib.findImageByName "quay.io/prometheus/prometheus" config.services.k3s.images;
                 in
                 {
-                  repository = image.imageName;
+                  registry = "quay.io";
+                  repository = "prometheus/prometheus";
                   tag = image.imageTag;
                 };
               storageSpec = {
@@ -60,7 +61,8 @@
                   image = inputs.self.lib.findImageByName "quay.io/prometheus/alertmanager" config.services.k3s.images;
                 in
                 {
-                  repository = image.imageName;
+                  registry = "quay.io";
+                  repository = "prometheus/alertmanager";
                   tag = image.imageTag;
                 };
               storage = {
@@ -81,7 +83,8 @@
                 image = inputs.self.lib.findImageByName "registry.k8s.io/kube-state-metrics/kube-state-metrics" config.services.k3s.images;
               in
               {
-                repository = image.imageName;
+                registry = "registry.k8s.io";
+                repository = "kube-state-metrics/kube-state-metrics";
                 tag = image.imageTag;
               };
             resources = config.server.resources.profiles.infraSmall;
@@ -92,7 +95,8 @@
                 image = inputs.self.lib.findImageByName "quay.io/prometheus/node-exporter" config.services.k3s.images;
               in
               {
-                repository = image.imageName;
+                registry = "quay.io";
+                repository = "prometheus/node-exporter";
                 tag = image.imageTag;
               };
             resources = config.server.resources.profiles.infraMini;
@@ -103,7 +107,8 @@
                 image = inputs.self.lib.findImageByName "quay.io/prometheus-operator/prometheus-operator" config.services.k3s.images;
               in
               {
-                repository = image.imageName;
+                registry = "quay.io";
+                repository = "prometheus-operator/prometheus-operator";
                 tag = image.imageTag;
               };
             resources = config.server.resources.profiles.infraLarge;
@@ -113,7 +118,8 @@
                   image = inputs.self.lib.findImageByName "quay.io/prometheus-operator/prometheus-config-reloader" config.services.k3s.images;
                 in
                 {
-                  repository = image.imageName;
+                  registry = "quay.io";
+                  repository = "prometheus-operator/prometheus-config-reloader";
                   tag = image.imageTag;
                 };
             };
