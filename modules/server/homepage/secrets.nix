@@ -24,12 +24,12 @@
             };
             stringData = {
               GRAFANA_USERNAME =
-                if (config.grafana.enable && config.secrets.grafana.enable) then
+                if (config.monitoring.grafana.enable && config.secrets.grafana.enable) then
                   config.sops.placeholder."grafana/username"
                 else
                   "";
               GRAFANA_PASSWORD =
-                if (config.grafana.enable && config.secrets.grafana.enable) then
+                if (config.monitoring.grafana.enable && config.secrets.grafana.enable) then
                   config.sops.placeholder."grafana/password"
                 else
                   "";
@@ -54,27 +54,27 @@
                 else
                   "";
               JELLYFIN_KEY =
-                if (config.media-server.enable && config.secrets.media-server.enable) then
+                if (config.media-server.jellyfin.enable && config.secrets.media-server.enable) then
                   config.sops.placeholder."jellyfin/key"
                 else
                   "";
               RADARR_KEY =
-                if (config.media-server.enable && config.secrets.media-server.enable) then
+                if (config.media-server.radarr.enable && config.secrets.media-server.enable) then
                   config.sops.placeholder."radarr/key"
                 else
                   "";
               SONARR_KEY =
-                if (config.media-server.enable && config.secrets.media-server.enable) then
+                if (config.media-server.sonarr.enable && config.secrets.media-server.enable) then
                   config.sops.placeholder."sonarr/key"
                 else
                   "";
               LIDARR_KEY =
-                if (config.media-server.enable && config.secrets.media-server.enable) then
+                if (config.media-server.lidarr.enable && config.secrets.media-server.enable) then
                   config.sops.placeholder."lidarr/key"
                 else
                   "";
               PROWLARR_KEY =
-                if (config.media-server.enable && config.secrets.media-server.enable) then
+                if (config.media-server.prowlarr.enable && config.secrets.media-server.enable) then
                   config.sops.placeholder."prowlarr/key"
                 else
                   "";
