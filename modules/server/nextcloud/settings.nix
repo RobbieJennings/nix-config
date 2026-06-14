@@ -38,11 +38,15 @@
             extraEnv = [
               {
                 name = "REDIS_HOST";
-                value = "nextcloud-valkey";
+                value = "valkey-nextcloud-valkey";
               }
               {
                 name = "REDIS_HOST_PORT";
                 value = "6379";
+              }
+              {
+                name = "REDIS_HOST_USER";
+                value = "nextcloud";
               }
               {
                 name = "REDIS_HOST_PASSWORD";

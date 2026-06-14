@@ -18,6 +18,7 @@
         inputs.self.modules.nixos.longhorn
         inputs.self.modules.nixos.garage
         inputs.self.modules.nixos.postgres
+        inputs.self.modules.nixos.valkey-operator
         inputs.self.modules.nixos.node-feature-discovery
         inputs.self.modules.nixos.cert-manager
         inputs.self.modules.nixos.intel-device-plugins
@@ -37,6 +38,7 @@
         longhorn.enable = lib.mkDefault true;
         garage.enable = lib.mkDefault true;
         postgres.enable = lib.mkDefault true;
+        valkey-operator.enable = lib.mkDefault true;
         node-feature-discovery.enable = lib.mkDefault true;
         cert-manager.enable = lib.mkDefault true;
         intel-device-plugins.enable = lib.mkDefault true;

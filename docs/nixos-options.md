@@ -2510,6 +2510,38 @@ one of “light”, “dark”
 
 
 
+## valkey-operator\.enable
+
+
+
+Whether to enable valkey-operator helm chart on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/database/valkey-operator\.nix](../modules/server/database/valkey-operator.nix)
+
+
+
 ## virtualisation\.enable
 
 

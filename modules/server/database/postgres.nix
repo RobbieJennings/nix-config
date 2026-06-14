@@ -17,7 +17,7 @@
         version = "0.28.2";
         hash = "sha256-Q8gCniyIUnz96N0Z2I/RIPZ1ZfV4iyE6N95D7pb2TmQ=";
       };
-      image = pkgs.dockerTools.pullImage {
+      operatorImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/cloudnative-pg/cloudnative-pg";
         imageDigest = "sha256:0dfff19ba7b52ca25851a1010028b6940fff2e233290465af1cfb08a5f3f4661";
         hash = "sha256-zt741Ql1ILjDLNQn8XzmTQmds4407P8h9xtlArL+fmA=";
@@ -27,7 +27,7 @@
       postgresImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/cloudnative-pg/postgresql";
         imageDigest = "sha256:d879dfab951cb0eef9beac367f259d08ea1c04ae84699526854ff9ae478656be";
-        sha256 = "sha256-ngZW2rMlOaGm/VbSR2AHGCQis88zt+S2I++Oi6hqcKE=";
+        hash = "sha256-ngZW2rMlOaGm/VbSR2AHGCQis88zt+S2I++Oi6hqcKE=";
         finalImageTag = "18.3-standard-trixie";
         arch = "amd64";
       };
@@ -40,17 +40,17 @@
       config = lib.mkIf config.postgres.enable {
         services.k3s = {
           images = [
-            image
+            operatorImage
             postgresImage
           ];
           autoDeployCharts = {
             cloudnative-pg = chart // {
-              targetNamespace = "database";
+              targetNamespace = "cloudnative-pg-system";
               createNamespace = true;
               values = {
                 image = {
-                  repository = image.imageName;
-                  tag = image.imageTag;
+                  repository = operatorImage.imageName;
+                  tag = operatorImage.imageTag;
                 };
                 resources = config.server.resources.profiles.infraLarge;
               };

@@ -46,6 +46,7 @@
               };
               REDIS_HOSTNAME = "immich-valkey";
               REDIS_PORT = "6379";
+              REDIS_USERNAME = "immich";
               REDIS_PASSWORD = {
                 valueFrom = {
                   secretKeyRef = {

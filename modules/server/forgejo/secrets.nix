@@ -38,9 +38,9 @@
                       username = "forgejo";
                       password = config.sops.placeholder."forgejo/postgres_password";
                       valkey-password = config.sops.placeholder."forgejo/valkey_password";
-                      valkey-url = "redis://default:${
+                      valkey-url = "redis://forgejo:${
                         config.sops.placeholder."forgejo/valkey_password"
-                      }@forgejo-valkey:6379/0";
+                      }@valkey-forgejo-valkey:6379/0";
                     };
                   };
                   path = "/var/lib/rancher/k3s/server/manifests/forgejo-secret.json";
