@@ -23,49 +23,6 @@
             };
             data."services.yaml" = builtins.toJSON [
               {
-                Infrastructure = [
-                  {
-                    Grafana = {
-                      href = "http://grafana.monitoring/";
-                      description = "Dashboards";
-                      widgets = [
-                        {
-                          type = "grafana";
-                          url = "http://192.168.1.210:3000";
-                          alerts = "alertmanager";
-                          username = "{{HOMEPAGE_VAR_GRAFANA_USERNAME}}";
-                          password = "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}";
-                        }
-                      ];
-                    };
-                  }
-                  {
-                    Prometheus = {
-                      href = "http://prometheus.monitoring/";
-                      description = "Metrics Server";
-                      widgets = [
-                        {
-                          type = "prometheus";
-                          url = "http://192.168.1.210:9090";
-                        }
-                      ];
-                    };
-                  }
-                  {
-                    Alloy = {
-                      href = "http://alloy.monitoring/";
-                      description = "Logging Agent";
-                    };
-                  }
-                  {
-                    Longhorn = {
-                      href = "http://longhorn.longhorn-system/";
-                      description = "Volume Management";
-                    };
-                  }
-                ];
-              }
-              {
                 Files = [
                   {
                     Forgejo = {
@@ -194,6 +151,65 @@
                           key = "{{HOMEPAGE_VAR_LIDARR_KEY}}";
                         }
                       ];
+                    };
+                  }
+                ];
+              }
+              {
+                Monitoring = [
+                  {
+                    Grafana = {
+                      href = "http://grafana.monitoring/";
+                      description = "Dashboards";
+                      widgets = [
+                        {
+                          type = "grafana";
+                          url = "http://192.168.1.210:3000";
+                          alerts = "alertmanager";
+                          username = "{{HOMEPAGE_VAR_GRAFANA_USERNAME}}";
+                          password = "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}";
+                        }
+                      ];
+                    };
+                  }
+                  {
+                    Prometheus = {
+                      href = "http://prometheus.monitoring/";
+                      description = "Metrics Server";
+                      widgets = [
+                        {
+                          type = "prometheus";
+                          url = "http://192.168.1.210:9090";
+                        }
+                      ];
+                    };
+                  }
+                  {
+                    Alloy = {
+                      href = "http://alloy.monitoring/";
+                      description = "Logging Agent";
+                    };
+                  }
+                ];
+              }
+              {
+                Infrastructure = [
+                  {
+                    Longhorn = {
+                      href = "http://longhorn.longhorn-system/";
+                      description = "Volume Management";
+                    };
+                  }
+                  {
+                    Garage = {
+                      href = "http://garage-web-ui.garage/";
+                      description = "S3 Compatible Block Storage";
+                    };
+                  }
+                  {
+                    Netbird = {
+                      href = "https://app.netbird.io/";
+                      description = "Wireguard Tunneled Networking";
                     };
                   }
                 ];

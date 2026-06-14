@@ -37,6 +37,7 @@
           passwords.enable = true;
           k3s.enable = true;
           longhorn.enable = true;
+          garage.enable = true;
           grafana.enable = true;
           prometheus.enable = true;
           loki.enable = true;

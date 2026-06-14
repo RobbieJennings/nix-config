@@ -1588,6 +1588,38 @@ true
 
 
 
+## secrets\.garage\.enable
+
+
+
+Whether to enable garage secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/garage/default\.nix](../modules/server/garage/default.nix)
+
+
+
 ## secrets\.grafana\.enable
 
 

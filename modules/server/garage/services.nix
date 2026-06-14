@@ -22,6 +22,7 @@
               namespace = "garage";
               annotations = {
                 "metallb.io/address-pool" = "default";
+                "metallb.io/allow-shared-ip" = "garage";
               };
             };
             spec = {
@@ -44,6 +45,12 @@
                   targetPort = 3902;
                   protocol = "TCP";
                 }
+                {
+                  name = "admin";
+                  port = 3903;
+                  targetPort = 3903;
+                  protocol = "TCP";
+                }
               ];
             };
           }
@@ -60,6 +67,71 @@
                 namespace = "netbird";
               };
               serviceRef.name = "garage";
+              groups = [ { name = "All"; } ];
+            };
+          }
+          {
+            apiVersion = "v1";
+            kind = "Service";
+            metadata = {
+              name = "garage-web-ui-lb";
+              namespace = "garage";
+              annotations = {
+                "metallb.io/address-pool" = "default";
+                "metallb.io/allow-shared-ip" = "garage";
+              };
+            };
+            spec = {
+              type = "LoadBalancer";
+              loadBalancerIP = "192.168.1.208";
+              selector = {
+                "app" = "garage-web-ui";
+              };
+              ports = [
+                {
+                  name = "http";
+                  port = 3909;
+                  targetPort = 3909;
+                  protocol = "TCP";
+                }
+              ];
+            };
+          }
+          {
+            apiVersion = "v1";
+            kind = "Service";
+            metadata = {
+              name = "garage-web-ui";
+              namespace = "garage";
+            };
+            spec = {
+              type = "ClusterIP";
+              selector = {
+                "app" = "garage-web-ui";
+              };
+              ports = [
+                {
+                  name = "http";
+                  port = 80;
+                  targetPort = 3909;
+                  protocol = "TCP";
+                }
+              ];
+            };
+          }
+          {
+            apiVersion = "netbird.io/v1alpha1";
+            kind = "NetworkResource";
+            metadata = {
+              name = "garage-web-ui";
+              namespace = "garage";
+            };
+            spec = {
+              networkRouterRef = {
+                name = "homelab";
+                namespace = "netbird";
+              };
+              serviceRef.name = "garage-web-ui";
               groups = [ { name = "All"; } ];
             };
           }
