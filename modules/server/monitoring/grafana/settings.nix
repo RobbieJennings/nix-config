@@ -46,7 +46,7 @@
                   name = "Prometheus";
                   type = "prometheus";
                   access = "proxy";
-                  url = "http://192.168.1.210:9090";
+                  url = "http://prometheus-operated:9090";
                   isDefault = true;
                   editable = false;
                 }
@@ -54,7 +54,7 @@
                   name = "Loki";
                   type = "loki";
                   access = "proxy";
-                  url = "http://192.168.1.210:3100";
+                  url = "http://loki:3100";
                   editable = false;
                 }
               ];

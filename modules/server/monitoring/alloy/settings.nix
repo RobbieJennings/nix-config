@@ -39,7 +39,7 @@
                 }
                 loki.write "default" {
                   endpoint {
-                    url = "http://192.168.1.210:3100/loki/api/v1/push"
+                    url = "http://loki:3100/loki/api/v1/push"
                   }
                 }
               '';
