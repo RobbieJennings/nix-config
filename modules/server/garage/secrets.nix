@@ -15,7 +15,7 @@
       config = lib.mkIf (config.garage.enable && config.secrets.enable && config.secrets.garage.enable) {
         sops = {
           secrets = {
-            "garage/API_ADMIN_KEY" = { };
+            "garage/api_admin_key" = { };
           };
           templates = {
             garage-web-ui-secrets = {
@@ -28,7 +28,7 @@
                 };
                 type = "Opaque";
                 stringData = {
-                  API_ADMIN_KEY = config.sops.placeholder."garage/API_ADMIN_KEY";
+                  API_ADMIN_KEY = config.sops.placeholder."garage/api_admin_key";
                 };
               };
               path = "/var/lib/rancher/k3s/server/manifests/garage-web-ui-secrets.json";

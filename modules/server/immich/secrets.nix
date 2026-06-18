@@ -18,6 +18,8 @@
             "immich/key" = { };
             "immich/postgres_password" = { };
             "immich/valkey_password" = { };
+            "immich/aws_access_key" = { };
+            "immich/aws_secret_key" = { };
           };
           templates = {
             immich-secrets = {
@@ -33,6 +35,9 @@
                   username = "immich";
                   password = config.sops.placeholder."immich/postgres_password";
                   valkey-password = config.sops.placeholder."immich/valkey_password";
+                  AWS_ACCESS_KEY_ID = config.sops.placeholder."immich/aws_access_key";
+                  AWS_SECRET_ACCESS_KEY = config.sops.placeholder."immich/aws_secret_key";
+                  AWS_REGION = "garage";
                 };
               };
               path = "/var/lib/rancher/k3s/server/manifests/immich-secrets.json";

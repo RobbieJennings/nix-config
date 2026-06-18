@@ -17,7 +17,6 @@
           {
             sops = {
               secrets = {
-                "loki/aws_endpoint" = { };
                 "loki/aws_access_key" = { };
                 "loki/aws_secret_key" = { };
               };
@@ -32,7 +31,6 @@
                     };
                     type = "Opaque";
                     stringData = {
-                      AWS_ENDPOINT = config.sops.placeholder."loki/aws_endpoint";
                       AWS_ACCESS_KEY_ID = config.sops.placeholder."loki/aws_access_key";
                       AWS_SECRET_ACCESS_KEY = config.sops.placeholder."loki/aws_secret_key";
                     };

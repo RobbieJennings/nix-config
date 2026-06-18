@@ -340,6 +340,38 @@ true
 
 
 
+## forgejo\.initdb\.enable
+
+
+
+Whether to enable initialize fresh postgres database for Forgejo\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/forgejo/postgres\.nix](../modules/server/forgejo/postgres.nix)
+
+
+
 ## fwupd\.enable
 
 
@@ -497,6 +529,38 @@ true
 
 *Declared by:*
  - [modules/server/immich/default\.nix](../modules/server/immich/default.nix)
+
+
+
+## immich\.initdb\.enable
+
+
+
+Whether to enable initialize fresh postgres database for Immich\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/immich/postgres\.nix](../modules/server/immich/postgres.nix)
 
 
 
@@ -1361,6 +1425,38 @@ true
 
 *Declared by:*
  - [modules/server/nextcloud/default\.nix](../modules/server/nextcloud/default.nix)
+
+
+
+## nextcloud\.initdb\.enable
+
+
+
+Whether to enable initialize fresh postgres database for Nextcloud\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/nextcloud/postgres\.nix](../modules/server/nextcloud/postgres.nix)
 
 
 

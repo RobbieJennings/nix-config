@@ -23,6 +23,8 @@
                 "forgejo/key" = { };
                 "forgejo/postgres_password" = { };
                 "forgejo/valkey_password" = { };
+                "forgejo/aws_access_key" = { };
+                "forgejo/aws_secret_key" = { };
               };
               templates = {
                 forgejoSecrets = {
@@ -41,6 +43,9 @@
                       valkey-url = "redis://forgejo:${
                         config.sops.placeholder."forgejo/valkey_password"
                       }@valkey-forgejo-valkey:6379/0";
+                      AWS_ACCESS_KEY_ID = config.sops.placeholder."forgejo/aws_access_key";
+                      AWS_SECRET_ACCESS_KEY = config.sops.placeholder."forgejo/aws_secret_key";
+                      AWS_REGION = "garage";
                     };
                   };
                   path = "/var/lib/rancher/k3s/server/manifests/forgejo-secret.json";

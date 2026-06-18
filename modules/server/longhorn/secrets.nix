@@ -17,9 +17,8 @@
           {
             sops = {
               secrets = {
-                "longhorn/backup_url" = { };
-                "longhorn/backup_access_key" = { };
-                "longhorn/backup_secret_key" = { };
+                "longhorn/aws_access_key" = { };
+                "longhorn/aws_secret_key" = { };
               };
               templates = {
                 longhorn-secrets = {
@@ -32,9 +31,9 @@
                     };
                     type = "Opaque";
                     stringData = {
-                      AWS_ENDPOINTS = config.sops.placeholder."longhorn/backup_url";
-                      AWS_ACCESS_KEY_ID = config.sops.placeholder."longhorn/backup_access_key";
-                      AWS_SECRET_ACCESS_KEY = config.sops.placeholder."longhorn/backup_secret_key";
+                      AWS_ENDPOINTS = "http://garage.garage.svc.cluster.local:3900";
+                      AWS_ACCESS_KEY_ID = config.sops.placeholder."longhorn/aws_access_key";
+                      AWS_SECRET_ACCESS_KEY = config.sops.placeholder."longhorn/aws_secret_key";
                     };
                   };
                   path = "/var/lib/rancher/k3s/server/manifests/longhorn-backup-secret.json";

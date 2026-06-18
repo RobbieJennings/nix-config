@@ -74,9 +74,9 @@
               };
               type = "s3";
               s3 = {
-                endpoint = "\${AWS_ENDPOINT}";
                 accessKeyId = "\${AWS_ACCESS_KEY_ID}";
                 secretAccessKey = "\${AWS_SECRET_ACCESS_KEY}";
+                endpoint = "http://garage.garage.svc.cluster.local:3900";
                 region = "garage";
                 s3ForcePathStyle = true;
               };

@@ -18,10 +18,8 @@
           {
             sops = {
               secrets = {
-                "prometheus/thanos_bucket_name" = { };
-                "prometheus/thanos_aws_endpoint" = { };
-                "prometheus/thanos_aws_access_key" = { };
-                "prometheus/thanos_aws_secret_key" = { };
+                "prometheus/aws_access_key" = { };
+                "prometheus/aws_secret_key" = { };
               };
               templates = {
                 prometheus-thanos-secrets = {
@@ -37,10 +35,10 @@
                       thanos-config = ''
                         type: S3
                         config:
-                          bucket: ${config.sops.placeholder."prometheus/thanos_bucket_name"}
-                          endpoint: ${config.sops.placeholder."prometheus/thanos_aws_endpoint"}
-                          access_key: ${config.sops.placeholder."prometheus/thanos_aws_access_key"}
-                          secret_key: ${config.sops.placeholder."prometheus/thanos_aws_secret_key"}
+                          bucket: prometheus-thanos-bucket
+                          endpoint: garage.garage.svc.cluster.local:3900
+                          access_key: ${config.sops.placeholder."prometheus/aws_access_key"}
+                          secret_key: ${config.sops.placeholder."prometheus/aws_secret_key"}
                       '';
                     };
                   };
