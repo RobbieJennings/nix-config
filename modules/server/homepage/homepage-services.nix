@@ -23,16 +23,23 @@
             };
             data."services.yaml" = builtins.toJSON [
               {
-                Files = [
+                Services = [
                   {
-                    Forgejo = {
-                      href = "http://forgejo.forgejo/";
-                      description = "Git Server";
+                    Jellyfin = {
+                      href = "http://jellyfin.media.homelab/";
+                      description = "Media Playback";
                       widgets = [
                         {
-                          type = "gitea";
-                          url = "http://192.168.1.204:3000";
-                          key = "{{HOMEPAGE_VAR_FORGEJO_KEY}}";
+                          type = "jellyfin";
+                          url = "http://192.168.1.202:8096";
+                          key = "{{HOMEPAGE_VAR_JELLYFIN_KEY}}";
+                          version = 1;
+                          enableBlocks = true;
+                          enableNowPlaying = true;
+                          enableUser = true;
+                          enableMediaControl = true;
+                          showEpisodeNumber = true;
+                          expandOneStreamToTwoRows = true;
                         }
                       ];
                     };
@@ -65,30 +72,23 @@
                       ];
                     };
                   }
-                ];
-              }
-              {
-                Media = [
                   {
-                    Jellyfin = {
-                      href = "http://jellyfin.media.homelab/";
-                      description = "Media Playback";
+                    Forgejo = {
+                      href = "http://forgejo.forgejo/";
+                      description = "Git Server";
                       widgets = [
                         {
-                          type = "jellyfin";
-                          url = "http://192.168.1.202:8096";
-                          key = "{{HOMEPAGE_VAR_JELLYFIN_KEY}}";
-                          version = 1;
-                          enableBlocks = true;
-                          enableNowPlaying = true;
-                          enableUser = true;
-                          enableMediaControl = true;
-                          showEpisodeNumber = true;
-                          expandOneStreamToTwoRows = true;
+                          type = "gitea";
+                          url = "http://192.168.1.204:3000";
+                          key = "{{HOMEPAGE_VAR_FORGEJO_KEY}}";
                         }
                       ];
                     };
                   }
+                ];
+              }
+              {
+                Downloads = [
                   {
                     Transmission = {
                       href = "http://transmission.media.homelab/";
@@ -156,7 +156,7 @@
                 ];
               }
               {
-                Monitoring = [
+                Infrastructure = [
                   {
                     Grafana = {
                       href = "http://grafana.monitoring/";
@@ -190,10 +190,6 @@
                       description = "Logging Agent";
                     };
                   }
-                ];
-              }
-              {
-                Infrastructure = [
                   {
                     Longhorn = {
                       href = "http://longhorn.longhorn-system/";
