@@ -372,6 +372,38 @@ true
 
 
 
+## freshrss\.enable
+
+
+
+Whether to enable FreshRSS deployment on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/freshrss/default\.nix](../modules/server/freshrss/default.nix)
+
+
+
 ## fwupd\.enable
 
 
@@ -1681,6 +1713,38 @@ true
 
 *Declared by:*
  - [modules/server/forgejo/default\.nix](../modules/server/forgejo/default.nix)
+
+
+
+## secrets\.freshrss\.enable
+
+
+
+Whether to enable FreshRSS login secrets\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/freshrss/default\.nix](../modules/server/freshrss/default.nix)
 
 
 

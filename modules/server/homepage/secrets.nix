@@ -53,6 +53,16 @@
                   config.sops.placeholder."immich/key"
                 else
                   "";
+              FRESHRSS_USERNAME =
+                if (config.freshrss.enable && config.secrets.freshrss.enable) then
+                  config.sops.placeholder."freshrss/username"
+                else
+                  "";
+              FRESHRSS_PASSWORD =
+                if (config.freshrss.enable && config.secrets.freshrss.enable) then
+                  config.sops.placeholder."freshrss/password"
+                else
+                  "";
               JELLYFIN_KEY =
                 if (config.media-server.jellyfin.enable && config.secrets.media-server.enable) then
                   config.sops.placeholder."jellyfin/key"

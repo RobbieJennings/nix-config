@@ -44,6 +44,7 @@
           forgejo.enable = true;
           nextcloud.enable = true;
           immich.enable = true;
+          freshrss.enable = true;
           media-server.enable = true;
           netbird-operator.enable = true;
         };

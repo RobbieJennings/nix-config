@@ -86,6 +86,20 @@
                           };
                         }
                         {
+                          name = "HOMEPAGE_VAR_FRESHRSS_USERNAME";
+                          valueFrom.secretKeyRef = {
+                            name = "homepage-secrets";
+                            key = "FRESHRSS_USERNAME";
+                          };
+                        }
+                        {
+                          name = "HOMEPAGE_VAR_FRESHRSS_PASSWORD";
+                          valueFrom.secretKeyRef = {
+                            name = "homepage-secrets";
+                            key = "FRESHRSS_PASSWORD";
+                          };
+                        }
+                        {
                           name = "HOMEPAGE_VAR_JELLYFIN_KEY";
                           valueFrom.secretKeyRef = {
                             name = "homepage-secrets";

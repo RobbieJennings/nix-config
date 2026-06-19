@@ -46,6 +46,8 @@
   - 📊 [Grafana](https://grafana.com)
   - 🪣 [Forgejo](https://forgejo.org)
   - ☁️ [Nextcloud](https://nextcloud.com)
+  - 📷 [Immich](https://immich.app)
+  - 📰 [FreshRSS](https://freshrss.org)
   - 📼 [Jellyfin](https://jellyfin.org)
   - 🏴‍☠️ [Servarr](https://wiki.servarr.com)
 

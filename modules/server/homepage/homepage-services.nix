@@ -85,6 +85,20 @@
                       ];
                     };
                   }
+                  {
+                    FreshRSS = {
+                      href = "http://freshrss.freshrss/";
+                      description = "RSS News Aggregator";
+                      widgets = [
+                        {
+                          type = "freshrss";
+                          url = "http://192.168.1.207";
+                          username = "{{HOMEPAGE_VAR_FRESHRSS_USERNAME}}";
+                          password = "{{HOMEPAGE_VAR_FRESHRSS_PASSWORD}}";
+                        }
+                      ];
+                    };
+                  }
                 ];
               }
               {
