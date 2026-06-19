@@ -20,6 +20,14 @@
           backend.replicas = 0;
           chunksCache.enabled = false;
           resultsCache.enabled = false;
+          defaults = {
+            extraArgs = [ "-config.expand-env=true" ];
+            extraEnvFrom = [
+              {
+                secretRef.name = "loki-secrets";
+              }
+            ];
+          };
           singleBinary = {
             image =
               let
@@ -37,12 +45,6 @@
             resources = config.server.resources.profiles.appSmall;
           };
           loki = {
-            extraArgs = [ "-config.expand-env=true" ];
-            extraEnvFrom = [
-              {
-                secretRef.name = "loki-secrets";
-              }
-            ];
             auth_enabled = false;
             commonConfig.replication_factor = 1;
             schemaConfig = {
@@ -78,6 +80,7 @@
                 secretAccessKey = "\${AWS_SECRET_ACCESS_KEY}";
                 endpoint = "http://garage.garage.svc.cluster.local:3900";
                 region = "garage";
+                insecure = true;
                 s3ForcePathStyle = true;
               };
             };

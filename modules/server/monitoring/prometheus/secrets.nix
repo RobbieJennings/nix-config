@@ -37,6 +37,7 @@
                         config:
                           bucket: prometheus-thanos-bucket
                           endpoint: garage.garage.svc.cluster.local:3900
+                          insecure: true
                           access_key: ${config.sops.placeholder."prometheus/aws_access_key"}
                           secret_key: ${config.sops.placeholder."prometheus/aws_secret_key"}
                       '';
