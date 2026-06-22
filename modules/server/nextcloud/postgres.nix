@@ -66,7 +66,7 @@
                   isWALArchiver = true;
                   parameters = {
                     barmanObjectName = "garage-store";
-                    serverName = "nextcloud-postgres-backup-2"; # Must change before each restore
+                    serverName = "nextcloud-postgres-backup-3"; # Must change before each restore
                   };
                 }
               ];
@@ -77,7 +77,7 @@
                     name = "barman-cloud.cloudnative-pg.io";
                     parameters = {
                       barmanObjectName = "garage-store";
-                      serverName = "nextcloud-postgres-backup-1"; # Must match previous plugin server name
+                      serverName = "nextcloud-postgres-backup-2"; # Must match previous plugin server name
                     };
                   };
                 }
