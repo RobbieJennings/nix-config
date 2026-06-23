@@ -98,6 +98,9 @@
               type = "ClusterIP";
               port = 80;
             };
+            aliasgroups = [
+              { host = "http://nextcloud.nextcloud:80"; }
+            ];
             resources = config.server.resources.profiles.appLarge;
           };
           cronjob = {
