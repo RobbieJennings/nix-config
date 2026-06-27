@@ -14,8 +14,8 @@
       chart = {
         name = "valkey-operator";
         repo = "https://valkey.io/valkey-helm";
-        version = "0.2.0";
-        hash = "sha256-LWZSYmAuxj8hfWEmyllYRNUMRBKSw5lSEU4C8B2fGV0=";
+        version = "0.2.7";
+        hash = "sha256-j0TMgTJuZIJIuKRR51rc/4sN+U25LnTUMjs7qpYA0Jw=";
       };
       operatorImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/valkey-io/valkey-operator";
@@ -26,16 +26,16 @@
       };
       valkeyImage = pkgs.dockerTools.pullImage {
         imageName = "valkey/valkey";
-        imageDigest = "sha256:546304417feac0874c3dd576e0952c6bb8f06bb4093ea0c9ca303c73cf458f63";
-        hash = "sha256-Fytwh9dNSRODr0ZsSaqIXGppqVF424C2TW47Uiv0ZWA=";
-        finalImageTag = "9.0.1";
+        imageDigest = "sha256:4963247afc4cd33c7d3b2d2816b9f7f8eeebab148d29056c2ca4d7cbc966f2d9";
+        hash = "sha256-Cgdk10ekicmOSPcAR9Xuraqo81+qqe/w8m37XExHZ5g=";
+        finalImageTag = "9.1.0";
         arch = "amd64";
       };
       exporterImage = pkgs.dockerTools.pullImage {
         imageName = "oliver006/redis_exporter";
-        imageDigest = "sha256:cd5fad1591e585db5b58beec7fca427027c61a4349f50109af67cf2f07964d02";
-        hash = "sha256-z7B3zFmyp2SizMZcHEw0A6qEVTeC6ARuoJJ7aSncpfY=";
-        finalImageTag = "v1.80.0";
+        imageDigest = "sha256:2e9795be900db073e9475fdb9c5124db309b07a3e4e75a1770705cb03be1a1c8";
+        hash = "sha256-haL7PXhx12d5QdzkHhuQbffRdB97g2ktZI1KJkqvxtM=";
+        finalImageTag = "v1.86.0";
         arch = "amd64";
       };
     in
