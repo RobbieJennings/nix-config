@@ -14,8 +14,8 @@
       cnpgChart = {
         name = "cloudnative-pg";
         repo = "https://cloudnative-pg.github.io/charts";
-        version = "0.28.2";
-        hash = "sha256-Q8gCniyIUnz96N0Z2I/RIPZ1ZfV4iyE6N95D7pb2TmQ=";
+        version = "0.28.3";
+        hash = "sha256-oiDxdLcmN/UFVTucD92wuf7QM4DVi+Fxk1zZnYgId9Y=";
       };
       barmanPluginChart = {
         name = "plugin-barman-cloud";
@@ -39,9 +39,9 @@
       };
       postgresImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/cloudnative-pg/postgresql";
-        imageDigest = "sha256:d879dfab951cb0eef9beac367f259d08ea1c04ae84699526854ff9ae478656be";
-        hash = "sha256-ngZW2rMlOaGm/VbSR2AHGCQis88zt+S2I++Oi6hqcKE=";
-        finalImageTag = "18.3-standard-trixie";
+        imageDigest = "sha256:9dd9fda84a67a3f351885885fec02ec6346fd941965d8fd94226531fb329624a";
+        hash = "sha256-nKDBrn5eq0pxsqbQOO3pBcP1lseDmayt3WN/0fF5k0s=";
+        finalImageTag = "18.4-standard-trixie";
         arch = "amd64";
       };
     in
