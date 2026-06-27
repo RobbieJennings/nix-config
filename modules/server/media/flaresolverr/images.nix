@@ -14,9 +14,9 @@
     let
       flaresolverrImage = pkgs.dockerTools.pullImage {
         imageName = "flaresolverr/flaresolverr";
-        imageDigest = "sha256:7962759d99d7e125e108e0f5e7f3cdbcd36161776d058d1d9b7153b92ef1af9e";
-        hash = "sha256-ANmJg+ZQYLXIZrbOSufKR8khSiuJ9S+83DCFCBf2Yf4=";
-        finalImageTag = "3.4.6";
+        imageDigest = "sha256:139dfee1c6f89249c8d665d1333a42e8ec74ec0a86bc6bb1c8461e10d3a66a47";
+        hash = "sha256-dQQF1r6H1QbrBADtlr9E3R06zLZWQfEq60JuT6aYNKM=";
+        finalImageTag = "v3.5.0";
         arch = "amd64";
       };
     in

@@ -14,9 +14,9 @@
     let
       jellyfinImage = pkgs.dockerTools.pullImage {
         imageName = "linuxserver/jellyfin";
-        imageDigest = "sha256:e622a48adf7193c7d626c2325a40f9b01c932c8e7bf3f50ffa40e7e9b6ce1d39";
-        hash = "sha256-6ywpJewD2TEBbCx9ol9QLzJci2tyKFGO/z9LC0JDJcE=";
-        finalImageTag = "10.11.8";
+        imageDigest = "sha256:c9bb091532bec4fa12b3ce3c08d163cab2b369f5f30f1f30ca49a46d97f5eec8";
+        hash = "sha256-Chjq1Fp7nUuiUxJy02AZVVg3Ps/S+jpZJhfP8D+d7e4=";
+        finalImageTag = "10.11.11";
         arch = "amd64";
       };
     in
