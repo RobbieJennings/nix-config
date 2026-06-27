@@ -14,9 +14,9 @@
     let
       grafanaImage = pkgs.dockerTools.pullImage {
         imageName = "grafana/grafana";
-        imageDigest = "sha256:2d1f9ae67c1778d33e291d4c3c759cd8b650e67491f02533499eb950e075eeb5";
-        hash = "sha256-XgfGrtHg4HbftWoLXODRLJKyhyCWJUvO/O95kXW6oqk=";
-        finalImageTag = "13.0.1-security-01";
+        imageDigest = "sha256:121a7a9ece6dc10b969f1f96eed64b4f07dfac0d0b8abc070f7cb83bbde86f63";
+        hash = "sha256-W7Uux1EHVhlCN9TCb+nbUT+dp07siWkDZR+wR2LYlsA=";
+        finalImageTag = "13.1.0";
         arch = "amd64";
       };
     in
