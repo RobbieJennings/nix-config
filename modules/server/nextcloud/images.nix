@@ -14,16 +14,16 @@
     let
       nextcloudImage = pkgs.dockerTools.pullImage {
         imageName = "nextcloud";
-        imageDigest = "sha256:b67959acacd54ed2d110e111c8b28c0a87a20129f9427bf5f721a1dc6121decb";
-        hash = "sha256-0cKts3EiFIMYFlk5lK7AccHN6bsySc+BhIqA1Qtr1Kc=";
-        finalImageTag = "33.0.3";
+        imageDigest = "sha256:4d4a6b5ed15a7eb4537538c848eb78833f53bed62f93e7d5af144f360cd53ff2";
+        hash = "sha256-+T0GwW1ep+4dTqHZ9a3h0Xby3uoykUrZXUZVTlYIZsw=";
+        finalImageTag = "34.0.0";
         arch = "amd64";
       };
       collaboraImage = pkgs.dockerTools.pullImage {
         imageName = "collabora/code";
-        imageDigest = "sha256:fe49c08c27e102c1877ad4ef2ac1a7bd8ccd2dfaa6641d4533389c204a92bb88";
-        hash = "sha256-mX5g7B3mbJVnUdt2WeDoHzK/FyYL7h+MOye0SB0fKZg=";
-        finalImageTag = "25.04.9.4.1";
+        imageDigest = "sha256:75859dc9f9084d1877ce36cf96ec86600f495bade33289c9cbc27e0a0ee23b81";
+        hash = "sha256-sheTKqJ+zFU1CgY5BRknBRR849ruGOOa26E4d5u5HY8=";
+        finalImageTag = "26.04.1.4.1";
         arch = "amd64";
       };
     in
