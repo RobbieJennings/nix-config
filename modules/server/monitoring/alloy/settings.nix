@@ -33,8 +33,23 @@
                 discovery.kubernetes "pods" {
                   role = "pod"
                 }
-                loki.source.kubernetes "pods" {
+                discovery.relabel "pods" {
                   targets = discovery.kubernetes.pods.targets
+                  rule {
+                    source_labels = ["__meta_kubernetes_namespace"]
+                    target_label  = "namespace"
+                  }
+                  rule {
+                    source_labels = ["__meta_kubernetes_pod_name"]
+                    target_label  = "pod"
+                  }
+                  rule {
+                    source_labels = ["__meta_kubernetes_pod_container_name"]
+                    target_label  = "container"
+                  }
+                }
+                loki.source.kubernetes "pods" {
+                  targets = discovery.relabel.pods.output
                   forward_to = [loki.write.default.receiver]
                 }
                 loki.write "default" {

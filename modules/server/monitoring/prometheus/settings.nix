@@ -47,7 +47,7 @@
                   key = "thanos-config";
                 };
               };
-              resources = config.server.resources.profiles.appSmall;
+              resources = config.server.resources.profiles.appMedium;
             };
             service.enabled = false;
             thanosService.enabled = true;
@@ -74,7 +74,7 @@
                   };
                 };
               };
-              resources = config.server.resources.profiles.appMini;
+              resources = config.server.resources.profiles.appSmall;
             };
           };
           kube-state-metrics = {
@@ -87,7 +87,7 @@
                 repository = "kube-state-metrics/kube-state-metrics";
                 tag = image.imageTag;
               };
-            resources = config.server.resources.profiles.infraSmall;
+            resources = config.server.resources.profiles.infraLarge;
           };
           prometheus-node-exporter = {
             image =
@@ -99,7 +99,7 @@
                 repository = "prometheus/node-exporter";
                 tag = image.imageTag;
               };
-            resources = config.server.resources.profiles.infraMini;
+            resources = config.server.resources.profiles.infraLarge;
           };
           prometheusOperator = {
             image =

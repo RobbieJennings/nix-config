@@ -37,7 +37,7 @@
             existingClaim = "grafana-pvc";
           };
           service.enabled = false;
-          resources = config.server.resources.profiles.appSmall;
+          resources = config.server.resources.profiles.appMedium;
           datasources = {
             "datasources.yaml" = {
               apiVersion = 1;
