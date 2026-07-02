@@ -60,7 +60,7 @@
                 repository = image.imageName;
                 tag = image.imageTag;
               };
-            resources = config.server.resources.profiles.infraMini;
+            resources = config.server.resources.profiles.infraSmall;
           };
         };
       };
