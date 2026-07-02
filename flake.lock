@@ -77,11 +77,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1779116163,
-        "narHash": "sha256-09MijepfxVRdw1IA416tVIHx4S+C/6TH7rlVFDGCHR4=",
+        "lastModified": 1782991350,
+        "narHash": "sha256-ZxvdtIiw3+UDQhglQapcyn0kTEAsakvJ+IWki5e5OqM=",
         "owner": "robbiejennings",
         "repo": "robbiejennings.github.io",
-        "rev": "aa8f2119c0169d6b0669f6424d065211fbaa3068",
+        "rev": "b0e60d1c062641d0553f8f2afc8d34d86231472f",
         "type": "github"
       },
       "original": {
@@ -375,11 +375,11 @@
     "nix-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1779115643,
-        "narHash": "sha256-8iT+dOQi71qEXoM/ndjYVoL1bQCDXFhs/Ajv++WIfyk=",
+        "lastModified": 1782958089,
+        "narHash": "sha256-fGXVL4Jf8JGHjMnA091YBsdsXJfokBRREZLTWidrsck=",
         "owner": "robbiejennings",
         "repo": "nix-config",
-        "rev": "4733eb61f7279c494924bdc2f8029bda08c71a83",
+        "rev": "a36a5b60c7eb0a7fd5429ec63c9f8a908de9c87d",
         "type": "github"
       },
       "original": {
