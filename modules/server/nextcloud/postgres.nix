@@ -131,6 +131,24 @@
               schedule = "0 0 0 * * *";
             };
           }
+          {
+            apiVersion = "monitoring.coreos.com/v1";
+            kind = "PodMonitor";
+            metadata = {
+              name = "nextcloud-postgres-prometheus-podmonitor";
+              namespace = "monitoring";
+              labels.release = "prometheus";
+            };
+            spec = {
+              selector.matchLabels = {
+                "cnpg.io/cluster" = "nextcloud-postgres";
+              };
+              namespaceSelector.matchNames = [ "nextcloud" ];
+              podMetricsEndpoints = [
+                { port = "metrics"; }
+              ];
+            };
+          }
         ];
       };
     };

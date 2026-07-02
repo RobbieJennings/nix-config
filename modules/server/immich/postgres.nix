@@ -132,6 +132,24 @@
               schedule = "0 0 0 * * *";
             };
           }
+          {
+            apiVersion = "monitoring.coreos.com/v1";
+            kind = "PodMonitor";
+            metadata = {
+              name = "immich-postgres-prometheus-podmonitor";
+              namespace = "monitoring";
+              labels.release = "prometheus";
+            };
+            spec = {
+              selector.matchLabels = {
+                "cnpg.io/cluster" = "immich-postgres";
+              };
+              namespaceSelector.matchNames = [ "immich" ];
+              podMetricsEndpoints = [
+                { port = "metrics"; }
+              ];
+            };
+          }
         ];
       };
     };

@@ -131,6 +131,24 @@
               schedule = "0 0 0 * * *";
             };
           }
+          {
+            apiVersion = "monitoring.coreos.com/v1";
+            kind = "PodMonitor";
+            metadata = {
+              name = "forgejo-postgres-prometheus-podmonitor";
+              namespace = "monitoring";
+              labels.release = "prometheus";
+            };
+            spec = {
+              selector.matchLabels = {
+                "cnpg.io/cluster" = "forgejo-postgres";
+              };
+              namespaceSelector.matchNames = [ "forgejo" ];
+              podMetricsEndpoints = [
+                { port = "metrics"; }
+              ];
+            };
+          }
         ];
       };
     };
