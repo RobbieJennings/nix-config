@@ -42,7 +42,41 @@
                     tag = image.imageTag;
                   };
                 resources = values.resources or config.server.resources.profiles.cache;
+                metrics =
+                  values.metrics or {
+                    enabled = true;
+                    exporter.image =
+                      let
+                        image = inputs.self.lib.findImageByName "oliver006/redis_exporter" config.services.k3s.images;
+                      in
+                      {
+                        registry = "ghcr.io";
+                        repository = "oliver006/redis_exporter";
+                        tag = image.imageTag;
+                      };
+                  };
               };
+              extraDeploy = [
+                {
+                  apiVersion = "monitoring.coreos.com/v1";
+                  kind = "PodMonitor";
+                  metadata = {
+                    name = "${namespace}-valkey-prometheus-podmonitor";
+                    namespace = "monitoring";
+                    labels.release = "prometheus";
+                  };
+                  spec = {
+                    selector.matchLabels = {
+                      "app.kubernetes.io/name" = "valkey";
+                      "app.kubernetes.io/instance" = "${namespace}-valkey";
+                    };
+                    namespaceSelector.matchNames = [ namespace ];
+                    podMetricsEndpoints = [
+                      { port = "metrics"; }
+                    ];
+                  };
+                }
+              ];
             };
           };
         };

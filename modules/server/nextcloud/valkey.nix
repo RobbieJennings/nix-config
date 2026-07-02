@@ -51,6 +51,25 @@
               };
             };
           }
+          {
+            apiVersion = "monitoring.coreos.com/v1";
+            kind = "PodMonitor";
+            metadata = {
+              name = "nextcloud-valkey-prometheus-podmonitor";
+              namespace = "monitoring";
+              labels.release = "prometheus";
+            };
+            spec = {
+              selector.matchLabels = {
+                "app.kubernetes.io/instance" = "nextcloud-valkey-0-0";
+                "app.kubernetes.io/component" = "valkey-node";
+              };
+              namespaceSelector.matchNames = [ "nextcloud" ];
+              podMetricsEndpoints = [
+                { port = "metrics"; }
+              ];
+            };
+          }
         ];
       };
     };

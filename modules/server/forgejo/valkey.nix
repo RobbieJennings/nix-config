@@ -51,6 +51,25 @@
               };
             };
           }
+          {
+            apiVersion = "monitoring.coreos.com/v1";
+            kind = "PodMonitor";
+            metadata = {
+              name = "forgejo-valkey-prometheus-podmonitor";
+              namespace = "monitoring";
+              labels.release = "prometheus";
+            };
+            spec = {
+              selector.matchLabels = {
+                "app.kubernetes.io/instance" = "forgejo-valkey-0-0";
+                "app.kubernetes.io/component" = "valkey-node";
+              };
+              namespaceSelector.matchNames = [ "forgejo" ];
+              podMetricsEndpoints = [
+                { port = "metrics"; }
+              ];
+            };
+          }
         ];
       };
     };
