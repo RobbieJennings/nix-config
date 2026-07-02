@@ -18,6 +18,7 @@
         inputs.self.modules.nixos.longhorn-settings
         inputs.self.modules.nixos.longhorn-services
         inputs.self.modules.nixos.longhorn-secrets
+        inputs.self.modules.nixos.longhorn-monitoring
         inputs.self.modules.nixos.longhorn-backup-job
       ];
 
