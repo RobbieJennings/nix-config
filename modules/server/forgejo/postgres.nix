@@ -66,7 +66,7 @@
                   isWALArchiver = true;
                   parameters = {
                     barmanObjectName = "garage-store";
-                    serverName = "forgejo-postgres-backup-3"; # Must change before each restore
+                    serverName = "forgejo-postgres-backup-1"; # Must change before each restore
                   };
                 }
               ];
@@ -77,7 +77,7 @@
                     name = "barman-cloud.cloudnative-pg.io";
                     parameters = {
                       barmanObjectName = "garage-store";
-                      serverName = "forgejo-postgres-backup-2"; # Must match previous plugin server name
+                      serverName = "forgejo-postgres-backup-0"; # Must match previous plugin server name
                     };
                   };
                 }
