@@ -47,6 +47,8 @@
                   key = "thanos-config";
                 };
               };
+              retention = "24h";
+              retentionSize = "8GB";
               resources = config.server.resources.profiles.appMedium;
             };
             service.enabled = false;
