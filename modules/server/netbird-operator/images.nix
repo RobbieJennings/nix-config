@@ -14,16 +14,16 @@
     let
       operatorImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/netbirdio/netbird-operator";
-        imageDigest = "sha256:4ac288a3c2534553dc5cef02b6fd258673cf82822c5d90a06f16eaaffbe70bf8";
-        hash = "sha256-KkQM0EbNzX2hCjiZ/EGcXMdS9ZutkiEYy689yhPoS9g=";
-        finalImageTag = "v0.7.0";
+        imageDigest = "sha256:ae2c26cfc54762723c50cb7df1178452807fa265c1acddec1debf83503fabe59";
+        hash = "sha256-pRu6DbZs2cjeRREjQDQTn0xyIskQkES+j0LBs16nELI=";
+        finalImageTag = "v0.8.0";
         arch = "amd64";
       };
       routerImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/netbirdio/netbird";
-        imageDigest = "sha256:b41e7f4197e4e7fde09effc6722e182cc96b39625114e0830227d407670db607";
-        hash = "sha256-KFm29OcXByByzkZ9kbDmtLq++IbxpI1e9LUNjz6bhNI=";
-        finalImageTag = "0.71.4-rootless";
+        imageDigest = "sha256:b63f4c1584118aeebacfdfd841f0351122a53fccac182b4c43be428c2c9a6b73";
+        hash = "sha256-66McFH3+9wBLDEwQ7J91VmI7lGPBHEgVKsH81qKKYAY=";
+        finalImageTag = "0.74.7";
         arch = "amd64";
       };
     in

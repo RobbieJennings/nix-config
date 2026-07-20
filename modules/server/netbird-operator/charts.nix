@@ -15,8 +15,8 @@
       netbirdOperatorChart = {
         name = "netbird-operator";
         repo = "oci://ghcr.io/netbirdio/helm-charts/netbird-operator";
-        version = "0.7.0";
-        hash = "sha256-5/uW/ufWfSKT8ZlLZEVY2pXqxAS8es0L1VV5/xd8byo=";
+        version = "0.8.0";
+        hash = "sha256-YbxJ6Nd1mA9SomYrTFZV8Xf/PovnGJaUzmpXCUg1mdE=";
       };
     in
     {
