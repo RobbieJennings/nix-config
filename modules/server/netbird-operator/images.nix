@@ -21,9 +21,9 @@
       };
       routerImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/netbirdio/netbird";
-        imageDigest = "sha256:b63f4c1584118aeebacfdfd841f0351122a53fccac182b4c43be428c2c9a6b73";
-        hash = "sha256-66McFH3+9wBLDEwQ7J91VmI7lGPBHEgVKsH81qKKYAY=";
-        finalImageTag = "0.74.7";
+        imageDigest = "sha256:6c6c20baffae4a3ec50f29ec9361608a420625185505e8cd6f0c44d71c5d4798";
+        hash = "sha256-RT1cQtdTmMx+1GiVBZg4npy19OyrXsgUNJe43uGX+Lw=";
+        finalImageTag = "0.72.4";
         arch = "amd64";
       };
     in
