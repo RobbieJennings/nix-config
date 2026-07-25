@@ -28,12 +28,6 @@
                 podTemplate.spec.containers = [
                   {
                     name = "netbird";
-                    env = [
-                      {
-                        name = "NB_DISABLE_UPDATE_SETTINGS";
-                        value = "false";
-                      }
-                    ];
                   }
                 ];
               };
