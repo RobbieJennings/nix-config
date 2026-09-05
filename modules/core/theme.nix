@@ -131,8 +131,8 @@ let
           fonts = {
             serif = config.theme.fonts.interface;
             sansSerif = config.theme.fonts.interface;
-            inherit (config.theme.fonts.monospace) ;
-            inherit (config.theme.fonts.emoji) ;
+            monospace = config.theme.fonts.monospace;
+            emoji = config.theme.fonts.emoji;
           };
         };
       };
