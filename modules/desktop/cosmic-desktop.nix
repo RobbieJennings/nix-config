@@ -44,6 +44,18 @@
         ];
 
         nixpkgs.overlays = [
+          # Override all cosmic-* packages with unstable versions
+          (
+            final: prev:
+            lib.mapAttrs (name: _: prev.pkgs.unstable.${name}) (
+              lib.filterAttrs (name: _: lib.hasPrefix "cosmic-" name) prev
+            )
+            // {
+              pop-launcher = prev.pkgs.unstable.pop-launcher;
+              xdg-desktop-portal-cosmic = prev.pkgs.unstable.xdg-desktop-portal-cosmic;
+            }
+          )
+
           # Don't want applet in system tray
           (final: prev: {
             networkmanagerapplet = prev.networkmanagerapplet.overrideAttrs (old: {
