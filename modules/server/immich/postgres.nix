@@ -48,6 +48,13 @@
                   login = true;
                 }
               ];
+              postgresql = {
+                shared_preload_libraries = [ "vchord" ];
+                extensions = [
+                  { name = "pgvector"; }
+                  { name = "vchord"; }
+                ];
+              };
               bootstrap =
                 if config.immich.initdb.enable then
                   {
@@ -55,6 +62,10 @@
                       database = "immich";
                       owner = "immich";
                       secret.name = "immich-secrets";
+                      postInitApplicationSQL = [
+                        "CREATE EXTENSION IF NOT EXISTS vector CASCADE;"
+                        "CREATE EXTENSION IF NOT EXISTS vchord CASCADE;"
+                      ];
                     };
                   }
                 else

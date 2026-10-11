@@ -14,9 +14,9 @@
     let
       immichImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/immich-app/immich-server";
-        imageDigest = "sha256:c15bff75068effb03f4355997d03dc7e0fc58720c2b54ad6f7f10d1bc57efaa5";
-        hash = "sha256-NYgLfm8rX8o3GYLoavG8i3gqwyKKLIeJLXGGYLZUazY=";
-        finalImageTag = "v2.7.5";
+        imageDigest = "sha256:db996e352359771c6a3db121a0ed8761516b22f727fc092a0f46dcfef82c1bc1";
+        hash = "sha256-1bHUAMpOAKnzImDWv976PWQkojYQqd1UU+D5QdO0frM=";
+        finalImageTag = "v3.3.1";
         arch = "amd64";
       };
     in

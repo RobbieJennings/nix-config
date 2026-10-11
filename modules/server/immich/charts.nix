@@ -14,9 +14,9 @@
     let
       immichChart = {
         name = "immich";
-        repo = "https://immich-app.github.io/immich-charts";
-        version = "0.12.0";
-        hash = "sha256-ci+4BJs5VBLy8hVaYD2Ear2hD5Y9WgYYUUFhoYDaEUg=";
+        repo = "oci://ghcr.io/immich-app/immich-charts/immich";
+        version = "0.13.4";
+        hash = "sha256-p3Q9Qz/pnSNQPHunp0l5ndl+MstRfRS1l2/CPi6QHys=";
       };
     in
     {

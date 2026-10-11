@@ -44,6 +44,20 @@
         finalImageTag = "18.4-standard-trixie";
         arch = "amd64";
       };
+      pgvectorImage = pkgs.dockerTools.pullImage {
+        imageName = "ghcr.io/cloudnative-pg/pgvector";
+        imageDigest = "sha256:aa637d323d4f11df5f319228836b20254d9e9285a128b51f77ab0d10682ca76f";
+        hash = "sha256-GzvTR8FNaNPYObgJIvKB1cjsTAhcwDSxPNciZu6vYwE=";
+        finalImageTag = "0.8.7-18-trixie";
+        arch = "amd64";
+      };
+      vchordImage = pkgs.dockerTools.pullImage {
+        imageName = "ghcr.io/tensorchord/vchord-scratch";
+        imageDigest = "sha256:bdea43bed2a414e21bbf71767bf6f0739747ac480b267b51772dc214ac28dcb3";
+        hash = "sha256-UYwrm7z7+B3eX0t0hrplSIdIjx6NXydVhpEMUIbOsks=";
+        finalImageTag = "pg18-v1.1.1";
+        arch = "amd64";
+      };
     in
     {
       options = {
@@ -56,6 +70,8 @@
             operatorImage
             postgresImage
             barmanPluginImage
+            pgvectorImage
+            vchordImage
           ];
           autoDeployCharts = {
             cloudnative-pg = cnpgChart // {
@@ -80,6 +96,18 @@
                       {
                         major = 18;
                         image = "${postgresImage.imageName}:${postgresImage.imageTag}";
+                        extensions = [
+                          {
+                            name = "pgvector";
+                            image.reference = "${pgvectorImage.imageName}:${pgvectorImage.imageTag}";
+                          }
+                          {
+                            name = "vchord";
+                            image.reference = "${vchordImage.imageName}:${vchordImage.imageTag}";
+                            dynamic_library_path = [ "/usr/lib/postgresql/18/lib/" ];
+                            extension_control_path = [ "/usr/share/postgresql/18/" ];
+                          }
+                        ];
                       }
                     ];
                   };
