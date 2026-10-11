@@ -19,7 +19,7 @@
       config = lib.mkIf config.cosmic-manager.compositor.enable {
         wayland.desktopManager.cosmic.compositor = {
           workspaces = {
-            workspace_layout = cosmicLib.cosmic.mkRON "enum" "Vertical";
+            workspace_layout = cosmicLib.cosmic.mkRON "enum" "Horizontal";
             workspace_mode = cosmicLib.cosmic.mkRON "enum" "OutputBound";
           };
           xkb_config = {
