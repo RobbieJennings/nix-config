@@ -21,6 +21,7 @@
               "sonarr/key" = { };
               "lidarr/key" = { };
               "prowlarr/key" = { };
+              "seerr/key" = { };
             };
           };
     };

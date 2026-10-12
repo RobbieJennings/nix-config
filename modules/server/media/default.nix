@@ -22,6 +22,7 @@
         inputs.self.modules.nixos.radarr
         inputs.self.modules.nixos.sonarr
         inputs.self.modules.nixos.lidarr
+        inputs.self.modules.nixos.seerr
       ];
 
       options = {
@@ -38,6 +39,7 @@
           radarr.enable = lib.mkDefault true;
           sonarr.enable = lib.mkDefault true;
           lidarr.enable = lib.mkDefault true;
+          seerr.enable = lib.mkDefault true;
         };
       };
     };

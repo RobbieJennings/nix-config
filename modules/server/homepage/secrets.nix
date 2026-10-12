@@ -88,6 +88,11 @@
                   config.sops.placeholder."prowlarr/key"
                 else
                   "";
+              SEERR_KEY =
+                if (config.media-server.seerr.enable && config.secrets.media-server.enable) then
+                  config.sops.placeholder."seerr/key"
+                else
+                  "";
             };
           };
           path = "/var/lib/rancher/k3s/server/manifests/homepage-secret.json";

@@ -116,6 +116,19 @@
                     };
                   }
                   {
+                    Seerr = {
+                      href = "http://seerr.media.homelab/";
+                      description = "Request Movies & TV Shows";
+                      widgets = [
+                        {
+                          type = "seerr";
+                          url = "http://192.168.1.202:5055";
+                          key = "{{HOMEPAGE_VAR_SEERR_KEY}}";
+                        }
+                      ];
+                    };
+                  }
+                  {
                     Prowlarr = {
                       href = "http://prowlarr.media.homelab/";
                       description = "Indexer Management";

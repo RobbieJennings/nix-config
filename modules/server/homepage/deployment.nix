@@ -134,6 +134,13 @@
                             key = "LIDARR_KEY";
                           };
                         }
+                        {
+                          name = "HOMEPAGE_VAR_SEERR_KEY";
+                          valueFrom.secretKeyRef = {
+                            name = "homepage-secrets";
+                            key = "SEERR_KEY";
+                          };
+                        }
                       ];
                       volumeMounts = [
                         {

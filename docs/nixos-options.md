@@ -1076,6 +1076,38 @@ true
 
 
 
+## media-server\.seerr\.enable
+
+
+
+Whether to enable Seerr deployment on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/media/seerr/default\.nix](../modules/server/media/seerr/default.nix)
+
+
+
 ## media-server\.sonarr\.enable
 
 
