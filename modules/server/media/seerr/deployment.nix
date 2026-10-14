@@ -41,12 +41,6 @@
                         in
                         "${image.imageName}:${image.imageTag}";
                       ports = [ { containerPort = 5055; } ];
-                      env = [
-                        {
-                          name = "TZ";
-                          value = "Europe/Dublin";
-                        }
-                      ];
                       resources = config.server.resources.profiles.appSmall;
                       startupProbe = {
                         httpGet = {
@@ -81,14 +75,6 @@
                           name = "config";
                           mountPath = "/app/config";
                         }
-                        {
-                          name = "media";
-                          mountPath = "/media";
-                        }
-                        {
-                          name = "downloads";
-                          mountPath = "/downloads";
-                        }
                       ];
                     }
                   ];
@@ -96,14 +82,6 @@
                     {
                       name = "config";
                       persistentVolumeClaim.claimName = "seerr-pvc";
-                    }
-                    {
-                      name = "media";
-                      persistentVolumeClaim.claimName = "media-pvc";
-                    }
-                    {
-                      name = "downloads";
-                      persistentVolumeClaim.claimName = "downloads-pvc";
                     }
                   ];
                 };
