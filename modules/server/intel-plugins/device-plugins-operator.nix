@@ -14,14 +14,14 @@
       chart = {
         name = "intel-device-plugins-operator";
         repo = "https://intel.github.io/helm-charts";
-        version = "0.36.0";
-        hash = "sha256-guPqpOlyIGUOvXvS/1bd5JB4ZGiU6Cmzj9Y7iqfigx8=";
+        version = "0.37.1";
+        hash = "sha256-q87Ax/Nd2IdZ2BvLdk1AyKMDlmdLPT7nVAoCY+VTAXw=";
       };
       image = pkgs.dockerTools.pullImage {
         imageName = "intel/intel-deviceplugin-operator";
-        imageDigest = "sha256:9879685d0b5be18c9063c42d72b7bf3ae42a295467db90e7658b28b953ff382f";
-        hash = "sha256-Y7X82hvrpYMd1RkIwsSgmRWf/wqIY9hGSRsZIwXjJs8=";
-        finalImageTag = "0.36.0";
+        imageDigest = "sha256:1e60686c2170c8316cc0fdc3f0f2058384d4a94064d2f8508eac605a013e05d9";
+        hash = "sha256-On+4jvcvYoepFwLxTk8bSDN+HG4OO9hm4LWhiG8Qv6Q=";
+        finalImageTag = "0.37.1";
         arch = "amd64";
       };
     in

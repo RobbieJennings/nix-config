@@ -14,14 +14,14 @@
       chart = {
         name = "intel-device-plugins-gpu";
         repo = "https://intel.github.io/helm-charts";
-        version = "0.36.0";
-        hash = "sha256-xh4QWuIeXWzq1gXG0zfw6uTpJFKmSnS5juj2s3M3YWE=";
+        version = "0.37.1";
+        hash = "sha256-BfKZmPNpfh/PYR4OANx/CVB+xs6tt7oIhG6GjpRuuJw=";
       };
       image = pkgs.dockerTools.pullImage {
         imageName = "intel/intel-gpu-plugin";
-        imageDigest = "sha256:2db679be62b52ac985169084ca711cab6e6c59fe543ab2ddee58163d6f8d29e0";
-        hash = "sha256-GiHyT6bEf3wtsZ/BcR5M4WxnfYoGYCb9cnj+UWaNJkc=";
-        finalImageTag = "0.36.0";
+        imageDigest = "sha256:004641b2547d58f1eadce58473fa160ad71377de1eb588cf1f82832387bf3e33";
+        hash = "sha256-RLeD1oQI3TrolR+j3XeesjrjGmu6m7MdrTGFcti8qw4=";
+        finalImageTag = "0.37.1";
         arch = "amd64";
       };
     in
