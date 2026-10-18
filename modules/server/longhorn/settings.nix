@@ -129,6 +129,16 @@
             backupTarget = "s3://longhorn-bucket@garage/";
             backupTargetCredentialSecret = "longhorn-backup-secret";
           };
+          metrics.serviceMonitor = {
+            enabled = true;
+            additionalLabels.release = "prometheus";
+          };
+          networkPolicies.metricsScrapeSources = [
+            {
+              namespaceSelector.matchLabels."kubernetes.io/metadata.name" = "monitoring";
+              podSelector.matchLabels."app.kubernetes.io/name" = "prometheus";
+            }
+          ];
         };
       };
     };
