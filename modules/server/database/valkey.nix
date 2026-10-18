@@ -21,8 +21,8 @@
       chart = {
         name = "valkey";
         repo = "https://valkey.io/valkey-helm";
-        version = "0.10.0";
-        hash = "sha256-ZJfnhOG3B8MD41j2+db4L5MWGPSx5aeusJRt9RoIH+Y=";
+        version = "0.12.0";
+        hash = "sha256-ZNQ0M9a4Ct2wEt18IaG/Z0vwNNxRIQtr+Orp3a+DdA8=";
       };
     in
     {
