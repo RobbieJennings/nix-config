@@ -15,8 +15,8 @@
       nodeFeatureDiscoveryChart = {
         name = "node-feature-discovery";
         repo = "oci://registry.k8s.io/nfd/charts/node-feature-discovery";
-        version = "0.18.3";
-        hash = "sha256-g6MnrWFUW8ibMZ6U9RdepNJlybb/qigyryoKhTiUCd4=";
+        version = "0.20.0";
+        hash = "sha256-/5Lbr1NHCGmjLnPab0YkaiBUS1Fw0wIa7Il6iMzWrOI=";
       };
     in
     {

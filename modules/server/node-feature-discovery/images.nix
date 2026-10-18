@@ -14,9 +14,9 @@
     let
       nodeFeatureDiscoveryImage = pkgs.dockerTools.pullImage {
         imageName = "registry.k8s.io/nfd/node-feature-discovery";
-        imageDigest = "sha256:f9ef2ebee55141a1758d3c0a87bb701f5db2adf6856f7218b11bc2bac7b63862";
-        hash = "sha256-UhEuAzcNHLFZ88FJcLMMnXHxzhmwR1gYPD6F9yKhnT8=";
-        finalImageTag = "v0.18.3";
+        imageDigest = "sha256:3f600513a463712aaab33cf525e20be0b5718e57da50d0ac2e092b86bcfc4812";
+        hash = "sha256-qJPEuIuUrhbU3V/Idclab46l6fMoXJC5X4UhsjSozlk=";
+        finalImageTag = "v0.20.0";
         arch = "amd64";
       };
     in
