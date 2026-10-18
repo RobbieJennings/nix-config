@@ -14,8 +14,8 @@
     let
       src = pkgs.fetchgit {
         url = "https://git.deuxfleurs.fr/Deuxfleurs/garage.git";
-        rev = "v2.3.0";
-        hash = "sha256-CqHcaVGgXL/jjqq7XN+kzEp6xoNgwBfGpMKYbTd78Ys=";
+        rev = "v2.4.1";
+        hash = "sha256-+3w4R0IGxc7GCVW3t7Izt6Y5PVUjxHsdLrr74ckR9Mg=";
       };
       chart =
         pkgs.runCommand "garage-chart.tgz"

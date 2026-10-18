@@ -14,9 +14,9 @@
     let
       garageImage = pkgs.dockerTools.pullImage {
         imageName = "dxflrs/amd64_garage";
-        imageDigest = "sha256:dac0c92add4f1a0b41035e94b41036a270ffbe88a37c7ac9c3f19e6dc5bdccf2";
-        hash = "sha256-VGx6WQlScsKvnsnMQgQnAMp8ndhwnd0W99WBTbUhGEk=";
-        finalImageTag = "v2.3.0";
+        imageDigest = "sha256:0d7c74fc8ca6fef68a5a941c0e7558c8b1e92ba3588fa7505400e1350456c796";
+        hash = "sha256-1cQjXEasoB2VLuFfZyxNty4gqZL1qlt1Lsod6nb1BgI=";
+        finalImageTag = "v2.4.1";
         arch = "amd64";
       };
       webUiImage = pkgs.dockerTools.pullImage {
