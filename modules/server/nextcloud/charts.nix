@@ -15,8 +15,8 @@
       nextcloudChart = {
         name = "nextcloud";
         repo = "https://nextcloud.github.io/helm";
-        version = "9.1.4";
-        hash = "sha256-AndC4g8P1H2gusv0G6PoEBwmzLuQpgAO01XEfO/d+dE=";
+        version = "9.4.1";
+        hash = "sha256-49dohkgAvMI+tm5vZcv18FRbFQbPjGX1WpHSGvO61L8=";
       };
     in
     {
