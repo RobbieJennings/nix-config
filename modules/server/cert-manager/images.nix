@@ -14,37 +14,37 @@
     let
       controllerImage = pkgs.dockerTools.pullImage {
         imageName = "quay.io/jetstack/cert-manager-controller";
-        imageDigest = "sha256:6c13d61e0348a5bc3477f8ea9a928624300b30d19b1c72a7d2b90372fc713db4";
-        hash = "sha256-FuaUNHWiEGVY/JJJrt0fdyqE2kc4WPGJqTvkrQsp36Q=";
-        finalImageTag = "v1.20.3";
+        imageDigest = "sha256:70f532fd9cfde0b09d55687200942399d89838bc2d5d5b45152eb799a15912b8";
+        hash = "sha256-PQrjeF5Oy+T44S9+BHCwdbSwXU4+EsrCu8AdCuWKWdE=";
+        finalImageTag = "v1.21.2";
         arch = "amd64";
       };
       webhookImage = pkgs.dockerTools.pullImage {
         imageName = "quay.io/jetstack/cert-manager-webhook";
-        imageDigest = "sha256:a61e817632cebed3bb59a189327e786fa3fdd7597167d994a1848d98fd55848f";
-        hash = "sha256-hy24N+ppukUqYa+qa8TbDSkb//ZXqu9H2fZEcrZ+kM8=";
-        finalImageTag = "v1.20.3";
+        imageDigest = "sha256:a60e2dac46dbb8a7f3df95c54ce941012f54c2fe022f0ee55aaa1ab40ed957ae";
+        hash = "sha256-gbv5LNTgIzRZgLnaNzIdLYEexlEcJfP+rb2zzscHNEA=";
+        finalImageTag = "v1.21.2";
         arch = "amd64";
       };
       cainjectorImage = pkgs.dockerTools.pullImage {
         imageName = "quay.io/jetstack/cert-manager-cainjector";
-        imageDigest = "sha256:06ad347fe0dc2eb84cc355c26f6752e05e87dceb6447f5cd29b963dd66dfd8bd";
-        hash = "sha256-Ajw51VLzZoSetVWIgZrOq8j+PbmzKPg2ppDtrPy5R/M=";
-        finalImageTag = "v1.20.3";
+        imageDigest = "sha256:c85268c64f2e0e76684bf5fe8906caff34b82523561c6affe0fae3546bd87562";
+        hash = "sha256-b3O8trqxnwVPOTiKOJuBUSZIIcXn0Lzc2XINHLB+NU4=";
+        finalImageTag = "v1.21.2";
         arch = "amd64";
       };
       startupapicheckImage = pkgs.dockerTools.pullImage {
         imageName = "quay.io/jetstack/cert-manager-startupapicheck";
-        imageDigest = "sha256:b0c9a2c18d02f3c40a9e091a6fe9afdf39cbf7fb2d9acc18c9881c21c625f2dc";
-        hash = "sha256-VbleV7fCeKVrgFp+EucPjuZmio7ANytHH+nF9tKP3vk=";
-        finalImageTag = "v1.20.3";
+        imageDigest = "sha256:46e75b6866359ffb5d82624f41e3ed1c70b2994982702ced547ce5edb418a8f5";
+        hash = "sha256-+qOCZi9lm9Z7WzAOAUD32Wrs/Xdtq2EQHL+/u+2LPws=";
+        finalImageTag = "v1.21.2";
         arch = "amd64";
       };
       acmesolverImage = pkgs.dockerTools.pullImage {
         imageName = "quay.io/jetstack/cert-manager-acmesolver";
-        imageDigest = "sha256:d8d948a9fa0fb9eeb9fd2432dee4945cc202c840ee25a733f0b238fd89fe5cbb";
-        hash = "sha256-XoFkKdFvbNaH7GKGA3MbnwjN6UrbwTf0OV900tPl2Wg=";
-        finalImageTag = "v1.20.3";
+        imageDigest = "sha256:699b40d622211ab7accad8a21b04c5fbaa1841ef7a12621e8de492dbe27b2503";
+        hash = "sha256-Ez7JMiK895M/sKBMubDCCLwVHlIz+D6pNSXms2r87qY=";
+        finalImageTag = "v1.21.2";
         arch = "amd64";
       };
     in
