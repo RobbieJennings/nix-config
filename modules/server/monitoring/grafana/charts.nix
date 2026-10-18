@@ -15,8 +15,8 @@
       grafanaChart = {
         name = "grafana";
         repo = "https://grafana-community.github.io/helm-charts";
-        version = "12.7.1";
-        hash = "sha256-5uMKeXg/0JE9Ir6r+u50Dhjtv/cYb32f7ARR7qQGoHo=";
+        version = "14.0.1";
+        hash = "sha256-Tbxu1o7innjt1NtH0Qqtcvj8Rz5BaVAaK9rxSUY+dN8=";
       };
     in
     {

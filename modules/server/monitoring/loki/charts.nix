@@ -15,8 +15,8 @@
       lokiChart = {
         name = "loki";
         repo = "https://grafana-community.github.io/helm-charts";
-        version = "18.1.1";
-        hash = "sha256-btaT1OqsnS0MlGr7Cp5QhzYfg33ksLRcikpHHtZpQc4=";
+        version = "18.17.1";
+        hash = "sha256-N/mSdPZx89YC7bSQyvAoETDh0UqJYizLthps8Brwmws=";
       };
     in
     {
