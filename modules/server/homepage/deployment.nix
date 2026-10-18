@@ -41,7 +41,7 @@
                       env = [
                         {
                           name = "HOMEPAGE_ALLOWED_HOSTS";
-                          value = "192.168.1.200,homepage.homepage,homepage.homepage.homelab,10.43.191.213";
+                          value = "*";
                         }
                         {
                           name = "HOMEPAGE_VAR_GRAFANA_USERNAME";

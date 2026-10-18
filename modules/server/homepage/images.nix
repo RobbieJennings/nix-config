@@ -14,9 +14,9 @@
     let
       homepageImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/gethomepage/homepage";
-        imageDigest = "sha256:a0b71c8e757298d02560186bab9fbe3fc2d375c523a62cc1019177b37e48aa28";
-        hash = "sha256-hMoNS9Lwcg4irFkIfD1MhFo2iAjrCJNk9W2P0/FW6jU=";
-        finalImageTag = "v1.13.2";
+        imageDigest = "sha256:3e38fe788223cb46a3ce1f046ef11667b40f7707fdca0dcbfa3f86c5c42bf1e8";
+        hash = "sha256-yJ38+OoptYzlXo8zKpGoySn8QfCH9Duof+ZmDQgEGwQ=";
+        finalImageTag = "v2.6.0";
         arch = "amd64";
       };
     in
