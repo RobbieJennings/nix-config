@@ -14,34 +14,34 @@
       cnpgChart = {
         name = "cloudnative-pg";
         repo = "https://cloudnative-pg.github.io/charts";
-        version = "0.28.3";
-        hash = "sha256-oiDxdLcmN/UFVTucD92wuf7QM4DVi+Fxk1zZnYgId9Y=";
+        version = "0.29.1";
+        hash = "sha256-tT05kf6EvPOHZ+dwLK54ZmJlQnoSeib/8WirQgfSsd8=";
       };
       barmanPluginChart = {
         name = "plugin-barman-cloud";
         repo = "https://cloudnative-pg.github.io/charts";
-        version = "0.7.0";
-        hash = "sha256-aDSUwEzJT30zxKxfPY1kwgljS0i9DoTaMdfR+tIs3Ns=";
+        version = "0.8.1";
+        hash = "sha256-mtC55W2id3oaAmn+r3IV4YKX6ci1cw4ErLJ7XUYulFY=";
       };
       operatorImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/cloudnative-pg/cloudnative-pg";
-        imageDigest = "sha256:0dfff19ba7b52ca25851a1010028b6940fff2e233290465af1cfb08a5f3f4661";
-        hash = "sha256-zt741Ql1ILjDLNQn8XzmTQmds4407P8h9xtlArL+fmA=";
-        finalImageTag = "1.29.1";
+        imageDigest = "sha256:923c267ec29636db3bee20f993d0ec4973fa22998e1adad37da79e4d32b5bc07";
+        hash = "sha256-RMFrp/WKFCRqya08mKu4CPTk2fPl0sgTXdSoVIr0sqA=";
+        finalImageTag = "1.30.1";
         arch = "amd64";
       };
       barmanPluginImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/cloudnative-pg/plugin-barman-cloud";
-        imageDigest = "sha256:71589dbac582333442812b07b31f7ea4d00324a8358aac7ca507dabf9f4b6c96";
-        hash = "sha256-nyUky+FGRG2eVeDVeMputmWCpEeXs8cAB0TTFTScBUA=";
-        finalImageTag = "v0.13.0";
+        imageDigest = "sha256:c75acad19a36e8176cfe2885761ff1b836c6ef977d7257e298c99a28b5c302ef";
+        hash = "sha256-yA6v6LNfu9/l6ft/tzQdKLpuO5aA8vyEqoO6JJydv28=";
+        finalImageTag = "v0.15.1";
         arch = "amd64";
       };
       postgresImage = pkgs.dockerTools.pullImage {
         imageName = "ghcr.io/cloudnative-pg/postgresql";
-        imageDigest = "sha256:9dd9fda84a67a3f351885885fec02ec6346fd941965d8fd94226531fb329624a";
-        hash = "sha256-nKDBrn5eq0pxsqbQOO3pBcP1lseDmayt3WN/0fF5k0s=";
-        finalImageTag = "18.4-standard-trixie";
+        imageDigest = "sha256:c7747d8d1049fff9cf30d9cd83d14d609c957afb5ffbcd114145f393ea1850e1";
+        hash = "sha256-Ggijl5weMGktrpDOFY7moKvAbvH2R7oazNygB+Z79SQ=";
+        finalImageTag = "18.6-standard-trixie";
         arch = "amd64";
       };
       pgvectorImage = pkgs.dockerTools.pullImage {
