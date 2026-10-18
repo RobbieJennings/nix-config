@@ -109,6 +109,7 @@
             };
           };
           longhornUI.replicas = 1;
+          longhornGlobalManager.replicas = 1;
           defaultSettings = {
             defaultReplicaCount = 1;
             storageMinimalAvailablePercentage = 10;

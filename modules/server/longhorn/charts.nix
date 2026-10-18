@@ -15,8 +15,8 @@
       longhornChart = {
         name = "longhorn";
         repo = "https://charts.longhorn.io";
-        version = "1.12.0";
-        hash = "sha256-hpuyBwGxVEc2BvHolnsn808kSKLf5uuJcPHK5pVzhPU=";
+        version = "1.13.0";
+        hash = "sha256-5X8BDSqLzw2luLA//s9Jxbw13cJmNYjOjyK3VnthM+0=";
       };
     in
     {
