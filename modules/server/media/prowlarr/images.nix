@@ -14,9 +14,9 @@
     let
       prowlarrImage = pkgs.dockerTools.pullImage {
         imageName = "linuxserver/prowlarr";
-        imageDigest = "sha256:3950b5e48cf4ba9dab78fe14038dd7f062e66b7b4ab368b02c94a13f6a3dae9f";
-        hash = "sha256-9pXhGbBGKai6JXeG+bguDzQmV7T1CT7xw0zZQ6fBNog=";
-        finalImageTag = "2.4.0";
+        imageDigest = "sha256:f9151e5bc1025c6d0a630d503210cdcb6bb55a7cc098562609d96a408d838902";
+        hash = "sha256-XM8R2hmuA+OXKA+zLyYqFd6KWj3rEpMI7tVoR/Mt0jQ=";
+        finalImageTag = "2.6.5.5623-ls163";
         arch = "amd64";
       };
     in

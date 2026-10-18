@@ -33,7 +33,7 @@
                           type = "jellyfin";
                           url = "http://192.168.1.202:8096";
                           key = "{{HOMEPAGE_VAR_JELLYFIN_KEY}}";
-                          version = 1;
+                          version = 2;
                           enableBlocks = true;
                           enableNowPlaying = true;
                           enableUser = true;

@@ -14,9 +14,9 @@
     let
       lidarrImage = pkgs.dockerTools.pullImage {
         imageName = "linuxserver/lidarr";
-        imageDigest = "sha256:f2a186ce04ec5adb133f92a08dd3efbc918fc71b33077426ef099d94350dfa1b";
-        hash = "sha256-IhX2Fp7rQ77jrIqefGvjFgD3huwhU3UshVQl3bbPu4c=";
-        finalImageTag = "3.1.0";
+        imageDigest = "sha256:67887807b13ae025c0fe979da298347c8609969087ab064c81d8e9acc1e06bbf";
+        hash = "sha256-suHEsdVgtGiOzV40xLfIR/JldkVs+U8gSSRYt9VkOaU=";
+        finalImageTag = "3.1.0.4875-ls43";
         arch = "amd64";
       };
     in

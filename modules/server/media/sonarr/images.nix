@@ -14,9 +14,9 @@
     let
       sonarrImage = pkgs.dockerTools.pullImage {
         imageName = "linuxserver/sonarr";
-        imageDigest = "sha256:fbb15bb4fb14d1ffe017f6be0e3fed8f1b300e4687e329767da0b61f36ba1eed";
-        hash = "sha256-t67YMx0MHEjpmUsM/aXczCIhgInrRRGJqUcrXPYHlik=";
-        finalImageTag = "4.0.19";
+        imageDigest = "sha256:44b06045a98bc1f237b9ffefc4b28dab64cb29305e4a2a94875ae93b5224e4cc";
+        hash = "sha256-ESaiPX+5oAUr8N5YJLCJqCwkwRInyo05Fh7T+F7lcFk=";
+        finalImageTag = "4.0.20.3014-ls329";
         arch = "amd64";
       };
     in
