@@ -94,7 +94,6 @@
                         {
                           name = "media";
                           mountPath = "/media";
-                          readOnly = true;
                         }
                       ];
                     }
