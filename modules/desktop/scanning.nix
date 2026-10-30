@@ -18,13 +18,10 @@
       config = lib.mkIf config.scanning.enable {
         hardware.sane.enable = true;
         hardware.sane.extraBackends = [ pkgs.epkowa ];
-        services.udev.packages = [ pkgs.vuescan ];
-        environment.systemPackages = [ pkgs.epson-v550-plugin ];
         system.activationScripts.iscanPluginLibraries = ''
-          mkdir -p /usr/share/iscan
-          mkdir -p /usr/lib/iscan
-          ln -sf ${pkgs.epson-v550-plugin}/share/iscan/* /usr/share/iscan
-          ln -sf ${pkgs.epson-v550-plugin}/lib/iscan/* /usr/lib/iscan
+          mkdir -p /usr/share/iscan /usr/lib/iscan
+          ln -sf ${pkgs.epkowa.plugins.v550}/lib/esci/* /usr/lib/iscan
+          ln -sf ${pkgs.epkowa.plugins.v550}/share/esci/* /usr/share/iscan
         '';
       };
     };
