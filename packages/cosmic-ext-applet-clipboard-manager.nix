@@ -8,18 +8,21 @@
   nix-update-script,
 }:
 
+let
+  commit = "7d2c3789c6f63178074311ec804a1f194a3e4e0a";
+in
 rustPlatform.buildRustPackage {
   pname = "cosmic-ext-applet-clipboard-manager";
-  version = "0.1.0";
+  version = commit;
 
   src = fetchFromGitHub {
     owner = "cosmic-utils";
     repo = "clipboard-manager";
-    rev = "8243062612aef784575a61b0eb4076a6a514db7a";
-    hash = "sha256-TcTb3wFqw/WaxVsb4azqQAtc8unlc8xLXiupeiakxVg=";
+    rev = commit;
+    hash = "sha256-BmU7C40oq1mvkemZqKGNJfP7cA5wUkrtKAgqvT3WKug=";
   };
 
-  cargoHash = "sha256-mFr2Zb48yKiv60UHBu9ZdbmR4X52Rp6HT8wGyxPpyYI=";
+  cargoHash = "sha256-ABo4fAtFCaIyNukOUZqHpBhR0fANkb/h7lz755LyRpA=";
 
   nativeBuildInputs = [
     just
@@ -29,13 +32,17 @@ rustPlatform.buildRustPackage {
   dontUseJustBuild = true;
   dontUseJustCheck = true;
 
+  postPatch = ''
+    substituteInPlace justfile \
+      --replace-fail \
+        'export CLIPBOARD_MANAGER_COMMIT := `git rev-parse --short HEAD`' \
+        'export CLIPBOARD_MANAGER_COMMIT := "${builtins.substring 0 7 commit}"'
+  '';
+
   justFlags = [
     "--set"
     "prefix"
     (placeholder "out")
-    "--set"
-    "env-dst"
-    "${placeholder "out"}/etc/profile.d/cosmic-ext-applet-clipboard-manager.sh"
     "--set"
     "bin-src"
     "target/${stdenv.hostPlatform.rust.cargoShortTarget}/release/cosmic-ext-applet-clipboard-manager"

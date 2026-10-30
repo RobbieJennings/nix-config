@@ -44,7 +44,7 @@
                   "com.system76.CosmicAppletStatusArea"
                   "net.tropicbliss.CosmicExtAppletCaffeine"
                   "com.system76.CosmicAppletNotifications"
-                  "io.github.wiiznokes.cosmic-ext-applet-clipboard-manager"
+                  "io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager"
                   "com.system76.CosmicAppletTiling"
                   "com.system76.CosmicAppletAudio"
                   "com.system76.CosmicAppletBluetooth"

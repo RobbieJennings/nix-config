@@ -40,8 +40,8 @@
         bootloader.pretty = lib.mkDefault true;
         audio.enable = lib.mkDefault true;
         bluetooth.enable = lib.mkDefault true;
-        cosmic-desktop.enable = if config.desktopEnvironment == "cosmic" then true else false;
-        kde-plasma.enable = if config.desktopEnvironment == "plasma" then true else false;
+        cosmic-desktop.enable = lib.mkDefault (config.desktopEnvironment == "cosmic");
+        kde-plasma.enable = lib.mkDefault (config.desktopEnvironment == "plasma");
         kde-connect.enable = lib.mkDefault true;
         printing.enable = lib.mkDefault true;
         scanning.enable = lib.mkDefault true;

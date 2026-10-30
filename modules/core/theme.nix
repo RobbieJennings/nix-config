@@ -125,7 +125,7 @@ let
       config = lib.mkIf config.theme.enable {
         stylix = {
           enable = true;
-          inherit (config.theme.polarity) ;
+          inherit (config.theme) polarity;
           base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.theme.base16Scheme}.yaml";
           image = pkgs.fetchurl config.theme.image;
           fonts = {
