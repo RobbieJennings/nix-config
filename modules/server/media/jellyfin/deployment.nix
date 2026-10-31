@@ -54,7 +54,7 @@
                           value = "1000";
                         }
                       ];
-                      resources = config.server.resources.profiles.appMedium // {
+                      resources = lib.recursiveUpdate config.server.resources.profiles.appMedium {
                         requests."gpu.intel.com/i915" = 1;
                         limits."gpu.intel.com/i915" = 1;
                       };

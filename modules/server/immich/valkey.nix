@@ -6,6 +6,7 @@
 }:
 {
   flake.modules.nixos.immich-valkey = self.factory.valkey {
+    moduleName = "immich";
     namespace = "immich";
     values = {
       auth = {

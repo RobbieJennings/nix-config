@@ -8,6 +8,7 @@
 {
   config.flake.factory.valkey =
     {
+      moduleName,
       namespace,
       values,
     }:
@@ -26,7 +27,7 @@
       };
     in
     {
-      config = {
+      config = lib.mkIf config.${moduleName}.enable {
         services.k3s = {
           autoDeployCharts = {
             "${namespace}-valkey" = chart // {
