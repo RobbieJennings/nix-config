@@ -5,20 +5,21 @@
   ...
 }:
 {
-  flake.modules.nixos.robbie-vm = lib.mkMerge [
-    (self.factory.desktop-user {
-      username = "robbie";
-      isAdmin = true;
-    })
-    {
-      home-manager.users.robbie = {
-        programs.git.settings.user = {
-          name = "robbiejennings";
-          email = "robbie.jennings97@gmail.com";
-        };
+  flake.modules.nixos.robbie-vm = {
+    imports = [
+      (self.factory.desktop-user {
+        username = "robbie";
+        isAdmin = true;
+      })
+    ];
+
+    home-manager.users.robbie = {
+      programs.git.settings.user = {
+        name = "robbiejennings";
+        email = "robbie.jennings97@gmail.com";
       };
-    }
-  ];
+    };
+  };
 
   flake.nixosConfigurations.nixos-vm = inputs.nixpkgs.lib.nixosSystem {
     modules = [

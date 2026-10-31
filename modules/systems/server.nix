@@ -5,23 +5,24 @@
   ...
 }:
 {
-  flake.modules.nixos.robbie-server = lib.mkMerge [
-    (self.factory.server-user {
-      username = "robbie";
-      isAdmin = true;
-    })
-    {
-      home-manager.users.robbie = {
-        programs.git = {
-          enable = true;
-          settings.user = {
-            name = "robbiejennings";
-            email = "robbie.jennings97@gmail.com";
-          };
+  flake.modules.nixos.robbie-server = {
+    imports = [
+      (self.factory.server-user {
+        username = "robbie";
+        isAdmin = true;
+      })
+    ];
+
+    home-manager.users.robbie = {
+      programs.git = {
+        enable = true;
+        settings.user = {
+          name = "robbiejennings";
+          email = "robbie.jennings97@gmail.com";
         };
       };
-    }
-  ];
+    };
+  };
 
   flake.nixosConfigurations.optiplex3070 = inputs.nixpkgs.lib.nixosSystem {
     modules = [
