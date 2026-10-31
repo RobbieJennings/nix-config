@@ -26,11 +26,11 @@
 
       config = lib.mkMerge [
         {
-          wayland.desktopManager.cosmic.enable = true;
           cosmic-manager.enable = lib.mkDefault true;
         }
 
         (lib.mkIf config.cosmic-manager.enable {
+          wayland.desktopManager.cosmic.enable = true;
           cosmic-manager = {
             appearance.enable = lib.mkDefault true;
             applets.enable = lib.mkDefault true;

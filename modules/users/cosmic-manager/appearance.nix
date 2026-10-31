@@ -35,6 +35,52 @@
         red = builtins.fromJSON config.lib.stylix.colors."${color}-dec-r";
         inherit alpha;
       };
+
+      themeShape = {
+        active_hint = 4;
+        gaps = cosmicLib.cosmic.mkRON "tuple" [
+          3
+          6
+        ];
+        corner_radii = {
+          radius_0 = cosmicLib.cosmic.mkRON "tuple" [
+            0.0
+            0.0
+            0.0
+            0.0
+          ];
+          radius_xs = cosmicLib.cosmic.mkRON "tuple" [
+            4.0
+            4.0
+            4.0
+            4.0
+          ];
+          radius_s = cosmicLib.cosmic.mkRON "tuple" [
+            8.0
+            8.0
+            8.0
+            8.0
+          ];
+          radius_m = cosmicLib.cosmic.mkRON "tuple" [
+            16.0
+            16.0
+            16.0
+            16.0
+          ];
+          radius_l = cosmicLib.cosmic.mkRON "tuple" [
+            32.0
+            32.0
+            32.0
+            32.0
+          ];
+          radius_xl = cosmicLib.cosmic.mkRON "tuple" [
+            160.0
+            160.0
+            160.0
+            160.0
+          ];
+        };
+      };
     in
     {
       options = {
@@ -45,56 +91,8 @@
         (lib.mkIf config.cosmic-manager.appearance.enable {
           wayland.desktopManager.cosmic.appearance = {
             theme = {
-              dark = {
-                active_hint = 4;
-                gaps = cosmicLib.cosmic.mkRON "tuple" [
-                  3
-                  6
-                ];
-                corner_radii = {
-                  radius_0 = cosmicLib.cosmic.mkRON "tuple" [
-                    0.0
-                    0.0
-                    0.0
-                    0.0
-                  ];
-                  radius_xs = cosmicLib.cosmic.mkRON "tuple" [
-                    4.0
-                    4.0
-                    4.0
-                    4.0
-                  ];
-                  radius_s = cosmicLib.cosmic.mkRON "tuple" [
-                    8.0
-                    8.0
-                    8.0
-                    8.0
-                  ];
-                  radius_m = cosmicLib.cosmic.mkRON "tuple" [
-                    16.0
-                    16.0
-                    16.0
-                    16.0
-                  ];
-                  radius_l = cosmicLib.cosmic.mkRON "tuple" [
-                    32.0
-                    32.0
-                    32.0
-                    32.0
-                  ];
-                  radius_xl = cosmicLib.cosmic.mkRON "tuple" [
-                    160.0
-                    160.0
-                    160.0
-                    160.0
-                  ];
-                };
-              };
-              light = {
-                inherit (config.wayland.desktopManager.cosmic.appearance.theme.dark.active_hint) ;
-                inherit (config.wayland.desktopManager.cosmic.appearance.theme.dark.gaps) ;
-                inherit (config.wayland.desktopManager.cosmic.appearance.theme.dark.corner_radii) ;
-              };
+              dark = themeShape;
+              light = themeShape;
             };
           };
         })
