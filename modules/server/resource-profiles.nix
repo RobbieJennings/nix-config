@@ -37,12 +37,24 @@
           lib.types.submodule {
             options = {
               requests = {
-                cpu = lib.mkOption { type = lib.types.str; };
-                memory = lib.mkOption { type = lib.types.str; };
+                cpu = lib.mkOption {
+                  type = lib.types.str;
+                  description = "Requested CPU core percentage";
+                };
+                memory = lib.mkOption {
+                  type = lib.types.str;
+                  description = "Requested memory";
+                };
               };
               limits = {
-                cpu = lib.mkOption { type = lib.types.str; };
-                memory = lib.mkOption { type = lib.types.str; };
+                cpu = lib.mkOption {
+                  type = lib.types.str;
+                  description = "CPU core percentage limit";
+                };
+                memory = lib.mkOption {
+                  type = lib.types.str;
+                  description = "Memory limit";
+                };
               };
             };
           }

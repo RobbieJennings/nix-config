@@ -2173,7 +2173,7 @@ Kubernetes resource profiles
 
 
 *Type:*
-attribute set
+attribute set of (submodule)
 
 
 
@@ -2293,6 +2293,70 @@ attribute set
   };
 }
 ```
+
+*Declared by:*
+ - [modules/server/resource-profiles\.nix](../modules/server/resource-profiles.nix)
+
+
+
+## server\.resources\.profiles\.\<name>\.limits\.cpu
+
+
+
+CPU core percentage limit
+
+
+
+*Type:*
+string
+
+*Declared by:*
+ - [modules/server/resource-profiles\.nix](../modules/server/resource-profiles.nix)
+
+
+
+## server\.resources\.profiles\.\<name>\.limits\.memory
+
+
+
+Memory limit
+
+
+
+*Type:*
+string
+
+*Declared by:*
+ - [modules/server/resource-profiles\.nix](../modules/server/resource-profiles.nix)
+
+
+
+## server\.resources\.profiles\.\<name>\.requests\.cpu
+
+
+
+Requested CPU core percentage
+
+
+
+*Type:*
+string
+
+*Declared by:*
+ - [modules/server/resource-profiles\.nix](../modules/server/resource-profiles.nix)
+
+
+
+## server\.resources\.profiles\.\<name>\.requests\.memory
+
+
+
+Requested memory
+
+
+
+*Type:*
+string
 
 *Declared by:*
  - [modules/server/resource-profiles\.nix](../modules/server/resource-profiles.nix)
