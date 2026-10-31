@@ -59,8 +59,8 @@
                 }
               '';
             };
+            resources = config.server.resources.profiles.appMini;
           };
-          resources = config.server.resources.profiles.appMini;
         };
       };
     };

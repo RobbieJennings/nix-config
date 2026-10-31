@@ -18,17 +18,17 @@
         limits.memory = limMem;
       };
       resourceProfiles = {
-        appMini = mkProfile "50m" "128Mi" "250m" "256Mi";
-        appSmall = mkProfile "100m" "256Mi" "500m" "512Mi";
-        appMedium = mkProfile "200m" "512Mi" "1000m" "1Gi";
-        appLarge = mkProfile "400m" "1Gi" "2000m" "2Gi";
-        cache = mkProfile "20m" "64Mi" "100m" "128Mi";
-        dbSmall = mkProfile "100m" "256Mi" "500m" "512Mi";
-        dbMedium = mkProfile "200m" "512Mi" "1000m" "1Gi";
-        infraMini = mkProfile "10m" "32Mi" "100m" "64Mi";
-        infraSmall = mkProfile "20m" "48Mi" "150m" "128Mi";
-        infraMedium = mkProfile "50m" "64Mi" "200m" "192Mi";
-        infraLarge = mkProfile "100m" "128Mi" "250m" "256Mi";
+        appMini = mkProfile "10m" "64Mi" "500m" "256Mi";
+        appSmall = mkProfile "20m" "128Mi" "1000m" "512Mi";
+        appMedium = mkProfile "50m" "256Mi" "2000m" "1Gi";
+        appLarge = mkProfile "100m" "512Mi" "2000m" "2Gi";
+        cache = mkProfile "10m" "64Mi" "200m" "256Mi";
+        dbSmall = mkProfile "20m" "128Mi" "1000m" "512Mi";
+        dbMedium = mkProfile "50m" "256Mi" "2000m" "2Gi";
+        infraMini = mkProfile "5m" "32Mi" "200m" "128Mi";
+        infraSmall = mkProfile "10m" "32Mi" "200m" "128Mi";
+        infraMedium = mkProfile "20m" "48Mi" "500m" "256Mi";
+        infraLarge = mkProfile "25m" "64Mi" "500m" "256Mi";
       };
     in
     {
