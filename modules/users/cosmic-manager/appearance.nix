@@ -81,6 +81,35 @@
           ];
         };
       };
+
+      frostedGlass = {
+        version = 2;
+        entries = {
+          frosted = cosmicLib.cosmic.mkRON "enum" "High";
+          frosted_panel = true;
+          frosted_applets = true;
+          frosted_windows = true;
+          frosted_system_interface = true;
+          alpha_map = cosmicLib.cosmic.mkRON "enum" ''
+            (
+              extremely_low: 0.93,
+              extremely_low_2: 0.90692,
+              very_low: 0.88385004,
+              very_low_2: 0.86076003,
+              low: 0.83769006,
+              low_2: 0.81461,
+              medium: 0.79154,
+              medium_2: 0.76846004,
+              high: 0.74538004,
+              high_2: 0.72231,
+              very_high: 0.69023,
+              very_high_2: 0.67615,
+              extremely_high: 0.65308005,
+              extremely_high_2: 0.63000005,
+            )
+          '';
+        };
+      };
     in
     {
       options = {
@@ -89,11 +118,13 @@
 
       config = lib.mkMerge [
         (lib.mkIf config.cosmic-manager.appearance.enable {
-          wayland.desktopManager.cosmic.appearance = {
-            theme = {
+          wayland.desktopManager.cosmic = {
+            appearance.theme = {
               dark = themeShape;
               light = themeShape;
             };
+            configFile."com.system76.CosmicTheme.Dark" = frostedGlass;
+            configFile."com.system76.CosmicTheme.Light" = frostedGlass;
           };
         })
 
