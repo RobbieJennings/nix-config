@@ -17,6 +17,7 @@
         inputs.self.modules.nixos.jellyfin-persistence
         inputs.self.modules.nixos.jellyfin-deployment
         inputs.self.modules.nixos.jellyfin-services
+        inputs.self.modules.nixos.jellyfin-plugins
       ];
 
       options = {
