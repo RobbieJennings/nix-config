@@ -79,7 +79,7 @@
                         timeoutSeconds = 2;
                         failureThreshold = 3;
                       };
-                      resources = config.server.resources.profiles.appSmall;
+                      resources = config.server.resources.profiles.appLarge;
                     }
                   ];
                 };

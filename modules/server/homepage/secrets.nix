@@ -68,6 +68,21 @@
                   config.sops.placeholder."jellyfin/key"
                 else
                   "";
+              CALIBRE_USERNAME =
+                if (config.media-server.calibre-web-automated.enable && config.secrets.media-server.enable) then
+                  config.sops.placeholder."calibre/username"
+                else
+                  "";
+              CALIBRE_PASSWORD =
+                if (config.media-server.calibre-web-automated.enable && config.secrets.media-server.enable) then
+                  config.sops.placeholder."calibre/password"
+                else
+                  "";
+              AUDIOBOOKSHELF_KEY =
+                if (config.media-server.audiobookshelf.enable && config.secrets.media-server.enable) then
+                  config.sops.placeholder."audiobookshelf/key"
+                else
+                  "";
               RADARR_KEY =
                 if (config.media-server.radarr.enable && config.secrets.media-server.enable) then
                   config.sops.placeholder."radarr/key"

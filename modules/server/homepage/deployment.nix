@@ -107,6 +107,27 @@
                           };
                         }
                         {
+                          name = "HOMEPAGE_VAR_CALIBRE_USERNAME";
+                          valueFrom.secretKeyRef = {
+                            name = "homepage-secrets";
+                            key = "CALIBRE_USERNAME";
+                          };
+                        }
+                        {
+                          name = "HOMEPAGE_VAR_CALIBRE_PASSWORD";
+                          valueFrom.secretKeyRef = {
+                            name = "homepage-secrets";
+                            key = "CALIBRE_PASSWORD";
+                          };
+                        }
+                        {
+                          name = "HOMEPAGE_VAR_AUDIOBOOKSHELF_KEY";
+                          valueFrom.secretKeyRef = {
+                            name = "homepage-secrets";
+                            key = "AUDIOBOOKSHELF_KEY";
+                          };
+                        }
+                        {
                           name = "HOMEPAGE_VAR_PROWLARR_KEY";
                           valueFrom.secretKeyRef = {
                             name = "homepage-secrets";

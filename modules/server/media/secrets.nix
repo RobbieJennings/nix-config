@@ -17,6 +17,9 @@
           {
             sops.secrets = {
               "jellyfin/key" = { };
+              "calibre/username" = { };
+              "calibre/password" = { };
+              "audiobookshelf/key" = { };
               "radarr/key" = { };
               "sonarr/key" = { };
               "lidarr/key" = { };

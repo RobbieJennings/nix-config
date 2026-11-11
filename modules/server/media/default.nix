@@ -23,6 +23,9 @@
         inputs.self.modules.nixos.sonarr
         inputs.self.modules.nixos.lidarr
         inputs.self.modules.nixos.seerr
+        inputs.self.modules.nixos.calibre-web-automated
+        inputs.self.modules.nixos.audiobookshelf
+        inputs.self.modules.nixos.shelfmark
       ];
 
       options = {
@@ -40,6 +43,9 @@
           sonarr.enable = lib.mkDefault true;
           lidarr.enable = lib.mkDefault true;
           seerr.enable = lib.mkDefault true;
+          calibre-web-automated.enable = lib.mkDefault true;
+          audiobookshelf.enable = lib.mkDefault true;
+          shelfmark.enable = lib.mkDefault true;
         };
       };
     };

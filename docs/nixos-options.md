@@ -916,6 +916,70 @@ true
 
 
 
+## media-server\.audiobookshelf\.enable
+
+
+
+Whether to enable Audiobookshelf deployment on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/media/audiobookshelf/default\.nix](../modules/server/media/audiobookshelf/default.nix)
+
+
+
+## media-server\.calibre-web-automated\.enable
+
+
+
+Whether to enable Calibre-Web-Automated deployment on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/media/calibre-web-automated/default\.nix](../modules/server/media/calibre-web-automated/default.nix)
+
+
+
 ## media-server\.flaresolverr\.enable
 
 
@@ -1105,6 +1169,38 @@ true
 
 *Declared by:*
  - [modules/server/media/seerr/default\.nix](../modules/server/media/seerr/default.nix)
+
+
+
+## media-server\.shelfmark\.enable
+
+
+
+Whether to enable Shelfmark deployment on k3s\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/server/media/shelfmark/default\.nix](../modules/server/media/shelfmark/default.nix)
 
 
 
@@ -2187,108 +2283,108 @@ attribute set of (submodule)
       memory = "2Gi";
     };
     requests = {
-      cpu = "400m";
-      memory = "1Gi";
+      cpu = "100m";
+      memory = "512Mi";
     };
   };
   appMedium = {
     limits = {
-      cpu = "1000m";
+      cpu = "2000m";
       memory = "1Gi";
     };
     requests = {
-      cpu = "200m";
-      memory = "512Mi";
+      cpu = "50m";
+      memory = "256Mi";
     };
   };
   appMini = {
     limits = {
-      cpu = "250m";
+      cpu = "500m";
       memory = "256Mi";
     };
     requests = {
-      cpu = "50m";
-      memory = "128Mi";
+      cpu = "10m";
+      memory = "64Mi";
     };
   };
   appSmall = {
     limits = {
-      cpu = "500m";
+      cpu = "1000m";
       memory = "512Mi";
     };
     requests = {
-      cpu = "100m";
-      memory = "256Mi";
+      cpu = "20m";
+      memory = "128Mi";
     };
   };
   cache = {
     limits = {
-      cpu = "100m";
-      memory = "128Mi";
+      cpu = "200m";
+      memory = "256Mi";
     };
     requests = {
-      cpu = "20m";
+      cpu = "10m";
       memory = "64Mi";
     };
   };
   dbMedium = {
     limits = {
-      cpu = "1000m";
-      memory = "1Gi";
+      cpu = "2000m";
+      memory = "2Gi";
     };
     requests = {
-      cpu = "200m";
-      memory = "512Mi";
+      cpu = "50m";
+      memory = "256Mi";
     };
   };
   dbSmall = {
     limits = {
-      cpu = "500m";
+      cpu = "1000m";
       memory = "512Mi";
     };
     requests = {
-      cpu = "100m";
-      memory = "256Mi";
+      cpu = "20m";
+      memory = "128Mi";
     };
   };
   infraLarge = {
     limits = {
-      cpu = "250m";
+      cpu = "500m";
       memory = "256Mi";
     };
     requests = {
-      cpu = "100m";
-      memory = "128Mi";
+      cpu = "25m";
+      memory = "64Mi";
     };
   };
   infraMedium = {
     limits = {
-      cpu = "200m";
-      memory = "192Mi";
+      cpu = "500m";
+      memory = "256Mi";
     };
     requests = {
-      cpu = "50m";
-      memory = "64Mi";
+      cpu = "20m";
+      memory = "48Mi";
     };
   };
   infraMini = {
     limits = {
-      cpu = "100m";
-      memory = "64Mi";
+      cpu = "200m";
+      memory = "128Mi";
     };
     requests = {
-      cpu = "10m";
+      cpu = "5m";
       memory = "32Mi";
     };
   };
   infraSmall = {
     limits = {
-      cpu = "150m";
+      cpu = "200m";
       memory = "128Mi";
     };
     requests = {
-      cpu = "20m";
-      memory = "48Mi";
+      cpu = "10m";
+      memory = "32Mi";
     };
   };
 }

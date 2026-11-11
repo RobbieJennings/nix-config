@@ -45,6 +45,33 @@
                     };
                   }
                   {
+                    Calibre-Web = {
+                      href = "http://calibre-web-automated.media.homelab/";
+                      description = "E-Book Library";
+                      widgets = [
+                        {
+                          type = "calibreweb";
+                          url = "http://192.168.1.202:8083";
+                          username = "{{HOMEPAGE_VAR_CALIBRE_USERNAME}}";
+                          password = "{{HOMEPAGE_VAR_CALIBRE_PASSWORD}}";
+                        }
+                      ];
+                    };
+                  }
+                  {
+                    Audiobookshelf = {
+                      href = "http://audiobookshelf.media.homelab/";
+                      description = "Audiobook Library";
+                      widgets = [
+                        {
+                          type = "audiobookshelf";
+                          url = "http://192.168.1.202:13378";
+                          key = "{{HOMEPAGE_VAR_AUDIOBOOKSHELF_KEY}}";
+                        }
+                      ];
+                    };
+                  }
+                  {
                     Nextcloud = {
                       href = "http://nextcloud.nextcloud/";
                       description = "Cloud Storage";
@@ -178,6 +205,12 @@
                           key = "{{HOMEPAGE_VAR_LIDARR_KEY}}";
                         }
                       ];
+                    };
+                  }
+                  {
+                    Shelfmark = {
+                      href = "http://shelfmark.media.homelab/";
+                      description = "E-Book & Audiobook Management";
                     };
                   }
                 ];
