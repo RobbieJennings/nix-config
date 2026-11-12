@@ -42,6 +42,7 @@
                           set -e
                           mkdir -p /media/books
                           mkdir -p /media/books/ingest
+                          mkdir -p /config/.cwa_conversion_tmp
                           echo "Calibre-Web-Automated directories initialized"
                         ''
                       ];
@@ -54,6 +55,10 @@
                         capabilities.drop = [ "ALL" ];
                       };
                       volumeMounts = [
+                        {
+                          name = "config";
+                          mountPath = "/config";
+                        }
                         {
                           name = "media";
                           mountPath = "/media";
