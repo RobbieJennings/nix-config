@@ -17,7 +17,7 @@
 
       config = lib.mkIf config.vscode.enable {
         programs.vscode = {
-          enable = true;
+          enable = false; # Just enable profiles until vscode patches are fixed in nixpkgs
           profiles.default = {
             extensions = with pkgs.vscode-extensions; [
               golang.go

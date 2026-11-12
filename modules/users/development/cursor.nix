@@ -18,6 +18,7 @@
       config = lib.mkIf config.cursor.enable {
         programs.cursor = {
           enable = true;
+          package = pkgs.unstable.code-cursor;
           profiles = config.programs.vscode.profiles;
         };
       };
