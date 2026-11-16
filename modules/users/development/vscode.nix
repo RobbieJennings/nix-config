@@ -16,10 +16,11 @@
       };
 
       config = lib.mkIf config.vscode.enable {
-        programs.vscode = {
-          enable = false; # Just enable profiles until vscode patches are fixed in nixpkgs
+        programs.vscodium = {
+          enable = true;
+          package = pkgs.unstable.vscodium;
           profiles.default = {
-            extensions = with pkgs.vscode-extensions; [
+            extensions = with pkgs.unstable.vscode-extensions; [
               golang.go
               bbenoist.nix
               skellock.just
