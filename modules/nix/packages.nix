@@ -12,9 +12,6 @@
 
   flake.overlays.additional-packages = final: prev: {
     vuescan = final.callPackage ../../packages/vuescan.nix { src = inputs.vuescan-source; };
-    cosmic-ext-applet-clipboard-manager =
-      final.callPackage ../../packages/cosmic-ext-applet-clipboard-manager.nix
-        { };
   };
 
   perSystem =

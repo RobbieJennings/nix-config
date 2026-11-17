@@ -17,11 +17,23 @@
       };
 
       config = lib.mkIf config.cosmic-manager.applets.enable {
-        home.packages = [
-          pkgs.cosmic-ext-applet-privacy-indicator
-          pkgs.cosmic-ext-applet-minimon
-          pkgs.cosmic-ext-applet-caffeine
-          pkgs.cosmic-ext-applet-clipboard-manager
+        services.flatpak.packages = [
+          {
+            appId = "io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager";
+            origin = "cosmic";
+          }
+          {
+            appId = "io.github.cosmic_utils.minimon-applet";
+            origin = "cosmic";
+          }
+          {
+            appId = "com.github.codevardhan.caffeine-applet";
+            origin = "cosmic";
+          }
+          {
+            appId = "dev.DBrox.CosmicPrivacyIndicator";
+            origin = "cosmic";
+          }
         ];
         wayland.desktopManager.cosmic.applets = {
           audio.settings.show_media_controls_in_top_panel = true;

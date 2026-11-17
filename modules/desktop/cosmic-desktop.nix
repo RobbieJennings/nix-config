@@ -19,13 +19,11 @@
         services.displayManager.cosmic-greeter.enable = true;
         services.desktopManager.cosmic.enable = true;
         environment.systemPackages = [
-          pkgs.cosmic-ext-calculator # calculator
           pkgs.seahorse # key management
           pkgs.file-roller # archive management
           pkgs.loupe # image viewer
           pkgs.simple-scan # document scanner
           pkgs.system-config-printer # printer setup
-          pkgs.snapshot # camera
           pkgs.gnome-characters # emojis
           pkgs.baobab # disk analysis
           pkgs.gnome-disk-utility # disk formatting
@@ -36,10 +34,28 @@
           pkgs.pavucontrol # volume control
         ];
 
-        stylix.targets.gtk.enable = lib.mkForce false;
         home-manager.sharedModules = [
           {
             imports = [ inputs.self.modules.homeManager.cosmic-manager ];
+
+            services.flatpak = {
+              remotes = lib.mkOptionDefault [
+                {
+                  name = "cosmic";
+                  location = "https://apt.pop-os.org/cosmic/cosmic.flatpakrepo";
+                }
+              ];
+              packages = [
+                {
+                  appId = "dev.edfloreshz.Calculator";
+                  origin = "flathub";
+                }
+                {
+                  appId = "io.github.cosmic_utils.camera";
+                  origin = "flathub";
+                }
+              ];
+            };
           }
         ];
 

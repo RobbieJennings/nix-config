@@ -42,7 +42,7 @@
                   "dev.DBrox.CosmicPrivacyIndicator"
                   "io.github.cosmic_utils.minimon-applet"
                   "com.system76.CosmicAppletStatusArea"
-                  "net.tropicbliss.CosmicExtAppletCaffeine"
+                  "com.github.codevardhan.caffeine-applet"
                   "com.system76.CosmicAppletNotifications"
                   "io.github.cosmic_utils.cosmic-ext-applet-clipboard-manager"
                   "com.system76.CosmicAppletTiling"
