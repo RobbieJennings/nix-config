@@ -5,28 +5,11 @@
   ...
 }:
 {
-  flake.modules.nixos.robbie-vm = {
-    imports = [
-      (self.factory.desktop-user {
-        username = "robbie";
-        isAdmin = true;
-      })
-    ];
-
-    home-manager.users.robbie = {
-      programs.git.settings.user = {
-        name = "robbiejennings";
-        email = "robbie.jennings97@gmail.com";
-      };
-    };
-  };
-
   flake.nixosConfigurations.nixos-vm = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       inputs.self.modules.nixos.vm
       inputs.self.modules.nixos.core
       inputs.self.modules.nixos.desktop
-      inputs.self.modules.nixos.robbie-vm
       {
         networking.hostName = "nixos-vm";
         impermanence.enable = true;
@@ -43,6 +26,21 @@
             "/etc/nixos"
             "/root/.ssh"
           ];
+        };
+      }
+      {
+        imports = [
+          (self.factory.desktop-user {
+            username = "robbie";
+            isAdmin = true;
+          })
+        ];
+
+        home-manager.users.robbie = {
+          programs.git.settings.user = {
+            name = "robbiejennings";
+            email = "robbie.jennings97@gmail.com";
+          };
         };
       }
     ];

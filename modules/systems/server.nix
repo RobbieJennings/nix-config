@@ -5,31 +5,11 @@
   ...
 }:
 {
-  flake.modules.nixos.robbie-server = {
-    imports = [
-      (self.factory.server-user {
-        username = "robbie";
-        isAdmin = true;
-      })
-    ];
-
-    home-manager.users.robbie = {
-      programs.git = {
-        enable = true;
-        settings.user = {
-          name = "robbiejennings";
-          email = "robbie.jennings97@gmail.com";
-        };
-      };
-    };
-  };
-
   flake.nixosConfigurations.optiplex3070 = inputs.nixpkgs.lib.nixosSystem {
     modules = [
       inputs.self.modules.nixos.optiplex3070
       inputs.self.modules.nixos.core
       inputs.self.modules.nixos.server
-      inputs.self.modules.nixos.robbie-server
       {
         networking.hostName = "optiplex3070";
         secrets = {
@@ -62,6 +42,24 @@
             "/etc/nixos"
             "/root/.ssh"
           ];
+        };
+      }
+      {
+        imports = [
+          (self.factory.server-user {
+            username = "robbie";
+            isAdmin = true;
+          })
+        ];
+
+        home-manager.users.robbie = {
+          programs.git = {
+            enable = true;
+            settings.user = {
+              name = "robbiejennings";
+              email = "robbie.jennings97@gmail.com";
+            };
+          };
         };
       }
     ];
