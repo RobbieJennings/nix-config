@@ -12,6 +12,9 @@
     }:
     {
       imports = [
+        inputs.self.modules.nixos.settings
+        inputs.self.modules.nixos.unstable-packages
+        inputs.self.modules.nixos.unfree-packages
         inputs.self.modules.nixos.auto-upgrade
         inputs.self.modules.nixos.garbage-collection
         inputs.self.modules.nixos.fwupd

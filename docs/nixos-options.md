@@ -308,6 +308,123 @@ true
 
 
 
+## environment\.persistence
+
+
+
+A set of persistent storage location submodules listing the
+files and directories to link to their respective persistent
+storage location\.
+
+Each attribute name should be the full path to a persistent
+storage location\.
+
+For detailed usage, check the \<link
+xlink:href=“https://github\.com/nix-community/impermanence”>documentation\</link>\.
+
+
+
+*Type:*
+attribute set of (submodule)
+
+
+
+*Default:*
+
+```nix
+{ }
+```
+
+
+
+*Example:*
+
+```nix
+{
+  "/persistent" = {
+    directories = [
+      "/var/log"
+      "/var/lib/bluetooth"
+      "/var/lib/nixos"
+      "/var/lib/systemd/coredump"
+      "/etc/NetworkManager/system-connections"
+      { directory = "/var/lib/colord"; user = "colord"; group = "colord"; mode = "u=rwx,g=rx,o="; }
+    ];
+    files = [
+      "/etc/machine-id"
+      { file = "/etc/nix/id_rsa"; parentDirectory = { mode = "u=rwx,g=,o="; }; }
+    ];
+  };
+  users.talyz = { ... }; # See the dedicated example
+}
+
+```
+
+*Declared by:*
+ - [modules/nix/settings\.nix](../modules/nix/settings.nix)
+
+
+
+## environment\.persistence\.\<name>\.users
+
+
+
+A set of user submodules listing the files and
+directories to link to their respective user’s
+home directories\.
+
+Each attribute name should be the name of the
+user\.
+
+For detailed usage, check the \<link
+xlink:href=“https://github\.com/nix-community/impermanence”>documentation\</link>\.
+
+
+
+*Type:*
+attribute set of (submodule)
+
+
+
+*Default:*
+
+```nix
+{ }
+```
+
+
+
+*Example:*
+
+```nix
+{
+  talyz = {
+    directories = [
+      "Downloads"
+      "Music"
+      "Pictures"
+      "Documents"
+      "Videos"
+      "VirtualBox VMs"
+      { directory = ".gnupg"; mode = "0700"; }
+      { directory = ".ssh"; mode = "0700"; }
+      { directory = ".nixops"; mode = "0700"; }
+      { directory = ".local/share/keyrings"; mode = "0700"; }
+      ".local/share/direnv"
+    ];
+    files = [
+      ".screenrc"
+    ];
+  };
+}
+
+```
+
+*Declared by:*
+ - [modules/nix/settings\.nix](../modules/nix/settings.nix)
+
+
+
 ## forgejo\.enable
 
 

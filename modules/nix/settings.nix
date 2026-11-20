@@ -28,14 +28,6 @@
         ];
       };
 
-      nixpkgs = {
-        config.allowUnfree = true;
-        overlays = [
-          self.overlays.unstable-packages
-          self.overlays.additional-packages
-        ];
-      };
-
       home-manager = {
         sharedModules = [
           {
@@ -44,13 +36,6 @@
               inputs.stylix.homeModules.stylix
             ];
             home.stateVersion = "26.05";
-            nixpkgs = {
-              config.allowUnfree = true;
-              overlays = [
-                self.overlays.unstable-packages
-                self.overlays.additional-packages
-              ];
-            };
           }
         ];
       };

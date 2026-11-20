@@ -1,5 +1,5 @@
 {
-  inputs,
+  self,
   ...
 }:
 {
@@ -18,7 +18,9 @@
 
       config = lib.mkMerge [
         (lib.mkIf config.vuescan.enable {
-          home.packages = [ pkgs.vuescan ];
+          home.packages = [
+            self.packages.${pkgs.stdenv.hostPlatform.system}.vuescan
+          ];
         })
 
         (lib.mkIf (config.vuescan.enable && config.secrets.enable && config.secrets.vuescan.enable) {

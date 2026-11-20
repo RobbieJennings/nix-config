@@ -26,7 +26,6 @@
 
   flake.nixosConfigurations.optiplex3070 = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      inputs.self.modules.nixos.settings
       inputs.self.modules.nixos.optiplex3070
       inputs.self.modules.nixos.core
       inputs.self.modules.nixos.server

@@ -37,7 +37,6 @@
 
   flake.nixosConfigurations.xps15 = inputs.nixpkgs.lib.nixosSystem {
     modules = [
-      inputs.self.modules.nixos.settings
       inputs.self.modules.nixos.xps15
       inputs.self.modules.nixos.core
       inputs.self.modules.nixos.desktop
