@@ -11,6 +11,8 @@
       ...
     }:
     {
+      imports = [ inputs.sops-nix.nixosModules.sops ];
+
       options = {
         secrets.enable = lib.mkEnableOption "importing secrets using sops-nix";
         secrets.passwords.enable = lib.mkEnableOption "user password secrets";
@@ -41,6 +43,8 @@
       ...
     }:
     {
+      imports = [ inputs.sops-nix.homeManagerModules.sops ];
+
       options = {
         secrets.enable = lib.mkEnableOption "importing secrets using sops-nix";
       };

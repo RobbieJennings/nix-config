@@ -12,13 +12,12 @@
       ...
     }:
     {
-      imports = [
-        inputs.home-manager.nixosModules.home-manager
-        inputs.impermanence.nixosModules.impermanence
-        inputs.sops-nix.nixosModules.sops
-        inputs.disko.nixosModules.disko
-        inputs.stylix.nixosModules.stylix
-      ];
+      imports = [ inputs.home-manager.nixosModules.home-manager ];
+
+      nixpkgs = {
+        config.allowUnfree = true;
+        overlays = [ self.overlays.unstable-packages ];
+      };
 
       nix.settings = {
         auto-optimise-store = true;
@@ -28,20 +27,17 @@
         ];
       };
 
-      home-manager = {
-        sharedModules = [
-          {
-            imports = [
-              inputs.sops-nix.homeManagerModules.sops
-              inputs.stylix.homeModules.stylix
-            ];
-            home.stateVersion = "26.05";
-          }
-        ];
-      };
-
-      stylix.homeManagerIntegration.autoImport = false;
+      home-manager.sharedModules = [ self.modules.homeManager.settings ];
       users.mutableUsers = false;
       system.stateVersion = "26.05";
     };
+
+  flake.modules.homeManager.settings = {
+    nixpkgs = {
+      config.allowUnfree = true;
+      overlays = [ self.overlays.unstable-packages ];
+    };
+
+    home.stateVersion = "26.05";
+  };
 }

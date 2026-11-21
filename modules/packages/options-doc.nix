@@ -15,10 +15,11 @@
       nixosEval = inputs.nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          { _module.check = false; }
+          { _module.check = lib.mkForce false; }
         ]
         ++ builtins.attrValues {
           inherit (self.modules.nixos)
+            settings
             core
             desktop
             server
@@ -26,12 +27,20 @@
         };
       };
 
-      homeManagerEval = lib.evalModules {
+      homeManagerEval = inputs.home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
         modules = [
-          { _module.check = false; }
+          {
+            _module.check = lib.mkForce false;
+            home = {
+              username = "docs";
+              homeDirectory = "/home/docs";
+            };
+          }
         ]
         ++ builtins.attrValues {
           inherit (self.modules.homeManager)
+            settings
             secrets
             theme
             backup

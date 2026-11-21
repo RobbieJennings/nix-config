@@ -361,7 +361,7 @@ attribute set of (submodule)
 ```
 
 *Declared by:*
- - [modules/nix/settings\.nix](../modules/nix/settings.nix)
+ - [modules/core/impermanence\.nix](../modules/core/impermanence.nix)
 
 
 
@@ -421,7 +421,7 @@ attribute set of (submodule)
 ```
 
 *Declared by:*
- - [modules/nix/settings\.nix](../modules/nix/settings.nix)
+ - [modules/core/impermanence\.nix](../modules/core/impermanence.nix)
 
 
 
