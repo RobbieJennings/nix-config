@@ -16,6 +16,7 @@
       };
 
       imports = [
+        inputs.cosmic-manager.homeManagerModules.cosmic-manager
         inputs.self.modules.homeManager.cosmic-manager-appearance
         inputs.self.modules.homeManager.cosmic-manager-applets
         inputs.self.modules.homeManager.cosmic-manager-compositor

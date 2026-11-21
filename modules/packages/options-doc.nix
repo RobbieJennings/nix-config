@@ -32,6 +32,7 @@
         modules = [
           {
             _module.check = lib.mkForce false;
+            disabledModules = [ inputs.cosmic-manager.homeManagerModules.cosmic-manager ];
             home = {
               username = "docs";
               homeDirectory = "/home/docs";
@@ -76,12 +77,13 @@
           };
         in
         pkgs.runCommand name { } ''
-          cp ${doc.optionsCommonMark} $out
+          mkdir -p $out
+          cp ${doc.optionsCommonMark} $out/options-doc.md
           sed -i \
             -e 's+\/nix\/store\/[a-z0-9]*-source\/++g' \
             -e 's+file:\/\/+../+g' \
             -e 's+, via option flake[^])]*++g' \
-            $out
+            $out/options-doc.md
         '';
     in
     {

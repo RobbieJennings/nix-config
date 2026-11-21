@@ -64,13 +64,13 @@ edit-secret secret:
 # Usage: $ just docs
 docs:
   mkdir -p docs
-  nix build .#nixos-options-doc && cat result > ./docs/nixos-options.md && rm result
-  nix build .#home-manager-options-doc && cat result > ./docs/home-manager-options.md && rm result
+  nix build .#nixos-options-doc && cat result/options-doc.md > ./docs/nixos-options.md && rm -r result
+  nix build .#home-manager-options-doc && cat result/options-doc.md > ./docs/home-manager-options.md && rm -r result
 
 # Generate git-hooks
 # Usage: $ just hooks
 hooks:
-  nix develop
+  nix develop .#hooks
 
 # Open nix repl
 # Usage: $ just repl

@@ -16,6 +16,7 @@
       };
 
       imports = [
+        inputs.plasma-manager.homeModules.plasma-manager
         inputs.self.modules.homeManager.plasma-manager-input
         inputs.self.modules.homeManager.plasma-manager-look-and-feel
         inputs.self.modules.homeManager.plasma-manager-panels
