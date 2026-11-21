@@ -10,7 +10,6 @@
       inputs.self.modules.nixos.core
       inputs.self.modules.nixos.desktop
       {
-        networking.hostName = "xps15";
         desktopEnvironment = "cosmic";
         secrets = {
           enable = true;

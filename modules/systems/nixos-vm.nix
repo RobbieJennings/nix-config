@@ -11,7 +11,6 @@
       inputs.self.modules.nixos.core
       inputs.self.modules.nixos.desktop
       {
-        networking.hostName = "nixos-vm";
         impermanence.enable = true;
         environment.persistence."/persist" = {
           hideMounts = true;

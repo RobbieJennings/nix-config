@@ -11,5 +11,7 @@
       inputs.self.modules.nixos.optiplex3070-hardware
       inputs.self.modules.nixos.optiplex3070-disk
     ];
+
+    networking.hostName = "optiplex3070";
   };
 }

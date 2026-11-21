@@ -10,6 +10,7 @@
       inputs.self.modules.nixos.xps15-disk
     ];
 
+    networking.hostName = "xps15";
     services.power-profiles-daemon.enable = false;
     services.tlp.enable = true;
   };

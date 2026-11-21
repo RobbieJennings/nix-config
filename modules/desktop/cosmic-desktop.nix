@@ -36,7 +36,10 @@
 
         home-manager.sharedModules = [
           {
-            imports = [ inputs.self.modules.homeManager.cosmic-manager ];
+            imports = [
+              inputs.cosmic-manager.homeManagerModules.cosmic-manager
+              inputs.self.modules.homeManager.cosmic-manager
+            ];
 
             services.flatpak = {
               remotes = lib.mkOptionDefault [

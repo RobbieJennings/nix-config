@@ -8,5 +8,7 @@
       inputs.self.modules.nixos.vm-hardware
       inputs.self.modules.nixos.vm-disk
     ];
+
+    networking.hostName = "nixos-vm";
   };
 }

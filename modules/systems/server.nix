@@ -11,7 +11,6 @@
       inputs.self.modules.nixos.core
       inputs.self.modules.nixos.server
       {
-        networking.hostName = "optiplex3070";
         secrets = {
           enable = true;
           passwords.enable = true;

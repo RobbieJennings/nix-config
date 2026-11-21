@@ -44,9 +44,6 @@
         theme.enable = lib.mkDefault true;
 
         environment.systemPackages = [
-          config.theme.fonts.interface.package
-          config.theme.fonts.monospace.package
-          config.theme.fonts.emoji.package
           pkgs.git
           pkgs.vim
           pkgs.wget
@@ -58,12 +55,6 @@
             imports = [
               inputs.self.modules.homeManager.theme
               inputs.self.modules.homeManager.secrets
-            ];
-
-            home.packages = [
-              config.theme.fonts.interface.package
-              config.theme.fonts.monospace.package
-              config.theme.fonts.emoji.package
             ];
 
             theme.enable = lib.mkDefault true;

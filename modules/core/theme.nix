@@ -8,6 +8,7 @@ let
       config,
       lib,
       pkgs,
+      _class,
       ...
     }:
     {
@@ -122,20 +123,38 @@ let
         };
       };
 
-      config = lib.mkIf config.theme.enable {
-        stylix = {
-          enable = true;
-          inherit (config.theme) polarity;
-          base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.theme.base16Scheme}.yaml";
-          image = pkgs.fetchurl config.theme.image;
-          fonts = {
-            serif = config.theme.fonts.interface;
-            sansSerif = config.theme.fonts.interface;
-            monospace = config.theme.fonts.monospace;
-            emoji = config.theme.fonts.emoji;
+      config = lib.mkMerge [
+        (lib.mkIf config.theme.enable {
+          stylix = {
+            enable = true;
+            inherit (config.theme) polarity;
+            base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.theme.base16Scheme}.yaml";
+            image = pkgs.fetchurl config.theme.image;
+            fonts = {
+              serif = config.theme.fonts.interface;
+              sansSerif = config.theme.fonts.interface;
+              monospace = config.theme.fonts.monospace;
+              emoji = config.theme.fonts.emoji;
+            };
           };
-        };
-      };
+        })
+
+        (lib.optionalAttrs (_class == "nixos") {
+          environment.systemPackages = lib.mkIf config.theme.enable [
+            config.theme.fonts.interface.package
+            config.theme.fonts.monospace.package
+            config.theme.fonts.emoji.package
+          ];
+        })
+
+        (lib.optionalAttrs (_class == "homeManager") {
+          home.packages = lib.mkIf config.theme.enable [
+            config.theme.fonts.interface.package
+            config.theme.fonts.monospace.package
+            config.theme.fonts.emoji.package
+          ];
+        })
+      ];
     };
 in
 {

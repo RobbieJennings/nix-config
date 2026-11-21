@@ -52,7 +52,10 @@
         stylix.targets.qt.enable = lib.mkForce false;
         home-manager.sharedModules = [
           {
-            imports = [ inputs.self.modules.homeManager.plasma-manager ];
+            imports = [
+              inputs.plasma-manager.homeModules.plasma-manager
+              inputs.self.modules.homeManager.plasma-manager
+            ];
             stylix.targets.qt.enable = lib.mkForce false;
           }
         ];
