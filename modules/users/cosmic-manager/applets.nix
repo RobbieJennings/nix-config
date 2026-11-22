@@ -34,6 +34,10 @@
             appId = "dev.DBrox.CosmicPrivacyIndicator";
             origin = "cosmic";
           }
+          {
+            appId = "io.github.nwxnw.cosmic-ext-connected";
+            origin = "cosmic";
+          }
         ];
         wayland.desktopManager.cosmic.applets = {
           audio.settings.show_media_controls_in_top_panel = true;
