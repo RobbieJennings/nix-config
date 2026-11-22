@@ -78,12 +78,12 @@
         in
         pkgs.runCommand name { } ''
           mkdir -p $out
-          cp ${doc.optionsCommonMark} $out/options-doc.md
+          cp ${doc.optionsCommonMark} $out/${name}.md
           sed -i \
             -e 's+\/nix\/store\/[a-z0-9]*-source\/++g' \
             -e 's+file:\/\/+../+g' \
             -e 's+, via option flake[^])]*++g' \
-            $out/options-doc.md
+            $out/${name}.md
         '';
     in
     {

@@ -64,8 +64,8 @@ edit-secret secret:
 # Usage: $ just docs
 docs:
   mkdir -p docs
-  nix build .#nixos-options-doc && cat result/options-doc.md > ./docs/nixos-options.md && rm -r result
-  nix build .#home-manager-options-doc && cat result/options-doc.md > ./docs/home-manager-options.md && rm -r result
+  nix build .#nixos-options-doc && cat result/nixos-options-doc.md > ./docs/nixos-options.md && rm -r result
+  nix build .#home-manager-options-doc && cat result/home-manager-options-doc.md > ./docs/home-manager-options.md && rm -r result
 
 # Generate git-hooks
 # Usage: $ just hooks
