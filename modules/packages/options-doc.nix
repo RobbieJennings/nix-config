@@ -19,7 +19,6 @@
         ]
         ++ builtins.attrValues {
           inherit (self.modules.nixos)
-            settings
             core
             desktop
             server
