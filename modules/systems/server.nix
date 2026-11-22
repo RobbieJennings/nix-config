@@ -15,6 +15,7 @@
           enable = true;
           passwords.enable = true;
           k3s.enable = true;
+          homepage.enable = true;
           longhorn.enable = true;
           garage.enable = true;
           grafana.enable = true;
