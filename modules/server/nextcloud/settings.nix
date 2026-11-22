@@ -14,14 +14,10 @@
     {
       config = lib.mkIf config.nextcloud.enable {
         services.k3s.autoDeployCharts.nextcloud.values = {
-          image =
-            let
-              image = inputs.self.lib.findImageByName "nextcloud" config.services.k3s.images;
-            in
-            {
-              repository = image.imageName;
-              tag = image.imageTag;
-            };
+          image = {
+            repository = config._module.args.nextcloudImages.nextcloudImage.imageName;
+            tag = config._module.args.nextcloudImages.nextcloudImage.imageTag;
+          };
           nextcloud = {
             host = "nextcloud.nextcloud";
             trustedDomains = [
@@ -86,14 +82,10 @@
           };
           collabora = {
             enabled = true;
-            image =
-              let
-                image = inputs.self.lib.findImageByName "collabora/code" config.services.k3s.images;
-              in
-              {
-                repository = image.imageName;
-                tag = image.imageTag;
-              };
+            image = {
+              repository = config._module.args.nextcloudImages.collaboraImage.imageName;
+              tag = config._module.args.nextcloudImages.collaboraImage.imageTag;
+            };
             service = {
               type = "ClusterIP";
               port = 80;

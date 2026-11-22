@@ -35,11 +35,7 @@
                   initContainers = [
                     {
                       name = "init-shelfmark";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "ghcr.io/calibrain/shelfmark" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.shelfmarkImages.shelfmarkImage.imageName}:${config._module.args.shelfmarkImages.shelfmarkImage.imageTag}";
                       command = [
                         "sh"
                         "-c"
@@ -66,11 +62,7 @@
                   containers = [
                     {
                       name = "shelfmark";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "ghcr.io/calibrain/shelfmark" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.shelfmarkImages.shelfmarkImage.imageName}:${config._module.args.shelfmarkImages.shelfmarkImage.imageTag}";
                       ports = [ { containerPort = 8084; } ];
                       env = [
                         {

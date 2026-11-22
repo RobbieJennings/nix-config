@@ -35,11 +35,7 @@
                   initContainers = [
                     {
                       name = "init-audiobookshelf";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "ghcr.io/advplyr/audiobookshelf" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.audiobookshelfImages.audiobookshelfImage.imageName}:${config._module.args.audiobookshelfImages.audiobookshelfImage.imageTag}";
                       command = [
                         "sh"
                         "-c"
@@ -67,11 +63,7 @@
                   containers = [
                     {
                       name = "audiobookshelf";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "ghcr.io/advplyr/audiobookshelf" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.audiobookshelfImages.audiobookshelfImage.imageName}:${config._module.args.audiobookshelfImages.audiobookshelfImage.imageTag}";
                       ports = [ { containerPort = 80; } ];
                       env = [
                         {

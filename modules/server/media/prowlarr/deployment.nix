@@ -30,11 +30,7 @@
                   containers = [
                     {
                       name = "prowlarr";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "linuxserver/prowlarr" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.prowlarrImages.prowlarrImage.imageName}:${config._module.args.prowlarrImages.prowlarrImage.imageTag}";
                       ports = [ { containerPort = 9696; } ];
                       env = [
                         {

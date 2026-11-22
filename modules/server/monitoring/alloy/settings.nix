@@ -14,14 +14,10 @@
     {
       config = lib.mkIf config.monitoring.alloy.enable {
         services.k3s.autoDeployCharts.alloy.values = {
-          image =
-            let
-              image = inputs.self.lib.findImageByName "grafana/alloy" config.services.k3s.images;
-            in
-            {
-              repository = image.imageName;
-              tag = image.imageTag;
-            };
+          image = {
+            repository = config._module.args.alloyImages.alloyImage.imageName;
+            tag = config._module.args.alloyImages.alloyImage.imageTag;
+          };
           service.enabled = false;
           alloy = {
             configMap = {

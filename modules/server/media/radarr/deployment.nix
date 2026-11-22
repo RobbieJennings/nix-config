@@ -35,11 +35,7 @@
                   initContainers = [
                     {
                       name = "init-radarr";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "linuxserver/radarr" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.radarrImages.radarrImage.imageName}:${config._module.args.radarrImages.radarrImage.imageTag}";
                       command = [
                         "sh"
                         "-c"
@@ -71,11 +67,7 @@
                   containers = [
                     {
                       name = "radarr";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "linuxserver/radarr" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.radarrImages.radarrImage.imageName}:${config._module.args.radarrImages.radarrImage.imageTag}";
                       ports = [ { containerPort = 7878; } ];
                       env = [
                         {

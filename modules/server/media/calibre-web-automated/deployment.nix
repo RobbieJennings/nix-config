@@ -30,11 +30,7 @@
                   initContainers = [
                     {
                       name = "init-calibre-web-automated";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "crocodilestick/calibre-web-automated" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.calibreWebAutomatedImages.calibreWebAutomatedImage.imageName}:${config._module.args.calibreWebAutomatedImages.calibreWebAutomatedImage.imageTag}";
                       command = [
                         "sh"
                         "-c"
@@ -69,11 +65,7 @@
                   containers = [
                     {
                       name = "calibre-web-automated";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "crocodilestick/calibre-web-automated" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.calibreWebAutomatedImages.calibreWebAutomatedImage.imageName}:${config._module.args.calibreWebAutomatedImages.calibreWebAutomatedImage.imageTag}";
                       ports = [ { containerPort = 8083; } ];
                       env = [
                         {

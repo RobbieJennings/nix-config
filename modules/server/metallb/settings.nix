@@ -15,22 +15,14 @@
       config = lib.mkIf config.metallb.enable {
         services.k3s.autoDeployCharts.metallb = {
           values = {
-            controller.image =
-              let
-                image = inputs.self.lib.findImageByName "quay.io/metallb/controller" config.services.k3s.images;
-              in
-              {
-                repository = image.imageName;
-                tag = image.imageTag;
-              };
-            speaker.image =
-              let
-                image = inputs.self.lib.findImageByName "quay.io/metallb/speaker" config.services.k3s.images;
-              in
-              {
-                repository = image.imageName;
-                tag = image.imageTag;
-              };
+            controller.image = {
+              repository = config._module.args.metallbImages.controllerImage.imageName;
+              tag = config._module.args.metallbImages.controllerImage.imageTag;
+            };
+            speaker.image = {
+              repository = config._module.args.metallbImages.speakerImage.imageName;
+              tag = config._module.args.metallbImages.speakerImage.imageTag;
+            };
           };
           extraDeploy = [
             {

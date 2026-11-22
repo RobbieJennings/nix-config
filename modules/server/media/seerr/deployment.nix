@@ -35,11 +35,7 @@
                   containers = [
                     {
                       name = "seerr";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "ghcr.io/seerr-team/seerr" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.seerrImages.seerrImage.imageName}:${config._module.args.seerrImages.seerrImage.imageTag}";
                       ports = [ { containerPort = 5055; } ];
                       resources = config.server.resources.profiles.appSmall;
                       startupProbe = {

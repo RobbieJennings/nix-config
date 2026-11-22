@@ -14,23 +14,13 @@
     {
       config = lib.mkIf config.node-feature-discovery.enable {
         services.k3s.autoDeployCharts.node-feature-discovery.values = {
-          image =
-            let
-              image = inputs.self.lib.findImageByName "registry.k8s.io/nfd/node-feature-discovery" config.services.k3s.images;
-            in
-            {
-              repository = image.imageName;
-              tag = image.imageTag;
-            };
-          master = {
-            resources = config.server.resources.profiles.infraMini;
+          image = {
+            repository = config._module.args.nodeFeatureDiscoveryImages.nodeFeatureDiscoveryImage.imageName;
+            tag = config._module.args.nodeFeatureDiscoveryImages.nodeFeatureDiscoveryImage.imageTag;
           };
-          worker = {
-            resources = config.server.resources.profiles.infraMini;
-          };
-          gc = {
-            resources = config.server.resources.profiles.infraMini;
-          };
+          master.resources = config.server.resources.profiles.infraMini;
+          worker.resources = config.server.resources.profiles.infraMini;
+          gc.resources = config.server.resources.profiles.infraMini;
         };
       };
     };

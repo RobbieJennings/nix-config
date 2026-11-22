@@ -16,96 +16,52 @@
         services.k3s.autoDeployCharts.longhorn.values = {
           image = {
             csi = {
-              attacher =
-                let
-                  image = inputs.self.lib.findImageByName "longhornio/csi-attacher" config.services.k3s.images;
-                in
-                {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
-              nodeDriverRegistrar =
-                let
-                  image = inputs.self.lib.findImageByName "longhornio/csi-node-driver-registrar" config.services.k3s.images;
-                in
-                {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
-              provisioner =
-                let
-                  image = inputs.self.lib.findImageByName "longhornio/csi-provisioner" config.services.k3s.images;
-                in
-                {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
-              resizer =
-                let
-                  image = inputs.self.lib.findImageByName "longhornio/csi-resizer" config.services.k3s.images;
-                in
-                {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
-              snapshotter =
-                let
-                  image = inputs.self.lib.findImageByName "longhornio/csi-snapshotter" config.services.k3s.images;
-                in
-                {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
-              livenessProbe =
-                let
-                  image = inputs.self.lib.findImageByName "longhornio/livenessprobe" config.services.k3s.images;
-                in
-                {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
+              attacher = {
+                repository = config._module.args.longhornImages.csiAttacherImage.imageName;
+                tag = config._module.args.longhornImages.csiAttacherImage.imageTag;
+              };
+              nodeDriverRegistrar = {
+                repository = config._module.args.longhornImages.csiNodeDriverRegistrarImage.imageName;
+                tag = config._module.args.longhornImages.csiNodeDriverRegistrarImage.imageTag;
+              };
+              provisioner = {
+                repository = config._module.args.longhornImages.csiProvisionerImage.imageName;
+                tag = config._module.args.longhornImages.csiProvisionerImage.imageTag;
+              };
+              resizer = {
+                repository = config._module.args.longhornImages.csiResizerImage.imageName;
+                tag = config._module.args.longhornImages.csiResizerImage.imageTag;
+              };
+              snapshotter = {
+                repository = config._module.args.longhornImages.csiSnapshotterImage.imageName;
+                tag = config._module.args.longhornImages.csiSnapshotterImage.imageTag;
+              };
+              livenessProbe = {
+                repository = config._module.args.longhornImages.csiLivenessProbeImage.imageName;
+                tag = config._module.args.longhornImages.csiLivenessProbeImage.imageTag;
+              };
             };
             longhorn = {
-              engine =
-                let
-                  image = inputs.self.lib.findImageByName "longhornio/longhorn-engine" config.services.k3s.images;
-                in
-                {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
-              instanceManager =
-                let
-                  image = inputs.self.lib.findImageByName "longhornio/longhorn-instance-manager" config.services.k3s.images;
-                in
-                {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
-              manager =
-                let
-                  image = inputs.self.lib.findImageByName "longhornio/longhorn-manager" config.services.k3s.images;
-                in
-                {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
-              shareManager =
-                let
-                  image = inputs.self.lib.findImageByName "longhornio/longhorn-share-manager" config.services.k3s.images;
-                in
-                {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
-              ui =
-                let
-                  image = inputs.self.lib.findImageByName "longhornio/longhorn-ui" config.services.k3s.images;
-                in
-                {
-                  repository = image.imageName;
-                  tag = image.imageTag;
-                };
+              engine = {
+                repository = config._module.args.longhornImages.longhornEngineImage.imageName;
+                tag = config._module.args.longhornImages.longhornEngineImage.imageTag;
+              };
+              instanceManager = {
+                repository = config._module.args.longhornImages.longhornInstanceManagerImage.imageName;
+                tag = config._module.args.longhornImages.longhornInstanceManagerImage.imageTag;
+              };
+              manager = {
+                repository = config._module.args.longhornImages.longhornManagerImage.imageName;
+                tag = config._module.args.longhornImages.longhornManagerImage.imageTag;
+              };
+              shareManager = {
+                repository = config._module.args.longhornImages.longhornShareManagerImage.imageName;
+                tag = config._module.args.longhornImages.longhornShareManagerImage.imageTag;
+              };
+              ui = {
+                repository = config._module.args.longhornImages.longhornUiImage.imageName;
+                tag = config._module.args.longhornImages.longhornUiImage.imageTag;
+              };
             };
           };
           longhornUI.replicas = 1;

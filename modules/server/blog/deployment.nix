@@ -35,11 +35,7 @@
                   containers = [
                     {
                       name = "blog";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "blog" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.blogImages.blogImage.imageName}:${config._module.args.blogImages.blogImage.imageTag}";
                       imagePullPolicy = "Never";
                       ports = [ { containerPort = 8080; } ];
                       startupProbe = {

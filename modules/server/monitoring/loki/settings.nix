@@ -29,14 +29,10 @@
             ];
           };
           singleBinary = {
-            image =
-              let
-                image = inputs.self.lib.findImageByName "grafana/loki" config.services.k3s.images;
-              in
-              {
-                repository = image.imageName;
-                tag = image.imageTag;
-              };
+            image = {
+              repository = config._module.args.lokiImages.lokiImage.imageName;
+              tag = config._module.args.lokiImages.lokiImage.imageTag;
+            };
             replicas = 1;
             persistence = {
               enabled = false;
@@ -86,14 +82,10 @@
             };
           };
           loki-canary = {
-            image =
-              let
-                image = inputs.self.lib.findImageByName "grafana/loki-canary" config.services.k3s.images;
-              in
-              {
-                repository = image.imageName;
-                tag = image.imageTag;
-              };
+            image = {
+              repository = config._module.args.lokiImages.lokiCanaryImage.imageName;
+              tag = config._module.args.lokiImages.lokiCanaryImage.imageTag;
+            };
             resources = config.server.resources.profiles.appMini;
           };
         };

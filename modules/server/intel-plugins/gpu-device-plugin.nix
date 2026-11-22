@@ -17,12 +17,14 @@
         version = "0.37.1";
         hash = "sha256-BfKZmPNpfh/PYR4OANx/CVB+xs6tt7oIhG6GjpRuuJw=";
       };
-      image = pkgs.dockerTools.pullImage {
-        imageName = "intel/intel-gpu-plugin";
-        imageDigest = "sha256:004641b2547d58f1eadce58473fa160ad71377de1eb588cf1f82832387bf3e33";
-        hash = "sha256-RLeD1oQI3TrolR+j3XeesjrjGmu6m7MdrTGFcti8qw4=";
-        finalImageTag = "0.37.1";
-        arch = "amd64";
+      intelGpuPluginImages = {
+        intelGpuPluginImage = pkgs.dockerTools.pullImage {
+          imageName = "intel/intel-gpu-plugin";
+          imageDigest = "sha256:004641b2547d58f1eadce58473fa160ad71377de1eb588cf1f82832387bf3e33";
+          hash = "sha256-RLeD1oQI3TrolR+j3XeesjrjGmu6m7MdrTGFcti8qw4=";
+          finalImageTag = "0.37.1";
+          arch = "amd64";
+        };
       };
     in
     {
@@ -32,14 +34,14 @@
 
       config = lib.mkIf config.intel-device-plugins.gpu.enable {
         services.k3s = {
-          images = [ image ];
+          images = builtins.attrValues intelGpuPluginImages;
           autoDeployCharts.intel-gpu-plugin = chart // {
             targetNamespace = "intel-device-plugins-operator";
             createNamespace = true;
             values = {
               image = {
                 hub = "intel";
-                tag = image.imageTag;
+                tag = intelGpuPluginImages.intelGpuPluginImage.imageTag;
               };
             };
           };

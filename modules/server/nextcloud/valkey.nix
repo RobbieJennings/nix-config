@@ -22,11 +22,7 @@
               name = "nextcloud-valkey";
             };
             spec = {
-              image =
-                let
-                  image = inputs.self.lib.findImageByName "valkey/valkey" config.services.k3s.images;
-                in
-                "${image.imageName}:${image.imageTag}";
+              image = "${config._module.args.valkeyImages.valkeyImage.imageName}:${config._module.args.valkeyImages.valkeyImage.imageTag}";
               shards = 1;
               replicas = 0;
               users = [
@@ -42,11 +38,7 @@
               resources = config.server.resources.profiles.cache;
               exporter = {
                 enabled = true;
-                image =
-                  let
-                    image = inputs.self.lib.findImageByName "oliver006/redis_exporter" config.services.k3s.images;
-                  in
-                  "${image.imageName}:${image.imageTag}";
+                image = "${config._module.args.valkeyImages.exporterImage.imageName}:${config._module.args.valkeyImages.exporterImage.imageTag}";
                 resources = config.server.resources.profiles.infraSmall;
               };
             };

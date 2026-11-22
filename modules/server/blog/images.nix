@@ -12,12 +12,15 @@
       ...
     }:
     let
-      blogImage = inputs.blog.packages."x86_64-linux".dockerImage;
+      blogImages = {
+        blogImage = inputs.blog.packages."x86_64-linux".dockerImage;
+      };
     in
     {
-      config = lib.mkIf config.blog.enable {
-        services.k3s = {
-          images = [ blogImage ];
+      config = {
+        _module.args.blogImages = blogImages;
+        services.k3s = lib.mkIf config.blog.enable {
+          images = builtins.attrValues blogImages;
         };
       };
     };

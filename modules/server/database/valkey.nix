@@ -35,26 +35,19 @@
               createNamespace = true;
               values = values // {
                 image =
-                  let
-                    image = inputs.self.lib.findImageByName "valkey/valkey" config.services.k3s.images;
-                  in
                   values.image or {
-                    repository = image.imageName;
-                    tag = image.imageTag;
+                    repository = config._module.args.valkeyImages.valkeyImage.imageName;
+                    tag = config._module.args.valkeyImages.valkeyImage.imageTag;
                   };
                 resources = values.resources or config.server.resources.profiles.cache;
                 metrics =
                   values.metrics or {
                     enabled = true;
-                    exporter.image =
-                      let
-                        image = inputs.self.lib.findImageByName "oliver006/redis_exporter" config.services.k3s.images;
-                      in
-                      {
-                        registry = "ghcr.io";
-                        repository = "oliver006/redis_exporter";
-                        tag = image.imageTag;
-                      };
+                    exporter.image = {
+                      registry = "ghcr.io";
+                      repository = "oliver006/redis_exporter";
+                      tag = config._module.args.valkeyImages.exporterImage.imageTag;
+                    };
                   };
               };
               extraDeploy = [

@@ -16,50 +16,30 @@
         services.k3s.autoDeployCharts.cert-manager.values = {
           installCRDs = true;
           resources = config.server.resources.profiles.infraMedium;
-          image =
-            let
-              image = inputs.self.lib.findImageByName "quay.io/jetstack/cert-manager-controller" config.services.k3s.images;
-            in
-            {
-              repository = image.imageName;
-              tag = image.imageTag;
-            };
-          startupapicheck.image =
-            let
-              image = inputs.self.lib.findImageByName "quay.io/jetstack/cert-manager-startupapicheck" config.services.k3s.images;
-            in
-            {
-              repository = image.imageName;
-              tag = image.imageTag;
-            };
-          acmesolver.image =
-            let
-              image = inputs.self.lib.findImageByName "quay.io/jetstack/cert-manager-acmesolver" config.services.k3s.images;
-            in
-            {
-              repository = image.imageName;
-              tag = image.imageTag;
-            };
+          image = {
+            repository = config._module.args.certManagerImages.controllerImage.imageName;
+            tag = config._module.args.certManagerImages.controllerImage.imageTag;
+          };
+          startupapicheck.image = {
+            repository = config._module.args.certManagerImages.startupapicheckImage.imageName;
+            tag = config._module.args.certManagerImages.startupapicheckImage.imageTag;
+          };
+          acmesolver.image = {
+            repository = config._module.args.certManagerImages.acmesolverImage.imageName;
+            tag = config._module.args.certManagerImages.acmesolverImage.imageTag;
+          };
           webhook = {
-            image =
-              let
-                image = inputs.self.lib.findImageByName "quay.io/jetstack/cert-manager-webhook" config.services.k3s.images;
-              in
-              {
-                repository = image.imageName;
-                tag = image.imageTag;
-              };
+            image = {
+              repository = config._module.args.certManagerImages.webhookImage.imageName;
+              tag = config._module.args.certManagerImages.webhookImage.imageTag;
+            };
             resources = config.server.resources.profiles.infraMedium;
           };
           cainjector = {
-            image =
-              let
-                image = inputs.self.lib.findImageByName "quay.io/jetstack/cert-manager-cainjector" config.services.k3s.images;
-              in
-              {
-                repository = image.imageName;
-                tag = image.imageTag;
-              };
+            image = {
+              repository = config._module.args.certManagerImages.cainjectorImage.imageName;
+              tag = config._module.args.certManagerImages.cainjectorImage.imageTag;
+            };
             resources = config.server.resources.profiles.infraSmall;
           };
         };

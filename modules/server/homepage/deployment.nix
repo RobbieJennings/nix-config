@@ -30,11 +30,7 @@
                   containers = [
                     {
                       name = "homepage";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "ghcr.io/gethomepage/homepage" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.homepageImages.homepageImage.imageName}:${config._module.args.homepageImages.homepageImage.imageTag}";
                       ports = [
                         { containerPort = 3000; }
                       ];

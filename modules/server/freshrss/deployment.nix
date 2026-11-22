@@ -30,11 +30,7 @@
                   containers = [
                     {
                       name = "freshrss";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "linuxserver/freshrss" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.freshrssImages.freshrssImage.imageName}:${config._module.args.freshrssImages.freshrssImage.imageTag}";
                       ports = [ { containerPort = 80; } ];
                       env = [
                         {

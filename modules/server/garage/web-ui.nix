@@ -30,11 +30,7 @@
                   containers = [
                     {
                       name = "garage-web-ui";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "khairul169/garage-webui" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.garageImages.webUiImage.imageName}:${config._module.args.garageImages.webUiImage.imageTag}";
                       ports = [ { containerPort = 3909; } ];
                       env = [
                         {

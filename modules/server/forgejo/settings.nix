@@ -14,15 +14,11 @@
     {
       config = lib.mkIf config.forgejo.enable {
         services.k3s.autoDeployCharts.forgejo.values = {
-          image =
-            let
-              image = inputs.self.lib.findImageByName "code.forgejo.org/forgejo/forgejo" config.services.k3s.images;
-            in
-            {
-              registry = "code.forgejo.org";
-              repository = "forgejo/forgejo";
-              tag = image.imageTag;
-            };
+          image = {
+            registry = "code.forgejo.org";
+            repository = "forgejo/forgejo";
+            tag = config._module.args.forgejoImages.forgejoImage.imageTag;
+          };
           gitea = {
             admin.existingSecret = "forgejo-admin-secrets";
             config = {

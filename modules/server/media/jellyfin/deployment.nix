@@ -30,11 +30,7 @@
                   initContainers = [
                     {
                       name = "install-plugins";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "linuxserver/jellyfin" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.jellyfinImages.jellyfinImage.imageName}:${config._module.args.jellyfinImages.jellyfinImage.imageTag}";
                       command = [
                         "sh"
                         "-c"
@@ -98,11 +94,7 @@
                   containers = [
                     {
                       name = "jellyfin";
-                      image =
-                        let
-                          image = inputs.self.lib.findImageByName "linuxserver/jellyfin" config.services.k3s.images;
-                        in
-                        "${image.imageName}:${image.imageTag}";
+                      image = "${config._module.args.jellyfinImages.jellyfinImage.imageName}:${config._module.args.jellyfinImages.jellyfinImage.imageTag}";
                       ports = [
                         { containerPort = 8096; }
                         { containerPort = 1900; }

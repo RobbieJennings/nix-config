@@ -31,11 +31,7 @@
                 containers = [
                   {
                     name = "update";
-                    image =
-                      let
-                        image = inputs.self.lib.findImageByName "linuxserver/freshrss" config.services.k3s.images;
-                      in
-                      "${image.imageName}:${image.imageTag}";
+                    image = "${config._module.args.freshrssImages.freshrssImage.imageName}:${config._module.args.freshrssImages.freshrssImage.imageTag}";
                     command = [
                       "/usr/bin/php"
                       "/app/www/app/actualize_script.php"
