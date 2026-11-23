@@ -52,6 +52,20 @@
           };
         })
 
+        (lib.mkIf (config.secrets.enable && config.secrets.authorizedKeys.enable) {
+          sops.secrets."authorizedKeys/${username}" = { };
+          system.activationScripts."authorizedKeys-${username}" = {
+            deps = [ "setupSecrets" ];
+            text = ''
+              mkdir -p "/etc/ssh/authorized_keys.d"
+              cp "${
+                config.sops.secrets."authorizedKeys/${username}".path
+              }" "/etc/ssh/authorized_keys.d/${username}"
+              chmod +r "/etc/ssh/authorized_keys.d/${username}"
+            '';
+          };
+        })
+
         (lib.mkIf config.impermanence.enable {
           environment.persistence."/persist".users.${username} = {
             directories = [

@@ -1929,6 +1929,38 @@ true
 
 
 
+## secrets\.authorizedKeys\.enable
+
+
+
+Whether to enable user authorized ssh keys\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+
+```nix
+false
+```
+
+
+
+*Example:*
+
+```nix
+true
+```
+
+*Declared by:*
+ - [modules/core/secrets\.nix](../modules/core/secrets.nix)
+
+
+
 ## secrets\.forgejo\.enable
 
 

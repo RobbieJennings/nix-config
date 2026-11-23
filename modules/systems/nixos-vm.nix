@@ -23,6 +23,7 @@
             "/var/lib/netbird"
             "/etc/NetworkManager/system-connections"
             "/etc/nixos"
+            "/etc/ssh"
             "/root/.ssh"
           ];
         };

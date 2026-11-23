@@ -14,6 +14,7 @@
         secrets = {
           enable = true;
           passwords.enable = true;
+          authorizedKeys.enable = true;
         };
         impermanence.enable = true;
         environment.persistence."/persist" = {
@@ -27,6 +28,7 @@
             "/var/lib/netbird"
             "/etc/NetworkManager/system-connections"
             "/etc/nixos"
+            "/etc/ssh"
             "/root/.ssh"
           ];
         };

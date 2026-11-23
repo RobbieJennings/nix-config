@@ -14,8 +14,11 @@
       imports = [ inputs.sops-nix.nixosModules.sops ];
 
       options = {
-        secrets.enable = lib.mkEnableOption "importing secrets using sops-nix";
-        secrets.passwords.enable = lib.mkEnableOption "user password secrets";
+        secrets = {
+          enable = lib.mkEnableOption "importing secrets using sops-nix";
+          passwords.enable = lib.mkEnableOption "user password secrets";
+          authorizedKeys.enable = lib.mkEnableOption "user authorized ssh keys";
+        };
       };
 
       config = lib.mkIf config.secrets.enable {

@@ -14,6 +14,7 @@
         secrets = {
           enable = true;
           passwords.enable = true;
+          authorizedKeys.enable = true;
           k3s.enable = true;
           homepage.enable = true;
           longhorn.enable = true;
@@ -40,6 +41,7 @@
             "/var/lib/netbird"
             "/etc/NetworkManager/system-connections"
             "/etc/nixos"
+            "/etc/ssh"
             "/root/.ssh"
           ];
         };
