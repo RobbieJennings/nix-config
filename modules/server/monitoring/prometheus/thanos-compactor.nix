@@ -21,7 +21,7 @@
               name = "prometheus-thanos-compactor-pv";
             };
             spec = {
-              capacity.storage = "5Gi";
+              capacity.storage = "10Gi";
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -44,7 +44,7 @@
               namespace = "monitoring";
             };
             spec = {
-              resources.requests.storage = "5Gi";
+              resources.requests.storage = "10Gi";
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "prometheus-thanos-compactor-pv";
             };
