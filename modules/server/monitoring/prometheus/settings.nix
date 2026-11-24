@@ -40,7 +40,7 @@
                 };
               };
               retention = "24h";
-              retentionSize = "5GB";
+              retentionPercentage = "60";
               resources = config.server.resources.profiles.appMedium;
             };
             service.enabled = false;
