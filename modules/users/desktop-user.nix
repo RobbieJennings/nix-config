@@ -95,6 +95,8 @@
               ".local/share/PrismLauncher"
               ".local/state/cosmic"
               ".local/state/cosmic-comp"
+              ".local/share/applications"
+              ".local/share/icons"
               ".config"
               ".var"
               ".vscode-oss/extensions"
