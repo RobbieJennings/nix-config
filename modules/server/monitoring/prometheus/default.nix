@@ -19,6 +19,7 @@
         inputs.self.modules.nixos.prometheus-persistence
         inputs.self.modules.nixos.prometheus-services
         inputs.self.modules.nixos.prometheus-secrets
+        inputs.self.modules.nixos.prometheus-thanos-compactor
       ];
 
       options = {
