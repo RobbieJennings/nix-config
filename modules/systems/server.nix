@@ -11,6 +11,7 @@
       inputs.self.modules.nixos.core
       inputs.self.modules.nixos.server
       {
+        impermanence.enable = true;
         secrets = {
           enable = true;
           passwords.enable = true;
@@ -29,22 +30,6 @@
           media-server.enable = true;
           netbird-operator.enable = true;
         };
-        impermanence.enable = true;
-        environment.persistence."/persist" = {
-          hideMounts = true;
-          directories = [
-            "/var/log"
-            "/var/lib/nixos"
-            "/var/lib/systemd/coredump"
-            "/var/lib/rancher/k3s"
-            "/var/lib/longhorn"
-            "/var/lib/netbird"
-            "/etc/NetworkManager/system-connections"
-            "/etc/nixos"
-            "/etc/ssh"
-            "/root/.ssh"
-          ];
-        };
       }
       {
         imports = [
@@ -53,7 +38,6 @@
             isAdmin = true;
           })
         ];
-
         home-manager.users.robbie = {
           programs.git = {
             enable = true;

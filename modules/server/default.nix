@@ -33,25 +33,45 @@
         inputs.self.modules.nixos.netbird-operator
       ];
 
-      config = {
-        k3s.enable = lib.mkDefault true;
-        metallb.enable = lib.mkDefault true;
-        longhorn.enable = lib.mkDefault true;
-        garage.enable = lib.mkDefault true;
-        postgres.enable = lib.mkDefault true;
-        valkey-operator.enable = lib.mkDefault true;
-        node-feature-discovery.enable = lib.mkDefault true;
-        cert-manager.enable = lib.mkDefault true;
-        intel-device-plugins.enable = lib.mkDefault true;
-        monitoring.enable = lib.mkDefault true;
-        nextcloud.enable = lib.mkDefault true;
-        forgejo.enable = lib.mkDefault true;
-        immich.enable = lib.mkDefault true;
-        freshrss.enable = lib.mkDefault true;
-        homepage.enable = lib.mkDefault true;
-        blog.enable = lib.mkDefault true;
-        media-server.enable = lib.mkDefault true;
-        netbird-operator.enable = lib.mkDefault true;
-      };
+      config = lib.mkMerge [
+        {
+          k3s.enable = lib.mkDefault true;
+          metallb.enable = lib.mkDefault true;
+          longhorn.enable = lib.mkDefault true;
+          garage.enable = lib.mkDefault true;
+          postgres.enable = lib.mkDefault true;
+          valkey-operator.enable = lib.mkDefault true;
+          node-feature-discovery.enable = lib.mkDefault true;
+          cert-manager.enable = lib.mkDefault true;
+          intel-device-plugins.enable = lib.mkDefault true;
+          monitoring.enable = lib.mkDefault true;
+          nextcloud.enable = lib.mkDefault true;
+          forgejo.enable = lib.mkDefault true;
+          immich.enable = lib.mkDefault true;
+          freshrss.enable = lib.mkDefault true;
+          homepage.enable = lib.mkDefault true;
+          blog.enable = lib.mkDefault true;
+          media-server.enable = lib.mkDefault true;
+          netbird-operator.enable = lib.mkDefault true;
+        }
+
+        (lib.mkIf config.impermanence.enable {
+          environment.persistence."/persist" = {
+            hideMounts = true;
+            directories = [
+              "/var/log"
+              "/var/lib/nixos"
+              "/var/lib/systemd/coredump"
+              "/var/lib/rancher/k3s"
+              "/var/lib/longhorn"
+              "/var/lib/netbird"
+              "/etc/NetworkManager/system-connections"
+              "/etc/nixos"
+              "/etc/ssh"
+              "/root/.ssh"
+            ];
+          };
+        })
+      ];
     };
 }

@@ -10,24 +10,7 @@
       inputs.self.modules.nixos.vm
       inputs.self.modules.nixos.core
       inputs.self.modules.nixos.desktop
-      {
-        impermanence.enable = true;
-        environment.persistence."/persist" = {
-          hideMounts = true;
-          directories = [
-            "/var/log"
-            "/var/lib/bluetooth"
-            "/var/lib/nixos"
-            "/var/lib/systemd/coredump"
-            "/var/lib/libvirt"
-            "/var/lib/netbird"
-            "/etc/NetworkManager/system-connections"
-            "/etc/nixos"
-            "/etc/ssh"
-            "/root/.ssh"
-          ];
-        };
-      }
+      { impermanence.enable = true; }
       {
         imports = [
           (self.factory.desktop-user {
@@ -35,7 +18,6 @@
             isAdmin = true;
           })
         ];
-
         home-manager.users.robbie = {
           programs.git.settings.user = {
             name = "robbiejennings";

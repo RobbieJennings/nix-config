@@ -35,34 +35,54 @@
         };
       };
 
-      config = {
-        services.flatpak.enable = true;
-        bootloader.pretty = lib.mkDefault true;
-        audio.enable = lib.mkDefault true;
-        bluetooth.enable = lib.mkDefault true;
-        cosmic-desktop.enable = lib.mkDefault (config.desktopEnvironment == "cosmic");
-        kde-plasma.enable = lib.mkDefault (config.desktopEnvironment == "plasma");
-        kde-connect.enable = lib.mkDefault true;
-        printing.enable = lib.mkDefault true;
-        scanning.enable = lib.mkDefault true;
-        steam.enable = lib.mkDefault true;
-        virtualisation.enable = lib.mkDefault true;
-        qmk.enable = lib.mkDefault true;
+      config = lib.mkMerge [
+        {
+          services.flatpak.enable = true;
+          bootloader.pretty = lib.mkDefault true;
+          audio.enable = lib.mkDefault true;
+          bluetooth.enable = lib.mkDefault true;
+          cosmic-desktop.enable = lib.mkDefault (config.desktopEnvironment == "cosmic");
+          kde-plasma.enable = lib.mkDefault (config.desktopEnvironment == "plasma");
+          kde-connect.enable = lib.mkDefault true;
+          printing.enable = lib.mkDefault true;
+          scanning.enable = lib.mkDefault true;
+          steam.enable = lib.mkDefault true;
+          virtualisation.enable = lib.mkDefault true;
+          qmk.enable = lib.mkDefault true;
 
-        home-manager.sharedModules = [
-          {
-            imports = [
-              inputs.nix-flatpak.homeManagerModules.nix-flatpak
+          home-manager.sharedModules = [
+            {
+              imports = [
+                inputs.nix-flatpak.homeManagerModules.nix-flatpak
+              ];
+            }
+          ];
+
+          assertions = [
+            {
+              assertion = !(config.cosmic-desktop.enable && config.kde-plasma.enable);
+              message = "Cannot enable both COSMIC and Plasma at the same time.";
+            }
+          ];
+        }
+
+        (lib.mkIf config.impermanence.enable {
+          environment.persistence."/persist" = {
+            hideMounts = true;
+            directories = [
+              "/var/log"
+              "/var/lib/bluetooth"
+              "/var/lib/nixos"
+              "/var/lib/systemd/coredump"
+              "/var/lib/libvirt"
+              "/var/lib/netbird"
+              "/etc/NetworkManager/system-connections"
+              "/etc/nixos"
+              "/etc/ssh"
+              "/root/.ssh"
             ];
-          }
-        ];
-
-        assertions = [
-          {
-            assertion = !(config.cosmic-desktop.enable && config.kde-plasma.enable);
-            message = "Cannot enable both COSMIC and Plasma at the same time.";
-          }
-        ];
-      };
+          };
+        })
+      ];
     };
 }
