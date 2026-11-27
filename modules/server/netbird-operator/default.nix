@@ -20,9 +20,8 @@
         inputs.self.modules.nixos.netbird-operator-router
       ];
 
-      options = {
-        netbird-operator.enable = lib.mkEnableOption "Netbird operator helm chart on k3s";
-        secrets.netbird-operator.enable = lib.mkEnableOption "SOPS-managed OAuth secret for Netbird operator";
+      options.netbird-operator = {
+        enable = lib.mkEnableOption "Netbird operator helm chart on k3s";
       };
     };
 }

@@ -19,8 +19,8 @@
         inputs.self.modules.nixos.radarr-services
       ];
 
-      options = {
-        media-server.radarr.enable = lib.mkEnableOption "Radarr deployment on k3s";
+      options.media-server.radarr = {
+        enable = lib.mkEnableOption "Radarr deployment on k3s";
       };
     };
 }

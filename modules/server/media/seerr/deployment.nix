@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.seerr = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appSmall;
+          description = "Resource profile for Seerr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.seerr.enable) {
         services.k3s.manifests.seerr.content = [
           {
@@ -37,7 +45,7 @@
                       name = "seerr";
                       image = "${config._module.args.seerrImages.seerrImage.imageName}:${config._module.args.seerrImages.seerrImage.imageTag}";
                       ports = [ { containerPort = 5055; } ];
-                      resources = config.server.resources.profiles.appSmall;
+                      resources = config.media-server.seerr.resources;
                       startupProbe = {
                         httpGet = {
                           path = "/";

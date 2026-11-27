@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.audiobookshelf = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appSmall;
+          description = "Resource profile for Audiobookshelf";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.audiobookshelf.enable) {
         services.k3s.manifests.audiobookshelf.content = [
           {
@@ -75,7 +83,7 @@
                           value = "1000";
                         }
                       ];
-                      resources = config.server.resources.profiles.appSmall;
+                      resources = config.media-server.audiobookshelf.resources;
                       startupProbe = {
                         httpGet = {
                           path = "/";

@@ -12,6 +12,11 @@
       ...
     }:
     {
+
+      options.secrets.nextcloud = {
+        enable = lib.mkEnableOption "Nextcloud secrets";
+      };
+
       config =
         lib.mkIf (config.nextcloud.enable && config.secrets.enable && config.secrets.nextcloud.enable)
           {

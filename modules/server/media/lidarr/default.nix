@@ -19,8 +19,8 @@
         inputs.self.modules.nixos.lidarr-services
       ];
 
-      options = {
-        media-server.lidarr.enable = lib.mkEnableOption "Lidarr deployment on k3s";
+      options.media-server.lidarr = {
+        enable = lib.mkEnableOption "Lidarr deployment on k3s";
       };
     };
 }

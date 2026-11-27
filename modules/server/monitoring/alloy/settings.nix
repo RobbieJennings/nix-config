@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.monitoring.alloy = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appMini;
+          description = "Resource profile for Alloy";
+        };
+      };
+
       config = lib.mkIf config.monitoring.alloy.enable {
         services.k3s.autoDeployCharts.alloy.values = {
           image = {
@@ -55,7 +63,7 @@
                 }
               '';
             };
-            resources = config.server.resources.profiles.appMini;
+            resources = config.monitoring.alloy.resources;
           };
         };
       };

@@ -28,8 +28,8 @@
       };
     in
     {
-      options = {
-        intel-device-plugins.gpu.enable = lib.mkEnableOption "Intel GPU plugin for Kubernetes";
+      options.intel-device-plugins = {
+        gpu.enable = lib.mkEnableOption "Intel GPU plugin for Kubernetes";
       };
 
       config = lib.mkIf config.intel-device-plugins.gpu.enable {

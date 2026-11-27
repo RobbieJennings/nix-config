@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.forgejo = {
+        forgejoVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "100Gi";
+          description = "Volume size for Forgejo";
+        };
+        postgresVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "8Gi";
+          description = "Volume size for Forgejo's Postgres Database";
+        };
+      };
+
       config = lib.mkIf config.forgejo.enable {
         system.activationScripts.createForgejoDirs = ''
           mkdir -p /storage/forgejo
@@ -26,7 +39,7 @@
               name = "forgejo-pv";
             };
             spec = {
-              capacity.storage = "100Gi";
+              capacity.storage = config.forgejo.forgejoVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
               hostPath = {
@@ -59,7 +72,7 @@
               name = "forgejo-pg-pv";
             };
             spec = {
-              capacity.storage = "8Gi";
+              capacity.storage = config.forgejo.postgresVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";

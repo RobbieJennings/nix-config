@@ -12,6 +12,10 @@
       ...
     }:
     {
+      options.secrets.homepage = {
+        enable = lib.mkEnableOption "Homepage secrets";
+      };
+
       config =
         lib.mkIf (config.homepage.enable && config.secrets.enable && config.secrets.homepage.enable)
           {

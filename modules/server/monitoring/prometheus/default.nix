@@ -22,9 +22,8 @@
         inputs.self.modules.nixos.prometheus-thanos-compactor
       ];
 
-      options = {
-        monitoring.prometheus.enable = lib.mkEnableOption "Prometheus helm chart on k3s";
-        secrets.prometheus.enable = lib.mkEnableOption "Prometheus secrets";
+      options.monitoring.prometheus = {
+        enable = lib.mkEnableOption "Prometheus helm chart on k3s";
       };
     };
 }

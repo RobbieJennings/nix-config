@@ -12,6 +12,10 @@
       ...
     }:
     {
+      options.secrets.forgejo = {
+        enable = lib.mkEnableOption "forgejo secrets";
+      };
+
       config =
         lib.mkIf (config.forgejo.enable && config.secrets.enable && config.secrets.forgejo.enable)
           {

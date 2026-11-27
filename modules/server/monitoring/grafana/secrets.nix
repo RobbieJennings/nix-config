@@ -12,6 +12,10 @@
       ...
     }:
     {
+      options.secrets.grafana = {
+        enable = lib.mkEnableOption "Grafana secrets";
+      };
+
       config =
         lib.mkIf
           (config.monitoring.grafana.enable && config.secrets.enable && config.secrets.grafana.enable)

@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.forgejo = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appSmall;
+          description = "Resource profile for Forgejo";
+        };
+      };
+
       config = lib.mkIf config.forgejo.enable {
         services.k3s.autoDeployCharts.forgejo.values = {
           image = {
@@ -76,7 +84,7 @@
             create = false;
             claimName = "forgejo-pvc";
           };
-          resources = config.server.resources.profiles.appSmall;
+          resources = config.forgejo.resources;
         };
       };
     };

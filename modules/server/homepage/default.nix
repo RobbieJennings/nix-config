@@ -24,9 +24,8 @@
         inputs.self.modules.nixos.homepage-secrets
       ];
 
-      options = {
-        homepage.enable = lib.mkEnableOption "Homepage deployment on k3s";
-        secrets.homepage.enable = lib.mkEnableOption "Homepage secrets";
+      options.homepage = {
+        enable = lib.mkEnableOption "Homepage deployment on k3s";
       };
     };
 }

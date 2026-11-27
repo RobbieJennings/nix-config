@@ -12,6 +12,10 @@
       ...
     }:
     {
+      options.secrets.media-server = {
+        enable = lib.mkEnableOption "jellyfin, transmission and servarr secrets";
+      };
+
       config =
         lib.mkIf (config.media-server.enable && config.secrets.enable && config.secrets.media-server.enable)
           {

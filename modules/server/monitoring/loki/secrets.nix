@@ -12,6 +12,10 @@
       ...
     }:
     {
+      options.secrets.loki = {
+        enable = lib.mkEnableOption "Loki secrets";
+      };
+
       config =
         lib.mkIf (config.monitoring.loki.enable && config.secrets.enable && config.secrets.loki.enable)
           {

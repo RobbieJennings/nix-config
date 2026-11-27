@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.radarr = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appSmall;
+          description = "Resource profile for Radarr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.radarr.enable) {
         services.k3s.manifests.radarr.content = [
           {
@@ -79,7 +87,7 @@
                           value = "1000";
                         }
                       ];
-                      resources = config.server.resources.profiles.appSmall;
+                      resources = config.media-server.radarr.resources;
                       startupProbe = {
                         httpGet = {
                           path = "/";

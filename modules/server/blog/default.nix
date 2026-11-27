@@ -19,8 +19,8 @@
         inputs.self.modules.nixos.blog-services
       ];
 
-      options = {
-        blog.enable = lib.mkEnableOption "Blog deployment on k3s";
+      options.blog = {
+        enable = lib.mkEnableOption "Blog deployment on k3s";
       };
     };
 }

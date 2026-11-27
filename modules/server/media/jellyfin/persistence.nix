@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.jellyfin = {
+        jellyfinVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "5Gi";
+          description = "Volume size for Jellyfin";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.jellyfin.enable) {
         services.k3s.manifests.jellyfin.content = [
           {
@@ -21,7 +29,7 @@
               name = "jellyfin-pv";
             };
             spec = {
-              capacity.storage = "5Gi";
+              capacity.storage = config.media-server.jellyfin.jellyfinVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -44,7 +52,7 @@
               namespace = "media";
             };
             spec = {
-              resources.requests.storage = "5Gi";
+              resources.requests.storage = config.media-server.jellyfin.jellyfinVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "jellyfin-pv";
             };

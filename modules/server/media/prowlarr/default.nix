@@ -19,8 +19,8 @@
         inputs.self.modules.nixos.prowlarr-services
       ];
 
-      options = {
-        media-server.prowlarr.enable = lib.mkEnableOption "Prowlarr deployment on k3s";
+      options.media-server.prowlarr = {
+        enable = lib.mkEnableOption "Prowlarr deployment on k3s";
       };
     };
 }

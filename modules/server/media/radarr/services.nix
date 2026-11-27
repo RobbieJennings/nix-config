@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.media-server.radarr = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.202";
+          description = "MetalLB IP address for Radarr";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 7878;
+          description = "MetalLB port for Radarr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.radarr.enable) {
         services.k3s.manifests.radarr.content = [
           {
@@ -27,14 +40,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.202";
+              loadBalancerIP = config.media-server.radarr.loadBalancerIP;
               selector = {
                 "app" = "radarr";
               };
               ports = [
                 {
                   name = "http";
-                  port = 7878;
+                  port = config.media-server.radarr.loadBalancerPort;
                   targetPort = 7878;
                   protocol = "TCP";
                 }

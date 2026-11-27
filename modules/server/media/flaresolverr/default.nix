@@ -18,8 +18,8 @@
         inputs.self.modules.nixos.flaresolverr-services
       ];
 
-      options = {
-        media-server.flaresolverr.enable = lib.mkEnableOption "Flaresolverr deployment on k3s";
+      options.media-server.flaresolverr = {
+        enable = lib.mkEnableOption "Flaresolverr deployment on k3s";
       };
     };
 }

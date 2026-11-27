@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.prowlarr = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appSmall;
+          description = "Resource profile for Prowlarr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.prowlarr.enable) {
         services.k3s.manifests.prowlarr.content = [
           {
@@ -42,7 +50,7 @@
                           value = "1000";
                         }
                       ];
-                      resources = config.server.resources.profiles.appSmall;
+                      resources = config.media-server.prowlarr.resources;
                       startupProbe = {
                         httpGet = {
                           path = "/";

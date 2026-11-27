@@ -12,6 +12,10 @@
       ...
     }:
     {
+      options.secrets.prometheus = {
+        enable = lib.mkEnableOption "Prometheus secrets";
+      };
+
       config =
         lib.mkIf
           (config.monitoring.prometheus.enable && config.secrets.enable && config.secrets.prometheus.enable)

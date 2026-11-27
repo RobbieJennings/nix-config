@@ -12,8 +12,18 @@
       ...
     }:
     {
-      options = {
-        forgejo.initdb.enable = lib.mkEnableOption "initialize fresh postgres database for Forgejo";
+      options.forgejo = {
+        initdb.enable = lib.mkEnableOption "initialize fresh postgres database for Forgejo";
+        postgresResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.dbSmall;
+          description = "Resource profile for Forgejo's CNPG database";
+        };
+        barmanResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraLarge;
+          description = "Resource profile for Forgejo's Barman backup sidecar";
+        };
       };
 
       config = lib.mkIf config.forgejo.enable {
@@ -35,7 +45,7 @@
               };
               storage = {
                 pvcTemplate = {
-                  resources.requests.storage = "8Gi";
+                  resources.requests.storage = config.forgejo.postgresVolumeSize;
                   accessModes = [ "ReadWriteOnce" ];
                   volumeName = "forgejo-pg-pv";
                 };
@@ -82,7 +92,7 @@
                   };
                 }
               ];
-              resources = config.server.resources.profiles.dbSmall;
+              resources = config.forgejo.postgresResources;
             };
           }
           {
@@ -113,7 +123,7 @@
                 wal.compression = "gzip";
               };
               retentionPolicy = "30d";
-              instanceSidecarConfiguration.resources = config.server.resources.profiles.infraLarge;
+              instanceSidecarConfiguration.resources = config.forgejo.barmanResources;
             };
           }
           {

@@ -22,9 +22,8 @@
         inputs.self.modules.nixos.garage-secrets
       ];
 
-      options = {
-        garage.enable = lib.mkEnableOption "garage helm chart on k3s";
-        secrets.garage.enable = lib.mkEnableOption "garage secrets";
+      options.garage = {
+        enable = lib.mkEnableOption "garage helm chart on k3s";
       };
     };
 }

@@ -12,6 +12,10 @@
       ...
     }:
     {
+      options.secrets.longhorn = {
+        enable = lib.mkEnableOption "longhorn backup credentials secret";
+      };
+
       config =
         lib.mkIf (config.longhorn.enable && config.secrets.enable && config.secrets.longhorn.enable)
           {

@@ -21,9 +21,8 @@
         inputs.self.modules.nixos.longhorn-backup-job
       ];
 
-      options = {
-        longhorn.enable = lib.mkEnableOption "longhorn helm chart on k3s";
-        secrets.longhorn.enable = lib.mkEnableOption "longhorn backup credentials secret";
+      options.longhorn = {
+        enable = lib.mkEnableOption "longhorn helm chart on k3s";
       };
 
       config = lib.mkIf config.longhorn.enable {

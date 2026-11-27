@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.media-server.seerr = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.202";
+          description = "MetalLB IP address for Seerr";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 5055;
+          description = "MetalLB port for Seerr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.seerr.enable) {
         services.k3s.manifests.seerr.content = [
           {
@@ -27,14 +40,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.202";
+              loadBalancerIP = config.media-server.seerr.loadBalancerIP;
               selector = {
                 "app" = "seerr";
               };
               ports = [
                 {
                   name = "http";
-                  port = 5055;
+                  port = config.media-server.seerr.loadBalancerPort;
                   targetPort = 5055;
                   protocol = "TCP";
                 }

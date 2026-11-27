@@ -12,6 +12,39 @@
       ...
     }:
     {
+      options.monitoring.prometheus = {
+        prometheusResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appMedium;
+          description = "Resource profile for Prometheus";
+        };
+        thanosResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraLarge;
+          description = "Resource profile for Prometheus's Thanos sidecar";
+        };
+        alertManagerResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appSmall;
+          description = "Resource profile for Alert Manager";
+        };
+        kubeMetricsResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraLarge;
+          description = "Resource profile for Prometheus's kube-state-metrics agent";
+        };
+        nodeExporterResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraLarge;
+          description = "Resource profile for Prometheus's node exporter";
+        };
+        operatorResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraLarge;
+          description = "Resource profile for Prometheus's operator";
+        };
+      };
+
       config = lib.mkIf config.monitoring.prometheus.enable {
         services.k3s.autoDeployCharts.prometheus.values = {
           grafana.enabled = false;
@@ -26,7 +59,7 @@
               storageSpec = {
                 volumeClaimTemplate = {
                   spec = {
-                    resources.requests.storage = "10Gi";
+                    resources.requests.storage = config.monitoring.prometheus.prometheusVolumeSize;
                     accessModes = [ "ReadWriteOnce" ];
                     volumeName = "prometheus-pv";
                   };
@@ -34,6 +67,7 @@
               };
               thanos = {
                 image = "${config._module.args.prometheusImages.thanosImage.imageName}:${config._module.args.prometheusImages.thanosImage.imageTag}";
+                resources = config.monitoring.prometheus.thanosResources;
                 objectStorageConfig.existingSecret = {
                   name = "prometheus-thanos-secrets";
                   key = "thanos-config";
@@ -41,7 +75,7 @@
               };
               retention = "24h";
               retentionPercentage = "60";
-              resources = config.server.resources.profiles.appMedium;
+              resources = config.monitoring.prometheus.prometheusResources;
             };
             service.enabled = false;
             thanosService.enabled = true;
@@ -58,13 +92,13 @@
               storage = {
                 volumeClaimTemplate = {
                   spec = {
-                    resources.requests.storage = "10Gi";
+                    resources.requests.storage = config.monitoring.prometheus.alertmanagerVolumeSize;
                     accessModes = [ "ReadWriteOnce" ];
                     volumeName = "alertmanager-pv";
                   };
                 };
               };
-              resources = config.server.resources.profiles.appSmall;
+              resources = config.monitoring.prometheus.alertManagerResources;
             };
           };
           kube-state-metrics = {
@@ -73,7 +107,7 @@
               repository = "kube-state-metrics/kube-state-metrics";
               tag = config._module.args.prometheusImages.kubeStateMetricsImage.imageTag;
             };
-            resources = config.server.resources.profiles.infraLarge;
+            resources = config.monitoring.prometheus.kubeMetricsResources;
           };
           prometheus-node-exporter = {
             image = {
@@ -81,7 +115,7 @@
               repository = "prometheus/node-exporter";
               tag = config._module.args.prometheusImages.nodeExporterImage.imageTag;
             };
-            resources = config.server.resources.profiles.infraLarge;
+            resources = config.monitoring.prometheus.nodeExporterResources;
           };
           prometheusOperator = {
             image = {
@@ -89,7 +123,7 @@
               repository = "prometheus-operator/prometheus-operator";
               tag = config._module.args.prometheusImages.prometheusOperatorImage.imageTag;
             };
-            resources = config.server.resources.profiles.infraLarge;
+            resources = config.monitoring.prometheus.operatorResources;
             prometheusConfigReloader = {
               image = {
                 registry = "quay.io";

@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.jellyfin = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appMedium;
+          description = "Resource profile for Jellyfin";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.jellyfin.enable) {
         services.k3s.manifests.jellyfin.content = [
           {
@@ -114,7 +122,7 @@
                           value = "1000";
                         }
                       ];
-                      resources = lib.recursiveUpdate config.server.resources.profiles.appMedium {
+                      resources = lib.recursiveUpdate config.media-server.jellyfin.resources {
                         requests."gpu.intel.com/i915" = 1;
                         limits."gpu.intel.com/i915" = 1;
                       };

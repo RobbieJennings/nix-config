@@ -28,9 +28,8 @@
         inputs.self.modules.nixos.shelfmark
       ];
 
-      options = {
-        media-server.enable = lib.mkEnableOption "jellyfin, transmission and servarr services on k3s";
-        secrets.media-server.enable = lib.mkEnableOption "jellyfin, transmission and servarr secrets";
+      options.media-server = {
+        enable = lib.mkEnableOption "jellyfin, transmission and servarr services on k3s";
       };
 
       config = lib.mkIf config.media-server.enable {

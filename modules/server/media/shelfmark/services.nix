@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.media-server.shelfmark = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.202";
+          description = "MetalLB IP address for Shelfmark";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 8084;
+          description = "MetalLB port for Shelfmark";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.shelfmark.enable) {
         services.k3s.manifests.shelfmark.content = [
           {
@@ -27,14 +40,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.202";
+              loadBalancerIP = config.media-server.shelfmark.loadBalancerIP;
               selector = {
                 "app" = "shelfmark";
               };
               ports = [
                 {
                   name = "http";
-                  port = 8084;
+                  port = config.media-server.shelfmark.loadBalancerPort;
                   targetPort = 8084;
                   protocol = "TCP";
                 }

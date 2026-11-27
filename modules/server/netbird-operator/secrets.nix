@@ -12,6 +12,10 @@
       ...
     }:
     {
+      options.secrets.netbird-operator = {
+        enable = lib.mkEnableOption "SOPS-managed OAuth secret for Netbird operator";
+      };
+
       config =
         lib.mkIf
           (config.netbird-operator.enable && config.secrets.enable && config.secrets.netbird-operator.enable)

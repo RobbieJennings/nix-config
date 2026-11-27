@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.freshrss = {
+        refreshJobResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appSmall;
+          description = "Resource profile for FreshRSS refresh cron job";
+        };
+      };
+
       config = lib.mkIf config.freshrss.enable {
         services.k3s.manifests.freshrss.content = [
           {
@@ -56,7 +64,7 @@
                         mountPath = "/config";
                       }
                     ];
-                    resources = config.server.resources.profiles.appSmall;
+                    resources = config.freshrss.refreshJobResources;
                   }
                 ];
                 volumes = [

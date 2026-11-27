@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.media-server.calibre-web-automated = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.202";
+          description = "MetalLB IP address for Calibre-Web-Automated";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 8083;
+          description = "MetalLB port for Calibre-Web-Automated";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.calibre-web-automated.enable) {
         services.k3s.manifests.calibre-web-automated.content = [
           {
@@ -27,14 +40,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.202";
+              loadBalancerIP = config.media-server.calibre-web-automated.loadBalancerIP;
               selector = {
                 "app" = "calibre-web-automated";
               };
               ports = [
                 {
                   name = "http";
-                  port = 8083;
+                  port = config.media-server.calibre-web-automated.loadBalancerPort;
                   targetPort = 8083;
                   protocol = "TCP";
                 }

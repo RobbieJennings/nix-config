@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.garage = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appSmall;
+          description = "Resource profile for Garage";
+        };
+      };
+
       config = lib.mkIf config.garage.enable {
         services.k3s.autoDeployCharts.garage.values = {
           image = {
@@ -26,7 +34,7 @@
             meta.storageClass = "";
             data.storageClass = "";
           };
-          resources = config.server.resources.profiles.appSmall;
+          resources = config.garage.resources;
         };
       };
     };

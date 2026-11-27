@@ -19,8 +19,8 @@
         inputs.self.modules.nixos.seerr-services
       ];
 
-      options = {
-        media-server.seerr.enable = lib.mkEnableOption "Seerr deployment on k3s";
+      options.media-server.seerr = {
+        enable = lib.mkEnableOption "Seerr deployment on k3s";
       };
     };
 }

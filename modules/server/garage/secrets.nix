@@ -12,6 +12,10 @@
       ...
     }:
     {
+      options.secrets.garage = {
+        enable = lib.mkEnableOption "garage secrets";
+      };
+
       config = lib.mkIf (config.garage.enable && config.secrets.enable && config.secrets.garage.enable) {
         sops = {
           secrets = {

@@ -12,6 +12,18 @@
       ...
     }:
     {
+      options.longhorn = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.201";
+          description = "MetalLB IP address for Longhorn";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 80;
+          description = "MetalLB port for Longhorn";
+        };
+      };
       config = lib.mkIf config.longhorn.enable {
         services.k3s.autoDeployCharts.longhorn.extraDeploy = [
           {
@@ -26,7 +38,7 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.201";
+              loadBalancerIP = config.longhorn.loadBalancerIP;
               selector = {
                 "app.kubernetes.io/name" = "longhorn";
                 "app.kubernetes.io/instance" = "longhorn";
@@ -35,7 +47,7 @@
               ports = [
                 {
                   name = "http";
-                  port = 80;
+                  port = config.longhorn.loadBalancerPort;
                   targetPort = 8000;
                   protocol = "TCP";
                 }

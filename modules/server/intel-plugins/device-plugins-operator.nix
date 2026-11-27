@@ -28,8 +28,13 @@
       };
     in
     {
-      options = {
-        intel-device-plugins.operator.enable = lib.mkEnableOption "Intel Device Plugins Operator";
+      options.intel-device-plugins = {
+        operator.enable = lib.mkEnableOption "Intel Device Plugins Operator";
+        operatorResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraSmall;
+          description = "Resource profile for Intel device plugin operator";
+        };
       };
 
       config = lib.mkIf config.intel-device-plugins.operator.enable {
@@ -45,7 +50,7 @@
                   tag = intelDevicePluginOperatorImages.intelDevicePluginOperatorImage.imageTag;
                 };
               };
-              resources = config.server.resources.profiles.infraMedium;
+              resources = config.intel-device-plugins.operatorResources;
             };
           };
         };

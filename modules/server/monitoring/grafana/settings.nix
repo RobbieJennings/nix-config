@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.monitoring.grafana = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appMedium;
+          description = "Resource profile for Grafana";
+        };
+      };
+
       config = lib.mkIf config.monitoring.grafana.enable {
         services.k3s.autoDeployCharts.grafana.values = {
           image = {
@@ -33,7 +41,7 @@
             existingClaim = "grafana-pvc";
           };
           service.enabled = false;
-          resources = config.server.resources.profiles.appMedium;
+          resources = config.monitoring.grafana.resources;
           datasources = {
             "datasources.yaml" = {
               apiVersion = 1;

@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.immich = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appLarge;
+          description = "Resource profile for Immich";
+        };
+      };
+
       config = lib.mkIf config.immich.enable {
         services.k3s.autoDeployCharts.immich.values = {
           machine-learning.enabled = false;
@@ -52,7 +60,7 @@
                 };
               };
             };
-            resources = config.server.resources.profiles.appLarge;
+            resources = config.immich.resources;
           };
           immich.persistence.library.existingClaim = "immich-pvc";
         };

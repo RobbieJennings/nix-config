@@ -18,8 +18,8 @@
         inputs.self.modules.nixos.cert-manager-settings
       ];
 
-      options = {
-        cert-manager.enable = lib.mkEnableOption "Cert-manager helm chart on k3s";
+      options.cert-manager = {
+        enable = lib.mkEnableOption "Cert-manager helm chart on k3s";
       };
     };
 }

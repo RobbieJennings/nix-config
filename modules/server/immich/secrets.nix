@@ -12,6 +12,10 @@
       ...
     }:
     {
+      options.secrets.immich = {
+        enable = lib.mkEnableOption "Immich secrets";
+      };
+
       config = lib.mkIf (config.immich.enable && config.secrets.enable && config.secrets.immich.enable) {
         sops = {
           secrets = {

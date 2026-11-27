@@ -23,9 +23,8 @@
         inputs.self.modules.nixos.forgejo-secrets
       ];
 
-      options = {
-        forgejo.enable = lib.mkEnableOption "forgejo helm chart on k3s";
-        secrets.forgejo.enable = lib.mkEnableOption "Forgejo secrets";
+      options.forgejo = {
+        enable = lib.mkEnableOption "forgejo helm chart on k3s";
       };
     };
 }

@@ -12,8 +12,18 @@
       ...
     }:
     {
-      options = {
-        immich.initdb.enable = lib.mkEnableOption "initialize fresh postgres database for Immich";
+      options.immich = {
+        initdb.enable = lib.mkEnableOption "initialize fresh postgres database for Immich";
+        postgresResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.dbMedium;
+          description = "Resource profile for Immich's CNPG database";
+        };
+        barmanResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraLarge;
+          description = "Resource profile for Immich's Barman backup sidecar";
+        };
       };
 
       config = lib.mkIf config.immich.enable {
@@ -94,7 +104,7 @@
                   };
                 }
               ];
-              resources = config.server.resources.profiles.dbMedium;
+              resources = config.immich.postgresResources;
             };
           }
           {
@@ -125,7 +135,7 @@
                 wal.compression = "gzip";
               };
               retentionPolicy = "30d";
-              instanceSidecarConfiguration.resources = config.server.resources.profiles.infraLarge;
+              instanceSidecarConfiguration.resources = config.immich.barmanResources;
             };
           }
           {

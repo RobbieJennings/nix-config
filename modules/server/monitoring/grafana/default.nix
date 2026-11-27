@@ -21,9 +21,8 @@
         inputs.self.modules.nixos.grafana-secrets
       ];
 
-      options = {
-        monitoring.grafana.enable = lib.mkEnableOption "Grafana helm chart on k3s";
-        secrets.grafana.enable = lib.mkEnableOption "Grafana secrets";
+      options.monitoring.grafana = {
+        enable = lib.mkEnableOption "Grafana helm chart on k3s";
       };
     };
 }

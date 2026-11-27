@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.media-server = {
+        mediaVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "100Gi";
+          description = "Volume size for media files";
+        };
+        downloadVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "100Gi";
+          description = "Volume size for download files";
+        };
+      };
+
       config = lib.mkIf config.media-server.enable {
         system.activationScripts.createMediaDirs = ''
           mkdir -p /storage/media /storage/downloads
@@ -26,7 +39,7 @@
               name = "media-pv";
             };
             spec = {
-              capacity.storage = "100Gi";
+              capacity.storage = config.media-server.mediaVolumeSize;
               accessModes = [ "ReadWriteMany" ];
               persistentVolumeReclaimPolicy = "Retain";
               hostPath = {
@@ -59,7 +72,7 @@
               name = "downloads-pv";
             };
             spec = {
-              capacity.storage = "100Gi";
+              capacity.storage = config.media-server.downloadVolumeSize;
               accessModes = [ "ReadWriteMany" ];
               persistentVolumeReclaimPolicy = "Retain";
               hostPath = {

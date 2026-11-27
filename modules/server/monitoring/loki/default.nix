@@ -21,9 +21,8 @@
         inputs.self.modules.nixos.loki-secrets
       ];
 
-      options = {
-        monitoring.loki.enable = lib.mkEnableOption "Loki helm chart on k3s";
-        secrets.loki.enable = lib.mkEnableOption "Loki secrets";
+      options.monitoring.loki = {
+        enable = lib.mkEnableOption "Loki helm chart on k3s";
       };
     };
 }

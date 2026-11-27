@@ -19,8 +19,8 @@
         inputs.self.modules.nixos.alloy-services
       ];
 
-      options = {
-        monitoring.alloy.enable = lib.mkEnableOption "Alloy helm chart on k3s";
+      options.monitoring.alloy = {
+        enable = lib.mkEnableOption "Alloy helm chart on k3s";
       };
     };
 }

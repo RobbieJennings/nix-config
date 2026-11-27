@@ -12,6 +12,24 @@
       ...
     }:
     {
+      options.forgejo = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.204";
+          description = "MetalLB IP address for Forgejo";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 3000;
+          description = "MetalLB port for Forgejo";
+        };
+        loadBalancerSshPort = lib.mkOption {
+          type = lib.types.int;
+          default = 22;
+          description = "MetalLB ssh port for Forgejo";
+        };
+      };
+
       config = lib.mkIf config.forgejo.enable {
         services.k3s.autoDeployCharts.forgejo.extraDeploy = [
           {
@@ -26,7 +44,7 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.204";
+              inherit (config.forgejo.loadBalancerIP) ;
               selector = {
                 "app.kubernetes.io/name" = "forgejo";
                 "app.kubernetes.io/instance" = "forgejo";
@@ -35,13 +53,13 @@
               ports = [
                 {
                   name = "http";
-                  port = 3000;
+                  port = config.forgejo.loadBalancerPort;
                   targetPort = 3000;
                   protocol = "TCP";
                 }
                 {
                   name = "ssh";
-                  port = 22;
+                  port = config.forgejo.loadBalancerSshPort;
                   targetPort = 2222;
                   protocol = "TCP";
                 }

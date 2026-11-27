@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.media-server.lidarr = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.202";
+          description = "MetalLB IP address for Lidarr";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 8686;
+          description = "MetalLB port for Lidarr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.lidarr.enable) {
         services.k3s.manifests.lidarr.content = [
           {
@@ -27,14 +40,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.202";
+              loadBalancerIP = config.media-server.lidarr.loadBalancerIP;
               selector = {
                 "app" = "lidarr";
               };
               ports = [
                 {
                   name = "http";
-                  port = 8686;
+                  port = config.media-server.lidarr.loadBalancerPort;
                   targetPort = 8686;
                   protocol = "TCP";
                 }

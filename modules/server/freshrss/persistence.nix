@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.freshrss = {
+        freshrssVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "10Gi";
+          description = "Volume size for Freshrss";
+        };
+      };
+
       config = lib.mkIf config.freshrss.enable {
         services.k3s.manifests.freshrss.content = [
           {
@@ -21,7 +29,7 @@
               name = "freshrss-pv";
             };
             spec = {
-              capacity.storage = "10Gi";
+              capacity.storage = config.freshrss.freshrssVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -44,7 +52,7 @@
               namespace = "freshrss";
             };
             spec = {
-              resources.requests.storage = "10Gi";
+              resources.requests.storage = config.freshrss.freshrssVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "freshrss-pv";
             };

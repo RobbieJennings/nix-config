@@ -42,8 +42,13 @@
       };
     in
     {
-      options = {
-        valkey-operator.enable = lib.mkEnableOption "valkey-operator helm chart on k3s";
+      options.valkey-operator = {
+        enable = lib.mkEnableOption "valkey-operator helm chart on k3s";
+        operatorResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraLarge;
+          description = "Resource profile for Valkey operator";
+        };
       };
 
       config = {
@@ -59,7 +64,7 @@
                   repository = valkeyImages.operatorImage.imageName;
                   tag = valkeyImages.operatorImage.imageTag;
                 };
-                resources = config.server.resources.profiles.infraLarge;
+                resources = config.valkey-operator.operatorResources;
               };
             };
           };

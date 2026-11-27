@@ -12,6 +12,34 @@
       ...
     }:
     {
+      options.garage = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.208";
+          description = "MetalLB IP address for Garage";
+        };
+        loadBalancerApiPort = lib.mkOption {
+          type = lib.types.int;
+          default = 3900;
+          description = "MetalLB port for Garage API";
+        };
+        loadBalancerWebPort = lib.mkOption {
+          type = lib.types.int;
+          default = 3902;
+          description = "MetalLB port for Garage Web";
+        };
+        loadBalancerAdminPort = lib.mkOption {
+          type = lib.types.int;
+          default = 3903;
+          description = "MetalLB port for Garage Admin";
+        };
+        loadBalancerUIPort = lib.mkOption {
+          type = lib.types.int;
+          default = 3909;
+          description = "MetalLB port for Garage Web UI";
+        };
+      };
+
       config = lib.mkIf config.garage.enable {
         services.k3s.autoDeployCharts.garage.extraDeploy = [
           {
@@ -27,7 +55,7 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.208";
+              loadBalancerIP = config.garage.loadBalancerIP;
               selector = {
                 "app.kubernetes.io/instance" = "garage";
                 "app.kubernetes.io/name" = "garage";
@@ -90,7 +118,7 @@
               ports = [
                 {
                   name = "http";
-                  port = 3909;
+                  port = config.garage.loadBalancerUIPort;
                   targetPort = 3909;
                   protocol = "TCP";
                 }

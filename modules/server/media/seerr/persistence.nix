@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.seerr = {
+        seerrVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "5Gi";
+          description = "Volume size for Seerr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.seerr.enable) {
         services.k3s.manifests.seerr.content = [
           {
@@ -21,7 +29,7 @@
               name = "seerr-pv";
             };
             spec = {
-              capacity.storage = "5Gi";
+              capacity.storage = config.media-server.seerr.seerrVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -44,7 +52,7 @@
               namespace = "media";
             };
             spec = {
-              resources.requests.storage = "5Gi";
+              resources.requests.storage = config.media-server.seerr.seerrVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "seerr-pv";
             };

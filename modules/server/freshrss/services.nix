@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.freshrss = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.207";
+          description = "MetalLB IP address for FreshRSS";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 80;
+          description = "MetalLB port for FreshRSS";
+        };
+      };
+
       config = lib.mkIf config.freshrss.enable {
         services.k3s.manifests.freshrss.content = [
           {
@@ -26,14 +39,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.207";
+              loadBalancerIP = config.freshrss.loadBalancerIP;
               selector = {
                 "app" = "freshrss";
               };
               ports = [
                 {
                   name = "http";
-                  port = 80;
+                  port = config.freshrss.loadBalancerPort;
                   targetPort = 80;
                   protocol = "TCP";
                 }

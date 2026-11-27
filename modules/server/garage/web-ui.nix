@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.garage = {
+        webUiResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appSmall;
+          description = "Resource profile for Garage Web UI";
+        };
+      };
+
       config = lib.mkIf config.garage.enable {
         services.k3s.autoDeployCharts.garage.extraDeploy = [
           {
@@ -45,7 +53,7 @@
                           };
                         }
                       ];
-                      resources = config.server.resources.profiles.appSmall;
+                      resources = config.garage.webUiResources;
                       startupProbe = {
                         httpGet = {
                           path = "/";

@@ -19,8 +19,8 @@
         inputs.self.modules.nixos.sonarr-services
       ];
 
-      options = {
-        media-server.sonarr.enable = lib.mkEnableOption "Sonarr deployment on k3s";
+      options.media-server.sonarr = {
+        enable = lib.mkEnableOption "Sonarr deployment on k3s";
       };
     };
 }

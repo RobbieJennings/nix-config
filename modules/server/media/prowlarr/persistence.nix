@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.prowlarr = {
+        prowlarrVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "5Gi";
+          description = "Volume size for Prowlarr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.prowlarr.enable) {
         services.k3s.manifests.prowlarr.content = [
           {
@@ -21,7 +29,7 @@
               name = "prowlarr-pv";
             };
             spec = {
-              capacity.storage = "5Gi";
+              capacity.storage = config.media-server.prowlarr.prowlarrVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -44,7 +52,7 @@
               namespace = "media";
             };
             spec = {
-              resources.requests.storage = "5Gi";
+              resources.requests.storage = config.media-server.prowlarr.prowlarrVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "prowlarr-pv";
             };

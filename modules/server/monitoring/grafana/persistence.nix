@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.monitoring.grafana = {
+        grafanaVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "10Gi";
+          description = "Volume size for Grafana";
+        };
+      };
+
       config = lib.mkIf config.monitoring.grafana.enable {
         services.k3s.autoDeployCharts.grafana.extraDeploy = [
           {
@@ -21,7 +29,7 @@
               name = "grafana-pv";
             };
             spec = {
-              capacity.storage = "10Gi";
+              capacity.storage = config.monitoring.grafana.grafanaVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -44,7 +52,7 @@
               namespace = "monitoring";
             };
             spec = {
-              resources.requests.storage = "10Gi";
+              resources.requests.storage = config.monitoring.grafana.grafanaVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "grafana-pv";
             };

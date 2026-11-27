@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.shelfmark = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appLarge;
+          description = "Resource profile for Shelfmark";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.shelfmark.enable) {
         services.k3s.manifests.shelfmark.content = [
           {
@@ -74,7 +82,7 @@
                           value = "1000";
                         }
                       ];
-                      resources = config.server.resources.profiles.appLarge;
+                      resources = config.media-server.shelfmark.resources;
                       startupProbe = {
                         httpGet = {
                           path = "/";

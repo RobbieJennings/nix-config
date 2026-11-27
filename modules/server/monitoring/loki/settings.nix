@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.monitoring.loki = {
+        lokiResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appSmall;
+          description = "Resource profile for Loki";
+        };
+        lokiCanaryResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appMini;
+          description = "Resource profile for Loki Canary";
+        };
+      };
+
       config = lib.mkIf config.monitoring.loki.enable {
         services.k3s.autoDeployCharts.loki.values = {
           deploymentMode = "SingleBinary";
@@ -38,7 +51,7 @@
               enabled = false;
               dataVolumeParameters.persistentVolumeClaim.claimName = "loki-pvc";
             };
-            resources = config.server.resources.profiles.appSmall;
+            resources = config.monitoring.loki.lokiResources;
           };
           loki = {
             auth_enabled = false;
@@ -86,7 +99,7 @@
               repository = config._module.args.lokiImages.lokiCanaryImage.imageName;
               tag = config._module.args.lokiImages.lokiCanaryImage.imageTag;
             };
-            resources = config.server.resources.profiles.appMini;
+            resources = config.monitoring.loki.lokiCanaryResources;
           };
         };
       };

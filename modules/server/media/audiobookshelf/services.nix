@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.media-server.audiobookshelf = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.202";
+          description = "MetalLB IP address for Audiobookshelf";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 13378;
+          description = "MetalLB port for Audiobookshelf";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.audiobookshelf.enable) {
         services.k3s.manifests.audiobookshelf.content = [
           {
@@ -27,14 +40,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.202";
+              loadBalancerIP = config.media-server.audiobookshelf.loadBalancerIP;
               selector = {
                 "app" = "audiobookshelf";
               };
               ports = [
                 {
                   name = "http";
-                  port = 13378;
+                  port = config.media-server.audiobookshelf.loadBalancerPort;
                   targetPort = 80;
                   protocol = "TCP";
                 }

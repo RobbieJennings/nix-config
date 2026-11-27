@@ -20,8 +20,8 @@
         inputs.self.modules.nixos.jellyfin-plugins
       ];
 
-      options = {
-        media-server.jellyfin.enable = lib.mkEnableOption "Jellyfin deployment on k3s";
+      options.media-server.jellyfin = {
+        enable = lib.mkEnableOption "Jellyfin deployment on k3s";
       };
     };
 }

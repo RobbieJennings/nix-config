@@ -12,6 +12,24 @@
       ...
     }:
     {
+      options.media-server.transmission = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.202";
+          description = "MetalLB IP address for Transmission";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 9091;
+          description = "MetalLB port for Transmission";
+        };
+        loadBalancerPeerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 51413;
+          description = "MetalLB port for Transmission peers";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.transmission.enable) {
         services.k3s.manifests.transmission.content = [
           {
@@ -27,25 +45,25 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.202";
+              loadBalancerIP = config.media-server.transmission.loadBalancerIP;
               selector = {
                 "app" = "transmission";
               };
               ports = [
                 {
                   name = "http";
-                  port = 9091;
+                  port = config.media-server.transmission.loadBalancerPort;
                   targetPort = 9091;
                 }
                 {
                   name = "peer";
-                  port = 51413;
+                  port = config.media-server.transmission.loadBalancerPeerPort;
                   targetPort = 51413;
                   protocol = "TCP";
                 }
                 {
                   name = "peer-udp";
-                  port = 51413;
+                  port = config.media-server.transmission.loadBalancerPeerPort;
                   targetPort = 51413;
                   protocol = "UDP";
                 }

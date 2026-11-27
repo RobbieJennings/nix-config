@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   ...
 }:
@@ -62,8 +63,18 @@
       };
     in
     {
-      options = {
-        postgres.enable = lib.mkEnableOption "Cloudnative-pg helm chart on k3s";
+      options.postgres = {
+        enable = lib.mkEnableOption "Cloudnative-pg helm chart on k3s";
+        operatorResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraLarge;
+          description = "Resource profile for CNPG operator";
+        };
+        barmanPluginResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraLarge;
+          description = "Resource profile for CNPG Barman plugin";
+        };
       };
 
       config = {

@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.forgejo = {
+        valkeyResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.cache;
+          description = "Resource profile for Forgejo's cache";
+        };
+        redisExporterResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraSmall;
+          description = "Resource profile for Forgejo's cache metrics exporter";
+        };
+      };
+
       config = lib.mkIf config.forgejo.enable {
         services.k3s.autoDeployCharts.forgejo.extraDeploy = [
           {
@@ -35,11 +48,11 @@
                   };
                 }
               ];
-              resources = config.server.resources.profiles.cache;
+              resources = config.forgejo.valkeyResources;
               exporter = {
                 enabled = true;
                 image = "${config._module.args.valkeyImages.exporterImage.imageName}:${config._module.args.valkeyImages.exporterImage.imageTag}";
-                resources = config.server.resources.profiles.infraSmall;
+                resources = config.forgejo.redisExporterResources;
               };
             };
           }

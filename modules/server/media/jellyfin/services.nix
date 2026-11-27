@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.media-server.jellyfin = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.202";
+          description = "MetalLB IP address for Jellyfin";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 8096;
+          description = "MetalLB port for Jellyfin";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.jellyfin.enable) {
         services.k3s.manifests.jellyfin.content = [
           {
@@ -27,14 +40,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.202";
+              loadBalancerIP = config.media-server.jellyfin.loadBalancerIP;
               selector = {
                 "app" = "jellyfin";
               };
               ports = [
                 {
                   name = "http";
-                  port = 8096;
+                  port = config.media-server.jellyfin.loadBalancerPort;
                   targetPort = 8096;
                   protocol = "TCP";
                 }

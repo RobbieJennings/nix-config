@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.sonarr = {
+        sonarrVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "5Gi";
+          description = "Volume size for Sonarr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.sonarr.enable) {
         services.k3s.manifests.sonarr.content = [
           {
@@ -21,7 +29,7 @@
               name = "sonarr-pv";
             };
             spec = {
-              capacity.storage = "5Gi";
+              capacity.storage = config.media-server.sonarr.sonarrVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -44,7 +52,7 @@
               namespace = "media";
             };
             spec = {
-              resources.requests.storage = "5Gi";
+              resources.requests.storage = config.media-server.sonarr.sonarrVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "sonarr-pv";
             };

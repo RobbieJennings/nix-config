@@ -12,43 +12,16 @@
       ...
     }:
     {
+      options.monitoring.prometheus = {
+        thanosCompactorResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraLarge;
+          description = "Resource profile for Prometheus's Thanos compactor";
+        };
+      };
+
       config = lib.mkIf config.monitoring.prometheus.enable {
         services.k3s.manifests.thanos-compactor.content = [
-          {
-            apiVersion = "v1";
-            kind = "PersistentVolume";
-            metadata = {
-              name = "prometheus-thanos-compactor-pv";
-            };
-            spec = {
-              capacity.storage = "10Gi";
-              volumeMode = "Filesystem";
-              accessModes = [ "ReadWriteOnce" ];
-              persistentVolumeReclaimPolicy = "Retain";
-              csi = {
-                driver = "driver.longhorn.io";
-                volumeHandle = "prometheus-thanos-compactor";
-                fsType = "ext4";
-              };
-              claimRef = {
-                namespace = "monitoring";
-                name = "prometheus-thanos-compactor-pvc";
-              };
-            };
-          }
-          {
-            apiVersion = "v1";
-            kind = "PersistentVolumeClaim";
-            metadata = {
-              name = "prometheus-thanos-compactor-pvc";
-              namespace = "monitoring";
-            };
-            spec = {
-              resources.requests.storage = "10Gi";
-              accessModes = [ "ReadWriteOnce" ];
-              volumeName = "prometheus-thanos-compactor-pv";
-            };
-          }
           {
             apiVersion = "apps/v1";
             kind = "Deployment";
@@ -84,7 +57,7 @@
                         "--retention.resolution-5m=14d"
                         "--retention.resolution-1h=14d"
                       ];
-                      resources = config.server.resources.profiles.infraLarge;
+                      resources = config.monitoring.prometheus.thanosCompactorResources;
                       startupProbe = {
                         httpGet = {
                           path = "/";

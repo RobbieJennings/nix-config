@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.shelfmark = {
+        shelfmarkVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "5Gi";
+          description = "Volume size for Shelfmark";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.shelfmark.enable) {
         services.k3s.manifests.shelfmark.content = [
           {
@@ -21,7 +29,7 @@
               name = "shelfmark-pv";
             };
             spec = {
-              capacity.storage = "5Gi";
+              capacity.storage = config.media-server.shelfmark.shelfmarkVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -44,7 +52,7 @@
               namespace = "media";
             };
             spec = {
-              resources.requests.storage = "5Gi";
+              resources.requests.storage = config.media-server.shelfmark.shelfmarkVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "shelfmark-pv";
             };

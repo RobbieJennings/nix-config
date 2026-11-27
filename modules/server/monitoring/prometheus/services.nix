@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.monitoring.prometheus = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.210";
+          description = "MetalLB IP address for Prometheus";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 9090;
+          description = "MetalLB port for Prometheus";
+        };
+      };
+
       config = lib.mkIf config.monitoring.prometheus.enable {
         services.k3s.autoDeployCharts.prometheus.extraDeploy = [
           {
@@ -27,7 +40,7 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.210";
+              loadBalancerIP = config.monitoring.prometheus.loadBalancerIP;
               selector = {
                 "app.kubernetes.io/name" = "prometheus";
                 "app.kubernetes.io/instance" = "prometheus-kube-prometheus-prometheus";
@@ -35,7 +48,7 @@
               ports = [
                 {
                   name = "http";
-                  port = 9090;
+                  port = config.monitoring.prometheus.loadBalancerPort;
                   targetPort = 9090;
                 }
               ];

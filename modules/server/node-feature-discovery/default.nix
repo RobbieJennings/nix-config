@@ -18,8 +18,8 @@
         inputs.self.modules.nixos.node-feature-discovery-settings
       ];
 
-      options = {
-        node-feature-discovery.enable = lib.mkEnableOption "Node feature discovery helm chart on k3s";
+      options.node-feature-discovery = {
+        enable = lib.mkEnableOption "Node feature discovery helm chart on k3s";
       };
     };
 }

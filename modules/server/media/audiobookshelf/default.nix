@@ -19,8 +19,8 @@
         inputs.self.modules.nixos.audiobookshelf-services
       ];
 
-      options = {
-        media-server.audiobookshelf.enable = lib.mkEnableOption "Audiobookshelf deployment on k3s";
+      options.media-server.audiobookshelf = {
+        enable = lib.mkEnableOption "Audiobookshelf deployment on k3s";
       };
     };
 }

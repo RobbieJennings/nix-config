@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.monitoring.alloy = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.210";
+          description = "MetalLB IP address for Alloy";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 12345;
+          description = "MetalLB port for Alloy";
+        };
+      };
+
       config = lib.mkIf config.monitoring.alloy.enable {
         services.k3s.autoDeployCharts.alloy.extraDeploy = [
           {
@@ -27,7 +40,7 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.210";
+              loadBalancerIP = config.monitoring.alloy.loadBalancerIP;
               selector = {
                 "app.kubernetes.io/name" = "alloy";
                 "app.kubernetes.io/instance" = "alloy";
@@ -35,7 +48,7 @@
               ports = [
                 {
                   name = "http";
-                  port = 12345;
+                  port = config.monitoring.alloy.loadBalancerPort;
                   targetPort = 12345;
                 }
               ];

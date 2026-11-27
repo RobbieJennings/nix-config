@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.homepage = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.200";
+          description = "MetalLB IP address for Homepage";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 80;
+          description = "MetalLB port for Homepage";
+        };
+      };
+
       config = lib.mkIf config.homepage.enable {
         services.k3s.manifests.homepage.content = [
           {
@@ -26,14 +39,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.200";
+              loadBalancerIP = config.homepage.loadBalancerIP;
               selector = {
                 "app" = "homepage";
               };
               ports = [
                 {
                   name = "http";
-                  port = 80;
+                  port = config.homepage.loadBalancerPort;
                   targetPort = 3000;
                 }
               ];

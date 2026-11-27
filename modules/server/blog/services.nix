@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.blog = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.209";
+          description = "MetalLB IP address for Blog";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 8080;
+          description = "MetalLB port for Blog";
+        };
+      };
+
       config = lib.mkIf config.blog.enable {
         services.k3s.manifests.blog.content = [
           {
@@ -26,14 +39,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.209";
+              loadBalancerIP = config.blog.loadBalancerIP;
               selector = {
                 "app" = "blog";
               };
               ports = [
                 {
                   name = "http";
-                  port = 8080;
+                  port = config.blog.loadBalancerPort;
                   targetPort = 8080;
                   protocol = "TCP";
                 }

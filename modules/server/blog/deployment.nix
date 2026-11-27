@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.blog = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appMini;
+          description = "Resource profile for Blog";
+        };
+      };
+
       config = lib.mkIf config.blog.enable {
         services.k3s.manifests.blog.content = [
           {
@@ -66,7 +74,7 @@
                         timeoutSeconds = 2;
                         failureThreshold = 3;
                       };
-                      resources = config.server.resources.profiles.appMini;
+                      resources = config.blog.resources;
                     }
                   ];
                 };

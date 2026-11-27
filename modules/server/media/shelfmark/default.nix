@@ -19,8 +19,8 @@
         inputs.self.modules.nixos.shelfmark-services
       ];
 
-      options = {
-        media-server.shelfmark.enable = lib.mkEnableOption "Shelfmark deployment on k3s";
+      options.media-server.shelfmark = {
+        enable = lib.mkEnableOption "Shelfmark deployment on k3s";
       };
     };
 }

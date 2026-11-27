@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.media-server.sonarr = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.202";
+          description = "MetalLB IP address for Sonarr";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 8989;
+          description = "MetalLB port for Sonarr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.sonarr.enable) {
         services.k3s.manifests.sonarr.content = [
           {
@@ -27,14 +40,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.202";
+              loadBalancerIP = config.media-server.sonarr.loadBalancerIP;
               selector = {
                 "app" = "sonarr";
               };
               ports = [
                 {
                   name = "http";
-                  port = 8989;
+                  port = config.media-server.sonarr.loadBalancerPort;
                   targetPort = 8989;
                   protocol = "TCP";
                 }

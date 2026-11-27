@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.monitoring.grafana = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.210";
+          description = "MetalLB IP address for Grafana";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 3000;
+          description = "MetalLB port for Grafana";
+        };
+      };
+
       config = lib.mkIf config.monitoring.grafana.enable {
         services.k3s.autoDeployCharts.grafana.extraDeploy = [
           {
@@ -27,7 +40,7 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.210";
+              loadBalancerIP = config.monitoring.grafana.loadBalancerIP;
               selector = {
                 "app.kubernetes.io/name" = "grafana";
                 "app.kubernetes.io/instance" = "grafana";
@@ -35,7 +48,7 @@
               ports = [
                 {
                   name = "http";
-                  port = 3000;
+                  port = config.monitoring.grafana.loadBalancerPort;
                   targetPort = 3000;
                 }
               ];

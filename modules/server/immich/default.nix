@@ -23,9 +23,8 @@
         inputs.self.modules.nixos.immich-secrets
       ];
 
-      options = {
-        immich.enable = lib.mkEnableOption "Immich helm chart on k3s";
-        secrets.immich.enable = lib.mkEnableOption "Immich secrets";
+      options.immich = {
+        enable = lib.mkEnableOption "Immich helm chart on k3s";
       };
     };
 }

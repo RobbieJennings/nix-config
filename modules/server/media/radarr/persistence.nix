@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.radarr = {
+        radarrVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "5Gi";
+          description = "Volume size for Radarr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.radarr.enable) {
         services.k3s.manifests.radarr.content = [
           {
@@ -21,7 +29,7 @@
               name = "radarr-pv";
             };
             spec = {
-              capacity.storage = "5Gi";
+              capacity.storage = config.media-server.radarr.radarrVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -44,7 +52,7 @@
               namespace = "media";
             };
             spec = {
-              resources.requests.storage = "5Gi";
+              resources.requests.storage = config.media-server.radarr.radarrVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "radarr-pv";
             };

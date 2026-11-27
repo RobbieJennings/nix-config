@@ -12,6 +12,18 @@
       ...
     }:
     {
+      options.nextcloud = {
+        valkeyResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.cache;
+          description = "Resource profile for Nextcloud's cache";
+        };
+        redisExporterResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraSmall;
+          description = "Resource profile for Nextcloud's cache metrics exporter";
+        };
+      };
       config = lib.mkIf config.nextcloud.enable {
         services.k3s.autoDeployCharts.nextcloud.extraDeploy = [
           {
@@ -35,11 +47,11 @@
                   };
                 }
               ];
-              resources = config.server.resources.profiles.cache;
+              resources = config.nextcloud.valkeyResources;
               exporter = {
                 enabled = true;
                 image = "${config._module.args.valkeyImages.exporterImage.imageName}:${config._module.args.valkeyImages.exporterImage.imageTag}";
-                resources = config.server.resources.profiles.infraSmall;
+                resources = config.nextcloud.redisExporterResources;
               };
             };
           }

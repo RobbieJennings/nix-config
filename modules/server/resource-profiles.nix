@@ -33,32 +33,7 @@
     in
     {
       options.server.resources.profiles = lib.mkOption {
-        type = lib.types.attrsOf (
-          lib.types.submodule {
-            options = {
-              requests = {
-                cpu = lib.mkOption {
-                  type = lib.types.str;
-                  description = "Requested CPU core percentage";
-                };
-                memory = lib.mkOption {
-                  type = lib.types.str;
-                  description = "Requested memory";
-                };
-              };
-              limits = {
-                cpu = lib.mkOption {
-                  type = lib.types.str;
-                  description = "CPU core percentage limit";
-                };
-                memory = lib.mkOption {
-                  type = lib.types.str;
-                  description = "Memory limit";
-                };
-              };
-            };
-          }
-        );
+        type = lib.types.attrsOf inputs.self.lib.types.resourceProfile;
         default = resourceProfiles;
         description = "Kubernetes resource profiles";
       };

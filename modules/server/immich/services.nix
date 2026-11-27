@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.immich = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.205";
+          description = "MetalLB IP address for Immich";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 2283;
+          description = "MetalLB port for Immich";
+        };
+      };
+
       config = lib.mkIf config.immich.enable {
         services.k3s.autoDeployCharts.immich.extraDeploy = [
           {
@@ -23,7 +36,7 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.205";
+              loadBalancerIP = config.immich.loadBalancerIP;
               selector = {
                 "app.kubernetes.io/controller" = "main";
                 "app.kubernetes.io/instance" = "immich";
@@ -32,7 +45,7 @@
               ports = [
                 {
                   name = "http";
-                  port = 2283;
+                  port = config.immich.loadBalancerPort;
                   targetPort = 2283;
                   protocol = "TCP";
                 }

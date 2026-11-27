@@ -12,6 +12,13 @@
       ...
     }:
     {
+      options.homepage = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appMini;
+          description = "Resource profile for Homepage";
+        };
+      };
       config = lib.mkIf config.homepage.enable {
         services.k3s.manifests.homepage.content = [
           {
@@ -214,7 +221,7 @@
                         timeoutSeconds = 2;
                         failureThreshold = 3;
                       };
-                      resources = config.server.resources.profiles.appMini;
+                      resources = config.homepage.resources;
                     }
                   ];
                   volumes = [

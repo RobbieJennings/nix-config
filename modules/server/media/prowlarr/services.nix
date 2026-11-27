@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.media-server.prowlarr = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.202";
+          description = "MetalLB IP address for Prowlarr";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 9696;
+          description = "MetalLB port for Prowlarr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.prowlarr.enable) {
         services.k3s.manifests.prowlarr.content = [
           {
@@ -27,14 +40,14 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.202";
+              loadBalancerIP = config.media-server.prowlarr.loadBalancerIP;
               selector = {
                 "app" = "prowlarr";
               };
               ports = [
                 {
                   name = "http";
-                  port = 9696;
+                  port = config.media-server.prowlarr.loadBalancerPort;
                   targetPort = 9696;
                   protocol = "TCP";
                 }

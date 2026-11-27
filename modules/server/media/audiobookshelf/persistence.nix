@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.audiobookshelf = {
+        audioBookshelfVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "5Gi";
+          description = "Volume size for Audiobookshelf";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.audiobookshelf.enable) {
         services.k3s.manifests.audiobookshelf.content = [
           {
@@ -21,7 +29,7 @@
               name = "audiobookshelf-pv";
             };
             spec = {
-              capacity.storage = "5Gi";
+              capacity.storage = config.media-server.audiobookshelf.audioBookshelfVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -44,7 +52,7 @@
               namespace = "media";
             };
             spec = {
-              resources.requests.storage = "5Gi";
+              resources.requests.storage = config.media-server.audiobookshelf.audioBookshelfVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "audiobookshelf-pv";
             };

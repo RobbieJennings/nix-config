@@ -12,8 +12,18 @@
       ...
     }:
     {
-      options = {
-        nextcloud.initdb.enable = lib.mkEnableOption "initialize fresh postgres database for Nextcloud";
+      options.nextcloud = {
+        initdb.enable = lib.mkEnableOption "initialize fresh postgres database for Nextcloud";
+        postgresResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.dbMedium;
+          description = "Resource profile for Nextcloud's CNPG database";
+        };
+        barmanResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.infraLarge;
+          description = "Resource profile for Nextcloud's Barman backup sidecar";
+        };
       };
 
       config = lib.mkIf config.nextcloud.enable {
@@ -82,7 +92,7 @@
                   };
                 }
               ];
-              resources = config.server.resources.profiles.dbMedium;
+              resources = config.nextcloud.postgresResources;
             };
           }
           {
@@ -113,7 +123,7 @@
                 wal.compression = "gzip";
               };
               retentionPolicy = "30d";
-              instanceSidecarConfiguration.resources = config.server.resources.profiles.infraLarge;
+              instanceSidecarConfiguration.resources = config.nextcloud.barmanResources;
             };
           }
           {

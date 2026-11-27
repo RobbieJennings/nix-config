@@ -23,9 +23,8 @@
         inputs.self.modules.nixos.nextcloud-secrets
       ];
 
-      options = {
-        nextcloud.enable = lib.mkEnableOption "nextcloud helm chart on k3s";
-        secrets.nextcloud.enable = lib.mkEnableOption "Nextcloud secrets";
+      options.nextcloud = {
+        enable = lib.mkEnableOption "nextcloud helm chart on k3s";
       };
     };
 }

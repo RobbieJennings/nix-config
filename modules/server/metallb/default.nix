@@ -18,8 +18,8 @@
         inputs.self.modules.nixos.metallb-settings
       ];
 
-      options = {
-        metallb.enable = lib.mkEnableOption "Metallb helm chart on k3s";
+      options.metallb = {
+        enable = lib.mkEnableOption "Metallb helm chart on k3s";
       };
     };
 }

@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.nextcloud = {
+        loadBalancerIP = lib.mkOption {
+          type = lib.types.str;
+          default = "192.168.1.203";
+          description = "MetalLB IP address for Nextcloud";
+        };
+        loadBalancerPort = lib.mkOption {
+          type = lib.types.int;
+          default = 8080;
+          description = "MetalLB port for Forgejo";
+        };
+      };
+
       config = lib.mkIf config.nextcloud.enable {
         services.k3s.autoDeployCharts.nextcloud.extraDeploy = [
           {
@@ -27,7 +40,7 @@
             };
             spec = {
               type = "LoadBalancer";
-              loadBalancerIP = "192.168.1.203";
+              loadBalancerIP = config.nextcloud.loadBalancerIP;
               selector = {
                 "app.kubernetes.io/component" = "app";
                 "app.kubernetes.io/instance" = "nextcloud";
@@ -36,7 +49,7 @@
               ports = [
                 {
                   name = "http";
-                  port = 8080;
+                  port = config.nextcloud.loadBalancerPort;
                   targetPort = 80;
                   protocol = "TCP";
                 }

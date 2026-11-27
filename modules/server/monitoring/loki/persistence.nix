@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.monitoring.loki = {
+        lokiVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "10Gi";
+          description = "Volume size for Loki";
+        };
+      };
+
       config = lib.mkIf config.monitoring.loki.enable {
         services.k3s.autoDeployCharts.loki.extraDeploy = [
           {
@@ -21,7 +29,7 @@
               name = "loki-pv";
             };
             spec = {
-              capacity.storage = "10Gi";
+              capacity.storage = config.monitoring.loki.lokiVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -44,7 +52,7 @@
               namespace = "monitoring";
             };
             spec = {
-              resources.requests.storage = "10Gi";
+              resources.requests.storage = config.monitoring.loki.lokiVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "loki-pv";
             };

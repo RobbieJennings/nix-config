@@ -22,9 +22,8 @@
         inputs.self.modules.nixos.freshrss-cronjob
       ];
 
-      options = {
-        freshrss.enable = lib.mkEnableOption "FreshRSS deployment on k3s";
-        secrets.freshrss.enable = lib.mkEnableOption "FreshRSS login secrets";
+      options.freshrss = {
+        enable = lib.mkEnableOption "FreshRSS deployment on k3s";
       };
     };
 }

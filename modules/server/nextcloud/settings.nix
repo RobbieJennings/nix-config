@@ -12,6 +12,24 @@
       ...
     }:
     {
+      options.nextcloud = {
+        nextcloudResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appLarge;
+          description = "Resource profile for Nextcloud";
+        };
+        collaboraResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appLarge;
+          description = "Resource profile for Nextcloud's Collabora instance";
+        };
+        cronJobResources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appMini;
+          description = "Resource profile for Nextcloud's cron jobs";
+        };
+      };
+
       config = lib.mkIf config.nextcloud.enable {
         services.k3s.autoDeployCharts.nextcloud.values = {
           image = {
@@ -21,7 +39,7 @@
           nextcloud = {
             host = "nextcloud.nextcloud";
             trustedDomains = [
-              "192.168.1.203"
+              config.nextcloud.loadBalancerIP
               "nextcloud.nextcloud"
               "nextcloud.nextcloud.homelab"
             ];
@@ -67,7 +85,7 @@
               existingClaim = "nextcloud-data-pvc";
             };
           };
-          resources = config.server.resources.profiles.appLarge;
+          resources = config.nextcloud.nextcloudResources;
           internalDatabase.enabled = false;
           externalDatabase = {
             enabled = true;
@@ -93,12 +111,12 @@
             aliasgroups = [
               { host = "http://nextcloud.nextcloud:80"; }
             ];
-            resources = config.server.resources.profiles.appLarge;
+            resources = config.nextcloud.collaboraResources;
           };
           cronjob = {
             enabled = true;
             type = "sidecar";
-            resources = config.server.resources.profiles.appMini;
+            resources = config.nextcloud.cronJobResources;
           };
           livenessProbe = {
             initialDelaySeconds = 300;

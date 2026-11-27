@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.metallb = {
+        addresses = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          default = [ "192.168.1.200-192.168.1.210" ];
+          description = "List of IP addresses for MetalLB's IP address pool.";
+        };
+      };
+
       config = lib.mkIf config.metallb.enable {
         services.k3s.autoDeployCharts.metallb = {
           values = {
@@ -33,7 +41,7 @@
                 namespace = "metallb-system";
               };
               spec = {
-                addresses = [ "192.168.1.200-192.168.1.210" ];
+                addresses = config.metallb.addresses;
                 autoAssign = true;
               };
             }

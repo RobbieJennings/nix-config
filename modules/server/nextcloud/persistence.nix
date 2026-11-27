@@ -12,6 +12,24 @@
       ...
     }:
     {
+      options.nextcloud = {
+        nextcloudVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "10Gi";
+          description = "Volume size for Nextcloud";
+        };
+        nextcloudDataVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "10Gi";
+          description = "Volume size for Nextcloud's Collabora instance";
+        };
+        postgresVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "8Gi";
+          description = "Volume size for Nextcloud's Postgres Database";
+        };
+      };
+
       config = lib.mkIf config.nextcloud.enable {
         system.activationScripts.createNextcloudDirs = ''
           mkdir -p /storage/nextcloud
@@ -26,7 +44,7 @@
               name = "nextcloud-pv";
             };
             spec = {
-              capacity.storage = "8Gi";
+              capacity.storage = config.nextcloud.nextcloudVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
@@ -49,7 +67,7 @@
               namespace = "nextcloud";
             };
             spec = {
-              resources.requests.storage = "8Gi";
+              resources.requests.storage = config.nextcloud.nextcloudVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               volumeName = "nextcloud-pv";
             };
@@ -61,7 +79,7 @@
               name = "nextcloud-data-pv";
             };
             spec = {
-              capacity.storage = "100Gi";
+              capacity.storage = config.nextcloud.nextcloudDataVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
               hostPath = {
@@ -94,7 +112,7 @@
               name = "nextcloud-pg-pv";
             };
             spec = {
-              capacity.storage = "8Gi";
+              capacity.storage = config.nextcloud.postgresVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";

@@ -12,6 +12,14 @@
       ...
     }:
     {
+      options.media-server.sonarr = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appSmall;
+          description = "Resource profile for Sonarr";
+        };
+      };
+
       config = lib.mkIf (config.media-server.enable && config.media-server.sonarr.enable) {
         services.k3s.manifests.sonarr.content = [
           {
@@ -79,7 +87,7 @@
                           value = "1000";
                         }
                       ];
-                      resources = config.server.resources.profiles.appSmall;
+                      resources = config.media-server.sonarr.resources;
                       startupProbe = {
                         httpGet = {
                           path = "/";

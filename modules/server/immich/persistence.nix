@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.immich = {
+        immichVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "100Gi";
+          description = "Volume size for Immich";
+        };
+        postgresVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "8Gi";
+          description = "Volume size for Immich's Postgres Database";
+        };
+      };
+
       config = lib.mkIf config.immich.enable {
         system.activationScripts.createImmichDirs = ''
           mkdir -p /storage/immich
@@ -26,7 +39,7 @@
               name = "immich-pv";
             };
             spec = {
-              capacity.storage = "100Gi";
+              capacity.storage = config.immich.immichVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
               hostPath = {
@@ -59,7 +72,7 @@
               name = "immich-pg-pv";
             };
             spec = {
-              capacity.storage = "8Gi";
+              capacity.storage = config.immich.postgresVolumeSize;
               volumeMode = "Filesystem";
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";

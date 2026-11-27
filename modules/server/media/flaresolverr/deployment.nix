@@ -12,6 +12,13 @@
       ...
     }:
     {
+      options.media-server.flaresolverr = {
+        resources = lib.mkOption {
+          type = inputs.self.lib.types.resourceProfile;
+          default = config.server.resources.profiles.appLarge;
+          description = "Resource profile for Flaresolverr";
+        };
+      };
       config = lib.mkIf (config.media-server.enable && config.media-server.flaresolverr.enable) {
         services.k3s.manifests.flaresolverr.content = [
           {
@@ -75,7 +82,7 @@
                         timeoutSeconds = 2;
                         failureThreshold = 3;
                       };
-                      resources = config.server.resources.profiles.appLarge;
+                      resources = config.media-server.flaresolverr.resources;
                     }
                   ];
                 };

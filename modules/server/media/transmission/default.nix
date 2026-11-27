@@ -19,8 +19,8 @@
         inputs.self.modules.nixos.transmission-services
       ];
 
-      options = {
-        media-server.transmission.enable = lib.mkEnableOption "Transmission deployment on k3s";
+      options.media-server.transmission = {
+        enable = lib.mkEnableOption "Transmission deployment on k3s";
       };
     };
 }

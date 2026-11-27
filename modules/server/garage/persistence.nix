@@ -12,6 +12,19 @@
       ...
     }:
     {
+      options.garage = {
+        metaVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "10Gi";
+          description = "Volume size for Garage metadata";
+        };
+        dataVolumeSize = lib.mkOption {
+          type = lib.types.str;
+          default = "100Gi";
+          description = "Volume size for Garage data";
+        };
+      };
+
       config = lib.mkIf config.garage.enable {
         system.activationScripts.createGarageDirs = ''
           mkdir -p /storage/garage/meta /storage/garage/data
@@ -26,7 +39,7 @@
               name = "meta-garage-0";
             };
             spec = {
-              capacity.storage = "10Gi";
+              capacity.storage = config.garage.metaVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
               hostPath = {
@@ -46,7 +59,7 @@
               name = "data-garage-0";
             };
             spec = {
-              capacity.storage = "100Gi";
+              capacity.storage = config.garage.dataVolumeSize;
               accessModes = [ "ReadWriteOnce" ];
               persistentVolumeReclaimPolicy = "Retain";
               hostPath = {
