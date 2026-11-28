@@ -14,6 +14,16 @@
     {
       options.nextcloud = {
         initdb.enable = lib.mkEnableOption "initialize fresh postgres database for Nextcloud";
+        postgresBackupServerName = lib.mkOption {
+          type = lib.types.str;
+          default = "nextcloud-postgres-backup-1";
+          description = "Name of Barman backup server (must change before each restore)";
+        };
+        postgresSourceServerName = lib.mkOption {
+          type = lib.types.str;
+          default = "nextcloud-postgres-backup-0";
+          description = "Name of Barman source server (must match previous backup server name)";
+        };
         postgresResources = lib.mkOption {
           type = inputs.self.lib.types.resourceProfile;
           default = config.server.resources.profiles.dbMedium;
@@ -45,7 +55,7 @@
               };
               storage = {
                 pvcTemplate = {
-                  resources.requests.storage = "8Gi";
+                  resources.requests.storage = config.nextcloud.postgresVolumeSize;
                   accessModes = [ "ReadWriteOnce" ];
                   volumeName = "nextcloud-pg-pv";
                 };
@@ -76,7 +86,7 @@
                   isWALArchiver = true;
                   parameters = {
                     barmanObjectName = "garage-store";
-                    serverName = "nextcloud-postgres-backup-1"; # Must change before each restore
+                    serverName = config.nextcloud.postgresBackupServerName;
                   };
                 }
               ];
@@ -87,7 +97,7 @@
                     name = "barman-cloud.cloudnative-pg.io";
                     parameters = {
                       barmanObjectName = "garage-store";
-                      serverName = "nextcloud-postgres-backup-0"; # Must match previous plugin server name
+                      serverName = config.nextcloud.postgresSourceServerName;
                     };
                   };
                 }

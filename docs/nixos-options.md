@@ -1118,6 +1118,30 @@ signed integer
 
 
 
+## forgejo\.postgresBackupServerName
+
+
+
+Name of Barman backup server (must change before each restore)
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+
+```nix
+"forgejo-postgres-backup-1"
+```
+
+*Declared by:*
+ - [modules/server/forgejo/postgres\.nix](../modules/server/forgejo/postgres.nix)
+
+
+
 ## forgejo\.postgresResources
 
 
@@ -1209,6 +1233,30 @@ Requested memory
 
 *Type:*
 string
+
+*Declared by:*
+ - [modules/server/forgejo/postgres\.nix](../modules/server/forgejo/postgres.nix)
+
+
+
+## forgejo\.postgresSourceServerName
+
+
+
+Name of Barman source server (must match previous backup server name)
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+
+```nix
+"forgejo-postgres-backup-0"
+```
 
 *Declared by:*
  - [modules/server/forgejo/postgres\.nix](../modules/server/forgejo/postgres.nix)
@@ -2240,8 +2288,6 @@ string
 
 ## garage\.webUiResources\.requests\.memory
 
-
-
 Requested memory
 
 
@@ -2287,6 +2333,8 @@ true
 
 
 ## homepage\.enable
+
+
 
 Whether to enable Homepage deployment on k3s\.
 
@@ -2694,6 +2742,30 @@ signed integer
 
 
 
+## immich\.postgresBackupServerName
+
+
+
+Name of Barman backup server (must change before each restore)
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+
+```nix
+"immich-postgres-backup-1"
+```
+
+*Declared by:*
+ - [modules/server/immich/postgres\.nix](../modules/server/immich/postgres.nix)
+
+
+
 ## immich\.postgresResources
 
 
@@ -2785,6 +2857,30 @@ Requested memory
 
 *Type:*
 string
+
+*Declared by:*
+ - [modules/server/immich/postgres\.nix](../modules/server/immich/postgres.nix)
+
+
+
+## immich\.postgresSourceServerName
+
+
+
+Name of Barman source server (must match previous backup server name)
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+
+```nix
+"immich-postgres-backup-0"
+```
 
 *Declared by:*
  - [modules/server/immich/postgres\.nix](../modules/server/immich/postgres.nix)
@@ -4481,8 +4577,6 @@ string
 
 ## media-server\.mediaVolumeSize
 
-
-
 Volume size for media files
 
 
@@ -4584,6 +4678,8 @@ signed integer
 
 
 ## media-server\.prowlarr\.prowlarrVolumeSize
+
+
 
 Volume size for Prowlarr
 
@@ -6725,8 +6821,6 @@ string
 
 ## monitoring\.prometheus\.kubeMetricsResources\.limits\.memory
 
-
-
 Memory limit
 
 
@@ -6796,6 +6890,8 @@ string
 
 
 ## monitoring\.prometheus\.loadBalancerPort
+
+
 
 MetalLB port for Prometheus
 
@@ -8188,6 +8284,30 @@ string
 
 
 
+## nextcloud\.postgresBackupServerName
+
+
+
+Name of Barman backup server (must change before each restore)
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+
+```nix
+"nextcloud-postgres-backup-1"
+```
+
+*Declared by:*
+ - [modules/server/nextcloud/postgres\.nix](../modules/server/nextcloud/postgres.nix)
+
+
+
 ## nextcloud\.postgresResources
 
 
@@ -8279,6 +8399,30 @@ Requested memory
 
 *Type:*
 string
+
+*Declared by:*
+ - [modules/server/nextcloud/postgres\.nix](../modules/server/nextcloud/postgres.nix)
+
+
+
+## nextcloud\.postgresSourceServerName
+
+
+
+Name of Barman source server (must match previous backup server name)
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+
+```nix
+"nextcloud-postgres-backup-0"
+```
 
 *Declared by:*
  - [modules/server/nextcloud/postgres\.nix](../modules/server/nextcloud/postgres.nix)
@@ -8731,8 +8875,6 @@ string
 
 ## node-feature-discovery\.workerResources
 
-
-
 Resource profile for Node Feature Discovery’s worker instance
 
 
@@ -8892,6 +9034,8 @@ submodule
 
 
 ## postgres\.barmanPluginResources\.limits\.cpu
+
+
 
 CPU core percentage limit
 

@@ -14,6 +14,16 @@
     {
       options.immich = {
         initdb.enable = lib.mkEnableOption "initialize fresh postgres database for Immich";
+        postgresBackupServerName = lib.mkOption {
+          type = lib.types.str;
+          default = "immich-postgres-backup-1";
+          description = "Name of Barman backup server (must change before each restore)";
+        };
+        postgresSourceServerName = lib.mkOption {
+          type = lib.types.str;
+          default = "immich-postgres-backup-0";
+          description = "Name of Barman source server (must match previous backup server name)";
+        };
         postgresResources = lib.mkOption {
           type = inputs.self.lib.types.resourceProfile;
           default = config.server.resources.profiles.dbMedium;
@@ -45,7 +55,7 @@
               };
               storage = {
                 pvcTemplate = {
-                  resources.requests.storage = "8Gi";
+                  resources.requests.storage = config.immich.postgresVolumeSize;
                   accessModes = [ "ReadWriteOnce" ];
                   volumeName = "immich-pg-pv";
                 };
@@ -88,7 +98,7 @@
                   isWALArchiver = true;
                   parameters = {
                     barmanObjectName = "garage-store";
-                    serverName = "immich-postgres-backup-1"; # Must change before each restore
+                    serverName = config.immich.postgresBackupServerName;
                   };
                 }
               ];
@@ -99,7 +109,7 @@
                     name = "barman-cloud.cloudnative-pg.io";
                     parameters = {
                       barmanObjectName = "garage-store";
-                      serverName = "immich-postgres-backup-0"; # Must match previous plugin server name
+                      serverName = config.immich.postgresSourceServerName;
                     };
                   };
                 }
